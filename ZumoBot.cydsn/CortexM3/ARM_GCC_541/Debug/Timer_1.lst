@@ -1,0 +1,2394 @@
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Timer_1.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Timer_1_Enable,"ax",%progbits
+  20              		.align	2
+  21              		.global	Timer_1_Enable
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Timer_1_Enable, %function
+  25              	Timer_1_Enable:
+  26              	.LFB1:
+  27              		.file 1 "Generated_Source\\PSoC5\\Timer_1.c"
+   1:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/Timer_1.c **** * File Name: Timer_1.c
+   3:Generated_Source\PSoC5/Timer_1.c **** * Version 2.70
+   4:Generated_Source\PSoC5/Timer_1.c **** *
+   5:Generated_Source\PSoC5/Timer_1.c **** * Description:
+   6:Generated_Source\PSoC5/Timer_1.c **** *  The Timer component consists of a 8, 16, 24 or 32-bit timer with
+   7:Generated_Source\PSoC5/Timer_1.c **** *  a selectable period between 2 and 2^Width - 1.  The timer may free run
+   8:Generated_Source\PSoC5/Timer_1.c **** *  or be used as a capture timer as well.  The capture can be initiated
+   9:Generated_Source\PSoC5/Timer_1.c **** *  by a positive or negative edge signal as well as via software.
+  10:Generated_Source\PSoC5/Timer_1.c **** *  A trigger input can be programmed to enable the timer on rising edge
+  11:Generated_Source\PSoC5/Timer_1.c **** *  falling edge, either edge or continous run.
+  12:Generated_Source\PSoC5/Timer_1.c **** *  Interrupts may be generated due to a terminal count condition
+  13:Generated_Source\PSoC5/Timer_1.c **** *  or a capture event.
+  14:Generated_Source\PSoC5/Timer_1.c **** *
+  15:Generated_Source\PSoC5/Timer_1.c **** * Note:
+  16:Generated_Source\PSoC5/Timer_1.c **** *
+  17:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+  18:Generated_Source\PSoC5/Timer_1.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:Generated_Source\PSoC5/Timer_1.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:Generated_Source\PSoC5/Timer_1.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:Generated_Source\PSoC5/Timer_1.c **** * the software package with which this file was provided.
+  22:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************/
+  23:Generated_Source\PSoC5/Timer_1.c **** 
+  24:Generated_Source\PSoC5/Timer_1.c **** #include "Timer_1.h"
+  25:Generated_Source\PSoC5/Timer_1.c **** 
+  26:Generated_Source\PSoC5/Timer_1.c **** uint8 Timer_1_initVar = 0u;
+  27:Generated_Source\PSoC5/Timer_1.c **** 
+  28:Generated_Source\PSoC5/Timer_1.c **** 
+  29:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+  30:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_Init
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 2
+
+
+  31:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+  32:Generated_Source\PSoC5/Timer_1.c **** *
+  33:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+  34:Generated_Source\PSoC5/Timer_1.c **** *  Initialize to the schematic state
+  35:Generated_Source\PSoC5/Timer_1.c **** *
+  36:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+  37:Generated_Source\PSoC5/Timer_1.c **** *  void
+  38:Generated_Source\PSoC5/Timer_1.c **** *
+  39:Generated_Source\PSoC5/Timer_1.c **** * Return:
+  40:Generated_Source\PSoC5/Timer_1.c **** *  void
+  41:Generated_Source\PSoC5/Timer_1.c **** *
+  42:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+  43:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_Init(void) 
+  44:Generated_Source\PSoC5/Timer_1.c **** {
+  45:Generated_Source\PSoC5/Timer_1.c ****     #if(!Timer_1_UsingFixedFunction)
+  46:Generated_Source\PSoC5/Timer_1.c ****             /* Interrupt State Backup for Critical Region*/
+  47:Generated_Source\PSoC5/Timer_1.c ****             uint8 Timer_1_interruptState;
+  48:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Interrupt state back up for Fixed Function only */
+  49:Generated_Source\PSoC5/Timer_1.c **** 
+  50:Generated_Source\PSoC5/Timer_1.c ****     #if (Timer_1_UsingFixedFunction)
+  51:Generated_Source\PSoC5/Timer_1.c ****         /* Clear all bits but the enable bit (if it's already set) for Timer operation */
+  52:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL &= Timer_1_CTRL_ENABLE;
+  53:Generated_Source\PSoC5/Timer_1.c **** 
+  54:Generated_Source\PSoC5/Timer_1.c ****         /* Clear the mode bits for continuous run mode */
+  55:Generated_Source\PSoC5/Timer_1.c ****         #if (CY_PSOC5A)
+  56:Generated_Source\PSoC5/Timer_1.c ****             Timer_1_CONTROL2 &= ((uint8)(~Timer_1_CTRL_MODE_MASK));
+  57:Generated_Source\PSoC5/Timer_1.c ****         #endif /* Clear bits in CONTROL2 only in PSOC5A */
+  58:Generated_Source\PSoC5/Timer_1.c **** 
+  59:Generated_Source\PSoC5/Timer_1.c ****         #if (CY_PSOC3 || CY_PSOC5LP)
+  60:Generated_Source\PSoC5/Timer_1.c ****             Timer_1_CONTROL3 &= ((uint8)(~Timer_1_CTRL_MODE_MASK));
+  61:Generated_Source\PSoC5/Timer_1.c ****         #endif /* CONTROL3 register exists only in PSoC3 OR PSoC5LP */
+  62:Generated_Source\PSoC5/Timer_1.c **** 
+  63:Generated_Source\PSoC5/Timer_1.c ****         /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  64:Generated_Source\PSoC5/Timer_1.c ****         #if (Timer_1_RunModeUsed != 0x0u)
+  65:Generated_Source\PSoC5/Timer_1.c ****             /* Set 3rd bit of Control register to enable one shot mode */
+  66:Generated_Source\PSoC5/Timer_1.c ****             Timer_1_CONTROL |= 0x04u;
+  67:Generated_Source\PSoC5/Timer_1.c ****         #endif /* One Shot enabled only when RunModeUsed is not Continuous*/
+  68:Generated_Source\PSoC5/Timer_1.c **** 
+  69:Generated_Source\PSoC5/Timer_1.c ****         #if (Timer_1_RunModeUsed == 2)
+  70:Generated_Source\PSoC5/Timer_1.c ****             #if (CY_PSOC5A)
+  71:Generated_Source\PSoC5/Timer_1.c ****                 /* Set last 2 bits of control2 register if one shot(halt on
+  72:Generated_Source\PSoC5/Timer_1.c ****                 interrupt) is enabled*/
+  73:Generated_Source\PSoC5/Timer_1.c ****                 Timer_1_CONTROL2 |= 0x03u;
+  74:Generated_Source\PSoC5/Timer_1.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL2 for PSoC5A */
+  75:Generated_Source\PSoC5/Timer_1.c **** 
+  76:Generated_Source\PSoC5/Timer_1.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  77:Generated_Source\PSoC5/Timer_1.c ****                 /* Set last 2 bits of control3 register if one shot(halt on
+  78:Generated_Source\PSoC5/Timer_1.c ****                 interrupt) is enabled*/
+  79:Generated_Source\PSoC5/Timer_1.c ****                 Timer_1_CONTROL3 |= 0x03u;
+  80:Generated_Source\PSoC5/Timer_1.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL3 for PSoC3 or PSoC5LP */
+  81:Generated_Source\PSoC5/Timer_1.c **** 
+  82:Generated_Source\PSoC5/Timer_1.c ****         #endif /* Remove section if One Shot Halt on Interrupt is not enabled */
+  83:Generated_Source\PSoC5/Timer_1.c **** 
+  84:Generated_Source\PSoC5/Timer_1.c ****         #if (Timer_1_UsingHWEnable != 0)
+  85:Generated_Source\PSoC5/Timer_1.c ****             #if (CY_PSOC5A)
+  86:Generated_Source\PSoC5/Timer_1.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+  87:Generated_Source\PSoC5/Timer_1.c ****                 Timer_1_CONTROL2 |= Timer_1_CTRL_MODE_PULSEWIDTH;
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 3
+
+
+  88:Generated_Source\PSoC5/Timer_1.c ****             #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
+  89:Generated_Source\PSoC5/Timer_1.c **** 
+  90:Generated_Source\PSoC5/Timer_1.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  91:Generated_Source\PSoC5/Timer_1.c ****                 /* Clear and Set ROD and COD bits of CFG2 register */
+  92:Generated_Source\PSoC5/Timer_1.c ****                 Timer_1_CONTROL3 &= ((uint8)(~Timer_1_CTRL_RCOD_MASK));
+  93:Generated_Source\PSoC5/Timer_1.c ****                 Timer_1_CONTROL3 |= Timer_1_CTRL_RCOD;
+  94:Generated_Source\PSoC5/Timer_1.c **** 
+  95:Generated_Source\PSoC5/Timer_1.c ****                 /* Clear and Enable the HW enable bit in CFG2 register */
+  96:Generated_Source\PSoC5/Timer_1.c ****                 Timer_1_CONTROL3 &= ((uint8)(~Timer_1_CTRL_ENBL_MASK));
+  97:Generated_Source\PSoC5/Timer_1.c ****                 Timer_1_CONTROL3 |= Timer_1_CTRL_ENBL;
+  98:Generated_Source\PSoC5/Timer_1.c **** 
+  99:Generated_Source\PSoC5/Timer_1.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+ 100:Generated_Source\PSoC5/Timer_1.c ****                 Timer_1_CONTROL3 |= Timer_1_CTRL_MODE_CONTINUOUS;
+ 101:Generated_Source\PSoC5/Timer_1.c ****             #endif /* Set Continuous Run Mode in CONTROL3 for PSoC3ES3 or PSoC5A */
+ 102:Generated_Source\PSoC5/Timer_1.c **** 
+ 103:Generated_Source\PSoC5/Timer_1.c ****         #endif /* Configure Run Mode with hardware enable */
+ 104:Generated_Source\PSoC5/Timer_1.c **** 
+ 105:Generated_Source\PSoC5/Timer_1.c ****         /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 106:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_RT1 &= ((uint8)(~Timer_1_RT1_MASK));
+ 107:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_RT1 |= Timer_1_SYNC;
+ 108:Generated_Source\PSoC5/Timer_1.c **** 
+ 109:Generated_Source\PSoC5/Timer_1.c ****         /*Enable DSI Sync all all inputs of the Timer*/
+ 110:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_RT1 &= ((uint8)(~Timer_1_SYNCDSI_MASK));
+ 111:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_RT1 |= Timer_1_SYNCDSI_EN;
+ 112:Generated_Source\PSoC5/Timer_1.c **** 
+ 113:Generated_Source\PSoC5/Timer_1.c ****         /* Set the IRQ to use the status register interrupts */
+ 114:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL2 |= Timer_1_CTRL2_IRQ_SEL;
+ 115:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Configuring registers of fixed function implementation */
+ 116:Generated_Source\PSoC5/Timer_1.c **** 
+ 117:Generated_Source\PSoC5/Timer_1.c ****     /* Set Initial values from Configuration */
+ 118:Generated_Source\PSoC5/Timer_1.c ****     Timer_1_WritePeriod(Timer_1_INIT_PERIOD);
+ 119:Generated_Source\PSoC5/Timer_1.c ****     Timer_1_WriteCounter(Timer_1_INIT_PERIOD);
+ 120:Generated_Source\PSoC5/Timer_1.c **** 
+ 121:Generated_Source\PSoC5/Timer_1.c ****     #if (Timer_1_UsingHWCaptureCounter)/* Capture counter is enabled */
+ 122:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CAPTURE_COUNT_CTRL |= Timer_1_CNTR_ENABLE;
+ 123:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_SetCaptureCount(Timer_1_INIT_CAPTURE_COUNT);
+ 124:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Configure capture counter value */
+ 125:Generated_Source\PSoC5/Timer_1.c **** 
+ 126:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UsingFixedFunction)
+ 127:Generated_Source\PSoC5/Timer_1.c ****         #if (Timer_1_SoftwareCaptureMode)
+ 128:Generated_Source\PSoC5/Timer_1.c ****             Timer_1_SetCaptureMode(Timer_1_INIT_CAPTURE_MODE);
+ 129:Generated_Source\PSoC5/Timer_1.c ****         #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
+ 130:Generated_Source\PSoC5/Timer_1.c **** 
+ 131:Generated_Source\PSoC5/Timer_1.c ****         #if (Timer_1_SoftwareTriggerMode)
+ 132:Generated_Source\PSoC5/Timer_1.c ****             #if (!Timer_1_UDB_CONTROL_REG_REMOVED)
+ 133:Generated_Source\PSoC5/Timer_1.c ****                 if (0u == (Timer_1_CONTROL & Timer_1__B_TIMER__TM_SOFTWARE))
+ 134:Generated_Source\PSoC5/Timer_1.c ****                 {
+ 135:Generated_Source\PSoC5/Timer_1.c ****                     Timer_1_SetTriggerMode(Timer_1_INIT_TRIGGER_MODE);
+ 136:Generated_Source\PSoC5/Timer_1.c ****                 }
+ 137:Generated_Source\PSoC5/Timer_1.c ****             #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
+ 138:Generated_Source\PSoC5/Timer_1.c ****         #endif /* Set trigger mode for UDB Implementation if trigger mode is software controlled */
+ 139:Generated_Source\PSoC5/Timer_1.c **** 
+ 140:Generated_Source\PSoC5/Timer_1.c ****         /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critica
+ 141:Generated_Source\PSoC5/Timer_1.c ****         /* Enter Critical Region*/
+ 142:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_interruptState = CyEnterCriticalSection();
+ 143:Generated_Source\PSoC5/Timer_1.c **** 
+ 144:Generated_Source\PSoC5/Timer_1.c ****         /* Use the interrupt output of the status register for IRQ output */
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 4
+
+
+ 145:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_STATUS_AUX_CTRL |= Timer_1_STATUS_ACTL_INT_EN_MASK;
+ 146:Generated_Source\PSoC5/Timer_1.c **** 
+ 147:Generated_Source\PSoC5/Timer_1.c ****         /* Exit Critical Region*/
+ 148:Generated_Source\PSoC5/Timer_1.c ****         CyExitCriticalSection(Timer_1_interruptState);
+ 149:Generated_Source\PSoC5/Timer_1.c **** 
+ 150:Generated_Source\PSoC5/Timer_1.c ****         #if (Timer_1_EnableTriggerMode)
+ 151:Generated_Source\PSoC5/Timer_1.c ****             Timer_1_EnableTrigger();
+ 152:Generated_Source\PSoC5/Timer_1.c ****         #endif /* Set Trigger enable bit for UDB implementation in the control register*/
+ 153:Generated_Source\PSoC5/Timer_1.c **** 		
+ 154:Generated_Source\PSoC5/Timer_1.c **** 		
+ 155:Generated_Source\PSoC5/Timer_1.c ****         #if (Timer_1_InterruptOnCaptureCount && !Timer_1_UDB_CONTROL_REG_REMOVED)
+ 156:Generated_Source\PSoC5/Timer_1.c ****             Timer_1_SetInterruptCount(Timer_1_INIT_INT_CAPTURE_COUNT);
+ 157:Generated_Source\PSoC5/Timer_1.c ****         #endif /* Set interrupt count in UDB implementation if interrupt count feature is checked.*
+ 158:Generated_Source\PSoC5/Timer_1.c **** 
+ 159:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_ClearFIFO();
+ 160:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Configure additional features of UDB implementation */
+ 161:Generated_Source\PSoC5/Timer_1.c **** 
+ 162:Generated_Source\PSoC5/Timer_1.c ****     Timer_1_SetInterruptMode(Timer_1_INIT_INTERRUPT_MODE);
+ 163:Generated_Source\PSoC5/Timer_1.c **** }
+ 164:Generated_Source\PSoC5/Timer_1.c **** 
+ 165:Generated_Source\PSoC5/Timer_1.c **** 
+ 166:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 167:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_Enable
+ 168:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 169:Generated_Source\PSoC5/Timer_1.c **** *
+ 170:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 171:Generated_Source\PSoC5/Timer_1.c **** *  Enable the Timer
+ 172:Generated_Source\PSoC5/Timer_1.c **** *
+ 173:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 174:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 175:Generated_Source\PSoC5/Timer_1.c **** *
+ 176:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 177:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 178:Generated_Source\PSoC5/Timer_1.c **** *
+ 179:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 180:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_Enable(void) 
+ 181:Generated_Source\PSoC5/Timer_1.c **** {
+  28              		.loc 1 181 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 182:Generated_Source\PSoC5/Timer_1.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 183:Generated_Source\PSoC5/Timer_1.c ****     #if (Timer_1_UsingFixedFunction)
+ 184:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_GLOBAL_ENABLE |= Timer_1_BLOCK_EN_MASK;
+ 185:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_GLOBAL_STBY_ENABLE |= Timer_1_BLOCK_STBY_EN_MASK;
+ 186:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Set Enable bit for enabling Fixed function timer*/
+ 187:Generated_Source\PSoC5/Timer_1.c **** 
+ 188:Generated_Source\PSoC5/Timer_1.c ****     /* Remove assignment if control register is removed */
+ 189:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UDB_CONTROL_REG_REMOVED || Timer_1_UsingFixedFunction)
+ 190:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL |= Timer_1_CTRL_ENABLE;
+  33              		.loc 1 190 0
+  34 0000 024A     		ldr	r2, .L2
+  35 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  36 0004 43F08003 		orr	r3, r3, #128
+  37 0008 1370     		strb	r3, [r2]
+  38 000a 7047     		bx	lr
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 5
+
+
+  39              	.L3:
+  40              		.align	2
+  41              	.L2:
+  42 000c 7A650040 		.word	1073767802
+  43              		.cfi_endproc
+  44              	.LFE1:
+  45              		.size	Timer_1_Enable, .-Timer_1_Enable
+  46              		.section	.text.Timer_1_Stop,"ax",%progbits
+  47              		.align	2
+  48              		.global	Timer_1_Stop
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	Timer_1_Stop, %function
+  52              	Timer_1_Stop:
+  53              	.LFB3:
+ 191:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Remove assignment if control register is removed */
+ 192:Generated_Source\PSoC5/Timer_1.c **** }
+ 193:Generated_Source\PSoC5/Timer_1.c **** 
+ 194:Generated_Source\PSoC5/Timer_1.c **** 
+ 195:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 196:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_Start
+ 197:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 198:Generated_Source\PSoC5/Timer_1.c **** *
+ 199:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 200:Generated_Source\PSoC5/Timer_1.c **** *  The start function initializes the timer with the default values, the
+ 201:Generated_Source\PSoC5/Timer_1.c **** *  enables the timerto begin counting.  It does not enable interrupts,
+ 202:Generated_Source\PSoC5/Timer_1.c **** *  the EnableInt command should be called if interrupt generation is required.
+ 203:Generated_Source\PSoC5/Timer_1.c **** *
+ 204:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 205:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 206:Generated_Source\PSoC5/Timer_1.c **** *
+ 207:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 208:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 209:Generated_Source\PSoC5/Timer_1.c **** *
+ 210:Generated_Source\PSoC5/Timer_1.c **** * Global variables:
+ 211:Generated_Source\PSoC5/Timer_1.c **** *  Timer_1_initVar: Is modified when this function is called for the
+ 212:Generated_Source\PSoC5/Timer_1.c **** *   first time. Is used to ensure that initialization happens only once.
+ 213:Generated_Source\PSoC5/Timer_1.c **** *
+ 214:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 215:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_Start(void) 
+ 216:Generated_Source\PSoC5/Timer_1.c **** {
+ 217:Generated_Source\PSoC5/Timer_1.c ****     if(Timer_1_initVar == 0u)
+ 218:Generated_Source\PSoC5/Timer_1.c ****     {
+ 219:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_Init();
+ 220:Generated_Source\PSoC5/Timer_1.c **** 
+ 221:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_initVar = 1u;   /* Clear this bit for Initialization */
+ 222:Generated_Source\PSoC5/Timer_1.c ****     }
+ 223:Generated_Source\PSoC5/Timer_1.c **** 
+ 224:Generated_Source\PSoC5/Timer_1.c ****     /* Enable the Timer */
+ 225:Generated_Source\PSoC5/Timer_1.c ****     Timer_1_Enable();
+ 226:Generated_Source\PSoC5/Timer_1.c **** }
+ 227:Generated_Source\PSoC5/Timer_1.c **** 
+ 228:Generated_Source\PSoC5/Timer_1.c **** 
+ 229:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 230:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_Stop
+ 231:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 232:Generated_Source\PSoC5/Timer_1.c **** *
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 6
+
+
+ 233:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 234:Generated_Source\PSoC5/Timer_1.c **** *  The stop function halts the timer, but does not change any modes or disable
+ 235:Generated_Source\PSoC5/Timer_1.c **** *  interrupts.
+ 236:Generated_Source\PSoC5/Timer_1.c **** *
+ 237:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 238:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 239:Generated_Source\PSoC5/Timer_1.c **** *
+ 240:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 241:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 242:Generated_Source\PSoC5/Timer_1.c **** *
+ 243:Generated_Source\PSoC5/Timer_1.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 244:Generated_Source\PSoC5/Timer_1.c **** *               has no effect on the operation of the timer.
+ 245:Generated_Source\PSoC5/Timer_1.c **** *
+ 246:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 247:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_Stop(void) 
+ 248:Generated_Source\PSoC5/Timer_1.c **** {
+  54              		.loc 1 248 0
+  55              		.cfi_startproc
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+  58              		@ link register save eliminated.
+ 249:Generated_Source\PSoC5/Timer_1.c ****     /* Disable Timer */
+ 250:Generated_Source\PSoC5/Timer_1.c ****     #if(!Timer_1_UDB_CONTROL_REG_REMOVED || Timer_1_UsingFixedFunction)
+ 251:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_ENABLE));
+  59              		.loc 1 251 0
+  60 0000 024A     		ldr	r2, .L5
+  61 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  62 0004 03F07F03 		and	r3, r3, #127
+  63 0008 1370     		strb	r3, [r2]
+  64 000a 7047     		bx	lr
+  65              	.L6:
+  66              		.align	2
+  67              	.L5:
+  68 000c 7A650040 		.word	1073767802
+  69              		.cfi_endproc
+  70              	.LFE3:
+  71              		.size	Timer_1_Stop, .-Timer_1_Stop
+  72              		.section	.text.Timer_1_SetInterruptMode,"ax",%progbits
+  73              		.align	2
+  74              		.global	Timer_1_SetInterruptMode
+  75              		.thumb
+  76              		.thumb_func
+  77              		.type	Timer_1_SetInterruptMode, %function
+  78              	Timer_1_SetInterruptMode:
+  79              	.LFB4:
+ 252:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Remove assignment if control register is removed */
+ 253:Generated_Source\PSoC5/Timer_1.c **** 
+ 254:Generated_Source\PSoC5/Timer_1.c ****     /* Globally disable the Fixed Function Block chosen */
+ 255:Generated_Source\PSoC5/Timer_1.c ****     #if (Timer_1_UsingFixedFunction)
+ 256:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_GLOBAL_ENABLE &= ((uint8)(~Timer_1_BLOCK_EN_MASK));
+ 257:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_GLOBAL_STBY_ENABLE &= ((uint8)(~Timer_1_BLOCK_STBY_EN_MASK));
+ 258:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Disable global enable for the Timer Fixed function block to stop the Timer*/
+ 259:Generated_Source\PSoC5/Timer_1.c **** }
+ 260:Generated_Source\PSoC5/Timer_1.c **** 
+ 261:Generated_Source\PSoC5/Timer_1.c **** 
+ 262:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 263:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_SetInterruptMode
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 7
+
+
+ 264:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 265:Generated_Source\PSoC5/Timer_1.c **** *
+ 266:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 267:Generated_Source\PSoC5/Timer_1.c **** *  This function selects which of the interrupt inputs may cause an interrupt.
+ 268:Generated_Source\PSoC5/Timer_1.c **** *  The twosources are caputure and terminal.  One, both or neither may
+ 269:Generated_Source\PSoC5/Timer_1.c **** *  be selected.
+ 270:Generated_Source\PSoC5/Timer_1.c **** *
+ 271:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 272:Generated_Source\PSoC5/Timer_1.c **** *  interruptMode:   This parameter is used to enable interrups on either/or
+ 273:Generated_Source\PSoC5/Timer_1.c **** *                   terminal count or capture.
+ 274:Generated_Source\PSoC5/Timer_1.c **** *
+ 275:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 276:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 277:Generated_Source\PSoC5/Timer_1.c **** *
+ 278:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 279:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_SetInterruptMode(uint8 interruptMode) 
+ 280:Generated_Source\PSoC5/Timer_1.c **** {
+  80              		.loc 1 280 0
+  81              		.cfi_startproc
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84              		@ link register save eliminated.
+  85              	.LVL0:
+ 281:Generated_Source\PSoC5/Timer_1.c ****     Timer_1_STATUS_MASK = interruptMode;
+  86              		.loc 1 281 0
+  87 0000 014B     		ldr	r3, .L8
+  88 0002 1870     		strb	r0, [r3]
+  89 0004 7047     		bx	lr
+  90              	.L9:
+  91 0006 00BF     		.align	2
+  92              	.L8:
+  93 0008 8B650040 		.word	1073767819
+  94              		.cfi_endproc
+  95              	.LFE4:
+  96              		.size	Timer_1_SetInterruptMode, .-Timer_1_SetInterruptMode
+  97              		.section	.text.Timer_1_SoftwareCapture,"ax",%progbits
+  98              		.align	2
+  99              		.global	Timer_1_SoftwareCapture
+ 100              		.thumb
+ 101              		.thumb_func
+ 102              		.type	Timer_1_SoftwareCapture, %function
+ 103              	Timer_1_SoftwareCapture:
+ 104              	.LFB5:
+ 282:Generated_Source\PSoC5/Timer_1.c **** }
+ 283:Generated_Source\PSoC5/Timer_1.c **** 
+ 284:Generated_Source\PSoC5/Timer_1.c **** 
+ 285:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 286:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_SoftwareCapture
+ 287:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 288:Generated_Source\PSoC5/Timer_1.c **** *
+ 289:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 290:Generated_Source\PSoC5/Timer_1.c **** *  This function forces a capture independent of the capture signal.
+ 291:Generated_Source\PSoC5/Timer_1.c **** *
+ 292:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 293:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 294:Generated_Source\PSoC5/Timer_1.c **** *
+ 295:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 8
+
+
+ 296:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 297:Generated_Source\PSoC5/Timer_1.c **** *
+ 298:Generated_Source\PSoC5/Timer_1.c **** * Side Effects:
+ 299:Generated_Source\PSoC5/Timer_1.c **** *  An existing hardware capture could be overwritten.
+ 300:Generated_Source\PSoC5/Timer_1.c **** *
+ 301:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 302:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_SoftwareCapture(void) 
+ 303:Generated_Source\PSoC5/Timer_1.c **** {
+ 105              		.loc 1 303 0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              		@ link register save eliminated.
+ 304:Generated_Source\PSoC5/Timer_1.c ****     /* Generate a software capture by reading the counter register */
+ 305:Generated_Source\PSoC5/Timer_1.c ****     #if(Timer_1_UsingFixedFunction)
+ 306:Generated_Source\PSoC5/Timer_1.c ****         (void)CY_GET_REG16(Timer_1_COUNTER_LSB_PTR);
+ 307:Generated_Source\PSoC5/Timer_1.c ****     #else
+ 308:Generated_Source\PSoC5/Timer_1.c ****         (void)CY_GET_REG8(Timer_1_COUNTER_LSB_PTR_8BIT);
+ 110              		.loc 1 308 0
+ 111 0000 014B     		ldr	r3, .L11
+ 112 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 113 0004 7047     		bx	lr
+ 114              	.L12:
+ 115 0006 00BF     		.align	2
+ 116              	.L11:
+ 117 0008 08650040 		.word	1073767688
+ 118              		.cfi_endproc
+ 119              	.LFE5:
+ 120              		.size	Timer_1_SoftwareCapture, .-Timer_1_SoftwareCapture
+ 121              		.section	.text.Timer_1_ReadStatusRegister,"ax",%progbits
+ 122              		.align	2
+ 123              		.global	Timer_1_ReadStatusRegister
+ 124              		.thumb
+ 125              		.thumb_func
+ 126              		.type	Timer_1_ReadStatusRegister, %function
+ 127              	Timer_1_ReadStatusRegister:
+ 128              	.LFB6:
+ 309:Generated_Source\PSoC5/Timer_1.c ****     #endif/* (Timer_1_UsingFixedFunction) */
+ 310:Generated_Source\PSoC5/Timer_1.c ****     /* Capture Data is now in the FIFO */
+ 311:Generated_Source\PSoC5/Timer_1.c **** }
+ 312:Generated_Source\PSoC5/Timer_1.c **** 
+ 313:Generated_Source\PSoC5/Timer_1.c **** 
+ 314:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 315:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_ReadStatusRegister
+ 316:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 317:Generated_Source\PSoC5/Timer_1.c **** *
+ 318:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 319:Generated_Source\PSoC5/Timer_1.c **** *  Reads the status register and returns it's state. This function should use
+ 320:Generated_Source\PSoC5/Timer_1.c **** *  defined types for the bit-field information as the bits in this register may
+ 321:Generated_Source\PSoC5/Timer_1.c **** *  be permuteable.
+ 322:Generated_Source\PSoC5/Timer_1.c **** *
+ 323:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 324:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 325:Generated_Source\PSoC5/Timer_1.c **** *
+ 326:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 327:Generated_Source\PSoC5/Timer_1.c **** *  The contents of the status register
+ 328:Generated_Source\PSoC5/Timer_1.c **** *
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 9
+
+
+ 329:Generated_Source\PSoC5/Timer_1.c **** * Side Effects:
+ 330:Generated_Source\PSoC5/Timer_1.c **** *  Status register bits may be clear on read.
+ 331:Generated_Source\PSoC5/Timer_1.c **** *
+ 332:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 333:Generated_Source\PSoC5/Timer_1.c **** uint8   Timer_1_ReadStatusRegister(void) 
+ 334:Generated_Source\PSoC5/Timer_1.c **** {
+ 129              		.loc 1 334 0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              		@ link register save eliminated.
+ 335:Generated_Source\PSoC5/Timer_1.c ****     return (Timer_1_STATUS);
+ 134              		.loc 1 335 0
+ 135 0000 014B     		ldr	r3, .L14
+ 136 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 336:Generated_Source\PSoC5/Timer_1.c **** }
+ 137              		.loc 1 336 0
+ 138 0004 7047     		bx	lr
+ 139              	.L15:
+ 140 0006 00BF     		.align	2
+ 141              	.L14:
+ 142 0008 6B650040 		.word	1073767787
+ 143              		.cfi_endproc
+ 144              	.LFE6:
+ 145              		.size	Timer_1_ReadStatusRegister, .-Timer_1_ReadStatusRegister
+ 146              		.section	.text.Timer_1_ReadControlRegister,"ax",%progbits
+ 147              		.align	2
+ 148              		.global	Timer_1_ReadControlRegister
+ 149              		.thumb
+ 150              		.thumb_func
+ 151              		.type	Timer_1_ReadControlRegister, %function
+ 152              	Timer_1_ReadControlRegister:
+ 153              	.LFB7:
+ 337:Generated_Source\PSoC5/Timer_1.c **** 
+ 338:Generated_Source\PSoC5/Timer_1.c **** 
+ 339:Generated_Source\PSoC5/Timer_1.c **** #if (!Timer_1_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
+ 340:Generated_Source\PSoC5/Timer_1.c **** 
+ 341:Generated_Source\PSoC5/Timer_1.c **** 
+ 342:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 343:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_ReadControlRegister
+ 344:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 345:Generated_Source\PSoC5/Timer_1.c **** *
+ 346:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 347:Generated_Source\PSoC5/Timer_1.c **** *  Reads the control register and returns it's value.
+ 348:Generated_Source\PSoC5/Timer_1.c **** *
+ 349:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 350:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 351:Generated_Source\PSoC5/Timer_1.c **** *
+ 352:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 353:Generated_Source\PSoC5/Timer_1.c **** *  The contents of the control register
+ 354:Generated_Source\PSoC5/Timer_1.c **** *
+ 355:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 356:Generated_Source\PSoC5/Timer_1.c **** uint8 Timer_1_ReadControlRegister(void) 
+ 357:Generated_Source\PSoC5/Timer_1.c **** {
+ 154              		.loc 1 357 0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 10
+
+
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158              		@ link register save eliminated.
+ 358:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UDB_CONTROL_REG_REMOVED) 
+ 359:Generated_Source\PSoC5/Timer_1.c ****         return ((uint8)Timer_1_CONTROL);
+ 159              		.loc 1 359 0
+ 160 0000 014B     		ldr	r3, .L17
+ 161 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 360:Generated_Source\PSoC5/Timer_1.c ****     #else
+ 361:Generated_Source\PSoC5/Timer_1.c ****         return (0);
+ 362:Generated_Source\PSoC5/Timer_1.c ****     #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
+ 363:Generated_Source\PSoC5/Timer_1.c **** }
+ 162              		.loc 1 363 0
+ 163 0004 7047     		bx	lr
+ 164              	.L18:
+ 165 0006 00BF     		.align	2
+ 166              	.L17:
+ 167 0008 7A650040 		.word	1073767802
+ 168              		.cfi_endproc
+ 169              	.LFE7:
+ 170              		.size	Timer_1_ReadControlRegister, .-Timer_1_ReadControlRegister
+ 171              		.section	.text.Timer_1_WriteControlRegister,"ax",%progbits
+ 172              		.align	2
+ 173              		.global	Timer_1_WriteControlRegister
+ 174              		.thumb
+ 175              		.thumb_func
+ 176              		.type	Timer_1_WriteControlRegister, %function
+ 177              	Timer_1_WriteControlRegister:
+ 178              	.LFB8:
+ 364:Generated_Source\PSoC5/Timer_1.c **** 
+ 365:Generated_Source\PSoC5/Timer_1.c **** 
+ 366:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 367:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_WriteControlRegister
+ 368:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 369:Generated_Source\PSoC5/Timer_1.c **** *
+ 370:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 371:Generated_Source\PSoC5/Timer_1.c **** *  Sets the bit-field of the control register.
+ 372:Generated_Source\PSoC5/Timer_1.c **** *
+ 373:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 374:Generated_Source\PSoC5/Timer_1.c **** *  control: The contents of the control register
+ 375:Generated_Source\PSoC5/Timer_1.c **** *
+ 376:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 377:Generated_Source\PSoC5/Timer_1.c **** *
+ 378:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 379:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_WriteControlRegister(uint8 control) 
+ 380:Generated_Source\PSoC5/Timer_1.c **** {
+ 179              		.loc 1 380 0
+ 180              		.cfi_startproc
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183              		@ link register save eliminated.
+ 184              	.LVL1:
+ 381:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UDB_CONTROL_REG_REMOVED) 
+ 382:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL = control;
+ 185              		.loc 1 382 0
+ 186 0000 014B     		ldr	r3, .L20
+ 187 0002 1870     		strb	r0, [r3]
+ 188 0004 7047     		bx	lr
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 11
+
+
+ 189              	.L21:
+ 190 0006 00BF     		.align	2
+ 191              	.L20:
+ 192 0008 7A650040 		.word	1073767802
+ 193              		.cfi_endproc
+ 194              	.LFE8:
+ 195              		.size	Timer_1_WriteControlRegister, .-Timer_1_WriteControlRegister
+ 196              		.section	.text.Timer_1_ReadPeriod,"ax",%progbits
+ 197              		.align	2
+ 198              		.global	Timer_1_ReadPeriod
+ 199              		.thumb
+ 200              		.thumb_func
+ 201              		.type	Timer_1_ReadPeriod, %function
+ 202              	Timer_1_ReadPeriod:
+ 203              	.LFB9:
+ 383:Generated_Source\PSoC5/Timer_1.c ****     #else
+ 384:Generated_Source\PSoC5/Timer_1.c ****         control = 0u;
+ 385:Generated_Source\PSoC5/Timer_1.c ****     #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
+ 386:Generated_Source\PSoC5/Timer_1.c **** }
+ 387:Generated_Source\PSoC5/Timer_1.c **** 
+ 388:Generated_Source\PSoC5/Timer_1.c **** #endif /* Remove API if control register is unused */
+ 389:Generated_Source\PSoC5/Timer_1.c **** 
+ 390:Generated_Source\PSoC5/Timer_1.c **** 
+ 391:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 392:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_ReadPeriod
+ 393:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 394:Generated_Source\PSoC5/Timer_1.c **** *
+ 395:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 396:Generated_Source\PSoC5/Timer_1.c **** *  This function returns the current value of the Period.
+ 397:Generated_Source\PSoC5/Timer_1.c **** *
+ 398:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 399:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 400:Generated_Source\PSoC5/Timer_1.c **** *
+ 401:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 402:Generated_Source\PSoC5/Timer_1.c **** *  The present value of the counter.
+ 403:Generated_Source\PSoC5/Timer_1.c **** *
+ 404:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 405:Generated_Source\PSoC5/Timer_1.c **** uint8 Timer_1_ReadPeriod(void) 
+ 406:Generated_Source\PSoC5/Timer_1.c **** {
+ 204              		.loc 1 406 0
+ 205              		.cfi_startproc
+ 206              		@ args = 0, pretend = 0, frame = 0
+ 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208              		@ link register save eliminated.
+ 407:Generated_Source\PSoC5/Timer_1.c ****    #if(Timer_1_UsingFixedFunction)
+ 408:Generated_Source\PSoC5/Timer_1.c ****        return ((uint8)CY_GET_REG16(Timer_1_PERIOD_LSB_PTR));
+ 409:Generated_Source\PSoC5/Timer_1.c ****    #else
+ 410:Generated_Source\PSoC5/Timer_1.c ****        return (CY_GET_REG8(Timer_1_PERIOD_LSB_PTR));
+ 209              		.loc 1 410 0
+ 210 0000 014B     		ldr	r3, .L23
+ 211 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 411:Generated_Source\PSoC5/Timer_1.c ****    #endif /* (Timer_1_UsingFixedFunction) */
+ 412:Generated_Source\PSoC5/Timer_1.c **** }
+ 212              		.loc 1 412 0
+ 213 0004 7047     		bx	lr
+ 214              	.L24:
+ 215 0006 00BF     		.align	2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 12
+
+
+ 216              	.L23:
+ 217 0008 28650040 		.word	1073767720
+ 218              		.cfi_endproc
+ 219              	.LFE9:
+ 220              		.size	Timer_1_ReadPeriod, .-Timer_1_ReadPeriod
+ 221              		.section	.text.Timer_1_WritePeriod,"ax",%progbits
+ 222              		.align	2
+ 223              		.global	Timer_1_WritePeriod
+ 224              		.thumb
+ 225              		.thumb_func
+ 226              		.type	Timer_1_WritePeriod, %function
+ 227              	Timer_1_WritePeriod:
+ 228              	.LFB10:
+ 413:Generated_Source\PSoC5/Timer_1.c **** 
+ 414:Generated_Source\PSoC5/Timer_1.c **** 
+ 415:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 416:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_WritePeriod
+ 417:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 418:Generated_Source\PSoC5/Timer_1.c **** *
+ 419:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 420:Generated_Source\PSoC5/Timer_1.c **** *  This function is used to change the period of the counter.  The new period
+ 421:Generated_Source\PSoC5/Timer_1.c **** *  will be loaded the next time terminal count is detected.
+ 422:Generated_Source\PSoC5/Timer_1.c **** *
+ 423:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 424:Generated_Source\PSoC5/Timer_1.c **** *  period: This value may be between 1 and (2^Resolution)-1.  A value of 0 will
+ 425:Generated_Source\PSoC5/Timer_1.c **** *          result in the counter remaining at zero.
+ 426:Generated_Source\PSoC5/Timer_1.c **** *
+ 427:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 428:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 429:Generated_Source\PSoC5/Timer_1.c **** *
+ 430:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 431:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_WritePeriod(uint8 period) 
+ 432:Generated_Source\PSoC5/Timer_1.c **** {
+ 229              		.loc 1 432 0
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 0
+ 232              		@ frame_needed = 0, uses_anonymous_args = 0
+ 233              		@ link register save eliminated.
+ 234              	.LVL2:
+ 433:Generated_Source\PSoC5/Timer_1.c ****     #if(Timer_1_UsingFixedFunction)
+ 434:Generated_Source\PSoC5/Timer_1.c ****         uint16 period_temp = (uint16)period;
+ 435:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG16(Timer_1_PERIOD_LSB_PTR, period_temp);
+ 436:Generated_Source\PSoC5/Timer_1.c ****     #else
+ 437:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG8(Timer_1_PERIOD_LSB_PTR, period);
+ 235              		.loc 1 437 0
+ 236 0000 014B     		ldr	r3, .L26
+ 237 0002 1870     		strb	r0, [r3]
+ 238 0004 7047     		bx	lr
+ 239              	.L27:
+ 240 0006 00BF     		.align	2
+ 241              	.L26:
+ 242 0008 28650040 		.word	1073767720
+ 243              		.cfi_endproc
+ 244              	.LFE10:
+ 245              		.size	Timer_1_WritePeriod, .-Timer_1_WritePeriod
+ 246              		.section	.text.Timer_1_ReadCapture,"ax",%progbits
+ 247              		.align	2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 13
+
+
+ 248              		.global	Timer_1_ReadCapture
+ 249              		.thumb
+ 250              		.thumb_func
+ 251              		.type	Timer_1_ReadCapture, %function
+ 252              	Timer_1_ReadCapture:
+ 253              	.LFB11:
+ 438:Generated_Source\PSoC5/Timer_1.c ****     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed functi
+ 439:Generated_Source\PSoC5/Timer_1.c **** }
+ 440:Generated_Source\PSoC5/Timer_1.c **** 
+ 441:Generated_Source\PSoC5/Timer_1.c **** 
+ 442:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 443:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_ReadCapture
+ 444:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 445:Generated_Source\PSoC5/Timer_1.c **** *
+ 446:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 447:Generated_Source\PSoC5/Timer_1.c **** *  This function returns the last value captured.
+ 448:Generated_Source\PSoC5/Timer_1.c **** *
+ 449:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 450:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 451:Generated_Source\PSoC5/Timer_1.c **** *
+ 452:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 453:Generated_Source\PSoC5/Timer_1.c **** *  Present Capture value.
+ 454:Generated_Source\PSoC5/Timer_1.c **** *
+ 455:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 456:Generated_Source\PSoC5/Timer_1.c **** uint8 Timer_1_ReadCapture(void) 
+ 457:Generated_Source\PSoC5/Timer_1.c **** {
+ 254              		.loc 1 457 0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              		@ link register save eliminated.
+ 458:Generated_Source\PSoC5/Timer_1.c ****    #if(Timer_1_UsingFixedFunction)
+ 459:Generated_Source\PSoC5/Timer_1.c ****        return ((uint8)CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
+ 460:Generated_Source\PSoC5/Timer_1.c ****    #else
+ 461:Generated_Source\PSoC5/Timer_1.c ****        return (CY_GET_REG8(Timer_1_CAPTURE_LSB_PTR));
+ 259              		.loc 1 461 0
+ 260 0000 014B     		ldr	r3, .L29
+ 261 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 462:Generated_Source\PSoC5/Timer_1.c ****    #endif /* (Timer_1_UsingFixedFunction) */
+ 463:Generated_Source\PSoC5/Timer_1.c **** }
+ 262              		.loc 1 463 0
+ 263 0004 7047     		bx	lr
+ 264              	.L30:
+ 265 0006 00BF     		.align	2
+ 266              	.L29:
+ 267 0008 48650040 		.word	1073767752
+ 268              		.cfi_endproc
+ 269              	.LFE11:
+ 270              		.size	Timer_1_ReadCapture, .-Timer_1_ReadCapture
+ 271              		.section	.text.Timer_1_WriteCounter,"ax",%progbits
+ 272              		.align	2
+ 273              		.global	Timer_1_WriteCounter
+ 274              		.thumb
+ 275              		.thumb_func
+ 276              		.type	Timer_1_WriteCounter, %function
+ 277              	Timer_1_WriteCounter:
+ 278              	.LFB12:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 14
+
+
+ 464:Generated_Source\PSoC5/Timer_1.c **** 
+ 465:Generated_Source\PSoC5/Timer_1.c **** 
+ 466:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 467:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_WriteCounter
+ 468:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 469:Generated_Source\PSoC5/Timer_1.c **** *
+ 470:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 471:Generated_Source\PSoC5/Timer_1.c **** *  This funtion is used to set the counter to a specific value
+ 472:Generated_Source\PSoC5/Timer_1.c **** *
+ 473:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 474:Generated_Source\PSoC5/Timer_1.c **** *  counter:  New counter value.
+ 475:Generated_Source\PSoC5/Timer_1.c **** *
+ 476:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 477:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 478:Generated_Source\PSoC5/Timer_1.c **** *
+ 479:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 480:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_WriteCounter(uint8 counter) 
+ 481:Generated_Source\PSoC5/Timer_1.c **** {
+ 279              		.loc 1 481 0
+ 280              		.cfi_startproc
+ 281              		@ args = 0, pretend = 0, frame = 0
+ 282              		@ frame_needed = 0, uses_anonymous_args = 0
+ 283              		@ link register save eliminated.
+ 284              	.LVL3:
+ 482:Generated_Source\PSoC5/Timer_1.c ****    #if(Timer_1_UsingFixedFunction)
+ 483:Generated_Source\PSoC5/Timer_1.c ****         /* This functionality is removed until a FixedFunction HW update to
+ 484:Generated_Source\PSoC5/Timer_1.c ****          * allow this register to be written
+ 485:Generated_Source\PSoC5/Timer_1.c ****          */
+ 486:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG16(Timer_1_COUNTER_LSB_PTR, (uint16)counter);
+ 487:Generated_Source\PSoC5/Timer_1.c ****         
+ 488:Generated_Source\PSoC5/Timer_1.c ****     #else
+ 489:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG8(Timer_1_COUNTER_LSB_PTR, counter);
+ 285              		.loc 1 489 0
+ 286 0000 014B     		ldr	r3, .L32
+ 287 0002 1870     		strb	r0, [r3]
+ 288 0004 7047     		bx	lr
+ 289              	.L33:
+ 290 0006 00BF     		.align	2
+ 291              	.L32:
+ 292 0008 08650040 		.word	1073767688
+ 293              		.cfi_endproc
+ 294              	.LFE12:
+ 295              		.size	Timer_1_WriteCounter, .-Timer_1_WriteCounter
+ 296              		.section	.text.Timer_1_ReadCounter,"ax",%progbits
+ 297              		.align	2
+ 298              		.global	Timer_1_ReadCounter
+ 299              		.thumb
+ 300              		.thumb_func
+ 301              		.type	Timer_1_ReadCounter, %function
+ 302              	Timer_1_ReadCounter:
+ 303              	.LFB13:
+ 490:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fix
+ 491:Generated_Source\PSoC5/Timer_1.c **** }
+ 492:Generated_Source\PSoC5/Timer_1.c **** 
+ 493:Generated_Source\PSoC5/Timer_1.c **** 
+ 494:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 495:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_ReadCounter
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 15
+
+
+ 496:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 497:Generated_Source\PSoC5/Timer_1.c **** *
+ 498:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 499:Generated_Source\PSoC5/Timer_1.c **** *  This function returns the current counter value.
+ 500:Generated_Source\PSoC5/Timer_1.c **** *
+ 501:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 502:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 503:Generated_Source\PSoC5/Timer_1.c **** *
+ 504:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 505:Generated_Source\PSoC5/Timer_1.c **** *  Present compare value.
+ 506:Generated_Source\PSoC5/Timer_1.c **** *
+ 507:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 508:Generated_Source\PSoC5/Timer_1.c **** uint8 Timer_1_ReadCounter(void) 
+ 509:Generated_Source\PSoC5/Timer_1.c **** {
+ 304              		.loc 1 509 0
+ 305              		.cfi_startproc
+ 306              		@ args = 0, pretend = 0, frame = 0
+ 307              		@ frame_needed = 0, uses_anonymous_args = 0
+ 308              		@ link register save eliminated.
+ 510:Generated_Source\PSoC5/Timer_1.c ****     /* Force capture by reading Accumulator */
+ 511:Generated_Source\PSoC5/Timer_1.c ****     /* Must first do a software capture to be able to read the counter */
+ 512:Generated_Source\PSoC5/Timer_1.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 513:Generated_Source\PSoC5/Timer_1.c ****     #if(Timer_1_UsingFixedFunction)
+ 514:Generated_Source\PSoC5/Timer_1.c ****         (void)CY_GET_REG16(Timer_1_COUNTER_LSB_PTR);
+ 515:Generated_Source\PSoC5/Timer_1.c ****     #else
+ 516:Generated_Source\PSoC5/Timer_1.c ****         (void)CY_GET_REG8(Timer_1_COUNTER_LSB_PTR_8BIT);
+ 309              		.loc 1 516 0
+ 310 0000 024B     		ldr	r3, .L35
+ 311 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 517:Generated_Source\PSoC5/Timer_1.c ****     #endif/* (Timer_1_UsingFixedFunction) */
+ 518:Generated_Source\PSoC5/Timer_1.c **** 
+ 519:Generated_Source\PSoC5/Timer_1.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 520:Generated_Source\PSoC5/Timer_1.c ****     #if(Timer_1_UsingFixedFunction)
+ 521:Generated_Source\PSoC5/Timer_1.c ****         return ((uint8)CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
+ 522:Generated_Source\PSoC5/Timer_1.c ****     #else
+ 523:Generated_Source\PSoC5/Timer_1.c ****         return (CY_GET_REG8(Timer_1_CAPTURE_LSB_PTR));
+ 312              		.loc 1 523 0
+ 313 0004 024B     		ldr	r3, .L35+4
+ 314 0006 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 524:Generated_Source\PSoC5/Timer_1.c ****     #endif /* (Timer_1_UsingFixedFunction) */
+ 525:Generated_Source\PSoC5/Timer_1.c **** }
+ 315              		.loc 1 525 0
+ 316 0008 7047     		bx	lr
+ 317              	.L36:
+ 318 000a 00BF     		.align	2
+ 319              	.L35:
+ 320 000c 08650040 		.word	1073767688
+ 321 0010 48650040 		.word	1073767752
+ 322              		.cfi_endproc
+ 323              	.LFE13:
+ 324              		.size	Timer_1_ReadCounter, .-Timer_1_ReadCounter
+ 325              		.section	.text.Timer_1_SetInterruptCount,"ax",%progbits
+ 326              		.align	2
+ 327              		.global	Timer_1_SetInterruptCount
+ 328              		.thumb
+ 329              		.thumb_func
+ 330              		.type	Timer_1_SetInterruptCount, %function
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 16
+
+
+ 331              	Timer_1_SetInterruptCount:
+ 332              	.LFB14:
+ 526:Generated_Source\PSoC5/Timer_1.c **** 
+ 527:Generated_Source\PSoC5/Timer_1.c **** 
+ 528:Generated_Source\PSoC5/Timer_1.c **** #if(!Timer_1_UsingFixedFunction) /* UDB Specific Functions */
+ 529:Generated_Source\PSoC5/Timer_1.c **** 
+ 530:Generated_Source\PSoC5/Timer_1.c ****     
+ 531:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 532:Generated_Source\PSoC5/Timer_1.c ****  * The functions below this point are only available using the UDB
+ 533:Generated_Source\PSoC5/Timer_1.c ****  * implementation.  If a feature is selected, then the API is enabled.
+ 534:Generated_Source\PSoC5/Timer_1.c ****  ******************************************************************************/
+ 535:Generated_Source\PSoC5/Timer_1.c **** 
+ 536:Generated_Source\PSoC5/Timer_1.c **** 
+ 537:Generated_Source\PSoC5/Timer_1.c **** #if (Timer_1_SoftwareCaptureMode)
+ 538:Generated_Source\PSoC5/Timer_1.c **** 
+ 539:Generated_Source\PSoC5/Timer_1.c **** 
+ 540:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 541:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_SetCaptureMode
+ 542:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 543:Generated_Source\PSoC5/Timer_1.c **** *
+ 544:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 545:Generated_Source\PSoC5/Timer_1.c **** *  This function sets the capture mode to either rising or falling edge.
+ 546:Generated_Source\PSoC5/Timer_1.c **** *
+ 547:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 548:Generated_Source\PSoC5/Timer_1.c **** *  captureMode: This parameter sets the capture mode of the UDB capture feature
+ 549:Generated_Source\PSoC5/Timer_1.c **** *  The parameter values are defined using the
+ 550:Generated_Source\PSoC5/Timer_1.c **** *  #define Timer_1__B_TIMER__CM_NONE 0
+ 551:Generated_Source\PSoC5/Timer_1.c **** #define Timer_1__B_TIMER__CM_RISINGEDGE 1
+ 552:Generated_Source\PSoC5/Timer_1.c **** #define Timer_1__B_TIMER__CM_FALLINGEDGE 2
+ 553:Generated_Source\PSoC5/Timer_1.c **** #define Timer_1__B_TIMER__CM_EITHEREDGE 3
+ 554:Generated_Source\PSoC5/Timer_1.c **** #define Timer_1__B_TIMER__CM_SOFTWARE 4
+ 555:Generated_Source\PSoC5/Timer_1.c ****  identifiers
+ 556:Generated_Source\PSoC5/Timer_1.c **** *  The following are the possible values of the parameter
+ 557:Generated_Source\PSoC5/Timer_1.c **** *  Timer_1__B_TIMER__CM_NONE        - Set Capture mode to None
+ 558:Generated_Source\PSoC5/Timer_1.c **** *  Timer_1__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
+ 559:Generated_Source\PSoC5/Timer_1.c **** *  Timer_1__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
+ 560:Generated_Source\PSoC5/Timer_1.c **** *  Timer_1__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
+ 561:Generated_Source\PSoC5/Timer_1.c **** *
+ 562:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 563:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 564:Generated_Source\PSoC5/Timer_1.c **** *
+ 565:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 566:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_SetCaptureMode(uint8 captureMode) 
+ 567:Generated_Source\PSoC5/Timer_1.c **** {
+ 568:Generated_Source\PSoC5/Timer_1.c ****     /* This must only set to two bits of the control register associated */
+ 569:Generated_Source\PSoC5/Timer_1.c ****     captureMode = ((uint8)((uint8)captureMode << Timer_1_CTRL_CAP_MODE_SHIFT));
+ 570:Generated_Source\PSoC5/Timer_1.c ****     captureMode &= (Timer_1_CTRL_CAP_MODE_MASK);
+ 571:Generated_Source\PSoC5/Timer_1.c **** 
+ 572:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UDB_CONTROL_REG_REMOVED)
+ 573:Generated_Source\PSoC5/Timer_1.c ****         /* Clear the Current Setting */
+ 574:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_CAP_MODE_MASK));
+ 575:Generated_Source\PSoC5/Timer_1.c **** 
+ 576:Generated_Source\PSoC5/Timer_1.c ****         /* Write The New Setting */
+ 577:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL |= captureMode;
+ 578:Generated_Source\PSoC5/Timer_1.c ****     #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
+ 579:Generated_Source\PSoC5/Timer_1.c **** }
+ 580:Generated_Source\PSoC5/Timer_1.c **** #endif /* Remove API if Capture Mode is not Software Controlled */
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 17
+
+
+ 581:Generated_Source\PSoC5/Timer_1.c **** 
+ 582:Generated_Source\PSoC5/Timer_1.c **** 
+ 583:Generated_Source\PSoC5/Timer_1.c **** #if (Timer_1_SoftwareTriggerMode)
+ 584:Generated_Source\PSoC5/Timer_1.c **** 
+ 585:Generated_Source\PSoC5/Timer_1.c **** 
+ 586:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 587:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_SetTriggerMode
+ 588:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 589:Generated_Source\PSoC5/Timer_1.c **** *
+ 590:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 591:Generated_Source\PSoC5/Timer_1.c **** *  This function sets the trigger input mode
+ 592:Generated_Source\PSoC5/Timer_1.c **** *
+ 593:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 594:Generated_Source\PSoC5/Timer_1.c **** *  triggerMode: Pass one of the pre-defined Trigger Modes (except Software)
+ 595:Generated_Source\PSoC5/Timer_1.c ****     #define Timer_1__B_TIMER__TM_NONE 0x00u
+ 596:Generated_Source\PSoC5/Timer_1.c ****     #define Timer_1__B_TIMER__TM_RISINGEDGE 0x04u
+ 597:Generated_Source\PSoC5/Timer_1.c ****     #define Timer_1__B_TIMER__TM_FALLINGEDGE 0x08u
+ 598:Generated_Source\PSoC5/Timer_1.c ****     #define Timer_1__B_TIMER__TM_EITHEREDGE 0x0Cu
+ 599:Generated_Source\PSoC5/Timer_1.c ****     #define Timer_1__B_TIMER__TM_SOFTWARE 0x10u
+ 600:Generated_Source\PSoC5/Timer_1.c **** *
+ 601:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 602:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 603:Generated_Source\PSoC5/Timer_1.c **** *
+ 604:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 605:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_SetTriggerMode(uint8 triggerMode) 
+ 606:Generated_Source\PSoC5/Timer_1.c **** {
+ 607:Generated_Source\PSoC5/Timer_1.c ****     /* This must only set to two bits of the control register associated */
+ 608:Generated_Source\PSoC5/Timer_1.c ****     triggerMode &= Timer_1_CTRL_TRIG_MODE_MASK;
+ 609:Generated_Source\PSoC5/Timer_1.c **** 
+ 610:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is removed */
+ 611:Generated_Source\PSoC5/Timer_1.c ****     
+ 612:Generated_Source\PSoC5/Timer_1.c ****         /* Clear the Current Setting */
+ 613:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_TRIG_MODE_MASK));
+ 614:Generated_Source\PSoC5/Timer_1.c **** 
+ 615:Generated_Source\PSoC5/Timer_1.c ****         /* Write The New Setting */
+ 616:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL |= (triggerMode | Timer_1__B_TIMER__TM_SOFTWARE);
+ 617:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Remove code section if control register is not used */
+ 618:Generated_Source\PSoC5/Timer_1.c **** }
+ 619:Generated_Source\PSoC5/Timer_1.c **** #endif /* Remove API if Trigger Mode is not Software Controlled */
+ 620:Generated_Source\PSoC5/Timer_1.c **** 
+ 621:Generated_Source\PSoC5/Timer_1.c **** #if (Timer_1_EnableTriggerMode)
+ 622:Generated_Source\PSoC5/Timer_1.c **** 
+ 623:Generated_Source\PSoC5/Timer_1.c **** 
+ 624:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 625:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_EnableTrigger
+ 626:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 627:Generated_Source\PSoC5/Timer_1.c **** *
+ 628:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 629:Generated_Source\PSoC5/Timer_1.c **** *  Sets the control bit enabling Hardware Trigger mode
+ 630:Generated_Source\PSoC5/Timer_1.c **** *
+ 631:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 632:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 633:Generated_Source\PSoC5/Timer_1.c **** *
+ 634:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 635:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 636:Generated_Source\PSoC5/Timer_1.c **** *
+ 637:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 18
+
+
+ 638:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_EnableTrigger(void) 
+ 639:Generated_Source\PSoC5/Timer_1.c **** {
+ 640:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is removed */
+ 641:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL |= Timer_1_CTRL_TRIG_EN;
+ 642:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Remove code section if control register is not used */
+ 643:Generated_Source\PSoC5/Timer_1.c **** }
+ 644:Generated_Source\PSoC5/Timer_1.c **** 
+ 645:Generated_Source\PSoC5/Timer_1.c **** 
+ 646:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 647:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_DisableTrigger
+ 648:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 649:Generated_Source\PSoC5/Timer_1.c **** *
+ 650:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 651:Generated_Source\PSoC5/Timer_1.c **** *  Clears the control bit enabling Hardware Trigger mode
+ 652:Generated_Source\PSoC5/Timer_1.c **** *
+ 653:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 654:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 655:Generated_Source\PSoC5/Timer_1.c **** *
+ 656:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 657:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 658:Generated_Source\PSoC5/Timer_1.c **** *
+ 659:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 660:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_DisableTrigger(void) 
+ 661:Generated_Source\PSoC5/Timer_1.c **** {
+ 662:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UDB_CONTROL_REG_REMOVED )   /* Remove assignment if control register is removed *
+ 663:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_TRIG_EN));
+ 664:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Remove code section if control register is not used */
+ 665:Generated_Source\PSoC5/Timer_1.c **** }
+ 666:Generated_Source\PSoC5/Timer_1.c **** #endif /* Remove API is Trigger Mode is set to None */
+ 667:Generated_Source\PSoC5/Timer_1.c **** 
+ 668:Generated_Source\PSoC5/Timer_1.c **** #if(Timer_1_InterruptOnCaptureCount)
+ 669:Generated_Source\PSoC5/Timer_1.c **** 
+ 670:Generated_Source\PSoC5/Timer_1.c **** 
+ 671:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 672:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_SetInterruptCount
+ 673:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 674:Generated_Source\PSoC5/Timer_1.c **** *
+ 675:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 676:Generated_Source\PSoC5/Timer_1.c **** *  This function sets the capture count before an interrupt is triggered.
+ 677:Generated_Source\PSoC5/Timer_1.c **** *
+ 678:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 679:Generated_Source\PSoC5/Timer_1.c **** *  interruptCount:  A value between 0 and 3 is valid.  If the value is 0, then
+ 680:Generated_Source\PSoC5/Timer_1.c **** *                   an interrupt will occur each time a capture occurs.
+ 681:Generated_Source\PSoC5/Timer_1.c **** *                   A value of 1 to 3 will cause the interrupt
+ 682:Generated_Source\PSoC5/Timer_1.c **** *                   to delay by the same number of captures.
+ 683:Generated_Source\PSoC5/Timer_1.c **** *
+ 684:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 685:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 686:Generated_Source\PSoC5/Timer_1.c **** *
+ 687:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 688:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_SetInterruptCount(uint8 interruptCount) 
+ 689:Generated_Source\PSoC5/Timer_1.c **** {
+ 333              		.loc 1 689 0
+ 334              		.cfi_startproc
+ 335              		@ args = 0, pretend = 0, frame = 0
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337              		@ link register save eliminated.
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 19
+
+
+ 338              	.LVL4:
+ 690:Generated_Source\PSoC5/Timer_1.c ****     /* This must only set to two bits of the control register associated */
+ 691:Generated_Source\PSoC5/Timer_1.c ****     interruptCount &= Timer_1_CTRL_INTCNT_MASK;
+ 339              		.loc 1 691 0
+ 340 0000 00F00300 		and	r0, r0, #3
+ 341              	.LVL5:
+ 692:Generated_Source\PSoC5/Timer_1.c **** 
+ 693:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UDB_CONTROL_REG_REMOVED)
+ 694:Generated_Source\PSoC5/Timer_1.c ****         /* Clear the Current Setting */
+ 695:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL &= ((uint8)(~Timer_1_CTRL_INTCNT_MASK));
+ 342              		.loc 1 695 0
+ 343 0004 044B     		ldr	r3, .L38
+ 344 0006 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 345 0008 02F0FC02 		and	r2, r2, #252
+ 346 000c 1A70     		strb	r2, [r3]
+ 696:Generated_Source\PSoC5/Timer_1.c ****         /* Write The New Setting */
+ 697:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL |= interruptCount;
+ 347              		.loc 1 697 0
+ 348 000e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 349 0010 1043     		orrs	r0, r0, r2
+ 350              	.LVL6:
+ 351 0012 1870     		strb	r0, [r3]
+ 352 0014 7047     		bx	lr
+ 353              	.L39:
+ 354 0016 00BF     		.align	2
+ 355              	.L38:
+ 356 0018 7A650040 		.word	1073767802
+ 357              		.cfi_endproc
+ 358              	.LFE14:
+ 359              		.size	Timer_1_SetInterruptCount, .-Timer_1_SetInterruptCount
+ 360              		.section	.text.Timer_1_ClearFIFO,"ax",%progbits
+ 361              		.align	2
+ 362              		.global	Timer_1_ClearFIFO
+ 363              		.thumb
+ 364              		.thumb_func
+ 365              		.type	Timer_1_ClearFIFO, %function
+ 366              	Timer_1_ClearFIFO:
+ 367              	.LFB15:
+ 698:Generated_Source\PSoC5/Timer_1.c ****     #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
+ 699:Generated_Source\PSoC5/Timer_1.c **** }
+ 700:Generated_Source\PSoC5/Timer_1.c **** #endif /* Timer_1_InterruptOnCaptureCount */
+ 701:Generated_Source\PSoC5/Timer_1.c **** 
+ 702:Generated_Source\PSoC5/Timer_1.c **** 
+ 703:Generated_Source\PSoC5/Timer_1.c **** #if (Timer_1_UsingHWCaptureCounter)
+ 704:Generated_Source\PSoC5/Timer_1.c **** 
+ 705:Generated_Source\PSoC5/Timer_1.c **** 
+ 706:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 707:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_SetCaptureCount
+ 708:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 709:Generated_Source\PSoC5/Timer_1.c **** *
+ 710:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 711:Generated_Source\PSoC5/Timer_1.c **** *  This function sets the capture count
+ 712:Generated_Source\PSoC5/Timer_1.c **** *
+ 713:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 714:Generated_Source\PSoC5/Timer_1.c **** *  captureCount: A value between 2 and 127 inclusive is valid.  A value of 1
+ 715:Generated_Source\PSoC5/Timer_1.c **** *                to 127 will cause the interrupt to delay by the same number of
+ 716:Generated_Source\PSoC5/Timer_1.c **** *                captures.
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 20
+
+
+ 717:Generated_Source\PSoC5/Timer_1.c **** *
+ 718:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 719:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 720:Generated_Source\PSoC5/Timer_1.c **** *
+ 721:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 722:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_SetCaptureCount(uint8 captureCount) 
+ 723:Generated_Source\PSoC5/Timer_1.c **** {
+ 724:Generated_Source\PSoC5/Timer_1.c ****     Timer_1_CAP_COUNT = captureCount;
+ 725:Generated_Source\PSoC5/Timer_1.c **** }
+ 726:Generated_Source\PSoC5/Timer_1.c **** 
+ 727:Generated_Source\PSoC5/Timer_1.c **** 
+ 728:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 729:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_ReadCaptureCount
+ 730:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 731:Generated_Source\PSoC5/Timer_1.c **** *
+ 732:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 733:Generated_Source\PSoC5/Timer_1.c **** *  This function reads the capture count setting
+ 734:Generated_Source\PSoC5/Timer_1.c **** *
+ 735:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 736:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 737:Generated_Source\PSoC5/Timer_1.c **** *
+ 738:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 739:Generated_Source\PSoC5/Timer_1.c **** *  Returns the Capture Count Setting
+ 740:Generated_Source\PSoC5/Timer_1.c **** *
+ 741:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 742:Generated_Source\PSoC5/Timer_1.c **** uint8 Timer_1_ReadCaptureCount(void) 
+ 743:Generated_Source\PSoC5/Timer_1.c **** {
+ 744:Generated_Source\PSoC5/Timer_1.c ****     return ((uint8)Timer_1_CAP_COUNT);
+ 745:Generated_Source\PSoC5/Timer_1.c **** }
+ 746:Generated_Source\PSoC5/Timer_1.c **** #endif /* Timer_1_UsingHWCaptureCounter */
+ 747:Generated_Source\PSoC5/Timer_1.c **** 
+ 748:Generated_Source\PSoC5/Timer_1.c **** 
+ 749:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
+ 750:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_ClearFIFO
+ 751:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
+ 752:Generated_Source\PSoC5/Timer_1.c **** *
+ 753:Generated_Source\PSoC5/Timer_1.c **** * Summary:
+ 754:Generated_Source\PSoC5/Timer_1.c **** *  This function clears all capture data from the capture FIFO
+ 755:Generated_Source\PSoC5/Timer_1.c **** *
+ 756:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
+ 757:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 758:Generated_Source\PSoC5/Timer_1.c **** *
+ 759:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ 760:Generated_Source\PSoC5/Timer_1.c **** *  void
+ 761:Generated_Source\PSoC5/Timer_1.c **** *
+ 762:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
+ 763:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_ClearFIFO(void) 
+ 764:Generated_Source\PSoC5/Timer_1.c **** {
+ 368              		.loc 1 764 0
+ 369              		.cfi_startproc
+ 370              		@ args = 0, pretend = 0, frame = 0
+ 371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 372 0000 08B5     		push	{r3, lr}
+ 373              		.cfi_def_cfa_offset 8
+ 374              		.cfi_offset 3, -8
+ 375              		.cfi_offset 14, -4
+ 765:Generated_Source\PSoC5/Timer_1.c ****     while(0u != (Timer_1_ReadStatusRegister() & Timer_1_STATUS_FIFONEMP))
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 21
+
+
+ 376              		.loc 1 765 0
+ 377 0002 01E0     		b	.L41
+ 378              	.L42:
+ 766:Generated_Source\PSoC5/Timer_1.c ****     {
+ 767:Generated_Source\PSoC5/Timer_1.c ****         (void)Timer_1_ReadCapture();
+ 379              		.loc 1 767 0
+ 380 0004 FFF7FEFF 		bl	Timer_1_ReadCapture
+ 381              	.LVL7:
+ 382              	.L41:
+ 765:Generated_Source\PSoC5/Timer_1.c ****     while(0u != (Timer_1_ReadStatusRegister() & Timer_1_STATUS_FIFONEMP))
+ 383              		.loc 1 765 0
+ 384 0008 FFF7FEFF 		bl	Timer_1_ReadStatusRegister
+ 385              	.LVL8:
+ 386 000c 10F0080F 		tst	r0, #8
+ 387 0010 F8D1     		bne	.L42
+ 768:Generated_Source\PSoC5/Timer_1.c ****     }
+ 769:Generated_Source\PSoC5/Timer_1.c **** }
+ 388              		.loc 1 769 0
+ 389 0012 08BD     		pop	{r3, pc}
+ 390              		.cfi_endproc
+ 391              	.LFE15:
+ 392              		.size	Timer_1_ClearFIFO, .-Timer_1_ClearFIFO
+ 393              		.section	.text.Timer_1_Init,"ax",%progbits
+ 394              		.align	2
+ 395              		.global	Timer_1_Init
+ 396              		.thumb
+ 397              		.thumb_func
+ 398              		.type	Timer_1_Init, %function
+ 399              	Timer_1_Init:
+ 400              	.LFB0:
+  44:Generated_Source\PSoC5/Timer_1.c ****     #if(!Timer_1_UsingFixedFunction)
+ 401              		.loc 1 44 0
+ 402              		.cfi_startproc
+ 403              		@ args = 0, pretend = 0, frame = 0
+ 404              		@ frame_needed = 0, uses_anonymous_args = 0
+ 405 0000 08B5     		push	{r3, lr}
+ 406              		.cfi_def_cfa_offset 8
+ 407              		.cfi_offset 3, -8
+ 408              		.cfi_offset 14, -4
+ 118:Generated_Source\PSoC5/Timer_1.c ****     Timer_1_WriteCounter(Timer_1_INIT_PERIOD);
+ 409              		.loc 1 118 0
+ 410 0002 FF20     		movs	r0, #255
+ 411 0004 FFF7FEFF 		bl	Timer_1_WritePeriod
+ 412              	.LVL9:
+ 119:Generated_Source\PSoC5/Timer_1.c **** 
+ 413              		.loc 1 119 0
+ 414 0008 FF20     		movs	r0, #255
+ 415 000a FFF7FEFF 		bl	Timer_1_WriteCounter
+ 416              	.LVL10:
+ 142:Generated_Source\PSoC5/Timer_1.c **** 
+ 417              		.loc 1 142 0
+ 418 000e FFF7FEFF 		bl	CyEnterCriticalSection
+ 419              	.LVL11:
+ 145:Generated_Source\PSoC5/Timer_1.c **** 
+ 420              		.loc 1 145 0
+ 421 0012 084A     		ldr	r2, .L46
+ 422 0014 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 22
+
+
+ 423 0016 43F01003 		orr	r3, r3, #16
+ 424 001a 1370     		strb	r3, [r2]
+ 148:Generated_Source\PSoC5/Timer_1.c **** 
+ 425              		.loc 1 148 0
+ 426 001c FFF7FEFF 		bl	CyExitCriticalSection
+ 427              	.LVL12:
+ 156:Generated_Source\PSoC5/Timer_1.c ****         #endif /* Set interrupt count in UDB implementation if interrupt count feature is checked.*
+ 428              		.loc 1 156 0
+ 429 0020 0020     		movs	r0, #0
+ 430 0022 FFF7FEFF 		bl	Timer_1_SetInterruptCount
+ 431              	.LVL13:
+ 159:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Configure additional features of UDB implementation */
+ 432              		.loc 1 159 0
+ 433 0026 FFF7FEFF 		bl	Timer_1_ClearFIFO
+ 434              	.LVL14:
+ 162:Generated_Source\PSoC5/Timer_1.c **** }
+ 435              		.loc 1 162 0
+ 436 002a 0220     		movs	r0, #2
+ 437 002c FFF7FEFF 		bl	Timer_1_SetInterruptMode
+ 438              	.LVL15:
+ 439 0030 08BD     		pop	{r3, pc}
+ 440              	.L47:
+ 441 0032 00BF     		.align	2
+ 442              	.L46:
+ 443 0034 9B650040 		.word	1073767835
+ 444              		.cfi_endproc
+ 445              	.LFE0:
+ 446              		.size	Timer_1_Init, .-Timer_1_Init
+ 447              		.section	.text.Timer_1_Start,"ax",%progbits
+ 448              		.align	2
+ 449              		.global	Timer_1_Start
+ 450              		.thumb
+ 451              		.thumb_func
+ 452              		.type	Timer_1_Start, %function
+ 453              	Timer_1_Start:
+ 454              	.LFB2:
+ 216:Generated_Source\PSoC5/Timer_1.c ****     if(Timer_1_initVar == 0u)
+ 455              		.loc 1 216 0
+ 456              		.cfi_startproc
+ 457              		@ args = 0, pretend = 0, frame = 0
+ 458              		@ frame_needed = 0, uses_anonymous_args = 0
+ 459 0000 08B5     		push	{r3, lr}
+ 460              		.cfi_def_cfa_offset 8
+ 461              		.cfi_offset 3, -8
+ 462              		.cfi_offset 14, -4
+ 217:Generated_Source\PSoC5/Timer_1.c ****     {
+ 463              		.loc 1 217 0
+ 464 0002 054B     		ldr	r3, .L51
+ 465 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 466 0006 23B9     		cbnz	r3, .L49
+ 219:Generated_Source\PSoC5/Timer_1.c **** 
+ 467              		.loc 1 219 0
+ 468 0008 FFF7FEFF 		bl	Timer_1_Init
+ 469              	.LVL16:
+ 221:Generated_Source\PSoC5/Timer_1.c ****     }
+ 470              		.loc 1 221 0
+ 471 000c 0122     		movs	r2, #1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 23
+
+
+ 472 000e 024B     		ldr	r3, .L51
+ 473 0010 1A70     		strb	r2, [r3]
+ 474              	.L49:
+ 225:Generated_Source\PSoC5/Timer_1.c **** }
+ 475              		.loc 1 225 0
+ 476 0012 FFF7FEFF 		bl	Timer_1_Enable
+ 477              	.LVL17:
+ 478 0016 08BD     		pop	{r3, pc}
+ 479              	.L52:
+ 480              		.align	2
+ 481              	.L51:
+ 482 0018 00000000 		.word	.LANCHOR0
+ 483              		.cfi_endproc
+ 484              	.LFE2:
+ 485              		.size	Timer_1_Start, .-Timer_1_Start
+ 486              		.global	Timer_1_initVar
+ 487              		.bss
+ 488              		.set	.LANCHOR0,. + 0
+ 489              		.type	Timer_1_initVar, %object
+ 490              		.size	Timer_1_initVar, 1
+ 491              	Timer_1_initVar:
+ 492 0000 00       		.space	1
+ 493              		.text
+ 494              	.Letext0:
+ 495              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 496              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
+ 497              		.section	.debug_info,"",%progbits
+ 498              	.Ldebug_info0:
+ 499 0000 07030000 		.4byte	0x307
+ 500 0004 0400     		.2byte	0x4
+ 501 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 502 000a 04       		.byte	0x4
+ 503 000b 01       		.uleb128 0x1
+ 504 000c D0000000 		.4byte	.LASF39
+ 505 0010 0C       		.byte	0xc
+ 506 0011 60000000 		.4byte	.LASF40
+ 507 0015 63020000 		.4byte	.LASF41
+ 508 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 509 001d 00000000 		.4byte	0
+ 510 0021 00000000 		.4byte	.Ldebug_line0
+ 511 0025 02       		.uleb128 0x2
+ 512 0026 01       		.byte	0x1
+ 513 0027 06       		.byte	0x6
+ 514 0028 4C030000 		.4byte	.LASF0
+ 515 002c 02       		.uleb128 0x2
+ 516 002d 01       		.byte	0x1
+ 517 002e 08       		.byte	0x8
+ 518 002f C2000000 		.4byte	.LASF1
+ 519 0033 02       		.uleb128 0x2
+ 520 0034 02       		.byte	0x2
+ 521 0035 05       		.byte	0x5
+ 522 0036 0D030000 		.4byte	.LASF2
+ 523 003a 02       		.uleb128 0x2
+ 524 003b 02       		.byte	0x2
+ 525 003c 07       		.byte	0x7
+ 526 003d 4D000000 		.4byte	.LASF3
+ 527 0041 02       		.uleb128 0x2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 24
+
+
+ 528 0042 04       		.byte	0x4
+ 529 0043 05       		.byte	0x5
+ 530 0044 32030000 		.4byte	.LASF4
+ 531 0048 02       		.uleb128 0x2
+ 532 0049 04       		.byte	0x4
+ 533 004a 07       		.byte	0x7
+ 534 004b 76010000 		.4byte	.LASF5
+ 535 004f 02       		.uleb128 0x2
+ 536 0050 08       		.byte	0x8
+ 537 0051 05       		.byte	0x5
+ 538 0052 AF020000 		.4byte	.LASF6
+ 539 0056 02       		.uleb128 0x2
+ 540 0057 08       		.byte	0x8
+ 541 0058 07       		.byte	0x7
+ 542 0059 AB000000 		.4byte	.LASF7
+ 543 005d 03       		.uleb128 0x3
+ 544 005e 04       		.byte	0x4
+ 545 005f 05       		.byte	0x5
+ 546 0060 696E7400 		.ascii	"int\000"
+ 547 0064 02       		.uleb128 0x2
+ 548 0065 04       		.byte	0x4
+ 549 0066 07       		.byte	0x7
+ 550 0067 81000000 		.4byte	.LASF8
+ 551 006b 04       		.uleb128 0x4
+ 552 006c 88010000 		.4byte	.LASF12
+ 553 0070 02       		.byte	0x2
+ 554 0071 9201     		.2byte	0x192
+ 555 0073 2C000000 		.4byte	0x2c
+ 556 0077 02       		.uleb128 0x2
+ 557 0078 04       		.byte	0x4
+ 558 0079 04       		.byte	0x4
+ 559 007a 9D000000 		.4byte	.LASF9
+ 560 007e 02       		.uleb128 0x2
+ 561 007f 08       		.byte	0x8
+ 562 0080 04       		.byte	0x4
+ 563 0081 A5010000 		.4byte	.LASF10
+ 564 0085 02       		.uleb128 0x2
+ 565 0086 01       		.byte	0x1
+ 566 0087 08       		.byte	0x8
+ 567 0088 3B030000 		.4byte	.LASF11
+ 568 008c 04       		.uleb128 0x4
+ 569 008d 5E010000 		.4byte	.LASF13
+ 570 0091 02       		.byte	0x2
+ 571 0092 3C02     		.2byte	0x23c
+ 572 0094 98000000 		.4byte	0x98
+ 573 0098 05       		.uleb128 0x5
+ 574 0099 6B000000 		.4byte	0x6b
+ 575 009d 02       		.uleb128 0x2
+ 576 009e 08       		.byte	0x8
+ 577 009f 04       		.byte	0x4
+ 578 00a0 40030000 		.4byte	.LASF14
+ 579 00a4 02       		.uleb128 0x2
+ 580 00a5 04       		.byte	0x4
+ 581 00a6 07       		.byte	0x7
+ 582 00a7 A6020000 		.4byte	.LASF15
+ 583 00ab 06       		.uleb128 0x6
+ 584 00ac 96010000 		.4byte	.LASF16
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 25
+
+
+ 585 00b0 01       		.byte	0x1
+ 586 00b1 B4       		.byte	0xb4
+ 587 00b2 00000000 		.4byte	.LFB1
+ 588 00b6 10000000 		.4byte	.LFE1-.LFB1
+ 589 00ba 01       		.uleb128 0x1
+ 590 00bb 9C       		.byte	0x9c
+ 591 00bc 06       		.uleb128 0x6
+ 592 00bd 58030000 		.4byte	.LASF17
+ 593 00c1 01       		.byte	0x1
+ 594 00c2 F7       		.byte	0xf7
+ 595 00c3 00000000 		.4byte	.LFB3
+ 596 00c7 10000000 		.4byte	.LFE3-.LFB3
+ 597 00cb 01       		.uleb128 0x1
+ 598 00cc 9C       		.byte	0x9c
+ 599 00cd 07       		.uleb128 0x7
+ 600 00ce AC010000 		.4byte	.LASF21
+ 601 00d2 01       		.byte	0x1
+ 602 00d3 1701     		.2byte	0x117
+ 603 00d5 00000000 		.4byte	.LFB4
+ 604 00d9 0C000000 		.4byte	.LFE4-.LFB4
+ 605 00dd 01       		.uleb128 0x1
+ 606 00de 9C       		.byte	0x9c
+ 607 00df F2000000 		.4byte	0xf2
+ 608 00e3 08       		.uleb128 0x8
+ 609 00e4 BD020000 		.4byte	.LASF23
+ 610 00e8 01       		.byte	0x1
+ 611 00e9 1701     		.2byte	0x117
+ 612 00eb 6B000000 		.4byte	0x6b
+ 613 00ef 01       		.uleb128 0x1
+ 614 00f0 50       		.byte	0x50
+ 615 00f1 00       		.byte	0
+ 616 00f2 09       		.uleb128 0x9
+ 617 00f3 00000000 		.4byte	.LASF18
+ 618 00f7 01       		.byte	0x1
+ 619 00f8 2E01     		.2byte	0x12e
+ 620 00fa 00000000 		.4byte	.LFB5
+ 621 00fe 0C000000 		.4byte	.LFE5-.LFB5
+ 622 0102 01       		.uleb128 0x1
+ 623 0103 9C       		.byte	0x9c
+ 624 0104 0A       		.uleb128 0xa
+ 625 0105 17030000 		.4byte	.LASF19
+ 626 0109 01       		.byte	0x1
+ 627 010a 4D01     		.2byte	0x14d
+ 628 010c 6B000000 		.4byte	0x6b
+ 629 0110 00000000 		.4byte	.LFB6
+ 630 0114 0C000000 		.4byte	.LFE6-.LFB6
+ 631 0118 01       		.uleb128 0x1
+ 632 0119 9C       		.byte	0x9c
+ 633 011a 0A       		.uleb128 0xa
+ 634 011b F1020000 		.4byte	.LASF20
+ 635 011f 01       		.byte	0x1
+ 636 0120 6401     		.2byte	0x164
+ 637 0122 6B000000 		.4byte	0x6b
+ 638 0126 00000000 		.4byte	.LFB7
+ 639 012a 0C000000 		.4byte	.LFE7-.LFB7
+ 640 012e 01       		.uleb128 0x1
+ 641 012f 9C       		.byte	0x9c
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 26
+
+
+ 642 0130 07       		.uleb128 0x7
+ 643 0131 D5010000 		.4byte	.LASF22
+ 644 0135 01       		.byte	0x1
+ 645 0136 7B01     		.2byte	0x17b
+ 646 0138 00000000 		.4byte	.LFB8
+ 647 013c 0C000000 		.4byte	.LFE8-.LFB8
+ 648 0140 01       		.uleb128 0x1
+ 649 0141 9C       		.byte	0x9c
+ 650 0142 55010000 		.4byte	0x155
+ 651 0146 08       		.uleb128 0x8
+ 652 0147 8E010000 		.4byte	.LASF24
+ 653 014b 01       		.byte	0x1
+ 654 014c 7B01     		.2byte	0x17b
+ 655 014e 6B000000 		.4byte	0x6b
+ 656 0152 01       		.uleb128 0x1
+ 657 0153 50       		.byte	0x50
+ 658 0154 00       		.byte	0
+ 659 0155 0A       		.uleb128 0xa
+ 660 0156 63010000 		.4byte	.LASF25
+ 661 015a 01       		.byte	0x1
+ 662 015b 9501     		.2byte	0x195
+ 663 015d 6B000000 		.4byte	0x6b
+ 664 0161 00000000 		.4byte	.LFB9
+ 665 0165 0C000000 		.4byte	.LFE9-.LFB9
+ 666 0169 01       		.uleb128 0x1
+ 667 016a 9C       		.byte	0x9c
+ 668 016b 07       		.uleb128 0x7
+ 669 016c 32000000 		.4byte	.LASF26
+ 670 0170 01       		.byte	0x1
+ 671 0171 AF01     		.2byte	0x1af
+ 672 0173 00000000 		.4byte	.LFB10
+ 673 0177 0C000000 		.4byte	.LFE10-.LFB10
+ 674 017b 01       		.uleb128 0x1
+ 675 017c 9C       		.byte	0x9c
+ 676 017d 90010000 		.4byte	0x190
+ 677 0181 08       		.uleb128 0x8
+ 678 0182 46000000 		.4byte	.LASF27
+ 679 0186 01       		.byte	0x1
+ 680 0187 AF01     		.2byte	0x1af
+ 681 0189 6B000000 		.4byte	0x6b
+ 682 018d 01       		.uleb128 0x1
+ 683 018e 50       		.byte	0x50
+ 684 018f 00       		.byte	0
+ 685 0190 0A       		.uleb128 0xa
+ 686 0191 4F020000 		.4byte	.LASF28
+ 687 0195 01       		.byte	0x1
+ 688 0196 C801     		.2byte	0x1c8
+ 689 0198 6B000000 		.4byte	0x6b
+ 690 019c 00000000 		.4byte	.LFB11
+ 691 01a0 0C000000 		.4byte	.LFE11-.LFB11
+ 692 01a4 01       		.uleb128 0x1
+ 693 01a5 9C       		.byte	0x9c
+ 694 01a6 07       		.uleb128 0x7
+ 695 01a7 3A020000 		.4byte	.LASF29
+ 696 01ab 01       		.byte	0x1
+ 697 01ac E001     		.2byte	0x1e0
+ 698 01ae 00000000 		.4byte	.LFB12
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 27
+
+
+ 699 01b2 0C000000 		.4byte	.LFE12-.LFB12
+ 700 01b6 01       		.uleb128 0x1
+ 701 01b7 9C       		.byte	0x9c
+ 702 01b8 CB010000 		.4byte	0x1cb
+ 703 01bc 08       		.uleb128 0x8
+ 704 01bd A3000000 		.4byte	.LASF30
+ 705 01c1 01       		.byte	0x1
+ 706 01c2 E001     		.2byte	0x1e0
+ 707 01c4 6B000000 		.4byte	0x6b
+ 708 01c8 01       		.uleb128 0x1
+ 709 01c9 50       		.byte	0x50
+ 710 01ca 00       		.byte	0
+ 711 01cb 0A       		.uleb128 0xa
+ 712 01cc CB020000 		.4byte	.LASF31
+ 713 01d0 01       		.byte	0x1
+ 714 01d1 FC01     		.2byte	0x1fc
+ 715 01d3 6B000000 		.4byte	0x6b
+ 716 01d7 00000000 		.4byte	.LFB13
+ 717 01db 14000000 		.4byte	.LFE13-.LFB13
+ 718 01df 01       		.uleb128 0x1
+ 719 01e0 9C       		.byte	0x9c
+ 720 01e1 07       		.uleb128 0x7
+ 721 01e2 18000000 		.4byte	.LASF32
+ 722 01e6 01       		.byte	0x1
+ 723 01e7 B002     		.2byte	0x2b0
+ 724 01e9 00000000 		.4byte	.LFB14
+ 725 01ed 1C000000 		.4byte	.LFE14-.LFB14
+ 726 01f1 01       		.uleb128 0x1
+ 727 01f2 9C       		.byte	0x9c
+ 728 01f3 08020000 		.4byte	0x208
+ 729 01f7 0B       		.uleb128 0xb
+ 730 01f8 8E000000 		.4byte	.LASF33
+ 731 01fc 01       		.byte	0x1
+ 732 01fd B002     		.2byte	0x2b0
+ 733 01ff 6B000000 		.4byte	0x6b
+ 734 0203 00000000 		.4byte	.LLST0
+ 735 0207 00       		.byte	0
+ 736 0208 07       		.uleb128 0x7
+ 737 0209 DF020000 		.4byte	.LASF34
+ 738 020d 01       		.byte	0x1
+ 739 020e FB02     		.2byte	0x2fb
+ 740 0210 00000000 		.4byte	.LFB15
+ 741 0214 14000000 		.4byte	.LFE15-.LFB15
+ 742 0218 01       		.uleb128 0x1
+ 743 0219 9C       		.byte	0x9c
+ 744 021a 31020000 		.4byte	0x231
+ 745 021e 0C       		.uleb128 0xc
+ 746 021f 08000000 		.4byte	.LVL7
+ 747 0223 90010000 		.4byte	0x190
+ 748 0227 0C       		.uleb128 0xc
+ 749 0228 0C000000 		.4byte	.LVL8
+ 750 022c 04010000 		.4byte	0x104
+ 751 0230 00       		.byte	0
+ 752 0231 0D       		.uleb128 0xd
+ 753 0232 17020000 		.4byte	.LASF35
+ 754 0236 01       		.byte	0x1
+ 755 0237 2B       		.byte	0x2b
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 28
+
+
+ 756 0238 00000000 		.4byte	.LFB0
+ 757 023c 38000000 		.4byte	.LFE0-.LFB0
+ 758 0240 01       		.uleb128 0x1
+ 759 0241 9C       		.byte	0x9c
+ 760 0242 BB020000 		.4byte	0x2bb
+ 761 0246 0E       		.uleb128 0xe
+ 762 0247 8F020000 		.4byte	.LASF42
+ 763 024b 01       		.byte	0x1
+ 764 024c 2F       		.byte	0x2f
+ 765 024d 6B000000 		.4byte	0x6b
+ 766 0251 1E000000 		.4byte	.LLST1
+ 767 0255 0F       		.uleb128 0xf
+ 768 0256 08000000 		.4byte	.LVL9
+ 769 025a 6B010000 		.4byte	0x16b
+ 770 025e 69020000 		.4byte	0x269
+ 771 0262 10       		.uleb128 0x10
+ 772 0263 01       		.uleb128 0x1
+ 773 0264 50       		.byte	0x50
+ 774 0265 02       		.uleb128 0x2
+ 775 0266 09       		.byte	0x9
+ 776 0267 FF       		.byte	0xff
+ 777 0268 00       		.byte	0
+ 778 0269 0F       		.uleb128 0xf
+ 779 026a 0E000000 		.4byte	.LVL10
+ 780 026e A6010000 		.4byte	0x1a6
+ 781 0272 7D020000 		.4byte	0x27d
+ 782 0276 10       		.uleb128 0x10
+ 783 0277 01       		.uleb128 0x1
+ 784 0278 50       		.byte	0x50
+ 785 0279 02       		.uleb128 0x2
+ 786 027a 09       		.byte	0x9
+ 787 027b FF       		.byte	0xff
+ 788 027c 00       		.byte	0
+ 789 027d 0C       		.uleb128 0xc
+ 790 027e 12000000 		.4byte	.LVL11
+ 791 0282 F4020000 		.4byte	0x2f4
+ 792 0286 0C       		.uleb128 0xc
+ 793 0287 20000000 		.4byte	.LVL12
+ 794 028b FF020000 		.4byte	0x2ff
+ 795 028f 0F       		.uleb128 0xf
+ 796 0290 26000000 		.4byte	.LVL13
+ 797 0294 E1010000 		.4byte	0x1e1
+ 798 0298 A2020000 		.4byte	0x2a2
+ 799 029c 10       		.uleb128 0x10
+ 800 029d 01       		.uleb128 0x1
+ 801 029e 50       		.byte	0x50
+ 802 029f 01       		.uleb128 0x1
+ 803 02a0 30       		.byte	0x30
+ 804 02a1 00       		.byte	0
+ 805 02a2 0C       		.uleb128 0xc
+ 806 02a3 2A000000 		.4byte	.LVL14
+ 807 02a7 08020000 		.4byte	0x208
+ 808 02ab 11       		.uleb128 0x11
+ 809 02ac 30000000 		.4byte	.LVL15
+ 810 02b0 CD000000 		.4byte	0xcd
+ 811 02b4 10       		.uleb128 0x10
+ 812 02b5 01       		.uleb128 0x1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 29
+
+
+ 813 02b6 50       		.byte	0x50
+ 814 02b7 01       		.uleb128 0x1
+ 815 02b8 32       		.byte	0x32
+ 816 02b9 00       		.byte	0
+ 817 02ba 00       		.byte	0
+ 818 02bb 0D       		.uleb128 0xd
+ 819 02bc 09020000 		.4byte	.LASF36
+ 820 02c0 01       		.byte	0x1
+ 821 02c1 D7       		.byte	0xd7
+ 822 02c2 00000000 		.4byte	.LFB2
+ 823 02c6 1C000000 		.4byte	.LFE2-.LFB2
+ 824 02ca 01       		.uleb128 0x1
+ 825 02cb 9C       		.byte	0x9c
+ 826 02cc E3020000 		.4byte	0x2e3
+ 827 02d0 0C       		.uleb128 0xc
+ 828 02d1 0C000000 		.4byte	.LVL16
+ 829 02d5 31020000 		.4byte	0x231
+ 830 02d9 0C       		.uleb128 0xc
+ 831 02da 16000000 		.4byte	.LVL17
+ 832 02de AB000000 		.4byte	0xab
+ 833 02e2 00       		.byte	0
+ 834 02e3 12       		.uleb128 0x12
+ 835 02e4 C5010000 		.4byte	.LASF43
+ 836 02e8 01       		.byte	0x1
+ 837 02e9 1A       		.byte	0x1a
+ 838 02ea 6B000000 		.4byte	0x6b
+ 839 02ee 05       		.uleb128 0x5
+ 840 02ef 03       		.byte	0x3
+ 841 02f0 00000000 		.4byte	Timer_1_initVar
+ 842 02f4 13       		.uleb128 0x13
+ 843 02f5 F2010000 		.4byte	.LASF37
+ 844 02f9 F2010000 		.4byte	.LASF37
+ 845 02fd 03       		.byte	0x3
+ 846 02fe 7D       		.byte	0x7d
+ 847 02ff 13       		.uleb128 0x13
+ 848 0300 24020000 		.4byte	.LASF38
+ 849 0304 24020000 		.4byte	.LASF38
+ 850 0308 03       		.byte	0x3
+ 851 0309 7E       		.byte	0x7e
+ 852 030a 00       		.byte	0
+ 853              		.section	.debug_abbrev,"",%progbits
+ 854              	.Ldebug_abbrev0:
+ 855 0000 01       		.uleb128 0x1
+ 856 0001 11       		.uleb128 0x11
+ 857 0002 01       		.byte	0x1
+ 858 0003 25       		.uleb128 0x25
+ 859 0004 0E       		.uleb128 0xe
+ 860 0005 13       		.uleb128 0x13
+ 861 0006 0B       		.uleb128 0xb
+ 862 0007 03       		.uleb128 0x3
+ 863 0008 0E       		.uleb128 0xe
+ 864 0009 1B       		.uleb128 0x1b
+ 865 000a 0E       		.uleb128 0xe
+ 866 000b 55       		.uleb128 0x55
+ 867 000c 17       		.uleb128 0x17
+ 868 000d 11       		.uleb128 0x11
+ 869 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 30
+
+
+ 870 000f 10       		.uleb128 0x10
+ 871 0010 17       		.uleb128 0x17
+ 872 0011 00       		.byte	0
+ 873 0012 00       		.byte	0
+ 874 0013 02       		.uleb128 0x2
+ 875 0014 24       		.uleb128 0x24
+ 876 0015 00       		.byte	0
+ 877 0016 0B       		.uleb128 0xb
+ 878 0017 0B       		.uleb128 0xb
+ 879 0018 3E       		.uleb128 0x3e
+ 880 0019 0B       		.uleb128 0xb
+ 881 001a 03       		.uleb128 0x3
+ 882 001b 0E       		.uleb128 0xe
+ 883 001c 00       		.byte	0
+ 884 001d 00       		.byte	0
+ 885 001e 03       		.uleb128 0x3
+ 886 001f 24       		.uleb128 0x24
+ 887 0020 00       		.byte	0
+ 888 0021 0B       		.uleb128 0xb
+ 889 0022 0B       		.uleb128 0xb
+ 890 0023 3E       		.uleb128 0x3e
+ 891 0024 0B       		.uleb128 0xb
+ 892 0025 03       		.uleb128 0x3
+ 893 0026 08       		.uleb128 0x8
+ 894 0027 00       		.byte	0
+ 895 0028 00       		.byte	0
+ 896 0029 04       		.uleb128 0x4
+ 897 002a 16       		.uleb128 0x16
+ 898 002b 00       		.byte	0
+ 899 002c 03       		.uleb128 0x3
+ 900 002d 0E       		.uleb128 0xe
+ 901 002e 3A       		.uleb128 0x3a
+ 902 002f 0B       		.uleb128 0xb
+ 903 0030 3B       		.uleb128 0x3b
+ 904 0031 05       		.uleb128 0x5
+ 905 0032 49       		.uleb128 0x49
+ 906 0033 13       		.uleb128 0x13
+ 907 0034 00       		.byte	0
+ 908 0035 00       		.byte	0
+ 909 0036 05       		.uleb128 0x5
+ 910 0037 35       		.uleb128 0x35
+ 911 0038 00       		.byte	0
+ 912 0039 49       		.uleb128 0x49
+ 913 003a 13       		.uleb128 0x13
+ 914 003b 00       		.byte	0
+ 915 003c 00       		.byte	0
+ 916 003d 06       		.uleb128 0x6
+ 917 003e 2E       		.uleb128 0x2e
+ 918 003f 00       		.byte	0
+ 919 0040 3F       		.uleb128 0x3f
+ 920 0041 19       		.uleb128 0x19
+ 921 0042 03       		.uleb128 0x3
+ 922 0043 0E       		.uleb128 0xe
+ 923 0044 3A       		.uleb128 0x3a
+ 924 0045 0B       		.uleb128 0xb
+ 925 0046 3B       		.uleb128 0x3b
+ 926 0047 0B       		.uleb128 0xb
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 31
+
+
+ 927 0048 27       		.uleb128 0x27
+ 928 0049 19       		.uleb128 0x19
+ 929 004a 11       		.uleb128 0x11
+ 930 004b 01       		.uleb128 0x1
+ 931 004c 12       		.uleb128 0x12
+ 932 004d 06       		.uleb128 0x6
+ 933 004e 40       		.uleb128 0x40
+ 934 004f 18       		.uleb128 0x18
+ 935 0050 9742     		.uleb128 0x2117
+ 936 0052 19       		.uleb128 0x19
+ 937 0053 00       		.byte	0
+ 938 0054 00       		.byte	0
+ 939 0055 07       		.uleb128 0x7
+ 940 0056 2E       		.uleb128 0x2e
+ 941 0057 01       		.byte	0x1
+ 942 0058 3F       		.uleb128 0x3f
+ 943 0059 19       		.uleb128 0x19
+ 944 005a 03       		.uleb128 0x3
+ 945 005b 0E       		.uleb128 0xe
+ 946 005c 3A       		.uleb128 0x3a
+ 947 005d 0B       		.uleb128 0xb
+ 948 005e 3B       		.uleb128 0x3b
+ 949 005f 05       		.uleb128 0x5
+ 950 0060 27       		.uleb128 0x27
+ 951 0061 19       		.uleb128 0x19
+ 952 0062 11       		.uleb128 0x11
+ 953 0063 01       		.uleb128 0x1
+ 954 0064 12       		.uleb128 0x12
+ 955 0065 06       		.uleb128 0x6
+ 956 0066 40       		.uleb128 0x40
+ 957 0067 18       		.uleb128 0x18
+ 958 0068 9742     		.uleb128 0x2117
+ 959 006a 19       		.uleb128 0x19
+ 960 006b 01       		.uleb128 0x1
+ 961 006c 13       		.uleb128 0x13
+ 962 006d 00       		.byte	0
+ 963 006e 00       		.byte	0
+ 964 006f 08       		.uleb128 0x8
+ 965 0070 05       		.uleb128 0x5
+ 966 0071 00       		.byte	0
+ 967 0072 03       		.uleb128 0x3
+ 968 0073 0E       		.uleb128 0xe
+ 969 0074 3A       		.uleb128 0x3a
+ 970 0075 0B       		.uleb128 0xb
+ 971 0076 3B       		.uleb128 0x3b
+ 972 0077 05       		.uleb128 0x5
+ 973 0078 49       		.uleb128 0x49
+ 974 0079 13       		.uleb128 0x13
+ 975 007a 02       		.uleb128 0x2
+ 976 007b 18       		.uleb128 0x18
+ 977 007c 00       		.byte	0
+ 978 007d 00       		.byte	0
+ 979 007e 09       		.uleb128 0x9
+ 980 007f 2E       		.uleb128 0x2e
+ 981 0080 00       		.byte	0
+ 982 0081 3F       		.uleb128 0x3f
+ 983 0082 19       		.uleb128 0x19
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 32
+
+
+ 984 0083 03       		.uleb128 0x3
+ 985 0084 0E       		.uleb128 0xe
+ 986 0085 3A       		.uleb128 0x3a
+ 987 0086 0B       		.uleb128 0xb
+ 988 0087 3B       		.uleb128 0x3b
+ 989 0088 05       		.uleb128 0x5
+ 990 0089 27       		.uleb128 0x27
+ 991 008a 19       		.uleb128 0x19
+ 992 008b 11       		.uleb128 0x11
+ 993 008c 01       		.uleb128 0x1
+ 994 008d 12       		.uleb128 0x12
+ 995 008e 06       		.uleb128 0x6
+ 996 008f 40       		.uleb128 0x40
+ 997 0090 18       		.uleb128 0x18
+ 998 0091 9742     		.uleb128 0x2117
+ 999 0093 19       		.uleb128 0x19
+ 1000 0094 00       		.byte	0
+ 1001 0095 00       		.byte	0
+ 1002 0096 0A       		.uleb128 0xa
+ 1003 0097 2E       		.uleb128 0x2e
+ 1004 0098 00       		.byte	0
+ 1005 0099 3F       		.uleb128 0x3f
+ 1006 009a 19       		.uleb128 0x19
+ 1007 009b 03       		.uleb128 0x3
+ 1008 009c 0E       		.uleb128 0xe
+ 1009 009d 3A       		.uleb128 0x3a
+ 1010 009e 0B       		.uleb128 0xb
+ 1011 009f 3B       		.uleb128 0x3b
+ 1012 00a0 05       		.uleb128 0x5
+ 1013 00a1 27       		.uleb128 0x27
+ 1014 00a2 19       		.uleb128 0x19
+ 1015 00a3 49       		.uleb128 0x49
+ 1016 00a4 13       		.uleb128 0x13
+ 1017 00a5 11       		.uleb128 0x11
+ 1018 00a6 01       		.uleb128 0x1
+ 1019 00a7 12       		.uleb128 0x12
+ 1020 00a8 06       		.uleb128 0x6
+ 1021 00a9 40       		.uleb128 0x40
+ 1022 00aa 18       		.uleb128 0x18
+ 1023 00ab 9742     		.uleb128 0x2117
+ 1024 00ad 19       		.uleb128 0x19
+ 1025 00ae 00       		.byte	0
+ 1026 00af 00       		.byte	0
+ 1027 00b0 0B       		.uleb128 0xb
+ 1028 00b1 05       		.uleb128 0x5
+ 1029 00b2 00       		.byte	0
+ 1030 00b3 03       		.uleb128 0x3
+ 1031 00b4 0E       		.uleb128 0xe
+ 1032 00b5 3A       		.uleb128 0x3a
+ 1033 00b6 0B       		.uleb128 0xb
+ 1034 00b7 3B       		.uleb128 0x3b
+ 1035 00b8 05       		.uleb128 0x5
+ 1036 00b9 49       		.uleb128 0x49
+ 1037 00ba 13       		.uleb128 0x13
+ 1038 00bb 02       		.uleb128 0x2
+ 1039 00bc 17       		.uleb128 0x17
+ 1040 00bd 00       		.byte	0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 33
+
+
+ 1041 00be 00       		.byte	0
+ 1042 00bf 0C       		.uleb128 0xc
+ 1043 00c0 898201   		.uleb128 0x4109
+ 1044 00c3 00       		.byte	0
+ 1045 00c4 11       		.uleb128 0x11
+ 1046 00c5 01       		.uleb128 0x1
+ 1047 00c6 31       		.uleb128 0x31
+ 1048 00c7 13       		.uleb128 0x13
+ 1049 00c8 00       		.byte	0
+ 1050 00c9 00       		.byte	0
+ 1051 00ca 0D       		.uleb128 0xd
+ 1052 00cb 2E       		.uleb128 0x2e
+ 1053 00cc 01       		.byte	0x1
+ 1054 00cd 3F       		.uleb128 0x3f
+ 1055 00ce 19       		.uleb128 0x19
+ 1056 00cf 03       		.uleb128 0x3
+ 1057 00d0 0E       		.uleb128 0xe
+ 1058 00d1 3A       		.uleb128 0x3a
+ 1059 00d2 0B       		.uleb128 0xb
+ 1060 00d3 3B       		.uleb128 0x3b
+ 1061 00d4 0B       		.uleb128 0xb
+ 1062 00d5 27       		.uleb128 0x27
+ 1063 00d6 19       		.uleb128 0x19
+ 1064 00d7 11       		.uleb128 0x11
+ 1065 00d8 01       		.uleb128 0x1
+ 1066 00d9 12       		.uleb128 0x12
+ 1067 00da 06       		.uleb128 0x6
+ 1068 00db 40       		.uleb128 0x40
+ 1069 00dc 18       		.uleb128 0x18
+ 1070 00dd 9742     		.uleb128 0x2117
+ 1071 00df 19       		.uleb128 0x19
+ 1072 00e0 01       		.uleb128 0x1
+ 1073 00e1 13       		.uleb128 0x13
+ 1074 00e2 00       		.byte	0
+ 1075 00e3 00       		.byte	0
+ 1076 00e4 0E       		.uleb128 0xe
+ 1077 00e5 34       		.uleb128 0x34
+ 1078 00e6 00       		.byte	0
+ 1079 00e7 03       		.uleb128 0x3
+ 1080 00e8 0E       		.uleb128 0xe
+ 1081 00e9 3A       		.uleb128 0x3a
+ 1082 00ea 0B       		.uleb128 0xb
+ 1083 00eb 3B       		.uleb128 0x3b
+ 1084 00ec 0B       		.uleb128 0xb
+ 1085 00ed 49       		.uleb128 0x49
+ 1086 00ee 13       		.uleb128 0x13
+ 1087 00ef 02       		.uleb128 0x2
+ 1088 00f0 17       		.uleb128 0x17
+ 1089 00f1 00       		.byte	0
+ 1090 00f2 00       		.byte	0
+ 1091 00f3 0F       		.uleb128 0xf
+ 1092 00f4 898201   		.uleb128 0x4109
+ 1093 00f7 01       		.byte	0x1
+ 1094 00f8 11       		.uleb128 0x11
+ 1095 00f9 01       		.uleb128 0x1
+ 1096 00fa 31       		.uleb128 0x31
+ 1097 00fb 13       		.uleb128 0x13
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 34
+
+
+ 1098 00fc 01       		.uleb128 0x1
+ 1099 00fd 13       		.uleb128 0x13
+ 1100 00fe 00       		.byte	0
+ 1101 00ff 00       		.byte	0
+ 1102 0100 10       		.uleb128 0x10
+ 1103 0101 8A8201   		.uleb128 0x410a
+ 1104 0104 00       		.byte	0
+ 1105 0105 02       		.uleb128 0x2
+ 1106 0106 18       		.uleb128 0x18
+ 1107 0107 9142     		.uleb128 0x2111
+ 1108 0109 18       		.uleb128 0x18
+ 1109 010a 00       		.byte	0
+ 1110 010b 00       		.byte	0
+ 1111 010c 11       		.uleb128 0x11
+ 1112 010d 898201   		.uleb128 0x4109
+ 1113 0110 01       		.byte	0x1
+ 1114 0111 11       		.uleb128 0x11
+ 1115 0112 01       		.uleb128 0x1
+ 1116 0113 31       		.uleb128 0x31
+ 1117 0114 13       		.uleb128 0x13
+ 1118 0115 00       		.byte	0
+ 1119 0116 00       		.byte	0
+ 1120 0117 12       		.uleb128 0x12
+ 1121 0118 34       		.uleb128 0x34
+ 1122 0119 00       		.byte	0
+ 1123 011a 03       		.uleb128 0x3
+ 1124 011b 0E       		.uleb128 0xe
+ 1125 011c 3A       		.uleb128 0x3a
+ 1126 011d 0B       		.uleb128 0xb
+ 1127 011e 3B       		.uleb128 0x3b
+ 1128 011f 0B       		.uleb128 0xb
+ 1129 0120 49       		.uleb128 0x49
+ 1130 0121 13       		.uleb128 0x13
+ 1131 0122 3F       		.uleb128 0x3f
+ 1132 0123 19       		.uleb128 0x19
+ 1133 0124 02       		.uleb128 0x2
+ 1134 0125 18       		.uleb128 0x18
+ 1135 0126 00       		.byte	0
+ 1136 0127 00       		.byte	0
+ 1137 0128 13       		.uleb128 0x13
+ 1138 0129 2E       		.uleb128 0x2e
+ 1139 012a 00       		.byte	0
+ 1140 012b 3F       		.uleb128 0x3f
+ 1141 012c 19       		.uleb128 0x19
+ 1142 012d 3C       		.uleb128 0x3c
+ 1143 012e 19       		.uleb128 0x19
+ 1144 012f 6E       		.uleb128 0x6e
+ 1145 0130 0E       		.uleb128 0xe
+ 1146 0131 03       		.uleb128 0x3
+ 1147 0132 0E       		.uleb128 0xe
+ 1148 0133 3A       		.uleb128 0x3a
+ 1149 0134 0B       		.uleb128 0xb
+ 1150 0135 3B       		.uleb128 0x3b
+ 1151 0136 0B       		.uleb128 0xb
+ 1152 0137 00       		.byte	0
+ 1153 0138 00       		.byte	0
+ 1154 0139 00       		.byte	0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 35
+
+
+ 1155              		.section	.debug_loc,"",%progbits
+ 1156              	.Ldebug_loc0:
+ 1157              	.LLST0:
+ 1158 0000 00000000 		.4byte	.LVL4
+ 1159 0004 04000000 		.4byte	.LVL5
+ 1160 0008 0100     		.2byte	0x1
+ 1161 000a 50       		.byte	0x50
+ 1162 000b 04000000 		.4byte	.LVL5
+ 1163 000f 12000000 		.4byte	.LVL6
+ 1164 0013 0100     		.2byte	0x1
+ 1165 0015 50       		.byte	0x50
+ 1166 0016 00000000 		.4byte	0
+ 1167 001a 00000000 		.4byte	0
+ 1168              	.LLST1:
+ 1169 001e 12000000 		.4byte	.LVL11
+ 1170 0022 1F000000 		.4byte	.LVL12-1
+ 1171 0026 0100     		.2byte	0x1
+ 1172 0028 50       		.byte	0x50
+ 1173 0029 00000000 		.4byte	0
+ 1174 002d 00000000 		.4byte	0
+ 1175              		.section	.debug_aranges,"",%progbits
+ 1176 0000 94000000 		.4byte	0x94
+ 1177 0004 0200     		.2byte	0x2
+ 1178 0006 00000000 		.4byte	.Ldebug_info0
+ 1179 000a 04       		.byte	0x4
+ 1180 000b 00       		.byte	0
+ 1181 000c 0000     		.2byte	0
+ 1182 000e 0000     		.2byte	0
+ 1183 0010 00000000 		.4byte	.LFB1
+ 1184 0014 10000000 		.4byte	.LFE1-.LFB1
+ 1185 0018 00000000 		.4byte	.LFB3
+ 1186 001c 10000000 		.4byte	.LFE3-.LFB3
+ 1187 0020 00000000 		.4byte	.LFB4
+ 1188 0024 0C000000 		.4byte	.LFE4-.LFB4
+ 1189 0028 00000000 		.4byte	.LFB5
+ 1190 002c 0C000000 		.4byte	.LFE5-.LFB5
+ 1191 0030 00000000 		.4byte	.LFB6
+ 1192 0034 0C000000 		.4byte	.LFE6-.LFB6
+ 1193 0038 00000000 		.4byte	.LFB7
+ 1194 003c 0C000000 		.4byte	.LFE7-.LFB7
+ 1195 0040 00000000 		.4byte	.LFB8
+ 1196 0044 0C000000 		.4byte	.LFE8-.LFB8
+ 1197 0048 00000000 		.4byte	.LFB9
+ 1198 004c 0C000000 		.4byte	.LFE9-.LFB9
+ 1199 0050 00000000 		.4byte	.LFB10
+ 1200 0054 0C000000 		.4byte	.LFE10-.LFB10
+ 1201 0058 00000000 		.4byte	.LFB11
+ 1202 005c 0C000000 		.4byte	.LFE11-.LFB11
+ 1203 0060 00000000 		.4byte	.LFB12
+ 1204 0064 0C000000 		.4byte	.LFE12-.LFB12
+ 1205 0068 00000000 		.4byte	.LFB13
+ 1206 006c 14000000 		.4byte	.LFE13-.LFB13
+ 1207 0070 00000000 		.4byte	.LFB14
+ 1208 0074 1C000000 		.4byte	.LFE14-.LFB14
+ 1209 0078 00000000 		.4byte	.LFB15
+ 1210 007c 14000000 		.4byte	.LFE15-.LFB15
+ 1211 0080 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 36
+
+
+ 1212 0084 38000000 		.4byte	.LFE0-.LFB0
+ 1213 0088 00000000 		.4byte	.LFB2
+ 1214 008c 1C000000 		.4byte	.LFE2-.LFB2
+ 1215 0090 00000000 		.4byte	0
+ 1216 0094 00000000 		.4byte	0
+ 1217              		.section	.debug_ranges,"",%progbits
+ 1218              	.Ldebug_ranges0:
+ 1219 0000 00000000 		.4byte	.LFB1
+ 1220 0004 10000000 		.4byte	.LFE1
+ 1221 0008 00000000 		.4byte	.LFB3
+ 1222 000c 10000000 		.4byte	.LFE3
+ 1223 0010 00000000 		.4byte	.LFB4
+ 1224 0014 0C000000 		.4byte	.LFE4
+ 1225 0018 00000000 		.4byte	.LFB5
+ 1226 001c 0C000000 		.4byte	.LFE5
+ 1227 0020 00000000 		.4byte	.LFB6
+ 1228 0024 0C000000 		.4byte	.LFE6
+ 1229 0028 00000000 		.4byte	.LFB7
+ 1230 002c 0C000000 		.4byte	.LFE7
+ 1231 0030 00000000 		.4byte	.LFB8
+ 1232 0034 0C000000 		.4byte	.LFE8
+ 1233 0038 00000000 		.4byte	.LFB9
+ 1234 003c 0C000000 		.4byte	.LFE9
+ 1235 0040 00000000 		.4byte	.LFB10
+ 1236 0044 0C000000 		.4byte	.LFE10
+ 1237 0048 00000000 		.4byte	.LFB11
+ 1238 004c 0C000000 		.4byte	.LFE11
+ 1239 0050 00000000 		.4byte	.LFB12
+ 1240 0054 0C000000 		.4byte	.LFE12
+ 1241 0058 00000000 		.4byte	.LFB13
+ 1242 005c 14000000 		.4byte	.LFE13
+ 1243 0060 00000000 		.4byte	.LFB14
+ 1244 0064 1C000000 		.4byte	.LFE14
+ 1245 0068 00000000 		.4byte	.LFB15
+ 1246 006c 14000000 		.4byte	.LFE15
+ 1247 0070 00000000 		.4byte	.LFB0
+ 1248 0074 38000000 		.4byte	.LFE0
+ 1249 0078 00000000 		.4byte	.LFB2
+ 1250 007c 1C000000 		.4byte	.LFE2
+ 1251 0080 00000000 		.4byte	0
+ 1252 0084 00000000 		.4byte	0
+ 1253              		.section	.debug_line,"",%progbits
+ 1254              	.Ldebug_line0:
+ 1255 0000 80010000 		.section	.debug_str,"MS",%progbits,1
+ 1255      02004F00 
+ 1255      00000201 
+ 1255      FB0E0D00 
+ 1255      01010101 
+ 1256              	.LASF18:
+ 1257 0000 54696D65 		.ascii	"Timer_1_SoftwareCapture\000"
+ 1257      725F315F 
+ 1257      536F6674 
+ 1257      77617265 
+ 1257      43617074 
+ 1258              	.LASF32:
+ 1259 0018 54696D65 		.ascii	"Timer_1_SetInterruptCount\000"
+ 1259      725F315F 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 37
+
+
+ 1259      53657449 
+ 1259      6E746572 
+ 1259      72757074 
+ 1260              	.LASF26:
+ 1261 0032 54696D65 		.ascii	"Timer_1_WritePeriod\000"
+ 1261      725F315F 
+ 1261      57726974 
+ 1261      65506572 
+ 1261      696F6400 
+ 1262              	.LASF27:
+ 1263 0046 70657269 		.ascii	"period\000"
+ 1263      6F6400
+ 1264              	.LASF3:
+ 1265 004d 73686F72 		.ascii	"short unsigned int\000"
+ 1265      7420756E 
+ 1265      7369676E 
+ 1265      65642069 
+ 1265      6E7400
+ 1266              	.LASF40:
+ 1267 0060 47656E65 		.ascii	"Generated_Source\\PSoC5\\Timer_1.c\000"
+ 1267      72617465 
+ 1267      645F536F 
+ 1267      75726365 
+ 1267      5C50536F 
+ 1268              	.LASF8:
+ 1269 0081 756E7369 		.ascii	"unsigned int\000"
+ 1269      676E6564 
+ 1269      20696E74 
+ 1269      00
+ 1270              	.LASF33:
+ 1271 008e 696E7465 		.ascii	"interruptCount\000"
+ 1271      72727570 
+ 1271      74436F75 
+ 1271      6E7400
+ 1272              	.LASF9:
+ 1273 009d 666C6F61 		.ascii	"float\000"
+ 1273      7400
+ 1274              	.LASF30:
+ 1275 00a3 636F756E 		.ascii	"counter\000"
+ 1275      74657200 
+ 1276              	.LASF7:
+ 1277 00ab 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1277      206C6F6E 
+ 1277      6720756E 
+ 1277      7369676E 
+ 1277      65642069 
+ 1278              	.LASF1:
+ 1279 00c2 756E7369 		.ascii	"unsigned char\000"
+ 1279      676E6564 
+ 1279      20636861 
+ 1279      7200
+ 1280              	.LASF39:
+ 1281 00d0 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1281      43313120 
+ 1281      352E342E 
+ 1281      31203230 
+ 1281      31363036 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 38
+
+
+ 1282 0103 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1282      20726576 
+ 1282      6973696F 
+ 1282      6E203233 
+ 1282      37373135 
+ 1283 0136 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1283      66756E63 
+ 1283      74696F6E 
+ 1283      2D736563 
+ 1283      74696F6E 
+ 1284              	.LASF13:
+ 1285 015e 72656738 		.ascii	"reg8\000"
+ 1285      00
+ 1286              	.LASF25:
+ 1287 0163 54696D65 		.ascii	"Timer_1_ReadPeriod\000"
+ 1287      725F315F 
+ 1287      52656164 
+ 1287      50657269 
+ 1287      6F6400
+ 1288              	.LASF5:
+ 1289 0176 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1289      20756E73 
+ 1289      69676E65 
+ 1289      6420696E 
+ 1289      7400
+ 1290              	.LASF12:
+ 1291 0188 75696E74 		.ascii	"uint8\000"
+ 1291      3800
+ 1292              	.LASF24:
+ 1293 018e 636F6E74 		.ascii	"control\000"
+ 1293      726F6C00 
+ 1294              	.LASF16:
+ 1295 0196 54696D65 		.ascii	"Timer_1_Enable\000"
+ 1295      725F315F 
+ 1295      456E6162 
+ 1295      6C6500
+ 1296              	.LASF10:
+ 1297 01a5 646F7562 		.ascii	"double\000"
+ 1297      6C6500
+ 1298              	.LASF21:
+ 1299 01ac 54696D65 		.ascii	"Timer_1_SetInterruptMode\000"
+ 1299      725F315F 
+ 1299      53657449 
+ 1299      6E746572 
+ 1299      72757074 
+ 1300              	.LASF43:
+ 1301 01c5 54696D65 		.ascii	"Timer_1_initVar\000"
+ 1301      725F315F 
+ 1301      696E6974 
+ 1301      56617200 
+ 1302              	.LASF22:
+ 1303 01d5 54696D65 		.ascii	"Timer_1_WriteControlRegister\000"
+ 1303      725F315F 
+ 1303      57726974 
+ 1303      65436F6E 
+ 1303      74726F6C 
+ 1304              	.LASF37:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 39
+
+
+ 1305 01f2 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1305      74657243 
+ 1305      72697469 
+ 1305      63616C53 
+ 1305      65637469 
+ 1306              	.LASF36:
+ 1307 0209 54696D65 		.ascii	"Timer_1_Start\000"
+ 1307      725F315F 
+ 1307      53746172 
+ 1307      7400
+ 1308              	.LASF35:
+ 1309 0217 54696D65 		.ascii	"Timer_1_Init\000"
+ 1309      725F315F 
+ 1309      496E6974 
+ 1309      00
+ 1310              	.LASF38:
+ 1311 0224 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1311      69744372 
+ 1311      69746963 
+ 1311      616C5365 
+ 1311      6374696F 
+ 1312              	.LASF29:
+ 1313 023a 54696D65 		.ascii	"Timer_1_WriteCounter\000"
+ 1313      725F315F 
+ 1313      57726974 
+ 1313      65436F75 
+ 1313      6E746572 
+ 1314              	.LASF28:
+ 1315 024f 54696D65 		.ascii	"Timer_1_ReadCapture\000"
+ 1315      725F315F 
+ 1315      52656164 
+ 1315      43617074 
+ 1315      75726500 
+ 1316              	.LASF41:
+ 1317 0263 4A3A5C50 		.ascii	"J:\\Project\\Steve Brain\\Zumo01\\ZumoBot.cydsn\000"
+ 1317      726F6A65 
+ 1317      63745C53 
+ 1317      74657665 
+ 1317      20427261 
+ 1318              	.LASF42:
+ 1319 028f 54696D65 		.ascii	"Timer_1_interruptState\000"
+ 1319      725F315F 
+ 1319      696E7465 
+ 1319      72727570 
+ 1319      74537461 
+ 1320              	.LASF15:
+ 1321 02a6 73697A65 		.ascii	"sizetype\000"
+ 1321      74797065 
+ 1321      00
+ 1322              	.LASF6:
+ 1323 02af 6C6F6E67 		.ascii	"long long int\000"
+ 1323      206C6F6E 
+ 1323      6720696E 
+ 1323      7400
+ 1324              	.LASF23:
+ 1325 02bd 696E7465 		.ascii	"interruptMode\000"
+ 1325      72727570 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccvDftiw.s 			page 40
+
+
+ 1325      744D6F64 
+ 1325      6500
+ 1326              	.LASF31:
+ 1327 02cb 54696D65 		.ascii	"Timer_1_ReadCounter\000"
+ 1327      725F315F 
+ 1327      52656164 
+ 1327      436F756E 
+ 1327      74657200 
+ 1328              	.LASF34:
+ 1329 02df 54696D65 		.ascii	"Timer_1_ClearFIFO\000"
+ 1329      725F315F 
+ 1329      436C6561 
+ 1329      72464946 
+ 1329      4F00
+ 1330              	.LASF20:
+ 1331 02f1 54696D65 		.ascii	"Timer_1_ReadControlRegister\000"
+ 1331      725F315F 
+ 1331      52656164 
+ 1331      436F6E74 
+ 1331      726F6C52 
+ 1332              	.LASF2:
+ 1333 030d 73686F72 		.ascii	"short int\000"
+ 1333      7420696E 
+ 1333      7400
+ 1334              	.LASF19:
+ 1335 0317 54696D65 		.ascii	"Timer_1_ReadStatusRegister\000"
+ 1335      725F315F 
+ 1335      52656164 
+ 1335      53746174 
+ 1335      75735265 
+ 1336              	.LASF4:
+ 1337 0332 6C6F6E67 		.ascii	"long int\000"
+ 1337      20696E74 
+ 1337      00
+ 1338              	.LASF11:
+ 1339 033b 63686172 		.ascii	"char\000"
+ 1339      00
+ 1340              	.LASF14:
+ 1341 0340 6C6F6E67 		.ascii	"long double\000"
+ 1341      20646F75 
+ 1341      626C6500 
+ 1342              	.LASF0:
+ 1343 034c 7369676E 		.ascii	"signed char\000"
+ 1343      65642063 
+ 1343      68617200 
+ 1344              	.LASF17:
+ 1345 0358 54696D65 		.ascii	"Timer_1_Stop\000"
+ 1345      725F315F 
+ 1345      53746F70 
+ 1345      00
+ 1346              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

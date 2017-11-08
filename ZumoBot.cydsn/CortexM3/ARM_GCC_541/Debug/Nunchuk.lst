@@ -1,0 +1,1105 @@
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Nunchuk.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.nunchuk_start,"ax",%progbits
+  20              		.align	2
+  21              		.global	nunchuk_start
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	nunchuk_start, %function
+  25              	nunchuk_start:
+  26              	.LFB64:
+  27              		.file 1 "ZumoLibrary\\Nunchuk.c"
+   1:ZumoLibrary/Nunchuk.c **** /**
+   2:ZumoLibrary/Nunchuk.c ****  * @file    Nunchuk.c
+   3:ZumoLibrary/Nunchuk.c ****  * @brief   Basic methods for operating wii nunchuck. For more details, please refer to Nunchuk.h f
+   4:ZumoLibrary/Nunchuk.c ****  * @details 
+   5:ZumoLibrary/Nunchuk.c **** */
+   6:ZumoLibrary/Nunchuk.c **** #include "nunchuk.h"
+   7:ZumoLibrary/Nunchuk.c **** 
+   8:ZumoLibrary/Nunchuk.c **** static int x,y,z;
+   9:ZumoLibrary/Nunchuk.c **** 
+  10:ZumoLibrary/Nunchuk.c **** /**
+  11:ZumoLibrary/Nunchuk.c **** * @brief    Start Nunchuk
+  12:ZumoLibrary/Nunchuk.c **** * @details
+  13:ZumoLibrary/Nunchuk.c **** */
+  14:ZumoLibrary/Nunchuk.c **** void nunchuk_start()
+  15:ZumoLibrary/Nunchuk.c **** {
+  28              		.loc 1 15 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  16:ZumoLibrary/Nunchuk.c ****     I2C_Start();
+  36              		.loc 1 16 0
+  37 0002 FFF7FEFF 		bl	I2C_Start
+  38              	.LVL0:
+  39 0006 08BD     		pop	{r3, pc}
+  40              		.cfi_endproc
+  41              	.LFE64:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 2
+
+
+  42              		.size	nunchuk_start, .-nunchuk_start
+  43              		.section	.text.nunchuk_init,"ax",%progbits
+  44              		.align	2
+  45              		.global	nunchuk_init
+  46              		.thumb
+  47              		.thumb_func
+  48              		.type	nunchuk_init, %function
+  49              	nunchuk_init:
+  50              	.LFB65:
+  17:ZumoLibrary/Nunchuk.c **** }
+  18:ZumoLibrary/Nunchuk.c **** 
+  19:ZumoLibrary/Nunchuk.c **** 
+  20:ZumoLibrary/Nunchuk.c **** /**
+  21:ZumoLibrary/Nunchuk.c **** * @brief    Initializing Nunchuk
+  22:ZumoLibrary/Nunchuk.c **** * @details  write value(0x00) to register(address - 0x40) to initialize nunchuk
+  23:ZumoLibrary/Nunchuk.c **** */
+  24:ZumoLibrary/Nunchuk.c **** void nunchuk_init()
+  25:ZumoLibrary/Nunchuk.c **** {
+  51              		.loc 1 25 0
+  52              		.cfi_startproc
+  53              		@ args = 0, pretend = 0, frame = 8
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55 0000 10B5     		push	{r4, lr}
+  56              		.cfi_def_cfa_offset 8
+  57              		.cfi_offset 4, -8
+  58              		.cfi_offset 14, -4
+  59 0002 82B0     		sub	sp, sp, #8
+  60              		.cfi_def_cfa_offset 16
+  26:ZumoLibrary/Nunchuk.c ****     uint8_t buf[2] = { 0x40, 0x00 };
+  61              		.loc 1 26 0
+  62 0004 4023     		movs	r3, #64
+  63 0006 8DF80430 		strb	r3, [sp, #4]
+  64 000a 0024     		movs	r4, #0
+  65 000c 8DF80540 		strb	r4, [sp, #5]
+  27:ZumoLibrary/Nunchuk.c ****     uint8_t status;
+  28:ZumoLibrary/Nunchuk.c ****     I2C_MasterClearStatus();
+  66              		.loc 1 28 0
+  67 0010 FFF7FEFF 		bl	I2C_MasterClearStatus
+  68              	.LVL1:
+  29:ZumoLibrary/Nunchuk.c ****     CyDelay(100);
+  69              		.loc 1 29 0
+  70 0014 6420     		movs	r0, #100
+  71 0016 FFF7FEFF 		bl	CyDelay
+  72              	.LVL2:
+  30:ZumoLibrary/Nunchuk.c ****     status = I2C_MasterWriteBuf(0x52, buf, 2, I2C_MODE_COMPLETE_XFER);
+  73              		.loc 1 30 0
+  74 001a 2346     		mov	r3, r4
+  75 001c 0222     		movs	r2, #2
+  76 001e 01A9     		add	r1, sp, #4
+  77 0020 5220     		movs	r0, #82
+  78 0022 FFF7FEFF 		bl	I2C_MasterWriteBuf
+  79              	.LVL3:
+  80              	.L4:
+  31:ZumoLibrary/Nunchuk.c ****     while(((status = I2C_MasterStatus()) & I2C_MSTAT_WR_CMPLT) == 0);
+  81              		.loc 1 31 0 discriminator 1
+  82 0026 FFF7FEFF 		bl	I2C_MasterStatus
+  83              	.LVL4:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 3
+
+
+  84 002a 10F0020F 		tst	r0, #2
+  85 002e FAD0     		beq	.L4
+  32:ZumoLibrary/Nunchuk.c ****     CyDelay(100);
+  86              		.loc 1 32 0
+  87 0030 6420     		movs	r0, #100
+  88              	.LVL5:
+  89 0032 FFF7FEFF 		bl	CyDelay
+  90              	.LVL6:
+  33:ZumoLibrary/Nunchuk.c **** }    
+  91              		.loc 1 33 0
+  92 0036 02B0     		add	sp, sp, #8
+  93              		.cfi_def_cfa_offset 8
+  94              		@ sp needed
+  95 0038 10BD     		pop	{r4, pc}
+  96              		.cfi_endproc
+  97              	.LFE65:
+  98              		.size	nunchuk_init, .-nunchuk_init
+  99 003a 00BF     		.section	.text.nunchuk_read,"ax",%progbits
+ 100              		.align	2
+ 101              		.global	nunchuk_read
+ 102              		.thumb
+ 103              		.thumb_func
+ 104              		.type	nunchuk_read, %function
+ 105              	nunchuk_read:
+ 106              	.LFB66:
+  34:ZumoLibrary/Nunchuk.c **** 
+  35:ZumoLibrary/Nunchuk.c **** 
+  36:ZumoLibrary/Nunchuk.c **** /**
+  37:ZumoLibrary/Nunchuk.c **** * @brief    Reading Nunchuk value
+  38:ZumoLibrary/Nunchuk.c **** * @details  Reading nunchuk value and getting joystick and accelerometer values
+  39:ZumoLibrary/Nunchuk.c **** */
+  40:ZumoLibrary/Nunchuk.c **** void nunchuk_read()
+  41:ZumoLibrary/Nunchuk.c **** {
+ 107              		.loc 1 41 0
+ 108              		.cfi_startproc
+ 109              		@ args = 0, pretend = 0, frame = 8
+ 110              		@ frame_needed = 0, uses_anonymous_args = 0
+ 111 0000 30B5     		push	{r4, r5, lr}
+ 112              		.cfi_def_cfa_offset 12
+ 113              		.cfi_offset 4, -12
+ 114              		.cfi_offset 5, -8
+ 115              		.cfi_offset 14, -4
+ 116 0002 83B0     		sub	sp, sp, #12
+ 117              		.cfi_def_cfa_offset 24
+  42:ZumoLibrary/Nunchuk.c ****     uint8_t status;
+  43:ZumoLibrary/Nunchuk.c ****     uint8_t buf[6];
+  44:ZumoLibrary/Nunchuk.c ****     
+  45:ZumoLibrary/Nunchuk.c ****     // send conversion command
+  46:ZumoLibrary/Nunchuk.c ****     buf[0] = 0x00;
+ 118              		.loc 1 46 0
+ 119 0004 0025     		movs	r5, #0
+ 120 0006 02AC     		add	r4, sp, #8
+ 121 0008 04F8085D 		strb	r5, [r4, #-8]!
+  47:ZumoLibrary/Nunchuk.c ****     I2C_MasterClearStatus();
+ 122              		.loc 1 47 0
+ 123 000c FFF7FEFF 		bl	I2C_MasterClearStatus
+ 124              	.LVL7:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 4
+
+
+  48:ZumoLibrary/Nunchuk.c ****     status = I2C_MasterWriteBuf(0x52, buf, 1, I2C_MODE_COMPLETE_XFER);
+ 125              		.loc 1 48 0
+ 126 0010 2B46     		mov	r3, r5
+ 127 0012 0122     		movs	r2, #1
+ 128 0014 2146     		mov	r1, r4
+ 129 0016 5220     		movs	r0, #82
+ 130 0018 FFF7FEFF 		bl	I2C_MasterWriteBuf
+ 131              	.LVL8:
+ 132              	.L7:
+  49:ZumoLibrary/Nunchuk.c ****     while(((status = I2C_MasterStatus()) & I2C_MSTAT_WR_CMPLT) == 0);
+ 133              		.loc 1 49 0 discriminator 1
+ 134 001c FFF7FEFF 		bl	I2C_MasterStatus
+ 135              	.LVL9:
+ 136 0020 10F0020F 		tst	r0, #2
+ 137 0024 FAD0     		beq	.L7
+  50:ZumoLibrary/Nunchuk.c ****     
+  51:ZumoLibrary/Nunchuk.c ****     // wait for conversion to complete
+  52:ZumoLibrary/Nunchuk.c ****     CyDelay(50); // todo: check if shorter wait would work
+ 138              		.loc 1 52 0
+ 139 0026 3220     		movs	r0, #50
+ 140              	.LVL10:
+ 141 0028 FFF7FEFF 		bl	CyDelay
+ 142              	.LVL11:
+  53:ZumoLibrary/Nunchuk.c ****    
+  54:ZumoLibrary/Nunchuk.c ****     // read values
+  55:ZumoLibrary/Nunchuk.c ****     I2C_MasterClearStatus();
+ 143              		.loc 1 55 0
+ 144 002c FFF7FEFF 		bl	I2C_MasterClearStatus
+ 145              	.LVL12:
+  56:ZumoLibrary/Nunchuk.c ****     status = I2C_MasterReadBuf(0x52, buf, 6, I2C_MODE_COMPLETE_XFER);
+ 146              		.loc 1 56 0
+ 147 0030 0023     		movs	r3, #0
+ 148 0032 0622     		movs	r2, #6
+ 149 0034 6946     		mov	r1, sp
+ 150 0036 5220     		movs	r0, #82
+ 151 0038 FFF7FEFF 		bl	I2C_MasterReadBuf
+ 152              	.LVL13:
+ 153              	.L8:
+  57:ZumoLibrary/Nunchuk.c ****     while(((status = I2C_MasterStatus()) & I2C_MSTAT_RD_CMPLT) == 0);
+ 154              		.loc 1 57 0 discriminator 1
+ 155 003c FFF7FEFF 		bl	I2C_MasterStatus
+ 156              	.LVL14:
+ 157 0040 10F0010F 		tst	r0, #1
+ 158 0044 FAD0     		beq	.L8
+ 159 0046 0023     		movs	r3, #0
+ 160 0048 00E0     		b	.L9
+ 161              	.LVL15:
+ 162              	.L10:
+  58:ZumoLibrary/Nunchuk.c ****     
+  59:ZumoLibrary/Nunchuk.c ****     int i;
+  60:ZumoLibrary/Nunchuk.c ****     // decrypt data
+  61:ZumoLibrary/Nunchuk.c ****     for(i = 0; i < 6; i++) buf[i] = (buf[i] ^ 0x17) + 0x17;
+ 163              		.loc 1 61 0 discriminator 3
+ 164 004a 0133     		adds	r3, r3, #1
+ 165              	.LVL16:
+ 166              	.L9:
+ 167              		.loc 1 61 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 5
+
+
+ 168 004c 052B     		cmp	r3, #5
+ 169 004e FCDD     		ble	.L10
+  62:ZumoLibrary/Nunchuk.c ****     // accelerometer values
+  63:ZumoLibrary/Nunchuk.c ****     x = (buf[2] << 2) | ((buf[5] >> 2) & 0x03);
+  64:ZumoLibrary/Nunchuk.c ****     y = (buf[3] << 2) | ((buf[5] >> 4) & 0x03);
+  65:ZumoLibrary/Nunchuk.c ****     z = (buf[4] << 2) | ((buf[5] >> 6) & 0x03);
+  66:ZumoLibrary/Nunchuk.c ****     
+  67:ZumoLibrary/Nunchuk.c ****     //If you want to print out the value  
+  68:ZumoLibrary/Nunchuk.c ****     //printf("%3d %3d, %d, %d, %4d %4d %4d\r\n", buf[0], buf[1], (buf[5] >> 1) & 1, buf[5] & 1, x, 
+  69:ZumoLibrary/Nunchuk.c **** } ...
+ 170              		.loc 1 69 0 is_stmt 1
+ 171 0050 03B0     		add	sp, sp, #12
+ 172              		.cfi_def_cfa_offset 12
+ 173              		@ sp needed
+ 174 0052 30BD     		pop	{r4, r5, pc}
+ 175              		.cfi_endproc
+ 176              	.LFE66:
+ 177              		.size	nunchuk_read, .-nunchuk_read
+ 178              		.text
+ 179              	.Letext0:
+ 180              		.file 2 "j:\\psoc\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\includ
+ 181              		.file 3 "j:\\psoc\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\includ
+ 182              		.file 4 "Generated_Source\\PSoC5/I2C.h"
+ 183              		.file 5 "Generated_Source\\PSoC5/CyLib.h"
+ 184              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 185              		.section	.debug_info,"",%progbits
+ 186              	.Ldebug_info0:
+ 187 0000 B2020000 		.4byte	0x2b2
+ 188 0004 0400     		.2byte	0x4
+ 189 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 190 000a 04       		.byte	0x4
+ 191 000b 01       		.uleb128 0x1
+ 192 000c 20010000 		.4byte	.LASF28
+ 193 0010 0C       		.byte	0xc
+ 194 0011 03020000 		.4byte	.LASF29
+ 195 0015 F4000000 		.4byte	.LASF30
+ 196 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 197 001d 00000000 		.4byte	0
+ 198 0021 00000000 		.4byte	.Ldebug_line0
+ 199 0025 02       		.uleb128 0x2
+ 200 0026 01       		.byte	0x1
+ 201 0027 06       		.byte	0x6
+ 202 0028 25020000 		.4byte	.LASF0
+ 203 002c 03       		.uleb128 0x3
+ 204 002d 00000000 		.4byte	.LASF4
+ 205 0031 02       		.byte	0x2
+ 206 0032 1D       		.byte	0x1d
+ 207 0033 37000000 		.4byte	0x37
+ 208 0037 02       		.uleb128 0x2
+ 209 0038 01       		.byte	0x1
+ 210 0039 08       		.byte	0x8
+ 211 003a 66000000 		.4byte	.LASF1
+ 212 003e 02       		.uleb128 0x2
+ 213 003f 02       		.byte	0x2
+ 214 0040 05       		.byte	0x5
+ 215 0041 F0010000 		.4byte	.LASF2
+ 216 0045 02       		.uleb128 0x2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 6
+
+
+ 217 0046 02       		.byte	0x2
+ 218 0047 07       		.byte	0x7
+ 219 0048 14000000 		.4byte	.LASF3
+ 220 004c 03       		.uleb128 0x3
+ 221 004d 0A000000 		.4byte	.LASF5
+ 222 0051 02       		.byte	0x2
+ 223 0052 3F       		.byte	0x3f
+ 224 0053 57000000 		.4byte	0x57
+ 225 0057 02       		.uleb128 0x2
+ 226 0058 04       		.byte	0x4
+ 227 0059 05       		.byte	0x5
+ 228 005a FA010000 		.4byte	.LASF6
+ 229 005e 02       		.uleb128 0x2
+ 230 005f 04       		.byte	0x4
+ 231 0060 07       		.byte	0x7
+ 232 0061 94000000 		.4byte	.LASF7
+ 233 0065 02       		.uleb128 0x2
+ 234 0066 08       		.byte	0x8
+ 235 0067 05       		.byte	0x5
+ 236 0068 BF010000 		.4byte	.LASF8
+ 237 006c 02       		.uleb128 0x2
+ 238 006d 08       		.byte	0x8
+ 239 006e 07       		.byte	0x7
+ 240 006f D5000000 		.4byte	.LASF9
+ 241 0073 04       		.uleb128 0x4
+ 242 0074 04       		.byte	0x4
+ 243 0075 05       		.byte	0x5
+ 244 0076 696E7400 		.ascii	"int\000"
+ 245 007a 02       		.uleb128 0x2
+ 246 007b 04       		.byte	0x4
+ 247 007c 07       		.byte	0x7
+ 248 007d C8000000 		.4byte	.LASF10
+ 249 0081 03       		.uleb128 0x3
+ 250 0082 EC000000 		.4byte	.LASF11
+ 251 0086 03       		.byte	0x3
+ 252 0087 18       		.byte	0x18
+ 253 0088 2C000000 		.4byte	0x2c
+ 254 008c 03       		.uleb128 0x3
+ 255 008d AE010000 		.4byte	.LASF12
+ 256 0091 03       		.byte	0x3
+ 257 0092 2C       		.byte	0x2c
+ 258 0093 4C000000 		.4byte	0x4c
+ 259 0097 02       		.uleb128 0x2
+ 260 0098 04       		.byte	0x4
+ 261 0099 04       		.byte	0x4
+ 262 009a 4E000000 		.4byte	.LASF13
+ 263 009e 02       		.uleb128 0x2
+ 264 009f 08       		.byte	0x8
+ 265 00a0 04       		.byte	0x4
+ 266 00a1 C1000000 		.4byte	.LASF14
+ 267 00a5 02       		.uleb128 0x2
+ 268 00a6 01       		.byte	0x1
+ 269 00a7 08       		.byte	0x8
+ 270 00a8 CD010000 		.4byte	.LASF15
+ 271 00ac 02       		.uleb128 0x2
+ 272 00ad 08       		.byte	0x8
+ 273 00ae 04       		.byte	0x4
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 7
+
+
+ 274 00af 19020000 		.4byte	.LASF16
+ 275 00b3 02       		.uleb128 0x2
+ 276 00b4 04       		.byte	0x4
+ 277 00b5 07       		.byte	0x7
+ 278 00b6 B6010000 		.4byte	.LASF17
+ 279 00ba 05       		.uleb128 0x5
+ 280 00bb B3000000 		.4byte	.LASF18
+ 281 00bf 01       		.byte	0x1
+ 282 00c0 0E       		.byte	0xe
+ 283 00c1 00000000 		.4byte	.LFB64
+ 284 00c5 08000000 		.4byte	.LFE64-.LFB64
+ 285 00c9 01       		.uleb128 0x1
+ 286 00ca 9C       		.byte	0x9c
+ 287 00cb D9000000 		.4byte	0xd9
+ 288 00cf 06       		.uleb128 0x6
+ 289 00d0 06000000 		.4byte	.LVL0
+ 290 00d4 73020000 		.4byte	0x273
+ 291 00d8 00       		.byte	0
+ 292 00d9 05       		.uleb128 0x5
+ 293 00da 87000000 		.4byte	.LASF19
+ 294 00de 01       		.byte	0x1
+ 295 00df 18       		.byte	0x18
+ 296 00e0 00000000 		.4byte	.LFB65
+ 297 00e4 3A000000 		.4byte	.LFE65-.LFB65
+ 298 00e8 01       		.uleb128 0x1
+ 299 00e9 9C       		.byte	0x9c
+ 300 00ea 67010000 		.4byte	0x167
+ 301 00ee 07       		.uleb128 0x7
+ 302 00ef 62756600 		.ascii	"buf\000"
+ 303 00f3 01       		.byte	0x1
+ 304 00f4 1A       		.byte	0x1a
+ 305 00f5 67010000 		.4byte	0x167
+ 306 00f9 02       		.uleb128 0x2
+ 307 00fa 91       		.byte	0x91
+ 308 00fb 74       		.sleb128 -12
+ 309 00fc 08       		.uleb128 0x8
+ 310 00fd 3D000000 		.4byte	.LASF20
+ 311 0101 01       		.byte	0x1
+ 312 0102 1B       		.byte	0x1b
+ 313 0103 81000000 		.4byte	0x81
+ 314 0107 00000000 		.4byte	.LLST0
+ 315 010b 06       		.uleb128 0x6
+ 316 010c 14000000 		.4byte	.LVL1
+ 317 0110 7E020000 		.4byte	0x27e
+ 318 0114 09       		.uleb128 0x9
+ 319 0115 1A000000 		.4byte	.LVL2
+ 320 0119 89020000 		.4byte	0x289
+ 321 011d 28010000 		.4byte	0x128
+ 322 0121 0A       		.uleb128 0xa
+ 323 0122 01       		.uleb128 0x1
+ 324 0123 50       		.byte	0x50
+ 325 0124 02       		.uleb128 0x2
+ 326 0125 08       		.byte	0x8
+ 327 0126 64       		.byte	0x64
+ 328 0127 00       		.byte	0
+ 329 0128 09       		.uleb128 0x9
+ 330 0129 26000000 		.4byte	.LVL3
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 8
+
+
+ 331 012d 94020000 		.4byte	0x294
+ 332 0131 4D010000 		.4byte	0x14d
+ 333 0135 0A       		.uleb128 0xa
+ 334 0136 01       		.uleb128 0x1
+ 335 0137 50       		.byte	0x50
+ 336 0138 02       		.uleb128 0x2
+ 337 0139 08       		.byte	0x8
+ 338 013a 52       		.byte	0x52
+ 339 013b 0A       		.uleb128 0xa
+ 340 013c 01       		.uleb128 0x1
+ 341 013d 51       		.byte	0x51
+ 342 013e 02       		.uleb128 0x2
+ 343 013f 91       		.byte	0x91
+ 344 0140 74       		.sleb128 -12
+ 345 0141 0A       		.uleb128 0xa
+ 346 0142 01       		.uleb128 0x1
+ 347 0143 52       		.byte	0x52
+ 348 0144 01       		.uleb128 0x1
+ 349 0145 32       		.byte	0x32
+ 350 0146 0A       		.uleb128 0xa
+ 351 0147 01       		.uleb128 0x1
+ 352 0148 53       		.byte	0x53
+ 353 0149 02       		.uleb128 0x2
+ 354 014a 74       		.byte	0x74
+ 355 014b 00       		.sleb128 0
+ 356 014c 00       		.byte	0
+ 357 014d 06       		.uleb128 0x6
+ 358 014e 2A000000 		.4byte	.LVL4
+ 359 0152 9F020000 		.4byte	0x29f
+ 360 0156 0B       		.uleb128 0xb
+ 361 0157 36000000 		.4byte	.LVL6
+ 362 015b 89020000 		.4byte	0x289
+ 363 015f 0A       		.uleb128 0xa
+ 364 0160 01       		.uleb128 0x1
+ 365 0161 50       		.byte	0x50
+ 366 0162 02       		.uleb128 0x2
+ 367 0163 08       		.byte	0x8
+ 368 0164 64       		.byte	0x64
+ 369 0165 00       		.byte	0
+ 370 0166 00       		.byte	0
+ 371 0167 0C       		.uleb128 0xc
+ 372 0168 81000000 		.4byte	0x81
+ 373 016c 77010000 		.4byte	0x177
+ 374 0170 0D       		.uleb128 0xd
+ 375 0171 B3000000 		.4byte	0xb3
+ 376 0175 01       		.byte	0x1
+ 377 0176 00       		.byte	0
+ 378 0177 05       		.uleb128 0x5
+ 379 0178 E3010000 		.4byte	.LASF21
+ 380 017c 01       		.byte	0x1
+ 381 017d 28       		.byte	0x28
+ 382 017e 00000000 		.4byte	.LFB66
+ 383 0182 54000000 		.4byte	.LFE66-.LFB66
+ 384 0186 01       		.uleb128 0x1
+ 385 0187 9C       		.byte	0x9c
+ 386 0188 37020000 		.4byte	0x237
+ 387 018c 08       		.uleb128 0x8
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 9
+
+
+ 388 018d 3D000000 		.4byte	.LASF20
+ 389 0191 01       		.byte	0x1
+ 390 0192 2A       		.byte	0x2a
+ 391 0193 81000000 		.4byte	0x81
+ 392 0197 13000000 		.4byte	.LLST1
+ 393 019b 07       		.uleb128 0x7
+ 394 019c 62756600 		.ascii	"buf\000"
+ 395 01a0 01       		.byte	0x1
+ 396 01a1 2B       		.byte	0x2b
+ 397 01a2 37020000 		.4byte	0x237
+ 398 01a6 02       		.uleb128 0x2
+ 399 01a7 91       		.byte	0x91
+ 400 01a8 68       		.sleb128 -24
+ 401 01a9 07       		.uleb128 0x7
+ 402 01aa 6900     		.ascii	"i\000"
+ 403 01ac 01       		.byte	0x1
+ 404 01ad 3B       		.byte	0x3b
+ 405 01ae 73000000 		.4byte	0x73
+ 406 01b2 01       		.uleb128 0x1
+ 407 01b3 53       		.byte	0x53
+ 408 01b4 06       		.uleb128 0x6
+ 409 01b5 10000000 		.4byte	.LVL7
+ 410 01b9 7E020000 		.4byte	0x27e
+ 411 01bd 09       		.uleb128 0x9
+ 412 01be 1C000000 		.4byte	.LVL8
+ 413 01c2 94020000 		.4byte	0x294
+ 414 01c6 E2010000 		.4byte	0x1e2
+ 415 01ca 0A       		.uleb128 0xa
+ 416 01cb 01       		.uleb128 0x1
+ 417 01cc 50       		.byte	0x50
+ 418 01cd 02       		.uleb128 0x2
+ 419 01ce 08       		.byte	0x8
+ 420 01cf 52       		.byte	0x52
+ 421 01d0 0A       		.uleb128 0xa
+ 422 01d1 01       		.uleb128 0x1
+ 423 01d2 51       		.byte	0x51
+ 424 01d3 02       		.uleb128 0x2
+ 425 01d4 74       		.byte	0x74
+ 426 01d5 00       		.sleb128 0
+ 427 01d6 0A       		.uleb128 0xa
+ 428 01d7 01       		.uleb128 0x1
+ 429 01d8 52       		.byte	0x52
+ 430 01d9 01       		.uleb128 0x1
+ 431 01da 31       		.byte	0x31
+ 432 01db 0A       		.uleb128 0xa
+ 433 01dc 01       		.uleb128 0x1
+ 434 01dd 53       		.byte	0x53
+ 435 01de 02       		.uleb128 0x2
+ 436 01df 75       		.byte	0x75
+ 437 01e0 00       		.sleb128 0
+ 438 01e1 00       		.byte	0
+ 439 01e2 06       		.uleb128 0x6
+ 440 01e3 20000000 		.4byte	.LVL9
+ 441 01e7 9F020000 		.4byte	0x29f
+ 442 01eb 09       		.uleb128 0x9
+ 443 01ec 2C000000 		.4byte	.LVL11
+ 444 01f0 89020000 		.4byte	0x289
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 10
+
+
+ 445 01f4 FF010000 		.4byte	0x1ff
+ 446 01f8 0A       		.uleb128 0xa
+ 447 01f9 01       		.uleb128 0x1
+ 448 01fa 50       		.byte	0x50
+ 449 01fb 02       		.uleb128 0x2
+ 450 01fc 08       		.byte	0x8
+ 451 01fd 32       		.byte	0x32
+ 452 01fe 00       		.byte	0
+ 453 01ff 06       		.uleb128 0x6
+ 454 0200 30000000 		.4byte	.LVL12
+ 455 0204 7E020000 		.4byte	0x27e
+ 456 0208 09       		.uleb128 0x9
+ 457 0209 3C000000 		.4byte	.LVL13
+ 458 020d AA020000 		.4byte	0x2aa
+ 459 0211 2D020000 		.4byte	0x22d
+ 460 0215 0A       		.uleb128 0xa
+ 461 0216 01       		.uleb128 0x1
+ 462 0217 50       		.byte	0x50
+ 463 0218 02       		.uleb128 0x2
+ 464 0219 08       		.byte	0x8
+ 465 021a 52       		.byte	0x52
+ 466 021b 0A       		.uleb128 0xa
+ 467 021c 01       		.uleb128 0x1
+ 468 021d 51       		.byte	0x51
+ 469 021e 02       		.uleb128 0x2
+ 470 021f 7D       		.byte	0x7d
+ 471 0220 00       		.sleb128 0
+ 472 0221 0A       		.uleb128 0xa
+ 473 0222 01       		.uleb128 0x1
+ 474 0223 52       		.byte	0x52
+ 475 0224 01       		.uleb128 0x1
+ 476 0225 36       		.byte	0x36
+ 477 0226 0A       		.uleb128 0xa
+ 478 0227 01       		.uleb128 0x1
+ 479 0228 53       		.byte	0x53
+ 480 0229 02       		.uleb128 0x2
+ 481 022a 75       		.byte	0x75
+ 482 022b 00       		.sleb128 0
+ 483 022c 00       		.byte	0
+ 484 022d 06       		.uleb128 0x6
+ 485 022e 40000000 		.4byte	.LVL14
+ 486 0232 9F020000 		.4byte	0x29f
+ 487 0236 00       		.byte	0
+ 488 0237 0C       		.uleb128 0xc
+ 489 0238 81000000 		.4byte	0x81
+ 490 023c 47020000 		.4byte	0x247
+ 491 0240 0D       		.uleb128 0xd
+ 492 0241 B3000000 		.4byte	0xb3
+ 493 0245 05       		.byte	0x5
+ 494 0246 00       		.byte	0
+ 495 0247 0E       		.uleb128 0xe
+ 496 0248 7800     		.ascii	"x\000"
+ 497 024a 01       		.byte	0x1
+ 498 024b 08       		.byte	0x8
+ 499 024c 73000000 		.4byte	0x73
+ 500 0250 0E       		.uleb128 0xe
+ 501 0251 7900     		.ascii	"y\000"
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 11
+
+
+ 502 0253 01       		.byte	0x1
+ 503 0254 08       		.byte	0x8
+ 504 0255 73000000 		.4byte	0x73
+ 505 0259 0E       		.uleb128 0xe
+ 506 025a 7A00     		.ascii	"z\000"
+ 507 025c 01       		.byte	0x1
+ 508 025d 08       		.byte	0x8
+ 509 025e 73000000 		.4byte	0x73
+ 510 0262 0F       		.uleb128 0xf
+ 511 0263 A6000000 		.4byte	.LASF31
+ 512 0267 06       		.byte	0x6
+ 513 0268 9606     		.2byte	0x696
+ 514 026a 6E020000 		.4byte	0x26e
+ 515 026e 10       		.uleb128 0x10
+ 516 026f 8C000000 		.4byte	0x8c
+ 517 0273 11       		.uleb128 0x11
+ 518 0274 44000000 		.4byte	.LASF22
+ 519 0278 44000000 		.4byte	.LASF22
+ 520 027c 04       		.byte	0x4
+ 521 027d 93       		.byte	0x93
+ 522 027e 11       		.uleb128 0x11
+ 523 027f 27000000 		.4byte	.LASF23
+ 524 0283 27000000 		.4byte	.LASF23
+ 525 0287 04       		.byte	0x4
+ 526 0288 A4       		.byte	0xa4
+ 527 0289 11       		.uleb128 0x11
+ 528 028a 31020000 		.4byte	.LASF24
+ 529 028e 31020000 		.4byte	.LASF24
+ 530 0292 05       		.byte	0x5
+ 531 0293 76       		.byte	0x76
+ 532 0294 11       		.uleb128 0x11
+ 533 0295 74000000 		.4byte	.LASF25
+ 534 0299 74000000 		.4byte	.LASF25
+ 535 029d 04       		.byte	0x4
+ 536 029e A7       		.byte	0xa7
+ 537 029f 11       		.uleb128 0x11
+ 538 02a0 D2010000 		.4byte	.LASF26
+ 539 02a4 D2010000 		.4byte	.LASF26
+ 540 02a8 04       		.byte	0x4
+ 541 02a9 A3       		.byte	0xa3
+ 542 02aa 11       		.uleb128 0x11
+ 543 02ab 54000000 		.4byte	.LASF27
+ 544 02af 54000000 		.4byte	.LASF27
+ 545 02b3 04       		.byte	0x4
+ 546 02b4 A9       		.byte	0xa9
+ 547 02b5 00       		.byte	0
+ 548              		.section	.debug_abbrev,"",%progbits
+ 549              	.Ldebug_abbrev0:
+ 550 0000 01       		.uleb128 0x1
+ 551 0001 11       		.uleb128 0x11
+ 552 0002 01       		.byte	0x1
+ 553 0003 25       		.uleb128 0x25
+ 554 0004 0E       		.uleb128 0xe
+ 555 0005 13       		.uleb128 0x13
+ 556 0006 0B       		.uleb128 0xb
+ 557 0007 03       		.uleb128 0x3
+ 558 0008 0E       		.uleb128 0xe
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 12
+
+
+ 559 0009 1B       		.uleb128 0x1b
+ 560 000a 0E       		.uleb128 0xe
+ 561 000b 55       		.uleb128 0x55
+ 562 000c 17       		.uleb128 0x17
+ 563 000d 11       		.uleb128 0x11
+ 564 000e 01       		.uleb128 0x1
+ 565 000f 10       		.uleb128 0x10
+ 566 0010 17       		.uleb128 0x17
+ 567 0011 00       		.byte	0
+ 568 0012 00       		.byte	0
+ 569 0013 02       		.uleb128 0x2
+ 570 0014 24       		.uleb128 0x24
+ 571 0015 00       		.byte	0
+ 572 0016 0B       		.uleb128 0xb
+ 573 0017 0B       		.uleb128 0xb
+ 574 0018 3E       		.uleb128 0x3e
+ 575 0019 0B       		.uleb128 0xb
+ 576 001a 03       		.uleb128 0x3
+ 577 001b 0E       		.uleb128 0xe
+ 578 001c 00       		.byte	0
+ 579 001d 00       		.byte	0
+ 580 001e 03       		.uleb128 0x3
+ 581 001f 16       		.uleb128 0x16
+ 582 0020 00       		.byte	0
+ 583 0021 03       		.uleb128 0x3
+ 584 0022 0E       		.uleb128 0xe
+ 585 0023 3A       		.uleb128 0x3a
+ 586 0024 0B       		.uleb128 0xb
+ 587 0025 3B       		.uleb128 0x3b
+ 588 0026 0B       		.uleb128 0xb
+ 589 0027 49       		.uleb128 0x49
+ 590 0028 13       		.uleb128 0x13
+ 591 0029 00       		.byte	0
+ 592 002a 00       		.byte	0
+ 593 002b 04       		.uleb128 0x4
+ 594 002c 24       		.uleb128 0x24
+ 595 002d 00       		.byte	0
+ 596 002e 0B       		.uleb128 0xb
+ 597 002f 0B       		.uleb128 0xb
+ 598 0030 3E       		.uleb128 0x3e
+ 599 0031 0B       		.uleb128 0xb
+ 600 0032 03       		.uleb128 0x3
+ 601 0033 08       		.uleb128 0x8
+ 602 0034 00       		.byte	0
+ 603 0035 00       		.byte	0
+ 604 0036 05       		.uleb128 0x5
+ 605 0037 2E       		.uleb128 0x2e
+ 606 0038 01       		.byte	0x1
+ 607 0039 3F       		.uleb128 0x3f
+ 608 003a 19       		.uleb128 0x19
+ 609 003b 03       		.uleb128 0x3
+ 610 003c 0E       		.uleb128 0xe
+ 611 003d 3A       		.uleb128 0x3a
+ 612 003e 0B       		.uleb128 0xb
+ 613 003f 3B       		.uleb128 0x3b
+ 614 0040 0B       		.uleb128 0xb
+ 615 0041 11       		.uleb128 0x11
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 13
+
+
+ 616 0042 01       		.uleb128 0x1
+ 617 0043 12       		.uleb128 0x12
+ 618 0044 06       		.uleb128 0x6
+ 619 0045 40       		.uleb128 0x40
+ 620 0046 18       		.uleb128 0x18
+ 621 0047 9742     		.uleb128 0x2117
+ 622 0049 19       		.uleb128 0x19
+ 623 004a 01       		.uleb128 0x1
+ 624 004b 13       		.uleb128 0x13
+ 625 004c 00       		.byte	0
+ 626 004d 00       		.byte	0
+ 627 004e 06       		.uleb128 0x6
+ 628 004f 898201   		.uleb128 0x4109
+ 629 0052 00       		.byte	0
+ 630 0053 11       		.uleb128 0x11
+ 631 0054 01       		.uleb128 0x1
+ 632 0055 31       		.uleb128 0x31
+ 633 0056 13       		.uleb128 0x13
+ 634 0057 00       		.byte	0
+ 635 0058 00       		.byte	0
+ 636 0059 07       		.uleb128 0x7
+ 637 005a 34       		.uleb128 0x34
+ 638 005b 00       		.byte	0
+ 639 005c 03       		.uleb128 0x3
+ 640 005d 08       		.uleb128 0x8
+ 641 005e 3A       		.uleb128 0x3a
+ 642 005f 0B       		.uleb128 0xb
+ 643 0060 3B       		.uleb128 0x3b
+ 644 0061 0B       		.uleb128 0xb
+ 645 0062 49       		.uleb128 0x49
+ 646 0063 13       		.uleb128 0x13
+ 647 0064 02       		.uleb128 0x2
+ 648 0065 18       		.uleb128 0x18
+ 649 0066 00       		.byte	0
+ 650 0067 00       		.byte	0
+ 651 0068 08       		.uleb128 0x8
+ 652 0069 34       		.uleb128 0x34
+ 653 006a 00       		.byte	0
+ 654 006b 03       		.uleb128 0x3
+ 655 006c 0E       		.uleb128 0xe
+ 656 006d 3A       		.uleb128 0x3a
+ 657 006e 0B       		.uleb128 0xb
+ 658 006f 3B       		.uleb128 0x3b
+ 659 0070 0B       		.uleb128 0xb
+ 660 0071 49       		.uleb128 0x49
+ 661 0072 13       		.uleb128 0x13
+ 662 0073 02       		.uleb128 0x2
+ 663 0074 17       		.uleb128 0x17
+ 664 0075 00       		.byte	0
+ 665 0076 00       		.byte	0
+ 666 0077 09       		.uleb128 0x9
+ 667 0078 898201   		.uleb128 0x4109
+ 668 007b 01       		.byte	0x1
+ 669 007c 11       		.uleb128 0x11
+ 670 007d 01       		.uleb128 0x1
+ 671 007e 31       		.uleb128 0x31
+ 672 007f 13       		.uleb128 0x13
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 14
+
+
+ 673 0080 01       		.uleb128 0x1
+ 674 0081 13       		.uleb128 0x13
+ 675 0082 00       		.byte	0
+ 676 0083 00       		.byte	0
+ 677 0084 0A       		.uleb128 0xa
+ 678 0085 8A8201   		.uleb128 0x410a
+ 679 0088 00       		.byte	0
+ 680 0089 02       		.uleb128 0x2
+ 681 008a 18       		.uleb128 0x18
+ 682 008b 9142     		.uleb128 0x2111
+ 683 008d 18       		.uleb128 0x18
+ 684 008e 00       		.byte	0
+ 685 008f 00       		.byte	0
+ 686 0090 0B       		.uleb128 0xb
+ 687 0091 898201   		.uleb128 0x4109
+ 688 0094 01       		.byte	0x1
+ 689 0095 11       		.uleb128 0x11
+ 690 0096 01       		.uleb128 0x1
+ 691 0097 31       		.uleb128 0x31
+ 692 0098 13       		.uleb128 0x13
+ 693 0099 00       		.byte	0
+ 694 009a 00       		.byte	0
+ 695 009b 0C       		.uleb128 0xc
+ 696 009c 01       		.uleb128 0x1
+ 697 009d 01       		.byte	0x1
+ 698 009e 49       		.uleb128 0x49
+ 699 009f 13       		.uleb128 0x13
+ 700 00a0 01       		.uleb128 0x1
+ 701 00a1 13       		.uleb128 0x13
+ 702 00a2 00       		.byte	0
+ 703 00a3 00       		.byte	0
+ 704 00a4 0D       		.uleb128 0xd
+ 705 00a5 21       		.uleb128 0x21
+ 706 00a6 00       		.byte	0
+ 707 00a7 49       		.uleb128 0x49
+ 708 00a8 13       		.uleb128 0x13
+ 709 00a9 2F       		.uleb128 0x2f
+ 710 00aa 0B       		.uleb128 0xb
+ 711 00ab 00       		.byte	0
+ 712 00ac 00       		.byte	0
+ 713 00ad 0E       		.uleb128 0xe
+ 714 00ae 34       		.uleb128 0x34
+ 715 00af 00       		.byte	0
+ 716 00b0 03       		.uleb128 0x3
+ 717 00b1 08       		.uleb128 0x8
+ 718 00b2 3A       		.uleb128 0x3a
+ 719 00b3 0B       		.uleb128 0xb
+ 720 00b4 3B       		.uleb128 0x3b
+ 721 00b5 0B       		.uleb128 0xb
+ 722 00b6 49       		.uleb128 0x49
+ 723 00b7 13       		.uleb128 0x13
+ 724 00b8 00       		.byte	0
+ 725 00b9 00       		.byte	0
+ 726 00ba 0F       		.uleb128 0xf
+ 727 00bb 34       		.uleb128 0x34
+ 728 00bc 00       		.byte	0
+ 729 00bd 03       		.uleb128 0x3
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 15
+
+
+ 730 00be 0E       		.uleb128 0xe
+ 731 00bf 3A       		.uleb128 0x3a
+ 732 00c0 0B       		.uleb128 0xb
+ 733 00c1 3B       		.uleb128 0x3b
+ 734 00c2 05       		.uleb128 0x5
+ 735 00c3 49       		.uleb128 0x49
+ 736 00c4 13       		.uleb128 0x13
+ 737 00c5 3F       		.uleb128 0x3f
+ 738 00c6 19       		.uleb128 0x19
+ 739 00c7 3C       		.uleb128 0x3c
+ 740 00c8 19       		.uleb128 0x19
+ 741 00c9 00       		.byte	0
+ 742 00ca 00       		.byte	0
+ 743 00cb 10       		.uleb128 0x10
+ 744 00cc 35       		.uleb128 0x35
+ 745 00cd 00       		.byte	0
+ 746 00ce 49       		.uleb128 0x49
+ 747 00cf 13       		.uleb128 0x13
+ 748 00d0 00       		.byte	0
+ 749 00d1 00       		.byte	0
+ 750 00d2 11       		.uleb128 0x11
+ 751 00d3 2E       		.uleb128 0x2e
+ 752 00d4 00       		.byte	0
+ 753 00d5 3F       		.uleb128 0x3f
+ 754 00d6 19       		.uleb128 0x19
+ 755 00d7 3C       		.uleb128 0x3c
+ 756 00d8 19       		.uleb128 0x19
+ 757 00d9 6E       		.uleb128 0x6e
+ 758 00da 0E       		.uleb128 0xe
+ 759 00db 03       		.uleb128 0x3
+ 760 00dc 0E       		.uleb128 0xe
+ 761 00dd 3A       		.uleb128 0x3a
+ 762 00de 0B       		.uleb128 0xb
+ 763 00df 3B       		.uleb128 0x3b
+ 764 00e0 0B       		.uleb128 0xb
+ 765 00e1 00       		.byte	0
+ 766 00e2 00       		.byte	0
+ 767 00e3 00       		.byte	0
+ 768              		.section	.debug_loc,"",%progbits
+ 769              	.Ldebug_loc0:
+ 770              	.LLST0:
+ 771 0000 2A000000 		.4byte	.LVL4
+ 772 0004 32000000 		.4byte	.LVL5
+ 773 0008 0100     		.2byte	0x1
+ 774 000a 50       		.byte	0x50
+ 775 000b 00000000 		.4byte	0
+ 776 000f 00000000 		.4byte	0
+ 777              	.LLST1:
+ 778 0013 20000000 		.4byte	.LVL9
+ 779 0017 28000000 		.4byte	.LVL10
+ 780 001b 0100     		.2byte	0x1
+ 781 001d 50       		.byte	0x50
+ 782 001e 40000000 		.4byte	.LVL14
+ 783 0022 54000000 		.4byte	.LFE66
+ 784 0026 0100     		.2byte	0x1
+ 785 0028 50       		.byte	0x50
+ 786 0029 00000000 		.4byte	0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 16
+
+
+ 787 002d 00000000 		.4byte	0
+ 788              		.section	.debug_aranges,"",%progbits
+ 789 0000 2C000000 		.4byte	0x2c
+ 790 0004 0200     		.2byte	0x2
+ 791 0006 00000000 		.4byte	.Ldebug_info0
+ 792 000a 04       		.byte	0x4
+ 793 000b 00       		.byte	0
+ 794 000c 0000     		.2byte	0
+ 795 000e 0000     		.2byte	0
+ 796 0010 00000000 		.4byte	.LFB64
+ 797 0014 08000000 		.4byte	.LFE64-.LFB64
+ 798 0018 00000000 		.4byte	.LFB65
+ 799 001c 3A000000 		.4byte	.LFE65-.LFB65
+ 800 0020 00000000 		.4byte	.LFB66
+ 801 0024 54000000 		.4byte	.LFE66-.LFB66
+ 802 0028 00000000 		.4byte	0
+ 803 002c 00000000 		.4byte	0
+ 804              		.section	.debug_ranges,"",%progbits
+ 805              	.Ldebug_ranges0:
+ 806 0000 00000000 		.4byte	.LFB64
+ 807 0004 08000000 		.4byte	.LFE64
+ 808 0008 00000000 		.4byte	.LFB65
+ 809 000c 3A000000 		.4byte	.LFE65
+ 810 0010 00000000 		.4byte	.LFB66
+ 811 0014 54000000 		.4byte	.LFE66
+ 812 0018 00000000 		.4byte	0
+ 813 001c 00000000 		.4byte	0
+ 814              		.section	.debug_line,"",%progbits
+ 815              	.Ldebug_line0:
+ 816 0000 90010000 		.section	.debug_str,"MS",%progbits,1
+ 816      02003401 
+ 816      00000201 
+ 816      FB0E0D00 
+ 816      01010101 
+ 817              	.LASF4:
+ 818 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 818      6E74385F 
+ 818      7400
+ 819              	.LASF5:
+ 820 000a 5F5F696E 		.ascii	"__int32_t\000"
+ 820      7433325F 
+ 820      7400
+ 821              	.LASF3:
+ 822 0014 73686F72 		.ascii	"short unsigned int\000"
+ 822      7420756E 
+ 822      7369676E 
+ 822      65642069 
+ 822      6E7400
+ 823              	.LASF23:
+ 824 0027 4932435F 		.ascii	"I2C_MasterClearStatus\000"
+ 824      4D617374 
+ 824      6572436C 
+ 824      65617253 
+ 824      74617475 
+ 825              	.LASF20:
+ 826 003d 73746174 		.ascii	"status\000"
+ 826      757300
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 17
+
+
+ 827              	.LASF22:
+ 828 0044 4932435F 		.ascii	"I2C_Start\000"
+ 828      53746172 
+ 828      7400
+ 829              	.LASF13:
+ 830 004e 666C6F61 		.ascii	"float\000"
+ 830      7400
+ 831              	.LASF27:
+ 832 0054 4932435F 		.ascii	"I2C_MasterReadBuf\000"
+ 832      4D617374 
+ 832      65725265 
+ 832      61644275 
+ 832      6600
+ 833              	.LASF1:
+ 834 0066 756E7369 		.ascii	"unsigned char\000"
+ 834      676E6564 
+ 834      20636861 
+ 834      7200
+ 835              	.LASF25:
+ 836 0074 4932435F 		.ascii	"I2C_MasterWriteBuf\000"
+ 836      4D617374 
+ 836      65725772 
+ 836      69746542 
+ 836      756600
+ 837              	.LASF19:
+ 838 0087 6E756E63 		.ascii	"nunchuk_init\000"
+ 838      68756B5F 
+ 838      696E6974 
+ 838      00
+ 839              	.LASF7:
+ 840 0094 6C6F6E67 		.ascii	"long unsigned int\000"
+ 840      20756E73 
+ 840      69676E65 
+ 840      6420696E 
+ 840      7400
+ 841              	.LASF31:
+ 842 00a6 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 842      52784275 
+ 842      66666572 
+ 842      00
+ 843              	.LASF18:
+ 844 00b3 6E756E63 		.ascii	"nunchuk_start\000"
+ 844      68756B5F 
+ 844      73746172 
+ 844      7400
+ 845              	.LASF14:
+ 846 00c1 646F7562 		.ascii	"double\000"
+ 846      6C6500
+ 847              	.LASF10:
+ 848 00c8 756E7369 		.ascii	"unsigned int\000"
+ 848      676E6564 
+ 848      20696E74 
+ 848      00
+ 849              	.LASF9:
+ 850 00d5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 850      206C6F6E 
+ 850      6720756E 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 18
+
+
+ 850      7369676E 
+ 850      65642069 
+ 851              	.LASF11:
+ 852 00ec 75696E74 		.ascii	"uint8_t\000"
+ 852      385F7400 
+ 853              	.LASF30:
+ 854 00f4 4A3A5C50 		.ascii	"J:\\Project\\Steve Brain\\Zumo01\\ZumoBot.cydsn\000"
+ 854      726F6A65 
+ 854      63745C53 
+ 854      74657665 
+ 854      20427261 
+ 855              	.LASF28:
+ 856 0120 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 856      43313120 
+ 856      352E342E 
+ 856      31203230 
+ 856      31363036 
+ 857 0153 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 857      20726576 
+ 857      6973696F 
+ 857      6E203233 
+ 857      37373135 
+ 858 0186 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 858      66756E63 
+ 858      74696F6E 
+ 858      2D736563 
+ 858      74696F6E 
+ 859              	.LASF12:
+ 860 01ae 696E7433 		.ascii	"int32_t\000"
+ 860      325F7400 
+ 861              	.LASF17:
+ 862 01b6 73697A65 		.ascii	"sizetype\000"
+ 862      74797065 
+ 862      00
+ 863              	.LASF8:
+ 864 01bf 6C6F6E67 		.ascii	"long long int\000"
+ 864      206C6F6E 
+ 864      6720696E 
+ 864      7400
+ 865              	.LASF15:
+ 866 01cd 63686172 		.ascii	"char\000"
+ 866      00
+ 867              	.LASF26:
+ 868 01d2 4932435F 		.ascii	"I2C_MasterStatus\000"
+ 868      4D617374 
+ 868      65725374 
+ 868      61747573 
+ 868      00
+ 869              	.LASF21:
+ 870 01e3 6E756E63 		.ascii	"nunchuk_read\000"
+ 870      68756B5F 
+ 870      72656164 
+ 870      00
+ 871              	.LASF2:
+ 872 01f0 73686F72 		.ascii	"short int\000"
+ 872      7420696E 
+ 872      7400
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccORyMx4.s 			page 19
+
+
+ 873              	.LASF6:
+ 874 01fa 6C6F6E67 		.ascii	"long int\000"
+ 874      20696E74 
+ 874      00
+ 875              	.LASF29:
+ 876 0203 5A756D6F 		.ascii	"ZumoLibrary\\Nunchuk.c\000"
+ 876      4C696272 
+ 876      6172795C 
+ 876      4E756E63 
+ 876      68756B2E 
+ 877              	.LASF16:
+ 878 0219 6C6F6E67 		.ascii	"long double\000"
+ 878      20646F75 
+ 878      626C6500 
+ 879              	.LASF0:
+ 880 0225 7369676E 		.ascii	"signed char\000"
+ 880      65642063 
+ 880      68617200 
+ 881              	.LASF24:
+ 882 0231 43794465 		.ascii	"CyDelay\000"
+ 882      6C617900 
+ 883              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

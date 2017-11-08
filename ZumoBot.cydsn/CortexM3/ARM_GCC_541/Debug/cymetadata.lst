@@ -1,0 +1,2862 @@
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cymetadata.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	cy_metadata
+  20              		.global	cy_meta_flashprotect
+  21              		.global	cy_meta_wonvl
+  22              		.global	cy_meta_custnvl
+  23              		.global	cy_meta_configecc
+  24              		.section	.cyconfigecc,"a",%progbits
+  25              		.align	2
+  26              		.type	cy_meta_configecc, %object
+  27              		.size	cy_meta_configecc, 2244
+  28              	cy_meta_configecc:
+  29 0000 08       		.byte	8
+  30 0001 4F       		.byte	79
+  31 0002 00       		.byte	0
+  32 0003 40       		.byte	64
+  33 0004 03       		.byte	3
+  34 0005 52       		.byte	82
+  35 0006 00       		.byte	0
+  36 0007 40       		.byte	64
+  37 0008 01       		.byte	1
+  38 0009 5B       		.byte	91
+  39 000a 00       		.byte	0
+  40 000b 40       		.byte	64
+  41 000c 03       		.byte	3
+  42 000d 64       		.byte	100
+  43 000e 00       		.byte	0
+  44 000f 40       		.byte	64
+  45 0010 03       		.byte	3
+  46 0011 65       		.byte	101
+  47 0012 00       		.byte	0
+  48 0013 40       		.byte	64
+  49 0014 01       		.byte	1
+  50 0015 01       		.byte	1
+  51 0016 01       		.byte	1
+  52 0017 40       		.byte	64
+  53 0018 01       		.byte	1
+  54 0019 03       		.byte	3
+  55 001a 01       		.byte	1
+  56 001b 40       		.byte	64
+  57 001c 01       		.byte	1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 2
+
+
+  58 001d 05       		.byte	5
+  59 001e 01       		.byte	1
+  60 001f 40       		.byte	64
+  61 0020 02       		.byte	2
+  62 0021 07       		.byte	7
+  63 0022 01       		.byte	1
+  64 0023 40       		.byte	64
+  65 0024 4E       		.byte	78
+  66 0025 08       		.byte	8
+  67 0026 01       		.byte	1
+  68 0027 40       		.byte	64
+  69 0028 42       		.byte	66
+  70 0029 09       		.byte	9
+  71 002a 01       		.byte	1
+  72 002b 40       		.byte	64
+  73 002c 04       		.byte	4
+  74 002d 0A       		.byte	10
+  75 002e 01       		.byte	1
+  76 002f 40       		.byte	64
+  77 0030 0D       		.byte	13
+  78 0031 0B       		.byte	11
+  79 0032 01       		.byte	1
+  80 0033 40       		.byte	64
+  81 0034 68       		.byte	104
+  82 0035 0C       		.byte	12
+  83 0036 01       		.byte	1
+  84 0037 40       		.byte	64
+  85 0038 37       		.byte	55
+  86 0039 0D       		.byte	13
+  87 003a 01       		.byte	1
+  88 003b 40       		.byte	64
+  89 003c 01       		.byte	1
+  90 003d 0F       		.byte	15
+  91 003e 01       		.byte	1
+  92 003f 40       		.byte	64
+  93 0040 11       		.byte	17
+  94 0041 15       		.byte	21
+  95 0042 01       		.byte	1
+  96 0043 40       		.byte	64
+  97 0044 5E       		.byte	94
+  98 0045 16       		.byte	22
+  99 0046 01       		.byte	1
+ 100 0047 40       		.byte	64
+ 101 0048 41       		.byte	65
+ 102 0049 17       		.byte	23
+ 103 004a 01       		.byte	1
+ 104 004b 40       		.byte	64
+ 105 004c 58       		.byte	88
+ 106 004d 18       		.byte	24
+ 107 004e 01       		.byte	1
+ 108 004f 40       		.byte	64
+ 109 0050 5D       		.byte	93
+ 110 0051 19       		.byte	25
+ 111 0052 01       		.byte	1
+ 112 0053 40       		.byte	64
+ 113 0054 59       		.byte	89
+ 114 0055 1A       		.byte	26
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 3
+
+
+ 115 0056 01       		.byte	1
+ 116 0057 40       		.byte	64
+ 117 0058 54       		.byte	84
+ 118 0059 1B       		.byte	27
+ 119 005a 01       		.byte	1
+ 120 005b 40       		.byte	64
+ 121 005c 05       		.byte	5
+ 122 005d 40       		.byte	64
+ 123 005e 01       		.byte	1
+ 124 005f 40       		.byte	64
+ 125 0060 03       		.byte	3
+ 126 0061 41       		.byte	65
+ 127 0062 01       		.byte	1
+ 128 0063 40       		.byte	64
+ 129 0064 0E       		.byte	14
+ 130 0065 42       		.byte	66
+ 131 0066 01       		.byte	1
+ 132 0067 40       		.byte	64
+ 133 0068 09       		.byte	9
+ 134 0069 43       		.byte	67
+ 135 006a 01       		.byte	1
+ 136 006b 40       		.byte	64
+ 137 006c 02       		.byte	2
+ 138 006d 44       		.byte	68
+ 139 006e 01       		.byte	1
+ 140 006f 40       		.byte	64
+ 141 0070 05       		.byte	5
+ 142 0071 45       		.byte	69
+ 143 0072 01       		.byte	1
+ 144 0073 40       		.byte	64
+ 145 0074 05       		.byte	5
+ 146 0075 46       		.byte	70
+ 147 0076 01       		.byte	1
+ 148 0077 40       		.byte	64
+ 149 0078 04       		.byte	4
+ 150 0079 47       		.byte	71
+ 151 007a 01       		.byte	1
+ 152 007b 40       		.byte	64
+ 153 007c 15       		.byte	21
+ 154 007d 48       		.byte	72
+ 155 007e 01       		.byte	1
+ 156 007f 40       		.byte	64
+ 157 0080 1E       		.byte	30
+ 158 0081 49       		.byte	73
+ 159 0082 01       		.byte	1
+ 160 0083 40       		.byte	64
+ 161 0084 10       		.byte	16
+ 162 0085 4C       		.byte	76
+ 163 0086 01       		.byte	1
+ 164 0087 40       		.byte	64
+ 165 0088 10       		.byte	16
+ 166 0089 4D       		.byte	77
+ 167 008a 01       		.byte	1
+ 168 008b 40       		.byte	64
+ 169 008c 0A       		.byte	10
+ 170 008d 50       		.byte	80
+ 171 008e 01       		.byte	1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 4
+
+
+ 172 008f 40       		.byte	64
+ 173 0090 02       		.byte	2
+ 174 0091 51       		.byte	81
+ 175 0092 01       		.byte	1
+ 176 0093 40       		.byte	64
+ 177 0094 01       		.byte	1
+ 178 0095 80       		.byte	-128
+ 179 0096 0A       		.byte	10
+ 180 0097 4E       		.byte	78
+ 181 0098 0D       		.byte	13
+ 182 0099 80       		.byte	-128
+ 183 009a 16       		.byte	22
+ 184 009b 4E       		.byte	78
+ 185 009c 19       		.byte	25
+ 186 009d 80       		.byte	-128
+ 187 009e 22       		.byte	34
+ 188 009f 1E       		.byte	30
+ 189 00a0 25       		.byte	37
+ 190 00a1 80       		.byte	-128
+ 191 00a2 2E       		.byte	46
+ 192 00a3 4E       		.byte	78
+ 193 00a4 18       		.byte	24
+ 194 00a5 20       		.byte	32
+ 195 00a6 19       		.byte	25
+ 196 00a7 10       		.byte	16
+ 197 00a8 79       		.byte	121
+ 198 00a9 02       		.byte	2
+ 199 00aa 2F       		.byte	47
+ 200 00ab 84       		.byte	-124
+ 201 00ac 88       		.byte	-120
+ 202 00ad 38       		.byte	56
+ 203 00ae 89       		.byte	-119
+ 204 00af 0F       		.byte	15
+ 205 00b0 8C       		.byte	-116
+ 206 00b1 0F       		.byte	15
+ 207 00b2 87       		.byte	-121
+ 208 00b3 0F       		.byte	15
+ 209 00b4 88       		.byte	-120
+ 210 00b5 72       		.byte	114
+ 211 00b6 8B       		.byte	-117
+ 212 00b7 0F       		.byte	15
+ 213 00b8 E6       		.byte	-26
+ 214 00b9 04       		.byte	4
+ 215 00ba E6       		.byte	-26
+ 216 00bb 02       		.byte	2
+ 217 00bc E2       		.byte	-30
+ 218 00bd 08       		.byte	8
+ 219 00be 8B       		.byte	-117
+ 220 00bf 04       		.byte	4
+ 221 00c0 EC       		.byte	-20
+ 222 00c1 02       		.byte	2
+ 223 00c2 04       		.byte	4
+ 224 00c3 18       		.byte	24
+ 225 00c4 0A       		.byte	10
+ 226 00c5 04       		.byte	4
+ 227 00c6 10       		.byte	16
+ 228 00c7 3F       		.byte	63
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 5
+
+
+ 229 00c8 14       		.byte	20
+ 230 00c9 3C       		.byte	60
+ 231 00ca 16       		.byte	22
+ 232 00cb 02       		.byte	2
+ 233 00cc 18       		.byte	24
+ 234 00cd 27       		.byte	39
+ 235 00ce 1A       		.byte	26
+ 236 00cf 18       		.byte	24
+ 237 00d0 1C       		.byte	28
+ 238 00d1 10       		.byte	16
+ 239 00d2 20       		.byte	32
+ 240 00d3 1C       		.byte	28
+ 241 00d4 22       		.byte	34
+ 242 00d5 21       		.byte	33
+ 243 00d6 23       		.byte	35
+ 244 00d7 01       		.byte	1
+ 245 00d8 24       		.byte	36
+ 246 00d9 04       		.byte	4
+ 247 00da 28       		.byte	40
+ 248 00db 08       		.byte	8
+ 249 00dc 2E       		.byte	46
+ 250 00dd 23       		.byte	35
+ 251 00de 2F       		.byte	47
+ 252 00df 01       		.byte	1
+ 253 00e0 31       		.byte	49
+ 254 00e1 01       		.byte	1
+ 255 00e2 32       		.byte	50
+ 256 00e3 1F       		.byte	31
+ 257 00e4 36       		.byte	54
+ 258 00e5 38       		.byte	56
+ 259 00e6 3A       		.byte	58
+ 260 00e7 28       		.byte	40
+ 261 00e8 3F       		.byte	63
+ 262 00e9 01       		.byte	1
+ 263 00ea 54       		.byte	84
+ 264 00eb 18       		.byte	24
+ 265 00ec 58       		.byte	88
+ 266 00ed 04       		.byte	4
+ 267 00ee 59       		.byte	89
+ 268 00ef 04       		.byte	4
+ 269 00f0 5B       		.byte	91
+ 270 00f1 04       		.byte	4
+ 271 00f2 5C       		.byte	92
+ 272 00f3 01       		.byte	1
+ 273 00f4 5D       		.byte	93
+ 274 00f5 10       		.byte	16
+ 275 00f6 5F       		.byte	95
+ 276 00f7 01       		.byte	1
+ 277 00f8 82       		.byte	-126
+ 278 00f9 04       		.byte	4
+ 279 00fa 85       		.byte	-123
+ 280 00fb 03       		.byte	3
+ 281 00fc 86       		.byte	-122
+ 282 00fd 04       		.byte	4
+ 283 00fe 87       		.byte	-121
+ 284 00ff 14       		.byte	20
+ 285 0100 8A       		.byte	-118
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 6
+
+
+ 286 0101 01       		.byte	1
+ 287 0102 8B       		.byte	-117
+ 288 0103 08       		.byte	8
+ 289 0104 8C       		.byte	-116
+ 290 0105 03       		.byte	3
+ 291 0106 8D       		.byte	-115
+ 292 0107 13       		.byte	19
+ 293 0108 8F       		.byte	-113
+ 294 0109 0C       		.byte	12
+ 295 010a 90       		.byte	-112
+ 296 010b 02       		.byte	2
+ 297 010c 94       		.byte	-108
+ 298 010d 03       		.byte	3
+ 299 010e 95       		.byte	-107
+ 300 010f 13       		.byte	19
+ 301 0110 97       		.byte	-105
+ 302 0111 04       		.byte	4
+ 303 0112 99       		.byte	-103
+ 304 0113 20       		.byte	32
+ 305 0114 A6       		.byte	-90
+ 306 0115 04       		.byte	4
+ 307 0116 AB       		.byte	-85
+ 308 0117 15       		.byte	21
+ 309 0118 AD       		.byte	-83
+ 310 0119 0A       		.byte	10
+ 311 011a AE       		.byte	-82
+ 312 011b 04       		.byte	4
+ 313 011c AF       		.byte	-81
+ 314 011d 14       		.byte	20
+ 315 011e B1       		.byte	-79
+ 316 011f 0F       		.byte	15
+ 317 0120 B2       		.byte	-78
+ 318 0121 04       		.byte	4
+ 319 0122 B3       		.byte	-77
+ 320 0123 20       		.byte	32
+ 321 0124 B4       		.byte	-76
+ 322 0125 03       		.byte	3
+ 323 0126 B7       		.byte	-73
+ 324 0127 10       		.byte	16
+ 325 0128 B8       		.byte	-72
+ 326 0129 20       		.byte	32
+ 327 012a BB       		.byte	-69
+ 328 012b 02       		.byte	2
+ 329 012c BE       		.byte	-66
+ 330 012d 14       		.byte	20
+ 331 012e BF       		.byte	-65
+ 332 012f 44       		.byte	68
+ 333 0130 C0       		.byte	-64
+ 334 0131 56       		.byte	86
+ 335 0132 C1       		.byte	-63
+ 336 0133 03       		.byte	3
+ 337 0134 C5       		.byte	-59
+ 338 0135 0E       		.byte	14
+ 339 0136 C6       		.byte	-58
+ 340 0137 B0       		.byte	-80
+ 341 0138 C7       		.byte	-57
+ 342 0139 0C       		.byte	12
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 7
+
+
+ 343 013a C8       		.byte	-56
+ 344 013b 19       		.byte	25
+ 345 013c C9       		.byte	-55
+ 346 013d FF       		.byte	-1
+ 347 013e CA       		.byte	-54
+ 348 013f FF       		.byte	-1
+ 349 0140 CB       		.byte	-53
+ 350 0141 FF       		.byte	-1
+ 351 0142 CE       		.byte	-50
+ 352 0143 F0       		.byte	-16
+ 353 0144 CF       		.byte	-49
+ 354 0145 44       		.byte	68
+ 355 0146 D0       		.byte	-48
+ 356 0147 0C       		.byte	12
+ 357 0148 D4       		.byte	-44
+ 358 0149 01       		.byte	1
+ 359 014a D8       		.byte	-40
+ 360 014b 04       		.byte	4
+ 361 014c D9       		.byte	-39
+ 362 014d 04       		.byte	4
+ 363 014e DA       		.byte	-38
+ 364 014f 04       		.byte	4
+ 365 0150 DB       		.byte	-37
+ 366 0151 04       		.byte	4
+ 367 0152 DC       		.byte	-36
+ 368 0153 10       		.byte	16
+ 369 0154 DD       		.byte	-35
+ 370 0155 11       		.byte	17
+ 371 0156 DF       		.byte	-33
+ 372 0157 01       		.byte	1
+ 373 0158 E6       		.byte	-26
+ 374 0159 C0       		.byte	-64
+ 375 015a EA       		.byte	-22
+ 376 015b 40       		.byte	64
+ 377 015c EB       		.byte	-21
+ 378 015d 02       		.byte	2
+ 379 015e 00       		.byte	0
+ 380 015f 60       		.byte	96
+ 381 0160 01       		.byte	1
+ 382 0161 01       		.byte	1
+ 383 0162 02       		.byte	2
+ 384 0163 08       		.byte	8
+ 385 0164 03       		.byte	3
+ 386 0165 28       		.byte	40
+ 387 0166 05       		.byte	5
+ 388 0167 10       		.byte	16
+ 389 0168 06       		.byte	6
+ 390 0169 10       		.byte	16
+ 391 016a 08       		.byte	8
+ 392 016b 01       		.byte	1
+ 393 016c 09       		.byte	9
+ 394 016d 08       		.byte	8
+ 395 016e 0A       		.byte	10
+ 396 016f 40       		.byte	64
+ 397 0170 0C       		.byte	12
+ 398 0171 90       		.byte	-112
+ 399 0172 0D       		.byte	13
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 8
+
+
+ 400 0173 01       		.byte	1
+ 401 0174 0E       		.byte	14
+ 402 0175 20       		.byte	32
+ 403 0176 13       		.byte	19
+ 404 0177 48       		.byte	72
+ 405 0178 15       		.byte	21
+ 406 0179 88       		.byte	-120
+ 407 017a 16       		.byte	22
+ 408 017b 08       		.byte	8
+ 409 017c 17       		.byte	23
+ 410 017d 01       		.byte	1
+ 411 017e 18       		.byte	24
+ 412 017f 04       		.byte	4
+ 413 0180 1A       		.byte	26
+ 414 0181 20       		.byte	32
+ 415 0182 1D       		.byte	29
+ 416 0183 04       		.byte	4
+ 417 0184 1E       		.byte	30
+ 418 0185 20       		.byte	32
+ 419 0186 1F       		.byte	31
+ 420 0187 50       		.byte	80
+ 421 0188 20       		.byte	32
+ 422 0189 40       		.byte	64
+ 423 018a 22       		.byte	34
+ 424 018b 46       		.byte	70
+ 425 018c 27       		.byte	39
+ 426 018d 40       		.byte	64
+ 427 018e 28       		.byte	40
+ 428 018f 01       		.byte	1
+ 429 0190 2B       		.byte	43
+ 430 0191 08       		.byte	8
+ 431 0192 2C       		.byte	44
+ 432 0193 40       		.byte	64
+ 433 0194 2F       		.byte	47
+ 434 0195 42       		.byte	66
+ 435 0196 31       		.byte	49
+ 436 0197 08       		.byte	8
+ 437 0198 32       		.byte	50
+ 438 0199 20       		.byte	32
+ 439 019a 35       		.byte	53
+ 440 019b 80       		.byte	-128
+ 441 019c 37       		.byte	55
+ 442 019d 40       		.byte	64
+ 443 019e 38       		.byte	56
+ 444 019f 68       		.byte	104
+ 445 01a0 41       		.byte	65
+ 446 01a1 08       		.byte	8
+ 447 01a2 4A       		.byte	74
+ 448 01a3 2A       		.byte	42
+ 449 01a4 50       		.byte	80
+ 450 01a5 24       		.byte	36
+ 451 01a6 53       		.byte	83
+ 452 01a7 04       		.byte	4
+ 453 01a8 58       		.byte	88
+ 454 01a9 22       		.byte	34
+ 455 01aa 5A       		.byte	90
+ 456 01ab 88       		.byte	-120
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 9
+
+
+ 457 01ac 5E       		.byte	94
+ 458 01ad 02       		.byte	2
+ 459 01ae 64       		.byte	100
+ 460 01af 08       		.byte	8
+ 461 01b0 65       		.byte	101
+ 462 01b1 80       		.byte	-128
+ 463 01b2 89       		.byte	-119
+ 464 01b3 01       		.byte	1
+ 465 01b4 8B       		.byte	-117
+ 466 01b5 10       		.byte	16
+ 467 01b6 90       		.byte	-112
+ 468 01b7 20       		.byte	32
+ 469 01b8 91       		.byte	-111
+ 470 01b9 20       		.byte	32
+ 471 01ba 92       		.byte	-110
+ 472 01bb 42       		.byte	66
+ 473 01bc 93       		.byte	-109
+ 474 01bd 40       		.byte	64
+ 475 01be 94       		.byte	-108
+ 476 01bf 40       		.byte	64
+ 477 01c0 96       		.byte	-106
+ 478 01c1 20       		.byte	32
+ 479 01c2 9E       		.byte	-98
+ 480 01c3 40       		.byte	64
+ 481 01c4 A1       		.byte	-95
+ 482 01c5 08       		.byte	8
+ 483 01c6 A4       		.byte	-92
+ 484 01c7 20       		.byte	32
+ 485 01c8 A7       		.byte	-89
+ 486 01c9 08       		.byte	8
+ 487 01ca AF       		.byte	-81
+ 488 01cb 40       		.byte	64
+ 489 01cc C0       		.byte	-64
+ 490 01cd 6F       		.byte	111
+ 491 01ce C2       		.byte	-62
+ 492 01cf FC       		.byte	-4
+ 493 01d0 C4       		.byte	-60
+ 494 01d1 F5       		.byte	-11
+ 495 01d2 CA       		.byte	-54
+ 496 01d3 9C       		.byte	-100
+ 497 01d4 CC       		.byte	-52
+ 498 01d5 06       		.byte	6
+ 499 01d6 CE       		.byte	-50
+ 500 01d7 0E       		.byte	14
+ 501 01d8 D0       		.byte	-48
+ 502 01d9 02       		.byte	2
+ 503 01da D2       		.byte	-46
+ 504 01db 0C       		.byte	12
+ 505 01dc D6       		.byte	-42
+ 506 01dd 8F       		.byte	-113
+ 507 01de D8       		.byte	-40
+ 508 01df 30       		.byte	48
+ 509 01e0 E6       		.byte	-26
+ 510 01e1 20       		.byte	32
+ 511 01e2 B8       		.byte	-72
+ 512 01e3 80       		.byte	-128
+ 513 01e4 BE       		.byte	-66
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 10
+
+
+ 514 01e5 40       		.byte	64
+ 515 01e6 D8       		.byte	-40
+ 516 01e7 04       		.byte	4
+ 517 01e8 DF       		.byte	-33
+ 518 01e9 01       		.byte	1
+ 519 01ea 1F       		.byte	31
+ 520 01eb 40       		.byte	64
+ 521 01ec 87       		.byte	-121
+ 522 01ed 40       		.byte	64
+ 523 01ee 90       		.byte	-112
+ 524 01ef 20       		.byte	32
+ 525 01f0 91       		.byte	-111
+ 526 01f1 20       		.byte	32
+ 527 01f2 92       		.byte	-110
+ 528 01f3 42       		.byte	66
+ 529 01f4 94       		.byte	-108
+ 530 01f5 40       		.byte	64
+ 531 01f6 96       		.byte	-106
+ 532 01f7 20       		.byte	32
+ 533 01f8 9E       		.byte	-98
+ 534 01f9 40       		.byte	64
+ 535 01fa A1       		.byte	-95
+ 536 01fb 08       		.byte	8
+ 537 01fc A4       		.byte	-92
+ 538 01fd 20       		.byte	32
+ 539 01fe A7       		.byte	-89
+ 540 01ff 08       		.byte	8
+ 541 0200 B5       		.byte	-75
+ 542 0201 10       		.byte	16
+ 543 0202 B7       		.byte	-73
+ 544 0203 20       		.byte	32
+ 545 0204 08       		.byte	8
+ 546 0205 0D       		.byte	13
+ 547 0206 0A       		.byte	10
+ 548 0207 02       		.byte	2
+ 549 0208 0B       		.byte	11
+ 550 0209 01       		.byte	1
+ 551 020a 13       		.byte	19
+ 552 020b 02       		.byte	2
+ 553 020c 16       		.byte	22
+ 554 020d 0D       		.byte	13
+ 555 020e 19       		.byte	25
+ 556 020f 03       		.byte	3
+ 557 0210 1A       		.byte	26
+ 558 0211 08       		.byte	8
+ 559 0212 1D       		.byte	29
+ 560 0213 01       		.byte	1
+ 561 0214 1E       		.byte	30
+ 562 0215 04       		.byte	4
+ 563 0216 25       		.byte	37
+ 564 0217 01       		.byte	1
+ 565 0218 30       		.byte	48
+ 566 0219 01       		.byte	1
+ 567 021a 31       		.byte	49
+ 568 021b 02       		.byte	2
+ 569 021c 32       		.byte	50
+ 570 021d 02       		.byte	2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 11
+
+
+ 571 021e 33       		.byte	51
+ 572 021f 01       		.byte	1
+ 573 0220 34       		.byte	52
+ 574 0221 0C       		.byte	12
+ 575 0222 36       		.byte	54
+ 576 0223 08       		.byte	8
+ 577 0224 3A       		.byte	58
+ 578 0225 A0       		.byte	-96
+ 579 0226 3E       		.byte	62
+ 580 0227 01       		.byte	1
+ 581 0228 3F       		.byte	63
+ 582 0229 01       		.byte	1
+ 583 022a 40       		.byte	64
+ 584 022b 65       		.byte	101
+ 585 022c 42       		.byte	66
+ 586 022d 04       		.byte	4
+ 587 022e 49       		.byte	73
+ 588 022f FF       		.byte	-1
+ 589 0230 4A       		.byte	74
+ 590 0231 FF       		.byte	-1
+ 591 0232 4B       		.byte	75
+ 592 0233 FF       		.byte	-1
+ 593 0234 4F       		.byte	79
+ 594 0235 01       		.byte	1
+ 595 0236 50       		.byte	80
+ 596 0237 18       		.byte	24
+ 597 0238 54       		.byte	84
+ 598 0239 03       		.byte	3
+ 599 023a 56       		.byte	86
+ 600 023b 04       		.byte	4
+ 601 023c 58       		.byte	88
+ 602 023d 04       		.byte	4
+ 603 023e 59       		.byte	89
+ 604 023f 04       		.byte	4
+ 605 0240 5A       		.byte	90
+ 606 0241 04       		.byte	4
+ 607 0242 5B       		.byte	91
+ 608 0243 04       		.byte	4
+ 609 0244 5C       		.byte	92
+ 610 0245 22       		.byte	34
+ 611 0246 5D       		.byte	93
+ 612 0247 22       		.byte	34
+ 613 0248 5F       		.byte	95
+ 614 0249 01       		.byte	1
+ 615 024a 60       		.byte	96
+ 616 024b 40       		.byte	64
+ 617 024c 62       		.byte	98
+ 618 024d 40       		.byte	64
+ 619 024e 64       		.byte	100
+ 620 024f 40       		.byte	64
+ 621 0250 65       		.byte	101
+ 622 0251 40       		.byte	64
+ 623 0252 66       		.byte	102
+ 624 0253 80       		.byte	-128
+ 625 0254 68       		.byte	104
+ 626 0255 80       		.byte	-128
+ 627 0256 6A       		.byte	106
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 12
+
+
+ 628 0257 80       		.byte	-128
+ 629 0258 6C       		.byte	108
+ 630 0259 80       		.byte	-128
+ 631 025a 6E       		.byte	110
+ 632 025b 80       		.byte	-128
+ 633 025c 83       		.byte	-125
+ 634 025d 03       		.byte	3
+ 635 025e 84       		.byte	-124
+ 636 025f 40       		.byte	64
+ 637 0260 89       		.byte	-119
+ 638 0261 09       		.byte	9
+ 639 0262 8B       		.byte	-117
+ 640 0263 D0       		.byte	-48
+ 641 0264 8C       		.byte	-116
+ 642 0265 11       		.byte	17
+ 643 0266 8D       		.byte	-115
+ 644 0267 10       		.byte	16
+ 645 0268 8E       		.byte	-114
+ 646 0269 06       		.byte	6
+ 647 026a 8F       		.byte	-113
+ 648 026b AC       		.byte	-84
+ 649 026c 90       		.byte	-112
+ 650 026d 0C       		.byte	12
+ 651 026e 92       		.byte	-110
+ 652 026f 13       		.byte	19
+ 653 0270 94       		.byte	-108
+ 654 0271 11       		.byte	17
+ 655 0272 95       		.byte	-107
+ 656 0273 0C       		.byte	12
+ 657 0274 96       		.byte	-106
+ 658 0275 0E       		.byte	14
+ 659 0276 97       		.byte	-105
+ 660 0277 71       		.byte	113
+ 661 0278 99       		.byte	-103
+ 662 0279 14       		.byte	20
+ 663 027a A1       		.byte	-95
+ 664 027b DC       		.byte	-36
+ 665 027c A2       		.byte	-94
+ 666 027d 08       		.byte	8
+ 667 027e A3       		.byte	-93
+ 668 027f 22       		.byte	34
+ 669 0280 A6       		.byte	-90
+ 670 0281 0C       		.byte	12
+ 671 0282 A8       		.byte	-88
+ 672 0283 20       		.byte	32
+ 673 0284 AA       		.byte	-86
+ 674 0285 03       		.byte	3
+ 675 0286 AB       		.byte	-85
+ 676 0287 20       		.byte	32
+ 677 0288 AD       		.byte	-83
+ 678 0289 10       		.byte	16
+ 679 028a AF       		.byte	-81
+ 680 028b 40       		.byte	64
+ 681 028c B0       		.byte	-80
+ 682 028d 0F       		.byte	15
+ 683 028e B1       		.byte	-79
+ 684 028f 1F       		.byte	31
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 13
+
+
+ 685 0290 B2       		.byte	-78
+ 686 0291 30       		.byte	48
+ 687 0292 B3       		.byte	-77
+ 688 0293 E0       		.byte	-32
+ 689 0294 B4       		.byte	-76
+ 690 0295 40       		.byte	64
+ 691 0296 B8       		.byte	-72
+ 692 0297 08       		.byte	8
+ 693 0298 BA       		.byte	-70
+ 694 0299 02       		.byte	2
+ 695 029a BB       		.byte	-69
+ 696 029b 08       		.byte	8
+ 697 029c BE       		.byte	-66
+ 698 029d 10       		.byte	16
+ 699 029e C0       		.byte	-64
+ 700 029f 65       		.byte	101
+ 701 02a0 C2       		.byte	-62
+ 702 02a1 04       		.byte	4
+ 703 02a2 C5       		.byte	-59
+ 704 02a3 EC       		.byte	-20
+ 705 02a4 C7       		.byte	-57
+ 706 02a5 20       		.byte	32
+ 707 02a6 C8       		.byte	-56
+ 708 02a7 23       		.byte	35
+ 709 02a8 C9       		.byte	-55
+ 710 02a9 FF       		.byte	-1
+ 711 02aa CA       		.byte	-54
+ 712 02ab FF       		.byte	-1
+ 713 02ac CB       		.byte	-53
+ 714 02ad FF       		.byte	-1
+ 715 02ae CD       		.byte	-51
+ 716 02af 83       		.byte	-125
+ 717 02b0 CE       		.byte	-50
+ 718 02b1 03       		.byte	3
+ 719 02b2 CF       		.byte	-49
+ 720 02b3 01       		.byte	1
+ 721 02b4 D0       		.byte	-48
+ 722 02b5 18       		.byte	24
+ 723 02b6 D8       		.byte	-40
+ 724 02b7 04       		.byte	4
+ 725 02b8 D9       		.byte	-39
+ 726 02b9 04       		.byte	4
+ 727 02ba DA       		.byte	-38
+ 728 02bb 04       		.byte	4
+ 729 02bc DC       		.byte	-36
+ 730 02bd 11       		.byte	17
+ 731 02be DD       		.byte	-35
+ 732 02bf 02       		.byte	2
+ 733 02c0 DF       		.byte	-33
+ 734 02c1 01       		.byte	1
+ 735 02c2 E0       		.byte	-32
+ 736 02c3 40       		.byte	64
+ 737 02c4 E2       		.byte	-30
+ 738 02c5 40       		.byte	64
+ 739 02c6 E4       		.byte	-28
+ 740 02c7 40       		.byte	64
+ 741 02c8 E5       		.byte	-27
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 14
+
+
+ 742 02c9 40       		.byte	64
+ 743 02ca E6       		.byte	-26
+ 744 02cb 80       		.byte	-128
+ 745 02cc E8       		.byte	-24
+ 746 02cd 80       		.byte	-128
+ 747 02ce EA       		.byte	-22
+ 748 02cf 80       		.byte	-128
+ 749 02d0 EC       		.byte	-20
+ 750 02d1 80       		.byte	-128
+ 751 02d2 EE       		.byte	-18
+ 752 02d3 80       		.byte	-128
+ 753 02d4 00       		.byte	0
+ 754 02d5 40       		.byte	64
+ 755 02d6 03       		.byte	3
+ 756 02d7 20       		.byte	32
+ 757 02d8 05       		.byte	5
+ 758 02d9 10       		.byte	16
+ 759 02da 09       		.byte	9
+ 760 02db 08       		.byte	8
+ 761 02dc 0A       		.byte	10
+ 762 02dd 40       		.byte	64
+ 763 02de 0D       		.byte	13
+ 764 02df 80       		.byte	-128
+ 765 02e0 0E       		.byte	14
+ 766 02e1 18       		.byte	24
+ 767 02e2 10       		.byte	16
+ 768 02e3 04       		.byte	4
+ 769 02e4 12       		.byte	18
+ 770 02e5 50       		.byte	80
+ 771 02e6 18       		.byte	24
+ 772 02e7 28       		.byte	40
+ 773 02e8 19       		.byte	25
+ 774 02e9 21       		.byte	33
+ 775 02ea 1A       		.byte	26
+ 776 02eb 40       		.byte	64
+ 777 02ec 1D       		.byte	29
+ 778 02ed C0       		.byte	-64
+ 779 02ee 1E       		.byte	30
+ 780 02ef 18       		.byte	24
+ 781 02f0 1F       		.byte	31
+ 782 02f1 12       		.byte	18
+ 783 02f2 21       		.byte	33
+ 784 02f3 09       		.byte	9
+ 785 02f4 22       		.byte	34
+ 786 02f5 01       		.byte	1
+ 787 02f6 27       		.byte	39
+ 788 02f7 A0       		.byte	-96
+ 789 02f8 28       		.byte	40
+ 790 02f9 04       		.byte	4
+ 791 02fa 29       		.byte	41
+ 792 02fb 01       		.byte	1
+ 793 02fc 2A       		.byte	42
+ 794 02fd 40       		.byte	64
+ 795 02fe 2B       		.byte	43
+ 796 02ff 08       		.byte	8
+ 797 0300 2F       		.byte	47
+ 798 0301 10       		.byte	16
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 15
+
+
+ 799 0302 30       		.byte	48
+ 800 0303 20       		.byte	32
+ 801 0304 31       		.byte	49
+ 802 0305 08       		.byte	8
+ 803 0306 35       		.byte	53
+ 804 0307 50       		.byte	80
+ 805 0308 36       		.byte	54
+ 806 0309 02       		.byte	2
+ 807 030a 38       		.byte	56
+ 808 030b 60       		.byte	96
+ 809 030c 39       		.byte	57
+ 810 030d 02       		.byte	2
+ 811 030e 3A       		.byte	58
+ 812 030f 10       		.byte	16
+ 813 0310 3E       		.byte	62
+ 814 0311 10       		.byte	16
+ 815 0312 42       		.byte	66
+ 816 0313 80       		.byte	-128
+ 817 0314 43       		.byte	67
+ 818 0315 02       		.byte	2
+ 819 0316 46       		.byte	70
+ 820 0317 80       		.byte	-128
+ 821 0318 49       		.byte	73
+ 822 0319 20       		.byte	32
+ 823 031a 4A       		.byte	74
+ 824 031b 02       		.byte	2
+ 825 031c 4B       		.byte	75
+ 826 031d 05       		.byte	5
+ 827 031e 4C       		.byte	76
+ 828 031f 04       		.byte	4
+ 829 0320 4E       		.byte	78
+ 830 0321 02       		.byte	2
+ 831 0322 52       		.byte	82
+ 832 0323 02       		.byte	2
+ 833 0324 5F       		.byte	95
+ 834 0325 A5       		.byte	-91
+ 835 0326 67       		.byte	103
+ 836 0327 40       		.byte	64
+ 837 0328 87       		.byte	-121
+ 838 0329 40       		.byte	64
+ 839 032a 89       		.byte	-119
+ 840 032b 10       		.byte	16
+ 841 032c 96       		.byte	-106
+ 842 032d 20       		.byte	32
+ 843 032e C0       		.byte	-64
+ 844 032f 45       		.byte	69
+ 845 0330 C2       		.byte	-62
+ 846 0331 EC       		.byte	-20
+ 847 0332 C4       		.byte	-60
+ 848 0333 0E       		.byte	14
+ 849 0334 CA       		.byte	-54
+ 850 0335 4D       		.byte	77
+ 851 0336 CC       		.byte	-52
+ 852 0337 B6       		.byte	-74
+ 853 0338 CE       		.byte	-50
+ 854 0339 2D       		.byte	45
+ 855 033a D0       		.byte	-48
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 16
+
+
+ 856 033b 81       		.byte	-127
+ 857 033c D2       		.byte	-46
+ 858 033d 3C       		.byte	60
+ 859 033e D6       		.byte	-42
+ 860 033f F0       		.byte	-16
+ 861 0340 D8       		.byte	-40
+ 862 0341 80       		.byte	-128
+ 863 0342 82       		.byte	-126
+ 864 0343 10       		.byte	16
+ 865 0344 82       		.byte	-126
+ 866 0345 01       		.byte	1
+ 867 0346 8A       		.byte	-118
+ 868 0347 02       		.byte	2
+ 869 0348 8B       		.byte	-117
+ 870 0349 02       		.byte	2
+ 871 034a 8F       		.byte	-113
+ 872 034b 10       		.byte	16
+ 873 034c 9E       		.byte	-98
+ 874 034d 01       		.byte	1
+ 875 034e 9F       		.byte	-97
+ 876 034f 10       		.byte	16
+ 877 0350 A2       		.byte	-94
+ 878 0351 02       		.byte	2
+ 879 0352 A7       		.byte	-89
+ 880 0353 02       		.byte	2
+ 881 0354 B0       		.byte	-80
+ 882 0355 01       		.byte	1
+ 883 0356 B2       		.byte	-78
+ 884 0357 A0       		.byte	-96
+ 885 0358 B6       		.byte	-74
+ 886 0359 10       		.byte	16
+ 887 035a E0       		.byte	-32
+ 888 035b 48       		.byte	72
+ 889 035c E2       		.byte	-30
+ 890 035d 84       		.byte	-124
+ 891 035e E6       		.byte	-26
+ 892 035f 24       		.byte	36
+ 893 0360 E8       		.byte	-24
+ 894 0361 10       		.byte	16
+ 895 0362 EA       		.byte	-22
+ 896 0363 8D       		.byte	-115
+ 897 0364 EC       		.byte	-20
+ 898 0365 80       		.byte	-128
+ 899 0366 02       		.byte	2
+ 900 0367 02       		.byte	2
+ 901 0368 0A       		.byte	10
+ 902 0369 01       		.byte	1
+ 903 036a 11       		.byte	17
+ 904 036b 02       		.byte	2
+ 905 036c 17       		.byte	23
+ 906 036d 01       		.byte	1
+ 907 036e 1A       		.byte	26
+ 908 036f 01       		.byte	1
+ 909 0370 23       		.byte	35
+ 910 0371 01       		.byte	1
+ 911 0372 27       		.byte	39
+ 912 0373 06       		.byte	6
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 17
+
+
+ 913 0374 31       		.byte	49
+ 914 0375 02       		.byte	2
+ 915 0376 32       		.byte	50
+ 916 0377 01       		.byte	1
+ 917 0378 33       		.byte	51
+ 918 0379 01       		.byte	1
+ 919 037a 34       		.byte	52
+ 920 037b 02       		.byte	2
+ 921 037c 37       		.byte	55
+ 922 037d 04       		.byte	4
+ 923 037e 40       		.byte	64
+ 924 037f 20       		.byte	32
+ 925 0380 41       		.byte	65
+ 926 0381 05       		.byte	5
+ 927 0382 45       		.byte	69
+ 928 0383 01       		.byte	1
+ 929 0384 46       		.byte	70
+ 930 0385 02       		.byte	2
+ 931 0386 48       		.byte	72
+ 932 0387 05       		.byte	5
+ 933 0388 49       		.byte	73
+ 934 0389 FF       		.byte	-1
+ 935 038a 4A       		.byte	74
+ 936 038b FF       		.byte	-1
+ 937 038c 4B       		.byte	75
+ 938 038d FF       		.byte	-1
+ 939 038e 4D       		.byte	77
+ 940 038f A0       		.byte	-96
+ 941 0390 4F       		.byte	79
+ 942 0391 04       		.byte	4
+ 943 0392 50       		.byte	80
+ 944 0393 18       		.byte	24
+ 945 0394 52       		.byte	82
+ 946 0395 80       		.byte	-128
+ 947 0396 58       		.byte	88
+ 948 0397 04       		.byte	4
+ 949 0398 59       		.byte	89
+ 950 0399 04       		.byte	4
+ 951 039a 5A       		.byte	90
+ 952 039b 04       		.byte	4
+ 953 039c 5B       		.byte	91
+ 954 039d 04       		.byte	4
+ 955 039e 5C       		.byte	92
+ 956 039f 43       		.byte	67
+ 957 03a0 5D       		.byte	93
+ 958 03a1 33       		.byte	51
+ 959 03a2 5F       		.byte	95
+ 960 03a3 01       		.byte	1
+ 961 03a4 60       		.byte	96
+ 962 03a5 40       		.byte	64
+ 963 03a6 62       		.byte	98
+ 964 03a7 C0       		.byte	-64
+ 965 03a8 64       		.byte	100
+ 966 03a9 40       		.byte	64
+ 967 03aa 65       		.byte	101
+ 968 03ab 40       		.byte	64
+ 969 03ac 66       		.byte	102
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 18
+
+
+ 970 03ad C0       		.byte	-64
+ 971 03ae 68       		.byte	104
+ 972 03af C0       		.byte	-64
+ 973 03b0 6A       		.byte	106
+ 974 03b1 C0       		.byte	-64
+ 975 03b2 6C       		.byte	108
+ 976 03b3 C0       		.byte	-64
+ 977 03b4 6E       		.byte	110
+ 978 03b5 C0       		.byte	-64
+ 979 03b6 85       		.byte	-123
+ 980 03b7 08       		.byte	8
+ 981 03b8 86       		.byte	-122
+ 982 03b9 08       		.byte	8
+ 983 03ba 8A       		.byte	-118
+ 984 03bb 04       		.byte	4
+ 985 03bc 8C       		.byte	-116
+ 986 03bd 01       		.byte	1
+ 987 03be 8E       		.byte	-114
+ 988 03bf 02       		.byte	2
+ 989 03c0 90       		.byte	-112
+ 990 03c1 03       		.byte	3
+ 991 03c2 93       		.byte	-109
+ 992 03c3 04       		.byte	4
+ 993 03c4 94       		.byte	-108
+ 994 03c5 03       		.byte	3
+ 995 03c6 97       		.byte	-105
+ 996 03c7 02       		.byte	2
+ 997 03c8 9A       		.byte	-102
+ 998 03c9 04       		.byte	4
+ 999 03ca 9B       		.byte	-101
+ 1000 03cb 02       		.byte	2
+ 1001 03cc A0       		.byte	-96
+ 1002 03cd 02       		.byte	2
+ 1003 03ce A2       		.byte	-94
+ 1004 03cf 01       		.byte	1
+ 1005 03d0 A3       		.byte	-93
+ 1006 03d1 01       		.byte	1
+ 1007 03d2 AA       		.byte	-86
+ 1008 03d3 08       		.byte	8
+ 1009 03d4 AF       		.byte	-81
+ 1010 03d5 01       		.byte	1
+ 1011 03d6 B1       		.byte	-79
+ 1012 03d7 02       		.byte	2
+ 1013 03d8 B2       		.byte	-78
+ 1014 03d9 04       		.byte	4
+ 1015 03da B3       		.byte	-77
+ 1016 03db 04       		.byte	4
+ 1017 03dc B4       		.byte	-76
+ 1018 03dd 03       		.byte	3
+ 1019 03de B5       		.byte	-75
+ 1020 03df 01       		.byte	1
+ 1021 03e0 B6       		.byte	-74
+ 1022 03e1 08       		.byte	8
+ 1023 03e2 B7       		.byte	-73
+ 1024 03e3 08       		.byte	8
+ 1025 03e4 BE       		.byte	-66
+ 1026 03e5 44       		.byte	68
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 19
+
+
+ 1027 03e6 BF       		.byte	-65
+ 1028 03e7 50       		.byte	80
+ 1029 03e8 C0       		.byte	-64
+ 1030 03e9 60       		.byte	96
+ 1031 03ea C1       		.byte	-63
+ 1032 03eb 03       		.byte	3
+ 1033 03ec C5       		.byte	-59
+ 1034 03ed D2       		.byte	-46
+ 1035 03ee C6       		.byte	-58
+ 1036 03ef 15       		.byte	21
+ 1037 03f0 C8       		.byte	-56
+ 1038 03f1 0F       		.byte	15
+ 1039 03f2 C9       		.byte	-55
+ 1040 03f3 FF       		.byte	-1
+ 1041 03f4 CA       		.byte	-54
+ 1042 03f5 FF       		.byte	-1
+ 1043 03f6 CB       		.byte	-53
+ 1044 03f7 FF       		.byte	-1
+ 1045 03f8 CD       		.byte	-51
+ 1046 03f9 A0       		.byte	-96
+ 1047 03fa CF       		.byte	-49
+ 1048 03fb 04       		.byte	4
+ 1049 03fc D0       		.byte	-48
+ 1050 03fd 18       		.byte	24
+ 1051 03fe D2       		.byte	-46
+ 1052 03ff 80       		.byte	-128
+ 1053 0400 D4       		.byte	-44
+ 1054 0401 07       		.byte	7
+ 1055 0402 D8       		.byte	-40
+ 1056 0403 04       		.byte	4
+ 1057 0404 D9       		.byte	-39
+ 1058 0405 04       		.byte	4
+ 1059 0406 DA       		.byte	-38
+ 1060 0407 04       		.byte	4
+ 1061 0408 DB       		.byte	-37
+ 1062 0409 04       		.byte	4
+ 1063 040a DC       		.byte	-36
+ 1064 040b 41       		.byte	65
+ 1065 040c DD       		.byte	-35
+ 1066 040d 44       		.byte	68
+ 1067 040e DF       		.byte	-33
+ 1068 040f 01       		.byte	1
+ 1069 0410 E0       		.byte	-32
+ 1070 0411 40       		.byte	64
+ 1071 0412 E2       		.byte	-30
+ 1072 0413 C0       		.byte	-64
+ 1073 0414 E4       		.byte	-28
+ 1074 0415 40       		.byte	64
+ 1075 0416 E5       		.byte	-27
+ 1076 0417 40       		.byte	64
+ 1077 0418 E6       		.byte	-26
+ 1078 0419 C0       		.byte	-64
+ 1079 041a E8       		.byte	-24
+ 1080 041b C0       		.byte	-64
+ 1081 041c EA       		.byte	-22
+ 1082 041d C0       		.byte	-64
+ 1083 041e EC       		.byte	-20
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 20
+
+
+ 1084 041f C0       		.byte	-64
+ 1085 0420 EE       		.byte	-18
+ 1086 0421 C0       		.byte	-64
+ 1087 0422 00       		.byte	0
+ 1088 0423 30       		.byte	48
+ 1089 0424 03       		.byte	3
+ 1090 0425 12       		.byte	18
+ 1091 0426 05       		.byte	5
+ 1092 0427 10       		.byte	16
+ 1093 0428 06       		.byte	6
+ 1094 0429 40       		.byte	64
+ 1095 042a 08       		.byte	8
+ 1096 042b 02       		.byte	2
+ 1097 042c 09       		.byte	9
+ 1098 042d 08       		.byte	8
+ 1099 042e 0A       		.byte	10
+ 1100 042f 08       		.byte	8
+ 1101 0430 0F       		.byte	15
+ 1102 0431 08       		.byte	8
+ 1103 0432 10       		.byte	16
+ 1104 0433 04       		.byte	4
+ 1105 0434 11       		.byte	17
+ 1106 0435 02       		.byte	2
+ 1107 0436 18       		.byte	24
+ 1108 0437 08       		.byte	8
+ 1109 0438 19       		.byte	25
+ 1110 0439 04       		.byte	4
+ 1111 043a 1B       		.byte	27
+ 1112 043b 80       		.byte	-128
+ 1113 043c 1D       		.byte	29
+ 1114 043d 30       		.byte	48
+ 1115 043e 1F       		.byte	31
+ 1116 043f 04       		.byte	4
+ 1117 0440 22       		.byte	34
+ 1118 0441 AE       		.byte	-82
+ 1119 0442 27       		.byte	39
+ 1120 0443 62       		.byte	98
+ 1121 0444 28       		.byte	40
+ 1122 0445 01       		.byte	1
+ 1123 0446 2A       		.byte	42
+ 1124 0447 01       		.byte	1
+ 1125 0448 2C       		.byte	44
+ 1126 0449 80       		.byte	-128
+ 1127 044a 2F       		.byte	47
+ 1128 044b 20       		.byte	32
+ 1129 044c 31       		.byte	49
+ 1130 044d 02       		.byte	2
+ 1131 044e 32       		.byte	50
+ 1132 044f 08       		.byte	8
+ 1133 0450 33       		.byte	51
+ 1134 0451 20       		.byte	32
+ 1135 0452 36       		.byte	54
+ 1136 0453 08       		.byte	8
+ 1137 0454 37       		.byte	55
+ 1138 0455 02       		.byte	2
+ 1139 0456 3B       		.byte	59
+ 1140 0457 04       		.byte	4
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 21
+
+
+ 1141 0458 40       		.byte	64
+ 1142 0459 10       		.byte	16
+ 1143 045a 45       		.byte	69
+ 1144 045b 20       		.byte	32
+ 1145 045c 48       		.byte	72
+ 1146 045d 10       		.byte	16
+ 1147 045e 49       		.byte	73
+ 1148 045f 01       		.byte	1
+ 1149 0460 4A       		.byte	74
+ 1150 0461 08       		.byte	8
+ 1151 0462 4F       		.byte	79
+ 1152 0463 88       		.byte	-120
+ 1153 0464 50       		.byte	80
+ 1154 0465 80       		.byte	-128
+ 1155 0466 51       		.byte	81
+ 1156 0467 80       		.byte	-128
+ 1157 0468 53       		.byte	83
+ 1158 0469 20       		.byte	32
+ 1159 046a 57       		.byte	87
+ 1160 046b 40       		.byte	64
+ 1161 046c 59       		.byte	89
+ 1162 046d 05       		.byte	5
+ 1163 046e 5A       		.byte	90
+ 1164 046f 10       		.byte	16
+ 1165 0470 5B       		.byte	91
+ 1166 0471 40       		.byte	64
+ 1167 0472 71       		.byte	113
+ 1168 0473 02       		.byte	2
+ 1169 0474 76       		.byte	118
+ 1170 0475 40       		.byte	64
+ 1171 0476 80       		.byte	-128
+ 1172 0477 02       		.byte	2
+ 1173 0478 84       		.byte	-124
+ 1174 0479 04       		.byte	4
+ 1175 047a 85       		.byte	-123
+ 1176 047b 88       		.byte	-120
+ 1177 047c 8B       		.byte	-117
+ 1178 047d 04       		.byte	4
+ 1179 047e 8C       		.byte	-116
+ 1180 047f 04       		.byte	4
+ 1181 0480 8D       		.byte	-115
+ 1182 0481 01       		.byte	1
+ 1183 0482 8F       		.byte	-113
+ 1184 0483 A0       		.byte	-96
+ 1185 0484 93       		.byte	-109
+ 1186 0485 04       		.byte	4
+ 1187 0486 C0       		.byte	-64
+ 1188 0487 57       		.byte	87
+ 1189 0488 C2       		.byte	-62
+ 1190 0489 4E       		.byte	78
+ 1191 048a C4       		.byte	-60
+ 1192 048b 0A       		.byte	10
+ 1193 048c CA       		.byte	-54
+ 1194 048d C9       		.byte	-55
+ 1195 048e CC       		.byte	-52
+ 1196 048f C7       		.byte	-57
+ 1197 0490 CE       		.byte	-50
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 22
+
+
+ 1198 0491 02       		.byte	2
+ 1199 0492 D0       		.byte	-48
+ 1200 0493 22       		.byte	34
+ 1201 0494 D2       		.byte	-46
+ 1202 0495 14       		.byte	20
+ 1203 0496 D6       		.byte	-42
+ 1204 0497 0F       		.byte	15
+ 1205 0498 E2       		.byte	-30
+ 1206 0499 8A       		.byte	-118
+ 1207 049a E4       		.byte	-28
+ 1208 049b 02       		.byte	2
+ 1209 049c E6       		.byte	-26
+ 1210 049d 15       		.byte	21
+ 1211 049e E8       		.byte	-24
+ 1212 049f 44       		.byte	68
+ 1213 04a0 EC       		.byte	-20
+ 1214 04a1 80       		.byte	-128
+ 1215 04a2 EE       		.byte	-18
+ 1216 04a3 04       		.byte	4
+ 1217 04a4 01       		.byte	1
+ 1218 04a5 01       		.byte	1
+ 1219 04a6 05       		.byte	5
+ 1220 04a7 04       		.byte	4
+ 1221 04a8 06       		.byte	6
+ 1222 04a9 02       		.byte	2
+ 1223 04aa 08       		.byte	8
+ 1224 04ab 02       		.byte	2
+ 1225 04ac 0D       		.byte	13
+ 1226 04ad 03       		.byte	3
+ 1227 04ae 0E       		.byte	14
+ 1228 04af 02       		.byte	2
+ 1229 04b0 10       		.byte	16
+ 1230 04b1 01       		.byte	1
+ 1231 04b2 11       		.byte	17
+ 1232 04b3 1F       		.byte	31
+ 1233 04b4 13       		.byte	19
+ 1234 04b5 20       		.byte	32
+ 1235 04b6 14       		.byte	20
+ 1236 04b7 01       		.byte	1
+ 1237 04b8 15       		.byte	21
+ 1238 04b9 1C       		.byte	28
+ 1239 04ba 17       		.byte	23
+ 1240 04bb 23       		.byte	35
+ 1241 04bc 18       		.byte	24
+ 1242 04bd 02       		.byte	2
+ 1243 04be 19       		.byte	25
+ 1244 04bf 33       		.byte	51
+ 1245 04c0 1B       		.byte	27
+ 1246 04c1 0C       		.byte	12
+ 1247 04c2 1D       		.byte	29
+ 1248 04c3 02       		.byte	2
+ 1249 04c4 21       		.byte	33
+ 1250 04c5 08       		.byte	8
+ 1251 04c6 25       		.byte	37
+ 1252 04c7 3F       		.byte	63
+ 1253 04c8 28       		.byte	40
+ 1254 04c9 01       		.byte	1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 23
+
+
+ 1255 04ca 2B       		.byte	43
+ 1256 04cb 23       		.byte	35
+ 1257 04cc 2D       		.byte	45
+ 1258 04cd 0C       		.byte	12
+ 1259 04ce 32       		.byte	50
+ 1260 04cf 01       		.byte	1
+ 1261 04d0 33       		.byte	51
+ 1262 04d1 10       		.byte	16
+ 1263 04d2 35       		.byte	53
+ 1264 04d3 0F       		.byte	15
+ 1265 04d4 36       		.byte	54
+ 1266 04d5 02       		.byte	2
+ 1267 04d6 37       		.byte	55
+ 1268 04d7 2C       		.byte	44
+ 1269 04d8 38       		.byte	56
+ 1270 04d9 80       		.byte	-128
+ 1271 04da 3B       		.byte	59
+ 1272 04db A0       		.byte	-96
+ 1273 04dc 3F       		.byte	63
+ 1274 04dd 04       		.byte	4
+ 1275 04de 40       		.byte	64
+ 1276 04df 64       		.byte	100
+ 1277 04e0 42       		.byte	66
+ 1278 04e1 02       		.byte	2
+ 1279 04e2 45       		.byte	69
+ 1280 04e3 EC       		.byte	-20
+ 1281 04e4 46       		.byte	70
+ 1282 04e5 02       		.byte	2
+ 1283 04e6 48       		.byte	72
+ 1284 04e7 07       		.byte	7
+ 1285 04e8 49       		.byte	73
+ 1286 04e9 FF       		.byte	-1
+ 1287 04ea 4A       		.byte	74
+ 1288 04eb FF       		.byte	-1
+ 1289 04ec 4B       		.byte	75
+ 1290 04ed FF       		.byte	-1
+ 1291 04ee 4F       		.byte	79
+ 1292 04ef 01       		.byte	1
+ 1293 04f0 50       		.byte	80
+ 1294 04f1 18       		.byte	24
+ 1295 04f2 56       		.byte	86
+ 1296 04f3 02       		.byte	2
+ 1297 04f4 57       		.byte	87
+ 1298 04f5 12       		.byte	18
+ 1299 04f6 58       		.byte	88
+ 1300 04f7 04       		.byte	4
+ 1301 04f8 59       		.byte	89
+ 1302 04f9 04       		.byte	4
+ 1303 04fa 5A       		.byte	90
+ 1304 04fb 04       		.byte	4
+ 1305 04fc 5B       		.byte	91
+ 1306 04fd 04       		.byte	4
+ 1307 04fe 5C       		.byte	92
+ 1308 04ff 11       		.byte	17
+ 1309 0500 5D       		.byte	93
+ 1310 0501 15       		.byte	21
+ 1311 0502 5F       		.byte	95
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 24
+
+
+ 1312 0503 01       		.byte	1
+ 1313 0504 60       		.byte	96
+ 1314 0505 40       		.byte	64
+ 1315 0506 62       		.byte	98
+ 1316 0507 40       		.byte	64
+ 1317 0508 64       		.byte	100
+ 1318 0509 40       		.byte	64
+ 1319 050a 65       		.byte	101
+ 1320 050b 40       		.byte	64
+ 1321 050c 66       		.byte	102
+ 1322 050d 80       		.byte	-128
+ 1323 050e 68       		.byte	104
+ 1324 050f 80       		.byte	-128
+ 1325 0510 6A       		.byte	106
+ 1326 0511 80       		.byte	-128
+ 1327 0512 6C       		.byte	108
+ 1328 0513 80       		.byte	-128
+ 1329 0514 6E       		.byte	110
+ 1330 0515 80       		.byte	-128
+ 1331 0516 80       		.byte	-128
+ 1332 0517 01       		.byte	1
+ 1333 0518 86       		.byte	-122
+ 1334 0519 03       		.byte	3
+ 1335 051a 89       		.byte	-119
+ 1336 051b 04       		.byte	4
+ 1337 051c 91       		.byte	-111
+ 1338 051d 02       		.byte	2
+ 1339 051e 95       		.byte	-107
+ 1340 051f 01       		.byte	1
+ 1341 0520 B0       		.byte	-80
+ 1342 0521 01       		.byte	1
+ 1343 0522 B1       		.byte	-79
+ 1344 0523 02       		.byte	2
+ 1345 0524 B3       		.byte	-77
+ 1346 0525 04       		.byte	4
+ 1347 0526 B5       		.byte	-75
+ 1348 0527 01       		.byte	1
+ 1349 0528 B6       		.byte	-74
+ 1350 0529 02       		.byte	2
+ 1351 052a BF       		.byte	-65
+ 1352 052b 15       		.byte	21
+ 1353 052c C0       		.byte	-64
+ 1354 052d 02       		.byte	2
+ 1355 052e C6       		.byte	-58
+ 1356 052f 04       		.byte	4
+ 1357 0530 C9       		.byte	-55
+ 1358 0531 FF       		.byte	-1
+ 1359 0532 CA       		.byte	-54
+ 1360 0533 07       		.byte	7
+ 1361 0534 CB       		.byte	-53
+ 1362 0535 FF       		.byte	-1
+ 1363 0536 CC       		.byte	-52
+ 1364 0537 40       		.byte	64
+ 1365 0538 CD       		.byte	-51
+ 1366 0539 20       		.byte	32
+ 1367 053a CE       		.byte	-50
+ 1368 053b F0       		.byte	-16
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 25
+
+
+ 1369 053c CF       		.byte	-49
+ 1370 053d 05       		.byte	5
+ 1371 053e D0       		.byte	-48
+ 1372 053f 08       		.byte	8
+ 1373 0540 D8       		.byte	-40
+ 1374 0541 04       		.byte	4
+ 1375 0542 D9       		.byte	-39
+ 1376 0543 04       		.byte	4
+ 1377 0544 DA       		.byte	-38
+ 1378 0545 04       		.byte	4
+ 1379 0546 DC       		.byte	-36
+ 1380 0547 04       		.byte	4
+ 1381 0548 DD       		.byte	-35
+ 1382 0549 01       		.byte	1
+ 1383 054a DF       		.byte	-33
+ 1384 054b 01       		.byte	1
+ 1385 054c E0       		.byte	-32
+ 1386 054d 40       		.byte	64
+ 1387 054e E1       		.byte	-31
+ 1388 054f A8       		.byte	-88
+ 1389 0550 E2       		.byte	-30
+ 1390 0551 40       		.byte	64
+ 1391 0552 E3       		.byte	-29
+ 1392 0553 20       		.byte	32
+ 1393 0554 00       		.byte	0
+ 1394 0555 09       		.byte	9
+ 1395 0556 05       		.byte	5
+ 1396 0557 04       		.byte	4
+ 1397 0558 06       		.byte	6
+ 1398 0559 04       		.byte	4
+ 1399 055a 07       		.byte	7
+ 1400 055b 01       		.byte	1
+ 1401 055c 0C       		.byte	12
+ 1402 055d 10       		.byte	16
+ 1403 055e 0E       		.byte	14
+ 1404 055f 40       		.byte	64
+ 1405 0560 0F       		.byte	15
+ 1406 0561 20       		.byte	32
+ 1407 0562 17       		.byte	23
+ 1408 0563 10       		.byte	16
+ 1409 0564 18       		.byte	24
+ 1410 0565 81       		.byte	-127
+ 1411 0566 1D       		.byte	29
+ 1412 0567 08       		.byte	8
+ 1413 0568 1F       		.byte	31
+ 1414 0569 44       		.byte	68
+ 1415 056a 21       		.byte	33
+ 1416 056b 02       		.byte	2
+ 1417 056c 22       		.byte	34
+ 1418 056d 10       		.byte	16
+ 1419 056e 23       		.byte	35
+ 1420 056f 10       		.byte	16
+ 1421 0570 26       		.byte	38
+ 1422 0571 14       		.byte	20
+ 1423 0572 27       		.byte	39
+ 1424 0573 01       		.byte	1
+ 1425 0574 2C       		.byte	44
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 26
+
+
+ 1426 0575 81       		.byte	-127
+ 1427 0576 2F       		.byte	47
+ 1428 0577 14       		.byte	20
+ 1429 0578 30       		.byte	48
+ 1430 0579 08       		.byte	8
+ 1431 057a 32       		.byte	50
+ 1432 057b 01       		.byte	1
+ 1433 057c 34       		.byte	52
+ 1434 057d 10       		.byte	16
+ 1435 057e 35       		.byte	53
+ 1436 057f 04       		.byte	4
+ 1437 0580 36       		.byte	54
+ 1438 0581 10       		.byte	16
+ 1439 0582 37       		.byte	55
+ 1440 0583 41       		.byte	65
+ 1441 0584 39       		.byte	57
+ 1442 0585 20       		.byte	32
+ 1443 0586 3C       		.byte	60
+ 1444 0587 40       		.byte	64
+ 1445 0588 3E       		.byte	62
+ 1446 0589 09       		.byte	9
+ 1447 058a 40       		.byte	64
+ 1448 058b 04       		.byte	4
+ 1449 058c 44       		.byte	68
+ 1450 058d 04       		.byte	4
+ 1451 058e 46       		.byte	70
+ 1452 058f 80       		.byte	-128
+ 1453 0590 48       		.byte	72
+ 1454 0591 10       		.byte	16
+ 1455 0592 4E       		.byte	78
+ 1456 0593 08       		.byte	8
+ 1457 0594 4F       		.byte	79
+ 1458 0595 05       		.byte	5
+ 1459 0596 52       		.byte	82
+ 1460 0597 40       		.byte	64
+ 1461 0598 54       		.byte	84
+ 1462 0599 40       		.byte	64
+ 1463 059a 56       		.byte	86
+ 1464 059b 80       		.byte	-128
+ 1465 059c 5D       		.byte	93
+ 1466 059d 10       		.byte	16
+ 1467 059e 5E       		.byte	94
+ 1468 059f 28       		.byte	40
+ 1469 05a0 66       		.byte	102
+ 1470 05a1 04       		.byte	4
+ 1471 05a2 67       		.byte	103
+ 1472 05a3 20       		.byte	32
+ 1473 05a4 6C       		.byte	108
+ 1474 05a5 04       		.byte	4
+ 1475 05a6 6E       		.byte	110
+ 1476 05a7 44       		.byte	68
+ 1477 05a8 6F       		.byte	111
+ 1478 05a9 10       		.byte	16
+ 1479 05aa 74       		.byte	116
+ 1480 05ab 80       		.byte	-128
+ 1481 05ac 76       		.byte	118
+ 1482 05ad 18       		.byte	24
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 27
+
+
+ 1483 05ae 80       		.byte	-128
+ 1484 05af 04       		.byte	4
+ 1485 05b0 81       		.byte	-127
+ 1486 05b1 02       		.byte	2
+ 1487 05b2 82       		.byte	-126
+ 1488 05b3 10       		.byte	16
+ 1489 05b4 83       		.byte	-125
+ 1490 05b5 10       		.byte	16
+ 1491 05b6 84       		.byte	-124
+ 1492 05b7 04       		.byte	4
+ 1493 05b8 86       		.byte	-122
+ 1494 05b9 04       		.byte	4
+ 1495 05ba 87       		.byte	-121
+ 1496 05bb 40       		.byte	64
+ 1497 05bc 88       		.byte	-120
+ 1498 05bd 01       		.byte	1
+ 1499 05be 8A       		.byte	-118
+ 1500 05bf 10       		.byte	16
+ 1501 05c0 8C       		.byte	-116
+ 1502 05c1 08       		.byte	8
+ 1503 05c2 8D       		.byte	-115
+ 1504 05c3 48       		.byte	72
+ 1505 05c4 8F       		.byte	-113
+ 1506 05c5 40       		.byte	64
+ 1507 05c6 90       		.byte	-112
+ 1508 05c7 04       		.byte	4
+ 1509 05c8 91       		.byte	-111
+ 1510 05c9 20       		.byte	32
+ 1511 05ca 92       		.byte	-110
+ 1512 05cb 02       		.byte	2
+ 1513 05cc 93       		.byte	-109
+ 1514 05cd 20       		.byte	32
+ 1515 05ce 95       		.byte	-107
+ 1516 05cf 88       		.byte	-120
+ 1517 05d0 98       		.byte	-104
+ 1518 05d1 40       		.byte	64
+ 1519 05d2 99       		.byte	-103
+ 1520 05d3 04       		.byte	4
+ 1521 05d4 9C       		.byte	-100
+ 1522 05d5 18       		.byte	24
+ 1523 05d6 9D       		.byte	-99
+ 1524 05d7 10       		.byte	16
+ 1525 05d8 9E       		.byte	-98
+ 1526 05d9 58       		.byte	88
+ 1527 05da 9F       		.byte	-97
+ 1528 05db 01       		.byte	1
+ 1529 05dc A0       		.byte	-96
+ 1530 05dd 08       		.byte	8
+ 1531 05de A4       		.byte	-92
+ 1532 05df 90       		.byte	-112
+ 1533 05e0 A6       		.byte	-90
+ 1534 05e1 01       		.byte	1
+ 1535 05e2 A7       		.byte	-89
+ 1536 05e3 02       		.byte	2
+ 1537 05e4 AB       		.byte	-85
+ 1538 05e5 08       		.byte	8
+ 1539 05e6 AC       		.byte	-84
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 28
+
+
+ 1540 05e7 28       		.byte	40
+ 1541 05e8 AF       		.byte	-81
+ 1542 05e9 04       		.byte	4
+ 1543 05ea B0       		.byte	-80
+ 1544 05eb 02       		.byte	2
+ 1545 05ec B1       		.byte	-79
+ 1546 05ed 01       		.byte	1
+ 1547 05ee B2       		.byte	-78
+ 1548 05ef 20       		.byte	32
+ 1549 05f0 B7       		.byte	-73
+ 1550 05f1 20       		.byte	32
+ 1551 05f2 C0       		.byte	-64
+ 1552 05f3 EC       		.byte	-20
+ 1553 05f4 C2       		.byte	-62
+ 1554 05f5 70       		.byte	112
+ 1555 05f6 C4       		.byte	-60
+ 1556 05f7 40       		.byte	64
+ 1557 05f8 CA       		.byte	-54
+ 1558 05f9 F0       		.byte	-16
+ 1559 05fa CC       		.byte	-52
+ 1560 05fb F3       		.byte	-13
+ 1561 05fc CE       		.byte	-50
+ 1562 05fd D4       		.byte	-44
+ 1563 05fe D0       		.byte	-48
+ 1564 05ff A4       		.byte	-92
+ 1565 0600 D2       		.byte	-46
+ 1566 0601 20       		.byte	32
+ 1567 0602 D6       		.byte	-42
+ 1568 0603 40       		.byte	64
+ 1569 0604 E0       		.byte	-32
+ 1570 0605 51       		.byte	81
+ 1571 0606 E8       		.byte	-24
+ 1572 0607 40       		.byte	64
+ 1573 0608 EA       		.byte	-22
+ 1574 0609 02       		.byte	2
+ 1575 060a EC       		.byte	-20
+ 1576 060b 80       		.byte	-128
+ 1577 060c EE       		.byte	-18
+ 1578 060d 04       		.byte	4
+ 1579 060e 00       		.byte	0
+ 1580 060f 20       		.byte	32
+ 1581 0610 02       		.byte	2
+ 1582 0611 10       		.byte	16
+ 1583 0612 03       		.byte	3
+ 1584 0613 10       		.byte	16
+ 1585 0614 04       		.byte	4
+ 1586 0615 10       		.byte	16
+ 1587 0616 06       		.byte	6
+ 1588 0617 20       		.byte	32
+ 1589 0618 08       		.byte	8
+ 1590 0619 03       		.byte	3
+ 1591 061a 09       		.byte	9
+ 1592 061b 60       		.byte	96
+ 1593 061c 0A       		.byte	10
+ 1594 061d 0C       		.byte	12
+ 1595 061e 0B       		.byte	11
+ 1596 061f 0E       		.byte	14
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 29
+
+
+ 1597 0620 0D       		.byte	13
+ 1598 0621 65       		.byte	101
+ 1599 0622 11       		.byte	17
+ 1600 0623 20       		.byte	32
+ 1601 0624 12       		.byte	18
+ 1602 0625 30       		.byte	48
+ 1603 0626 13       		.byte	19
+ 1604 0627 49       		.byte	73
+ 1605 0628 15       		.byte	21
+ 1606 0629 20       		.byte	32
+ 1607 062a 16       		.byte	22
+ 1608 062b 0F       		.byte	15
+ 1609 062c 17       		.byte	23
+ 1610 062d 43       		.byte	67
+ 1611 062e 1C       		.byte	28
+ 1612 062f 03       		.byte	3
+ 1613 0630 1E       		.byte	30
+ 1614 0631 0C       		.byte	12
+ 1615 0632 20       		.byte	32
+ 1616 0633 05       		.byte	5
+ 1617 0634 22       		.byte	34
+ 1618 0635 0A       		.byte	10
+ 1619 0636 28       		.byte	40
+ 1620 0637 05       		.byte	5
+ 1621 0638 29       		.byte	41
+ 1622 0639 80       		.byte	-128
+ 1623 063a 2A       		.byte	42
+ 1624 063b 0A       		.byte	10
+ 1625 063c 2B       		.byte	43
+ 1626 063d 0F       		.byte	15
+ 1627 063e 31       		.byte	49
+ 1628 063f 0F       		.byte	15
+ 1629 0640 32       		.byte	50
+ 1630 0641 30       		.byte	48
+ 1631 0642 33       		.byte	51
+ 1632 0643 E0       		.byte	-32
+ 1633 0644 34       		.byte	52
+ 1634 0645 0F       		.byte	15
+ 1635 0646 37       		.byte	55
+ 1636 0647 10       		.byte	16
+ 1637 0648 3B       		.byte	59
+ 1638 0649 0E       		.byte	14
+ 1639 064a 3E       		.byte	62
+ 1640 064b 04       		.byte	4
+ 1641 064c 52       		.byte	82
+ 1642 064d 83       		.byte	-125
+ 1643 064e 58       		.byte	88
+ 1644 064f 04       		.byte	4
+ 1645 0650 59       		.byte	89
+ 1646 0651 04       		.byte	4
+ 1647 0652 5B       		.byte	91
+ 1648 0653 04       		.byte	4
+ 1649 0654 5C       		.byte	92
+ 1650 0655 55       		.byte	85
+ 1651 0656 5D       		.byte	93
+ 1652 0657 50       		.byte	80
+ 1653 0658 5F       		.byte	95
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 30
+
+
+ 1654 0659 01       		.byte	1
+ 1655 065a 80       		.byte	-128
+ 1656 065b 84       		.byte	-124
+ 1657 065c 82       		.byte	-126
+ 1658 065d 30       		.byte	48
+ 1659 065e 86       		.byte	-122
+ 1660 065f 06       		.byte	6
+ 1661 0660 88       		.byte	-120
+ 1662 0661 06       		.byte	6
+ 1663 0662 8C       		.byte	-116
+ 1664 0663 26       		.byte	38
+ 1665 0664 8E       		.byte	-114
+ 1666 0665 C8       		.byte	-56
+ 1667 0666 94       		.byte	-108
+ 1668 0667 E0       		.byte	-32
+ 1669 0668 98       		.byte	-104
+ 1670 0669 E0       		.byte	-32
+ 1671 066a 9E       		.byte	-98
+ 1672 066b 06       		.byte	6
+ 1673 066c A1       		.byte	-95
+ 1674 066d 01       		.byte	1
+ 1675 066e A2       		.byte	-94
+ 1676 066f 06       		.byte	6
+ 1677 0670 A4       		.byte	-92
+ 1678 0671 42       		.byte	66
+ 1679 0672 A6       		.byte	-90
+ 1680 0673 31       		.byte	49
+ 1681 0674 A8       		.byte	-88
+ 1682 0675 06       		.byte	6
+ 1683 0676 B0       		.byte	-80
+ 1684 0677 E0       		.byte	-32
+ 1685 0678 B2       		.byte	-78
+ 1686 0679 06       		.byte	6
+ 1687 067a B3       		.byte	-77
+ 1688 067b 01       		.byte	1
+ 1689 067c B4       		.byte	-76
+ 1690 067d 01       		.byte	1
+ 1691 067e B6       		.byte	-74
+ 1692 067f 18       		.byte	24
+ 1693 0680 BE       		.byte	-66
+ 1694 0681 40       		.byte	64
+ 1695 0682 BF       		.byte	-65
+ 1696 0683 04       		.byte	4
+ 1697 0684 C0       		.byte	-64
+ 1698 0685 63       		.byte	99
+ 1699 0686 C1       		.byte	-63
+ 1700 0687 02       		.byte	2
+ 1701 0688 C2       		.byte	-62
+ 1702 0689 04       		.byte	4
+ 1703 068a C4       		.byte	-60
+ 1704 068b 01       		.byte	1
+ 1705 068c C7       		.byte	-57
+ 1706 068d CE       		.byte	-50
+ 1707 068e C8       		.byte	-56
+ 1708 068f 30       		.byte	48
+ 1709 0690 C9       		.byte	-55
+ 1710 0691 FF       		.byte	-1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 31
+
+
+ 1711 0692 CA       		.byte	-54
+ 1712 0693 FF       		.byte	-1
+ 1713 0694 CB       		.byte	-53
+ 1714 0695 FF       		.byte	-1
+ 1715 0696 CC       		.byte	-52
+ 1716 0697 62       		.byte	98
+ 1717 0698 CD       		.byte	-51
+ 1718 0699 A0       		.byte	-96
+ 1719 069a CE       		.byte	-50
+ 1720 069b F0       		.byte	-16
+ 1721 069c CF       		.byte	-49
+ 1722 069d 41       		.byte	65
+ 1723 069e D0       		.byte	-48
+ 1724 069f 0C       		.byte	12
+ 1725 06a0 D4       		.byte	-44
+ 1726 06a1 03       		.byte	3
+ 1727 06a2 D8       		.byte	-40
+ 1728 06a3 04       		.byte	4
+ 1729 06a4 D9       		.byte	-39
+ 1730 06a5 04       		.byte	4
+ 1731 06a6 DA       		.byte	-38
+ 1732 06a7 04       		.byte	4
+ 1733 06a8 DB       		.byte	-37
+ 1734 06a9 04       		.byte	4
+ 1735 06aa DC       		.byte	-36
+ 1736 06ab 01       		.byte	1
+ 1737 06ac DD       		.byte	-35
+ 1738 06ad 51       		.byte	81
+ 1739 06ae DF       		.byte	-33
+ 1740 06af 01       		.byte	1
+ 1741 06b0 E6       		.byte	-26
+ 1742 06b1 40       		.byte	64
+ 1743 06b2 E7       		.byte	-25
+ 1744 06b3 02       		.byte	2
+ 1745 06b4 E9       		.byte	-23
+ 1746 06b5 10       		.byte	16
+ 1747 06b6 EA       		.byte	-22
+ 1748 06b7 30       		.byte	48
+ 1749 06b8 EB       		.byte	-21
+ 1750 06b9 10       		.byte	16
+ 1751 06ba ED       		.byte	-19
+ 1752 06bb 10       		.byte	16
+ 1753 06bc EE       		.byte	-18
+ 1754 06bd 10       		.byte	16
+ 1755 06be EF       		.byte	-17
+ 1756 06bf 12       		.byte	18
+ 1757 06c0 00       		.byte	0
+ 1758 06c1 0A       		.byte	10
+ 1759 06c2 03       		.byte	3
+ 1760 06c3 04       		.byte	4
+ 1761 06c4 04       		.byte	4
+ 1762 06c5 40       		.byte	64
+ 1763 06c6 05       		.byte	5
+ 1764 06c7 04       		.byte	4
+ 1765 06c8 06       		.byte	6
+ 1766 06c9 04       		.byte	4
+ 1767 06ca 07       		.byte	7
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 32
+
+
+ 1768 06cb 40       		.byte	64
+ 1769 06cc 0A       		.byte	10
+ 1770 06cd 52       		.byte	82
+ 1771 06ce 0D       		.byte	13
+ 1772 06cf 40       		.byte	64
+ 1773 06d0 0E       		.byte	14
+ 1774 06d1 04       		.byte	4
+ 1775 06d2 0F       		.byte	15
+ 1776 06d3 20       		.byte	32
+ 1777 06d4 13       		.byte	19
+ 1778 06d5 22       		.byte	34
+ 1779 06d6 15       		.byte	21
+ 1780 06d7 18       		.byte	24
+ 1781 06d8 17       		.byte	23
+ 1782 06d9 01       		.byte	1
+ 1783 06da 19       		.byte	25
+ 1784 06db 20       		.byte	32
+ 1785 06dc 1A       		.byte	26
+ 1786 06dd 10       		.byte	16
+ 1787 06de 1B       		.byte	27
+ 1788 06df 04       		.byte	4
+ 1789 06e0 1C       		.byte	28
+ 1790 06e1 40       		.byte	64
+ 1791 06e2 1D       		.byte	29
+ 1792 06e3 90       		.byte	-112
+ 1793 06e4 1F       		.byte	31
+ 1794 06e5 08       		.byte	8
+ 1795 06e6 20       		.byte	32
+ 1796 06e7 12       		.byte	18
+ 1797 06e8 22       		.byte	34
+ 1798 06e9 01       		.byte	1
+ 1799 06ea 23       		.byte	35
+ 1800 06eb 20       		.byte	32
+ 1801 06ec 26       		.byte	38
+ 1802 06ed 04       		.byte	4
+ 1803 06ee 28       		.byte	40
+ 1804 06ef 04       		.byte	4
+ 1805 06f0 2B       		.byte	43
+ 1806 06f1 04       		.byte	4
+ 1807 06f2 2F       		.byte	47
+ 1808 06f3 80       		.byte	-128
+ 1809 06f4 32       		.byte	50
+ 1810 06f5 01       		.byte	1
+ 1811 06f6 33       		.byte	51
+ 1812 06f7 04       		.byte	4
+ 1813 06f8 38       		.byte	56
+ 1814 06f9 10       		.byte	16
+ 1815 06fa 39       		.byte	57
+ 1816 06fb 42       		.byte	66
+ 1817 06fc 44       		.byte	68
+ 1818 06fd 40       		.byte	64
+ 1819 06fe 45       		.byte	69
+ 1820 06ff 88       		.byte	-120
+ 1821 0700 46       		.byte	70
+ 1822 0701 04       		.byte	4
+ 1823 0702 4D       		.byte	77
+ 1824 0703 10       		.byte	16
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 33
+
+
+ 1825 0704 55       		.byte	85
+ 1826 0705 04       		.byte	4
+ 1827 0706 57       		.byte	87
+ 1828 0707 02       		.byte	2
+ 1829 0708 5C       		.byte	92
+ 1830 0709 80       		.byte	-128
+ 1831 070a 5D       		.byte	93
+ 1832 070b 20       		.byte	32
+ 1833 070c 5F       		.byte	95
+ 1834 070d 05       		.byte	5
+ 1835 070e 69       		.byte	105
+ 1836 070f 40       		.byte	64
+ 1837 0710 6B       		.byte	107
+ 1838 0711 06       		.byte	6
+ 1839 0712 72       		.byte	114
+ 1840 0713 40       		.byte	64
+ 1841 0714 82       		.byte	-126
+ 1842 0715 4D       		.byte	77
+ 1843 0716 83       		.byte	-125
+ 1844 0717 08       		.byte	8
+ 1845 0718 88       		.byte	-120
+ 1846 0719 04       		.byte	4
+ 1847 071a 89       		.byte	-119
+ 1848 071b 05       		.byte	5
+ 1849 071c 8A       		.byte	-118
+ 1850 071d 01       		.byte	1
+ 1851 071e 8D       		.byte	-115
+ 1852 071f 04       		.byte	4
+ 1853 0720 8F       		.byte	-113
+ 1854 0721 80       		.byte	-128
+ 1855 0722 91       		.byte	-111
+ 1856 0723 90       		.byte	-112
+ 1857 0724 92       		.byte	-110
+ 1858 0725 04       		.byte	4
+ 1859 0726 93       		.byte	-109
+ 1860 0727 05       		.byte	5
+ 1861 0728 94       		.byte	-108
+ 1862 0729 40       		.byte	64
+ 1863 072a 95       		.byte	-107
+ 1864 072b 08       		.byte	8
+ 1865 072c 96       		.byte	-106
+ 1866 072d 01       		.byte	1
+ 1867 072e 98       		.byte	-104
+ 1868 072f C0       		.byte	-64
+ 1869 0730 99       		.byte	-103
+ 1870 0731 04       		.byte	4
+ 1871 0732 9A       		.byte	-102
+ 1872 0733 04       		.byte	4
+ 1873 0734 9B       		.byte	-101
+ 1874 0735 41       		.byte	65
+ 1875 0736 9C       		.byte	-100
+ 1876 0737 04       		.byte	4
+ 1877 0738 9D       		.byte	-99
+ 1878 0739 10       		.byte	16
+ 1879 073a A1       		.byte	-95
+ 1880 073b 08       		.byte	8
+ 1881 073c A3       		.byte	-93
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 34
+
+
+ 1882 073d 10       		.byte	16
+ 1883 073e A6       		.byte	-90
+ 1884 073f 09       		.byte	9
+ 1885 0740 A7       		.byte	-89
+ 1886 0741 02       		.byte	2
+ 1887 0742 AF       		.byte	-81
+ 1888 0743 10       		.byte	16
+ 1889 0744 B0       		.byte	-80
+ 1890 0745 C0       		.byte	-64
+ 1891 0746 B4       		.byte	-76
+ 1892 0747 40       		.byte	64
+ 1893 0748 C0       		.byte	-64
+ 1894 0749 FE       		.byte	-2
+ 1895 074a C2       		.byte	-62
+ 1896 074b ED       		.byte	-19
+ 1897 074c C4       		.byte	-60
+ 1898 074d 7A       		.byte	122
+ 1899 074e CA       		.byte	-54
+ 1900 074f 84       		.byte	-124
+ 1901 0750 CC       		.byte	-52
+ 1902 0751 03       		.byte	3
+ 1903 0752 CE       		.byte	-50
+ 1904 0753 0D       		.byte	13
+ 1905 0754 D0       		.byte	-48
+ 1906 0755 F0       		.byte	-16
+ 1907 0756 D2       		.byte	-46
+ 1908 0757 20       		.byte	32
+ 1909 0758 D6       		.byte	-42
+ 1910 0759 F0       		.byte	-16
+ 1911 075a E0       		.byte	-32
+ 1912 075b 48       		.byte	72
+ 1913 075c E2       		.byte	-30
+ 1914 075d 80       		.byte	-128
+ 1915 075e E6       		.byte	-26
+ 1916 075f C0       		.byte	-64
+ 1917 0760 E8       		.byte	-24
+ 1918 0761 30       		.byte	48
+ 1919 0762 EA       		.byte	-22
+ 1920 0763 05       		.byte	5
+ 1921 0764 EC       		.byte	-20
+ 1922 0765 80       		.byte	-128
+ 1923 0766 EE       		.byte	-18
+ 1924 0767 30       		.byte	48
+ 1925 0768 33       		.byte	51
+ 1926 0769 88       		.byte	-120
+ 1927 076a 34       		.byte	52
+ 1928 076b 20       		.byte	32
+ 1929 076c 80       		.byte	-128
+ 1930 076d 20       		.byte	32
+ 1931 076e CC       		.byte	-52
+ 1932 076f 70       		.byte	112
+ 1933 0770 E6       		.byte	-26
+ 1934 0771 20       		.byte	32
+ 1935 0772 87       		.byte	-121
+ 1936 0773 08       		.byte	8
+ 1937 0774 A7       		.byte	-89
+ 1938 0775 88       		.byte	-120
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 35
+
+
+ 1939 0776 E6       		.byte	-26
+ 1940 0777 40       		.byte	64
+ 1941 0778 1B       		.byte	27
+ 1942 0779 42       		.byte	66
+ 1943 077a 1C       		.byte	28
+ 1944 077b 40       		.byte	64
+ 1945 077c 1D       		.byte	29
+ 1946 077d 80       		.byte	-128
+ 1947 077e 3E       		.byte	62
+ 1948 077f 10       		.byte	16
+ 1949 0780 5B       		.byte	91
+ 1950 0781 08       		.byte	8
+ 1951 0782 5F       		.byte	95
+ 1952 0783 08       		.byte	8
+ 1953 0784 67       		.byte	103
+ 1954 0785 80       		.byte	-128
+ 1955 0786 87       		.byte	-121
+ 1956 0787 48       		.byte	72
+ 1957 0788 A7       		.byte	-89
+ 1958 0789 80       		.byte	-128
+ 1959 078a C6       		.byte	-58
+ 1960 078b F0       		.byte	-16
+ 1961 078c CE       		.byte	-50
+ 1962 078d 20       		.byte	32
+ 1963 078e D6       		.byte	-42
+ 1964 078f C0       		.byte	-64
+ 1965 0790 D8       		.byte	-40
+ 1966 0791 80       		.byte	-128
+ 1967 0792 E2       		.byte	-30
+ 1968 0793 10       		.byte	16
+ 1969 0794 6B       		.byte	107
+ 1970 0795 08       		.byte	8
+ 1971 0796 90       		.byte	-112
+ 1972 0797 40       		.byte	64
+ 1973 0798 96       		.byte	-106
+ 1974 0799 10       		.byte	16
+ 1975 079a 9B       		.byte	-101
+ 1976 079b 08       		.byte	8
+ 1977 079c A3       		.byte	-93
+ 1978 079d 42       		.byte	66
+ 1979 079e A7       		.byte	-89
+ 1980 079f 80       		.byte	-128
+ 1981 07a0 AD       		.byte	-83
+ 1982 07a1 80       		.byte	-128
+ 1983 07a2 DA       		.byte	-38
+ 1984 07a3 40       		.byte	64
+ 1985 07a4 EC       		.byte	-20
+ 1986 07a5 40       		.byte	64
+ 1987 07a6 10       		.byte	16
+ 1988 07a7 20       		.byte	32
+ 1989 07a8 C4       		.byte	-60
+ 1990 07a9 08       		.byte	8
+ 1991 07aa 03       		.byte	3
+ 1992 07ab 80       		.byte	-128
+ 1993 07ac 88       		.byte	-120
+ 1994 07ad 20       		.byte	32
+ 1995 07ae A0       		.byte	-96
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 36
+
+
+ 1996 07af 20       		.byte	32
+ 1997 07b0 C0       		.byte	-64
+ 1998 07b1 08       		.byte	8
+ 1999 07b2 E6       		.byte	-26
+ 2000 07b3 04       		.byte	4
+ 2001 07b4 02       		.byte	2
+ 2002 07b5 10       		.byte	16
+ 2003 07b6 07       		.byte	7
+ 2004 07b7 80       		.byte	-128
+ 2005 07b8 B7       		.byte	-73
+ 2006 07b9 80       		.byte	-128
+ 2007 07ba C0       		.byte	-64
+ 2008 07bb 0C       		.byte	12
+ 2009 07bc EA       		.byte	-22
+ 2010 07bd 02       		.byte	2
+ 2011 07be 8B       		.byte	-117
+ 2012 07bf 80       		.byte	-128
+ 2013 07c0 9A       		.byte	-102
+ 2014 07c1 10       		.byte	16
+ 2015 07c2 9B       		.byte	-101
+ 2016 07c3 80       		.byte	-128
+ 2017 07c4 E6       		.byte	-26
+ 2018 07c5 04       		.byte	4
+ 2019 07c6 24       		.byte	36
+ 2020 07c7 08       		.byte	8
+ 2021 07c8 58       		.byte	88
+ 2022 07c9 40       		.byte	64
+ 2023 07ca 65       		.byte	101
+ 2024 07cb 02       		.byte	2
+ 2025 07cc 68       		.byte	104
+ 2026 07cd 01       		.byte	1
+ 2027 07ce 6F       		.byte	111
+ 2028 07cf 02       		.byte	2
+ 2029 07d0 72       		.byte	114
+ 2030 07d1 02       		.byte	2
+ 2031 07d2 82       		.byte	-126
+ 2032 07d3 02       		.byte	2
+ 2033 07d4 88       		.byte	-120
+ 2034 07d5 40       		.byte	64
+ 2035 07d6 8C       		.byte	-116
+ 2036 07d7 01       		.byte	1
+ 2037 07d8 96       		.byte	-106
+ 2038 07d9 10       		.byte	16
+ 2039 07da AB       		.byte	-85
+ 2040 07db C0       		.byte	-64
+ 2041 07dc B3       		.byte	-77
+ 2042 07dd 02       		.byte	2
+ 2043 07de B4       		.byte	-76
+ 2044 07df 40       		.byte	64
+ 2045 07e0 C8       		.byte	-56
+ 2046 07e1 20       		.byte	32
+ 2047 07e2 D4       		.byte	-44
+ 2048 07e3 80       		.byte	-128
+ 2049 07e4 D8       		.byte	-40
+ 2050 07e5 80       		.byte	-128
+ 2051 07e6 DA       		.byte	-38
+ 2052 07e7 C0       		.byte	-64
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 37
+
+
+ 2053 07e8 DC       		.byte	-36
+ 2054 07e9 20       		.byte	32
+ 2055 07ea E6       		.byte	-26
+ 2056 07eb 20       		.byte	32
+ 2057 07ec E8       		.byte	-24
+ 2058 07ed 20       		.byte	32
+ 2059 07ee EE       		.byte	-18
+ 2060 07ef 20       		.byte	32
+ 2061 07f0 0A       		.byte	10
+ 2062 07f1 20       		.byte	32
+ 2063 07f2 13       		.byte	19
+ 2064 07f3 08       		.byte	8
+ 2065 07f4 16       		.byte	22
+ 2066 07f5 40       		.byte	64
+ 2067 07f6 60       		.byte	96
+ 2068 07f7 01       		.byte	1
+ 2069 07f8 66       		.byte	102
+ 2070 07f9 80       		.byte	-128
+ 2071 07fa 71       		.byte	113
+ 2072 07fb 01       		.byte	1
+ 2073 07fc 75       		.byte	117
+ 2074 07fd 08       		.byte	8
+ 2075 07fe 81       		.byte	-127
+ 2076 07ff 02       		.byte	2
+ 2077 0800 86       		.byte	-122
+ 2078 0801 40       		.byte	64
+ 2079 0802 89       		.byte	-119
+ 2080 0803 08       		.byte	8
+ 2081 0804 8A       		.byte	-118
+ 2082 0805 80       		.byte	-128
+ 2083 0806 8E       		.byte	-114
+ 2084 0807 10       		.byte	16
+ 2085 0808 90       		.byte	-112
+ 2086 0809 01       		.byte	1
+ 2087 080a 99       		.byte	-103
+ 2088 080b 01       		.byte	1
+ 2089 080c 9D       		.byte	-99
+ 2090 080d 02       		.byte	2
+ 2091 080e 9F       		.byte	-97
+ 2092 080f 08       		.byte	8
+ 2093 0810 A9       		.byte	-87
+ 2094 0811 01       		.byte	1
+ 2095 0812 AA       		.byte	-86
+ 2096 0813 10       		.byte	16
+ 2097 0814 AF       		.byte	-81
+ 2098 0815 02       		.byte	2
+ 2099 0816 B0       		.byte	-80
+ 2100 0817 01       		.byte	1
+ 2101 0818 B3       		.byte	-77
+ 2102 0819 08       		.byte	8
+ 2103 081a B4       		.byte	-76
+ 2104 081b 04       		.byte	4
+ 2105 081c C2       		.byte	-62
+ 2106 081d 10       		.byte	16
+ 2107 081e C4       		.byte	-60
+ 2108 081f 30       		.byte	48
+ 2109 0820 D6       		.byte	-42
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 38
+
+
+ 2110 0821 C0       		.byte	-64
+ 2111 0822 DC       		.byte	-36
+ 2112 0823 80       		.byte	-128
+ 2113 0824 DE       		.byte	-34
+ 2114 0825 20       		.byte	32
+ 2115 0826 E0       		.byte	-32
+ 2116 0827 10       		.byte	16
+ 2117 0828 E6       		.byte	-26
+ 2118 0829 20       		.byte	32
+ 2119 082a EA       		.byte	-22
+ 2120 082b B0       		.byte	-80
+ 2121 082c 0C       		.byte	12
+ 2122 082d 10       		.byte	16
+ 2123 082e 13       		.byte	19
+ 2124 082f 28       		.byte	40
+ 2125 0830 14       		.byte	20
+ 2126 0831 40       		.byte	64
+ 2127 0832 1F       		.byte	31
+ 2128 0833 20       		.byte	32
+ 2129 0834 34       		.byte	52
+ 2130 0835 02       		.byte	2
+ 2131 0836 79       		.byte	121
+ 2132 0837 01       		.byte	1
+ 2133 0838 7F       		.byte	127
+ 2134 0839 40       		.byte	64
+ 2135 083a 82       		.byte	-126
+ 2136 083b 10       		.byte	16
+ 2137 083c A7       		.byte	-89
+ 2138 083d 20       		.byte	32
+ 2139 083e AB       		.byte	-85
+ 2140 083f 20       		.byte	32
+ 2141 0840 AE       		.byte	-82
+ 2142 0841 10       		.byte	16
+ 2143 0842 C2       		.byte	-62
+ 2144 0843 01       		.byte	1
+ 2145 0844 C4       		.byte	-60
+ 2146 0845 0E       		.byte	14
+ 2147 0846 C6       		.byte	-58
+ 2148 0847 01       		.byte	1
+ 2149 0848 CC       		.byte	-52
+ 2150 0849 01       		.byte	1
+ 2151 084a DE       		.byte	-34
+ 2152 084b 03       		.byte	3
+ 2153 084c 10       		.byte	16
+ 2154 084d 80       		.byte	-128
+ 2155 084e 72       		.byte	114
+ 2156 084f 10       		.byte	16
+ 2157 0850 87       		.byte	-121
+ 2158 0851 40       		.byte	64
+ 2159 0852 88       		.byte	-120
+ 2160 0853 D0       		.byte	-48
+ 2161 0854 92       		.byte	-110
+ 2162 0855 10       		.byte	16
+ 2163 0856 97       		.byte	-105
+ 2164 0857 80       		.byte	-128
+ 2165 0858 98       		.byte	-104
+ 2166 0859 50       		.byte	80
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 39
+
+
+ 2167 085a AB       		.byte	-85
+ 2168 085b 28       		.byte	40
+ 2169 085c B1       		.byte	-79
+ 2170 085d 01       		.byte	1
+ 2171 085e B4       		.byte	-76
+ 2172 085f 02       		.byte	2
+ 2173 0860 C4       		.byte	-60
+ 2174 0861 08       		.byte	8
+ 2175 0862 DC       		.byte	-36
+ 2176 0863 01       		.byte	1
+ 2177 0864 E2       		.byte	-30
+ 2178 0865 05       		.byte	5
+ 2179 0866 E6       		.byte	-26
+ 2180 0867 01       		.byte	1
+ 2181 0868 E8       		.byte	-24
+ 2182 0869 08       		.byte	8
+ 2183 086a EC       		.byte	-20
+ 2184 086b 01       		.byte	1
+ 2185 086c 00       		.byte	0
+ 2186 086d 06       		.byte	6
+ 2187 086e 01       		.byte	1
+ 2188 086f 01       		.byte	1
+ 2189 0870 0C       		.byte	12
+ 2190 0871 02       		.byte	2
+ 2191 0872 0D       		.byte	13
+ 2192 0873 01       		.byte	1
+ 2193 0874 0E       		.byte	14
+ 2194 0875 06       		.byte	6
+ 2195 0876 10       		.byte	16
+ 2196 0877 3A       		.byte	58
+ 2197 0878 11       		.byte	17
+ 2198 0879 01       		.byte	1
+ 2199 087a 1A       		.byte	26
+ 2200 087b 1A       		.byte	26
+ 2201 087c 1C       		.byte	28
+ 2202 087d 32       		.byte	50
+ 2203 087e 1D       		.byte	29
+ 2204 087f 01       		.byte	1
+ 2205 0880 00       		.byte	0
+ 2206 0881 3F       		.byte	63
+ 2207 0882 03       		.byte	3
+ 2208 0883 C0       		.byte	-64
+ 2209 0884 02       		.byte	2
+ 2210 0885 80       		.byte	-128
+ 2211 0886 00       		.byte	0
+ 2212 0887 00       		.byte	0
+ 2213 0888 43       		.byte	67
+ 2214 0889 00       		.byte	0
+ 2215 088a 00       		.byte	0
+ 2216 088b 00       		.byte	0
+ 2217 088c 00       		.byte	0
+ 2218 088d 80       		.byte	-128
+ 2219 088e 80       		.byte	-128
+ 2220 088f 00       		.byte	0
+ 2221 0890 00       		.byte	0
+ 2222 0891 00       		.byte	0
+ 2223 0892 04       		.byte	4
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 40
+
+
+ 2224 0893 00       		.byte	0
+ 2225 0894 83       		.byte	-125
+ 2226 0895 00       		.byte	0
+ 2227 0896 40       		.byte	64
+ 2228 0897 90       		.byte	-112
+ 2229 0898 93       		.byte	-109
+ 2230 0899 00       		.byte	0
+ 2231 089a 83       		.byte	-125
+ 2232 089b 00       		.byte	0
+ 2233 089c 00       		.byte	0
+ 2234 089d 00       		.byte	0
+ 2235 089e 00       		.byte	0
+ 2236 089f 00       		.byte	0
+ 2237 08a0 00       		.byte	0
+ 2238 08a1 33       		.byte	51
+ 2239 08a2 33       		.byte	51
+ 2240 08a3 00       		.byte	0
+ 2241 08a4 02       		.byte	2
+ 2242 08a5 00       		.byte	0
+ 2243 08a6 00       		.byte	0
+ 2244 08a7 00       		.byte	0
+ 2245 08a8 80       		.byte	-128
+ 2246 08a9 0B       		.byte	11
+ 2247 08aa 0B       		.byte	11
+ 2248 08ab 00       		.byte	0
+ 2249 08ac 00       		.byte	0
+ 2250 08ad 00       		.byte	0
+ 2251 08ae 00       		.byte	0
+ 2252 08af 00       		.byte	0
+ 2253 08b0 04       		.byte	4
+ 2254 08b1 00       		.byte	0
+ 2255 08b2 01       		.byte	1
+ 2256 08b3 26       		.byte	38
+ 2257 08b4 22       		.byte	34
+ 2258 08b5 00       		.byte	0
+ 2259 08b6 00       		.byte	0
+ 2260 08b7 00       		.byte	0
+ 2261 08b8 80       		.byte	-128
+ 2262 08b9 00       		.byte	0
+ 2263 08ba 00       		.byte	0
+ 2264 08bb 00       		.byte	0
+ 2265 08bc 00       		.byte	0
+ 2266 08bd F0       		.byte	-16
+ 2267 08be F0       		.byte	-16
+ 2268 08bf 00       		.byte	0
+ 2269 08c0 60       		.byte	96
+ 2270 08c1 00       		.byte	0
+ 2271 08c2 00       		.byte	0
+ 2272 08c3 00       		.byte	0
+ 2273              		.section	.cywolatch,"a",%progbits
+ 2274              		.align	2
+ 2275              		.type	cy_meta_wonvl, %object
+ 2276              		.size	cy_meta_wonvl, 4
+ 2277              	cy_meta_wonvl:
+ 2278 0000 BC       		.byte	-68
+ 2279 0001 90       		.byte	-112
+ 2280 0002 AC       		.byte	-84
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 41
+
+
+ 2281 0003 AF       		.byte	-81
+ 2282              		.section	.cycustnvl,"a",%progbits
+ 2283              		.align	2
+ 2284              		.type	cy_meta_custnvl, %object
+ 2285              		.size	cy_meta_custnvl, 4
+ 2286              	cy_meta_custnvl:
+ 2287 0000 00       		.byte	0
+ 2288 0001 00       		.byte	0
+ 2289 0002 40       		.byte	64
+ 2290 0003 05       		.byte	5
+ 2291              		.section	.cymeta,"a",%progbits
+ 2292              		.align	2
+ 2293              		.type	cy_metadata, %object
+ 2294              		.size	cy_metadata, 12
+ 2295              	cy_metadata:
+ 2296 0000 00       		.byte	0
+ 2297 0001 01       		.byte	1
+ 2298 0002 2E       		.byte	46
+ 2299 0003 16       		.byte	22
+ 2300 0004 10       		.byte	16
+ 2301 0005 69       		.byte	105
+ 2302 0006 00       		.byte	0
+ 2303 0007 01       		.byte	1
+ 2304 0008 00       		.byte	0
+ 2305 0009 00       		.byte	0
+ 2306 000a 00       		.byte	0
+ 2307 000b 00       		.byte	0
+ 2308              		.section	.cyflashprotect,"a",%progbits
+ 2309              		.align	2
+ 2310              		.type	cy_meta_flashprotect, %object
+ 2311              		.size	cy_meta_flashprotect, 256
+ 2312              	cy_meta_flashprotect:
+ 2313 0000 00000000 		.space	256
+ 2313      00000000 
+ 2313      00000000 
+ 2313      00000000 
+ 2313      00000000 
+ 2314              		.text
+ 2315              	.Letext0:
+ 2316              		.file 1 "j:\\psoc\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\includ
+ 2317              		.file 2 "j:\\psoc\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\includ
+ 2318              		.file 3 "Generated_Source\\PSoC5\\cymetadata.c"
+ 2319              		.section	.debug_info,"",%progbits
+ 2320              	.Ldebug_info0:
+ 2321 0000 35010000 		.4byte	0x135
+ 2322 0004 0400     		.2byte	0x4
+ 2323 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 2324 000a 04       		.byte	0x4
+ 2325 000b 01       		.uleb128 0x1
+ 2326 000c 24000000 		.4byte	.LASF17
+ 2327 0010 0C       		.byte	0xc
+ 2328 0011 AA010000 		.4byte	.LASF18
+ 2329 0015 25010000 		.4byte	.LASF19
+ 2330 0019 00000000 		.4byte	.Ldebug_line0
+ 2331 001d 02       		.uleb128 0x2
+ 2332 001e 01       		.byte	0x1
+ 2333 001f 06       		.byte	0x6
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 42
+
+
+ 2334 0020 9E010000 		.4byte	.LASF0
+ 2335 0024 03       		.uleb128 0x3
+ 2336 0025 00000000 		.4byte	.LASF9
+ 2337 0029 01       		.byte	0x1
+ 2338 002a 1D       		.byte	0x1d
+ 2339 002b 2F000000 		.4byte	0x2f
+ 2340 002f 02       		.uleb128 0x2
+ 2341 0030 01       		.byte	0x1
+ 2342 0031 08       		.byte	0x8
+ 2343 0032 16000000 		.4byte	.LASF1
+ 2344 0036 02       		.uleb128 0x2
+ 2345 0037 02       		.byte	0x2
+ 2346 0038 05       		.byte	0x5
+ 2347 0039 8B010000 		.4byte	.LASF2
+ 2348 003d 02       		.uleb128 0x2
+ 2349 003e 02       		.byte	0x2
+ 2350 003f 07       		.byte	0x7
+ 2351 0040 C4000000 		.4byte	.LASF3
+ 2352 0044 02       		.uleb128 0x2
+ 2353 0045 04       		.byte	0x4
+ 2354 0046 05       		.byte	0x5
+ 2355 0047 95010000 		.4byte	.LASF4
+ 2356 004b 02       		.uleb128 0x2
+ 2357 004c 04       		.byte	0x4
+ 2358 004d 07       		.byte	0x7
+ 2359 004e B2000000 		.4byte	.LASF5
+ 2360 0052 02       		.uleb128 0x2
+ 2361 0053 08       		.byte	0x8
+ 2362 0054 05       		.byte	0x5
+ 2363 0055 7D010000 		.4byte	.LASF6
+ 2364 0059 02       		.uleb128 0x2
+ 2365 005a 08       		.byte	0x8
+ 2366 005b 07       		.byte	0x7
+ 2367 005c 06010000 		.4byte	.LASF7
+ 2368 0060 04       		.uleb128 0x4
+ 2369 0061 04       		.byte	0x4
+ 2370 0062 05       		.byte	0x5
+ 2371 0063 696E7400 		.ascii	"int\000"
+ 2372 0067 02       		.uleb128 0x2
+ 2373 0068 04       		.byte	0x4
+ 2374 0069 07       		.byte	0x7
+ 2375 006a F9000000 		.4byte	.LASF8
+ 2376 006e 03       		.uleb128 0x3
+ 2377 006f 1D010000 		.4byte	.LASF10
+ 2378 0073 02       		.byte	0x2
+ 2379 0074 18       		.byte	0x18
+ 2380 0075 24000000 		.4byte	0x24
+ 2381 0079 05       		.uleb128 0x5
+ 2382 007a 91000000 		.4byte	0x91
+ 2383 007e 8A000000 		.4byte	0x8a
+ 2384 0082 06       		.uleb128 0x6
+ 2385 0083 8A000000 		.4byte	0x8a
+ 2386 0087 C308     		.2byte	0x8c3
+ 2387 0089 00       		.byte	0
+ 2388 008a 02       		.uleb128 0x2
+ 2389 008b 04       		.byte	0x4
+ 2390 008c 07       		.byte	0x7
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 43
+
+
+ 2391 008d 74010000 		.4byte	.LASF11
+ 2392 0091 07       		.uleb128 0x7
+ 2393 0092 6E000000 		.4byte	0x6e
+ 2394 0096 08       		.uleb128 0x8
+ 2395 0097 E7000000 		.4byte	.LASF12
+ 2396 009b 03       		.byte	0x3
+ 2397 009c 1F       		.byte	0x1f
+ 2398 009d A7000000 		.4byte	0xa7
+ 2399 00a1 05       		.uleb128 0x5
+ 2400 00a2 03       		.byte	0x3
+ 2401 00a3 00000000 		.4byte	cy_meta_configecc
+ 2402 00a7 07       		.uleb128 0x7
+ 2403 00a8 79000000 		.4byte	0x79
+ 2404 00ac 05       		.uleb128 0x5
+ 2405 00ad 91000000 		.4byte	0x91
+ 2406 00b1 BC000000 		.4byte	0xbc
+ 2407 00b5 09       		.uleb128 0x9
+ 2408 00b6 8A000000 		.4byte	0x8a
+ 2409 00ba 03       		.byte	0x3
+ 2410 00bb 00       		.byte	0
+ 2411 00bc 0A       		.uleb128 0xa
+ 2412 00bd D7000000 		.4byte	.LASF13
+ 2413 00c1 03       		.byte	0x3
+ 2414 00c2 4501     		.2byte	0x145
+ 2415 00c4 CE000000 		.4byte	0xce
+ 2416 00c8 05       		.uleb128 0x5
+ 2417 00c9 03       		.byte	0x3
+ 2418 00ca 00000000 		.4byte	cy_meta_custnvl
+ 2419 00ce 07       		.uleb128 0x7
+ 2420 00cf AC000000 		.4byte	0xac
+ 2421 00d3 0A       		.uleb128 0xa
+ 2422 00d4 66010000 		.4byte	.LASF14
+ 2423 00d8 03       		.byte	0x3
+ 2424 00d9 5301     		.2byte	0x153
+ 2425 00db E5000000 		.4byte	0xe5
+ 2426 00df 05       		.uleb128 0x5
+ 2427 00e0 03       		.byte	0x3
+ 2428 00e1 00000000 		.4byte	cy_meta_wonvl
+ 2429 00e5 07       		.uleb128 0x7
+ 2430 00e6 AC000000 		.4byte	0xac
+ 2431 00ea 05       		.uleb128 0x5
+ 2432 00eb 91000000 		.4byte	0x91
+ 2433 00ef FA000000 		.4byte	0xfa
+ 2434 00f3 09       		.uleb128 0x9
+ 2435 00f4 8A000000 		.4byte	0x8a
+ 2436 00f8 FF       		.byte	0xff
+ 2437 00f9 00       		.byte	0
+ 2438 00fa 0A       		.uleb128 0xa
+ 2439 00fb 51010000 		.4byte	.LASF15
+ 2440 00ff 03       		.byte	0x3
+ 2441 0100 6101     		.2byte	0x161
+ 2442 0102 0C010000 		.4byte	0x10c
+ 2443 0106 05       		.uleb128 0x5
+ 2444 0107 03       		.byte	0x3
+ 2445 0108 00000000 		.4byte	cy_meta_flashprotect
+ 2446 010c 07       		.uleb128 0x7
+ 2447 010d EA000000 		.4byte	0xea
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 44
+
+
+ 2448 0111 05       		.uleb128 0x5
+ 2449 0112 91000000 		.4byte	0x91
+ 2450 0116 21010000 		.4byte	0x121
+ 2451 011a 09       		.uleb128 0x9
+ 2452 011b 8A000000 		.4byte	0x8a
+ 2453 011f 0B       		.byte	0xb
+ 2454 0120 00       		.byte	0
+ 2455 0121 0A       		.uleb128 0xa
+ 2456 0122 0A000000 		.4byte	.LASF16
+ 2457 0126 03       		.byte	0x3
+ 2458 0127 8E01     		.2byte	0x18e
+ 2459 0129 33010000 		.4byte	0x133
+ 2460 012d 05       		.uleb128 0x5
+ 2461 012e 03       		.byte	0x3
+ 2462 012f 00000000 		.4byte	cy_metadata
+ 2463 0133 07       		.uleb128 0x7
+ 2464 0134 11010000 		.4byte	0x111
+ 2465 0138 00       		.byte	0
+ 2466              		.section	.debug_abbrev,"",%progbits
+ 2467              	.Ldebug_abbrev0:
+ 2468 0000 01       		.uleb128 0x1
+ 2469 0001 11       		.uleb128 0x11
+ 2470 0002 01       		.byte	0x1
+ 2471 0003 25       		.uleb128 0x25
+ 2472 0004 0E       		.uleb128 0xe
+ 2473 0005 13       		.uleb128 0x13
+ 2474 0006 0B       		.uleb128 0xb
+ 2475 0007 03       		.uleb128 0x3
+ 2476 0008 0E       		.uleb128 0xe
+ 2477 0009 1B       		.uleb128 0x1b
+ 2478 000a 0E       		.uleb128 0xe
+ 2479 000b 10       		.uleb128 0x10
+ 2480 000c 17       		.uleb128 0x17
+ 2481 000d 00       		.byte	0
+ 2482 000e 00       		.byte	0
+ 2483 000f 02       		.uleb128 0x2
+ 2484 0010 24       		.uleb128 0x24
+ 2485 0011 00       		.byte	0
+ 2486 0012 0B       		.uleb128 0xb
+ 2487 0013 0B       		.uleb128 0xb
+ 2488 0014 3E       		.uleb128 0x3e
+ 2489 0015 0B       		.uleb128 0xb
+ 2490 0016 03       		.uleb128 0x3
+ 2491 0017 0E       		.uleb128 0xe
+ 2492 0018 00       		.byte	0
+ 2493 0019 00       		.byte	0
+ 2494 001a 03       		.uleb128 0x3
+ 2495 001b 16       		.uleb128 0x16
+ 2496 001c 00       		.byte	0
+ 2497 001d 03       		.uleb128 0x3
+ 2498 001e 0E       		.uleb128 0xe
+ 2499 001f 3A       		.uleb128 0x3a
+ 2500 0020 0B       		.uleb128 0xb
+ 2501 0021 3B       		.uleb128 0x3b
+ 2502 0022 0B       		.uleb128 0xb
+ 2503 0023 49       		.uleb128 0x49
+ 2504 0024 13       		.uleb128 0x13
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 45
+
+
+ 2505 0025 00       		.byte	0
+ 2506 0026 00       		.byte	0
+ 2507 0027 04       		.uleb128 0x4
+ 2508 0028 24       		.uleb128 0x24
+ 2509 0029 00       		.byte	0
+ 2510 002a 0B       		.uleb128 0xb
+ 2511 002b 0B       		.uleb128 0xb
+ 2512 002c 3E       		.uleb128 0x3e
+ 2513 002d 0B       		.uleb128 0xb
+ 2514 002e 03       		.uleb128 0x3
+ 2515 002f 08       		.uleb128 0x8
+ 2516 0030 00       		.byte	0
+ 2517 0031 00       		.byte	0
+ 2518 0032 05       		.uleb128 0x5
+ 2519 0033 01       		.uleb128 0x1
+ 2520 0034 01       		.byte	0x1
+ 2521 0035 49       		.uleb128 0x49
+ 2522 0036 13       		.uleb128 0x13
+ 2523 0037 01       		.uleb128 0x1
+ 2524 0038 13       		.uleb128 0x13
+ 2525 0039 00       		.byte	0
+ 2526 003a 00       		.byte	0
+ 2527 003b 06       		.uleb128 0x6
+ 2528 003c 21       		.uleb128 0x21
+ 2529 003d 00       		.byte	0
+ 2530 003e 49       		.uleb128 0x49
+ 2531 003f 13       		.uleb128 0x13
+ 2532 0040 2F       		.uleb128 0x2f
+ 2533 0041 05       		.uleb128 0x5
+ 2534 0042 00       		.byte	0
+ 2535 0043 00       		.byte	0
+ 2536 0044 07       		.uleb128 0x7
+ 2537 0045 26       		.uleb128 0x26
+ 2538 0046 00       		.byte	0
+ 2539 0047 49       		.uleb128 0x49
+ 2540 0048 13       		.uleb128 0x13
+ 2541 0049 00       		.byte	0
+ 2542 004a 00       		.byte	0
+ 2543 004b 08       		.uleb128 0x8
+ 2544 004c 34       		.uleb128 0x34
+ 2545 004d 00       		.byte	0
+ 2546 004e 03       		.uleb128 0x3
+ 2547 004f 0E       		.uleb128 0xe
+ 2548 0050 3A       		.uleb128 0x3a
+ 2549 0051 0B       		.uleb128 0xb
+ 2550 0052 3B       		.uleb128 0x3b
+ 2551 0053 0B       		.uleb128 0xb
+ 2552 0054 49       		.uleb128 0x49
+ 2553 0055 13       		.uleb128 0x13
+ 2554 0056 3F       		.uleb128 0x3f
+ 2555 0057 19       		.uleb128 0x19
+ 2556 0058 02       		.uleb128 0x2
+ 2557 0059 18       		.uleb128 0x18
+ 2558 005a 00       		.byte	0
+ 2559 005b 00       		.byte	0
+ 2560 005c 09       		.uleb128 0x9
+ 2561 005d 21       		.uleb128 0x21
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 46
+
+
+ 2562 005e 00       		.byte	0
+ 2563 005f 49       		.uleb128 0x49
+ 2564 0060 13       		.uleb128 0x13
+ 2565 0061 2F       		.uleb128 0x2f
+ 2566 0062 0B       		.uleb128 0xb
+ 2567 0063 00       		.byte	0
+ 2568 0064 00       		.byte	0
+ 2569 0065 0A       		.uleb128 0xa
+ 2570 0066 34       		.uleb128 0x34
+ 2571 0067 00       		.byte	0
+ 2572 0068 03       		.uleb128 0x3
+ 2573 0069 0E       		.uleb128 0xe
+ 2574 006a 3A       		.uleb128 0x3a
+ 2575 006b 0B       		.uleb128 0xb
+ 2576 006c 3B       		.uleb128 0x3b
+ 2577 006d 05       		.uleb128 0x5
+ 2578 006e 49       		.uleb128 0x49
+ 2579 006f 13       		.uleb128 0x13
+ 2580 0070 3F       		.uleb128 0x3f
+ 2581 0071 19       		.uleb128 0x19
+ 2582 0072 02       		.uleb128 0x2
+ 2583 0073 18       		.uleb128 0x18
+ 2584 0074 00       		.byte	0
+ 2585 0075 00       		.byte	0
+ 2586 0076 00       		.byte	0
+ 2587              		.section	.debug_aranges,"",%progbits
+ 2588 0000 14000000 		.4byte	0x14
+ 2589 0004 0200     		.2byte	0x2
+ 2590 0006 00000000 		.4byte	.Ldebug_info0
+ 2591 000a 04       		.byte	0x4
+ 2592 000b 00       		.byte	0
+ 2593 000c 0000     		.2byte	0
+ 2594 000e 0000     		.2byte	0
+ 2595 0010 00000000 		.4byte	0
+ 2596 0014 00000000 		.4byte	0
+ 2597              		.section	.debug_line,"",%progbits
+ 2598              	.Ldebug_line0:
+ 2599 0000 0F010000 		.section	.debug_str,"MS",%progbits,1
+ 2599      02000901 
+ 2599      00000201 
+ 2599      FB0E0D00 
+ 2599      01010101 
+ 2600              	.LASF9:
+ 2601 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 2601      6E74385F 
+ 2601      7400
+ 2602              	.LASF16:
+ 2603 000a 63795F6D 		.ascii	"cy_metadata\000"
+ 2603      65746164 
+ 2603      61746100 
+ 2604              	.LASF1:
+ 2605 0016 756E7369 		.ascii	"unsigned char\000"
+ 2605      676E6564 
+ 2605      20636861 
+ 2605      7200
+ 2606              	.LASF17:
+ 2607 0024 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 47
+
+
+ 2607      43313120 
+ 2607      352E342E 
+ 2607      31203230 
+ 2607      31363036 
+ 2608 0057 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2608      20726576 
+ 2608      6973696F 
+ 2608      6E203233 
+ 2608      37373135 
+ 2609 008a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2609      66756E63 
+ 2609      74696F6E 
+ 2609      2D736563 
+ 2609      74696F6E 
+ 2610              	.LASF5:
+ 2611 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2611      20756E73 
+ 2611      69676E65 
+ 2611      6420696E 
+ 2611      7400
+ 2612              	.LASF3:
+ 2613 00c4 73686F72 		.ascii	"short unsigned int\000"
+ 2613      7420756E 
+ 2613      7369676E 
+ 2613      65642069 
+ 2613      6E7400
+ 2614              	.LASF13:
+ 2615 00d7 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 2615      6574615F 
+ 2615      63757374 
+ 2615      6E766C00 
+ 2616              	.LASF12:
+ 2617 00e7 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 2617      6574615F 
+ 2617      636F6E66 
+ 2617      69676563 
+ 2617      6300
+ 2618              	.LASF8:
+ 2619 00f9 756E7369 		.ascii	"unsigned int\000"
+ 2619      676E6564 
+ 2619      20696E74 
+ 2619      00
+ 2620              	.LASF7:
+ 2621 0106 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2621      206C6F6E 
+ 2621      6720756E 
+ 2621      7369676E 
+ 2621      65642069 
+ 2622              	.LASF10:
+ 2623 011d 75696E74 		.ascii	"uint8_t\000"
+ 2623      385F7400 
+ 2624              	.LASF19:
+ 2625 0125 4A3A5C50 		.ascii	"J:\\Project\\Steve Brain\\Zumo01\\ZumoBot.cydsn\000"
+ 2625      726F6A65 
+ 2625      63745C53 
+ 2625      74657665 
+ 2625      20427261 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccNSrUJP.s 			page 48
+
+
+ 2626              	.LASF15:
+ 2627 0151 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 2627      6574615F 
+ 2627      666C6173 
+ 2627      6870726F 
+ 2627      74656374 
+ 2628              	.LASF14:
+ 2629 0166 63795F6D 		.ascii	"cy_meta_wonvl\000"
+ 2629      6574615F 
+ 2629      776F6E76 
+ 2629      6C00
+ 2630              	.LASF11:
+ 2631 0174 73697A65 		.ascii	"sizetype\000"
+ 2631      74797065 
+ 2631      00
+ 2632              	.LASF6:
+ 2633 017d 6C6F6E67 		.ascii	"long long int\000"
+ 2633      206C6F6E 
+ 2633      6720696E 
+ 2633      7400
+ 2634              	.LASF2:
+ 2635 018b 73686F72 		.ascii	"short int\000"
+ 2635      7420696E 
+ 2635      7400
+ 2636              	.LASF4:
+ 2637 0195 6C6F6E67 		.ascii	"long int\000"
+ 2637      20696E74 
+ 2637      00
+ 2638              	.LASF0:
+ 2639 019e 7369676E 		.ascii	"signed char\000"
+ 2639      65642063 
+ 2639      68617200 
+ 2640              	.LASF18:
+ 2641 01aa 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
+ 2641      72617465 
+ 2641      645F536F 
+ 2641      75726365 
+ 2641      5C50536F 
+ 2642              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

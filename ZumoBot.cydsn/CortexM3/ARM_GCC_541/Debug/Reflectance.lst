@@ -1,0 +1,2049 @@
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Reflectance.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.sensor_isr_handler,"ax",%progbits
+  20              		.align	2
+  21              		.global	sensor_isr_handler
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	sensor_isr_handler, %function
+  25              	sensor_isr_handler:
+  26              	.LFB64:
+  27              		.file 1 "ZumoLibrary\\Reflectance.c"
+   1:ZumoLibrary/Reflectance.c **** /**
+   2:ZumoLibrary/Reflectance.c ****  * @file    Reflectance.c
+   3:ZumoLibrary/Reflectance.c ****  * @brief   Basic methods for operating reflectance sensor. For more details, please refer to Refle
+   4:ZumoLibrary/Reflectance.c ****  * @details included in Zumo shield
+   5:ZumoLibrary/Reflectance.c **** */
+   6:ZumoLibrary/Reflectance.c **** #include <project.h>
+   7:ZumoLibrary/Reflectance.c **** #include <stdio.h>
+   8:ZumoLibrary/Reflectance.c **** 
+   9:ZumoLibrary/Reflectance.c **** #include "Reflectance.h"
+  10:ZumoLibrary/Reflectance.c **** 
+  11:ZumoLibrary/Reflectance.c **** static volatile struct sensors_ sensors;
+  12:ZumoLibrary/Reflectance.c **** static volatile struct sensors_  digital_sensor_value;
+  13:ZumoLibrary/Reflectance.c **** static struct sensors_ threshold = { 10000, 10000, 10000, 10000};
+  14:ZumoLibrary/Reflectance.c **** 
+  15:ZumoLibrary/Reflectance.c **** /**
+  16:ZumoLibrary/Reflectance.c **** * @brief    Reflectance Sensor Interrupt Handler
+  17:ZumoLibrary/Reflectance.c **** * @details  Measuring each sensors' time to recognition of white or black
+  18:ZumoLibrary/Reflectance.c **** */
+  19:ZumoLibrary/Reflectance.c **** CY_ISR(sensor_isr_handler)
+  20:ZumoLibrary/Reflectance.c **** {
+  28              		.loc 1 20 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  33              		.cfi_def_cfa_offset 24
+  34              		.cfi_offset 3, -24
+  35              		.cfi_offset 4, -20
+  36              		.cfi_offset 5, -16
+  37              		.cfi_offset 6, -12
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 2
+
+
+  38              		.cfi_offset 7, -8
+  39              		.cfi_offset 14, -4
+  21:ZumoLibrary/Reflectance.c ****     uint32_t statusR1 = Timer_R1_ReadStatusRegister();
+  40              		.loc 1 21 0
+  41 0002 FFF7FEFF 		bl	Timer_R1_ReadStatusRegister
+  42              	.LVL0:
+  43 0006 0446     		mov	r4, r0
+  44              	.LVL1:
+  22:ZumoLibrary/Reflectance.c ****     uint32_t statusR3 = Timer_R3_ReadStatusRegister();
+  45              		.loc 1 22 0
+  46 0008 FFF7FEFF 		bl	Timer_R3_ReadStatusRegister
+  47              	.LVL2:
+  48 000c 0746     		mov	r7, r0
+  49              	.LVL3:
+  23:ZumoLibrary/Reflectance.c ****     uint32_t statusL3 = Timer_L3_ReadStatusRegister();
+  50              		.loc 1 23 0
+  51 000e FFF7FEFF 		bl	Timer_L3_ReadStatusRegister
+  52              	.LVL4:
+  53 0012 0646     		mov	r6, r0
+  54              	.LVL5:
+  24:ZumoLibrary/Reflectance.c ****     uint32_t statusL1 = Timer_L1_ReadStatusRegister();
+  55              		.loc 1 24 0
+  56 0014 FFF7FEFF 		bl	Timer_L1_ReadStatusRegister
+  57              	.LVL6:
+  58 0018 0546     		mov	r5, r0
+  59              	.LVL7:
+  25:ZumoLibrary/Reflectance.c **** 
+  26:ZumoLibrary/Reflectance.c ****     if(statusR1 & Timer_R1_STATUS_CAPTURE) {
+  60              		.loc 1 26 0
+  61 001a 14F0400F 		tst	r4, #64
+  62 001e 09D0     		beq	.L2
+  27:ZumoLibrary/Reflectance.c ****         sensors.r1 = Timer_R1_ReadPeriod() - Timer_R1_ReadCapture();
+  63              		.loc 1 27 0
+  64 0020 FFF7FEFF 		bl	Timer_R1_ReadPeriod
+  65              	.LVL8:
+  66 0024 0446     		mov	r4, r0
+  67              	.LVL9:
+  68 0026 FFF7FEFF 		bl	Timer_R1_ReadCapture
+  69              	.LVL10:
+  70 002a 201A     		subs	r0, r4, r0
+  71 002c 80B2     		uxth	r0, r0
+  72 002e 354B     		ldr	r3, .L11
+  73 0030 9880     		strh	r0, [r3, #4]	@ movhi
+  74 0032 03E0     		b	.L3
+  75              	.LVL11:
+  76              	.L2:
+  28:ZumoLibrary/Reflectance.c ****     }
+  29:ZumoLibrary/Reflectance.c ****     else {
+  30:ZumoLibrary/Reflectance.c ****         sensors.r1 = Timer_R1_ReadPeriod();
+  77              		.loc 1 30 0
+  78 0034 FFF7FEFF 		bl	Timer_R1_ReadPeriod
+  79              	.LVL12:
+  80 0038 324B     		ldr	r3, .L11
+  81 003a 9880     		strh	r0, [r3, #4]	@ movhi
+  82              	.LVL13:
+  83              	.L3:
+  31:ZumoLibrary/Reflectance.c ****     }
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 3
+
+
+  32:ZumoLibrary/Reflectance.c ****     
+  33:ZumoLibrary/Reflectance.c ****     if(statusR3 & Timer_R3_STATUS_CAPTURE) {
+  84              		.loc 1 33 0
+  85 003c 17F0400F 		tst	r7, #64
+  86 0040 09D0     		beq	.L4
+  34:ZumoLibrary/Reflectance.c ****         sensors.r3 = Timer_R3_ReadPeriod() - Timer_R3_ReadCapture();
+  87              		.loc 1 34 0
+  88 0042 FFF7FEFF 		bl	Timer_R3_ReadPeriod
+  89              	.LVL14:
+  90 0046 0446     		mov	r4, r0
+  91 0048 FFF7FEFF 		bl	Timer_R3_ReadCapture
+  92              	.LVL15:
+  93 004c 201A     		subs	r0, r4, r0
+  94 004e 80B2     		uxth	r0, r0
+  95 0050 2C4B     		ldr	r3, .L11
+  96 0052 D880     		strh	r0, [r3, #6]	@ movhi
+  97 0054 03E0     		b	.L5
+  98              	.L4:
+  35:ZumoLibrary/Reflectance.c ****     }
+  36:ZumoLibrary/Reflectance.c ****     else {
+  37:ZumoLibrary/Reflectance.c ****         sensors.r3 = Timer_R3_ReadPeriod();
+  99              		.loc 1 37 0
+ 100 0056 FFF7FEFF 		bl	Timer_R3_ReadPeriod
+ 101              	.LVL16:
+ 102 005a 2A4B     		ldr	r3, .L11
+ 103 005c D880     		strh	r0, [r3, #6]	@ movhi
+ 104              	.L5:
+  38:ZumoLibrary/Reflectance.c ****     }
+  39:ZumoLibrary/Reflectance.c ****     
+  40:ZumoLibrary/Reflectance.c ****     if(statusL3 & Timer_L3_STATUS_CAPTURE) {
+ 105              		.loc 1 40 0
+ 106 005e 16F0400F 		tst	r6, #64
+ 107 0062 09D0     		beq	.L6
+  41:ZumoLibrary/Reflectance.c ****         sensors.l3 = Timer_L3_ReadPeriod() - Timer_L3_ReadCapture();
+ 108              		.loc 1 41 0
+ 109 0064 FFF7FEFF 		bl	Timer_L3_ReadPeriod
+ 110              	.LVL17:
+ 111 0068 0446     		mov	r4, r0
+ 112 006a FFF7FEFF 		bl	Timer_L3_ReadCapture
+ 113              	.LVL18:
+ 114 006e 201A     		subs	r0, r4, r0
+ 115 0070 80B2     		uxth	r0, r0
+ 116 0072 244B     		ldr	r3, .L11
+ 117 0074 1880     		strh	r0, [r3]	@ movhi
+ 118 0076 03E0     		b	.L7
+ 119              	.L6:
+  42:ZumoLibrary/Reflectance.c ****     }
+  43:ZumoLibrary/Reflectance.c ****     else {
+  44:ZumoLibrary/Reflectance.c ****         sensors.l3 = Timer_L3_ReadPeriod();
+ 120              		.loc 1 44 0
+ 121 0078 FFF7FEFF 		bl	Timer_L3_ReadPeriod
+ 122              	.LVL19:
+ 123 007c 214B     		ldr	r3, .L11
+ 124 007e 1880     		strh	r0, [r3]	@ movhi
+ 125              	.L7:
+  45:ZumoLibrary/Reflectance.c ****     }
+  46:ZumoLibrary/Reflectance.c ****     
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 4
+
+
+  47:ZumoLibrary/Reflectance.c ****     if(statusL1 & Timer_L1_STATUS_CAPTURE) {
+ 126              		.loc 1 47 0
+ 127 0080 15F0400F 		tst	r5, #64
+ 128 0084 09D0     		beq	.L8
+  48:ZumoLibrary/Reflectance.c ****         sensors.l1 = Timer_L1_ReadPeriod() - Timer_L1_ReadCapture();
+ 129              		.loc 1 48 0
+ 130 0086 FFF7FEFF 		bl	Timer_L1_ReadPeriod
+ 131              	.LVL20:
+ 132 008a 0446     		mov	r4, r0
+ 133 008c FFF7FEFF 		bl	Timer_L1_ReadCapture
+ 134              	.LVL21:
+ 135 0090 201A     		subs	r0, r4, r0
+ 136 0092 80B2     		uxth	r0, r0
+ 137 0094 1B4B     		ldr	r3, .L11
+ 138 0096 5880     		strh	r0, [r3, #2]	@ movhi
+ 139 0098 03E0     		b	.L9
+ 140              	.L8:
+  49:ZumoLibrary/Reflectance.c ****     }
+  50:ZumoLibrary/Reflectance.c ****     else {
+  51:ZumoLibrary/Reflectance.c ****         sensors.l1 = Timer_L1_ReadPeriod();
+ 141              		.loc 1 51 0
+ 142 009a FFF7FEFF 		bl	Timer_L1_ReadPeriod
+ 143              	.LVL22:
+ 144 009e 194B     		ldr	r3, .L11
+ 145 00a0 5880     		strh	r0, [r3, #2]	@ movhi
+ 146              	.L9:
+  52:ZumoLibrary/Reflectance.c ****     }
+  53:ZumoLibrary/Reflectance.c ****     
+  54:ZumoLibrary/Reflectance.c ****     R1_SetDriveMode(PIN_DM_STRONG);
+ 147              		.loc 1 54 0
+ 148 00a2 0C20     		movs	r0, #12
+ 149 00a4 FFF7FEFF 		bl	R1_SetDriveMode
+ 150              	.LVL23:
+  55:ZumoLibrary/Reflectance.c ****     R1_Write(1);
+ 151              		.loc 1 55 0
+ 152 00a8 0120     		movs	r0, #1
+ 153 00aa FFF7FEFF 		bl	R1_Write
+ 154              	.LVL24:
+  56:ZumoLibrary/Reflectance.c ****     R3_SetDriveMode(PIN_DM_STRONG);
+ 155              		.loc 1 56 0
+ 156 00ae 0C20     		movs	r0, #12
+ 157 00b0 FFF7FEFF 		bl	R3_SetDriveMode
+ 158              	.LVL25:
+  57:ZumoLibrary/Reflectance.c ****     R3_Write(1);
+ 159              		.loc 1 57 0
+ 160 00b4 0120     		movs	r0, #1
+ 161 00b6 FFF7FEFF 		bl	R3_Write
+ 162              	.LVL26:
+  58:ZumoLibrary/Reflectance.c ****     L3_SetDriveMode(PIN_DM_STRONG);
+ 163              		.loc 1 58 0
+ 164 00ba 0C20     		movs	r0, #12
+ 165 00bc FFF7FEFF 		bl	L3_SetDriveMode
+ 166              	.LVL27:
+  59:ZumoLibrary/Reflectance.c ****     L3_Write(1);
+ 167              		.loc 1 59 0
+ 168 00c0 0120     		movs	r0, #1
+ 169 00c2 FFF7FEFF 		bl	L3_Write
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 5
+
+
+ 170              	.LVL28:
+  60:ZumoLibrary/Reflectance.c ****     L1_SetDriveMode(PIN_DM_STRONG);
+ 171              		.loc 1 60 0
+ 172 00c6 0C20     		movs	r0, #12
+ 173 00c8 FFF7FEFF 		bl	L1_SetDriveMode
+ 174              	.LVL29:
+  61:ZumoLibrary/Reflectance.c ****     L1_Write(1);
+ 175              		.loc 1 61 0
+ 176 00cc 0120     		movs	r0, #1
+ 177 00ce FFF7FEFF 		bl	L1_Write
+ 178              	.LVL30:
+  62:ZumoLibrary/Reflectance.c ****     CyDelayUs(10);
+ 179              		.loc 1 62 0
+ 180 00d2 0A20     		movs	r0, #10
+ 181 00d4 FFF7FEFF 		bl	CyDelayUs
+ 182              	.LVL31:
+  63:ZumoLibrary/Reflectance.c ****     R1_SetDriveMode(PIN_DM_DIG_HIZ);
+ 183              		.loc 1 63 0
+ 184 00d8 0220     		movs	r0, #2
+ 185 00da FFF7FEFF 		bl	R1_SetDriveMode
+ 186              	.LVL32:
+  64:ZumoLibrary/Reflectance.c ****     R3_SetDriveMode(PIN_DM_DIG_HIZ);
+ 187              		.loc 1 64 0
+ 188 00de 0220     		movs	r0, #2
+ 189 00e0 FFF7FEFF 		bl	R3_SetDriveMode
+ 190              	.LVL33:
+  65:ZumoLibrary/Reflectance.c ****     L3_SetDriveMode(PIN_DM_DIG_HIZ);
+ 191              		.loc 1 65 0
+ 192 00e4 0220     		movs	r0, #2
+ 193 00e6 FFF7FEFF 		bl	L3_SetDriveMode
+ 194              	.LVL34:
+  66:ZumoLibrary/Reflectance.c ****     L1_SetDriveMode(PIN_DM_DIG_HIZ);
+ 195              		.loc 1 66 0
+ 196 00ea 0220     		movs	r0, #2
+ 197 00ec FFF7FEFF 		bl	L1_SetDriveMode
+ 198              	.LVL35:
+  67:ZumoLibrary/Reflectance.c **** 
+  68:ZumoLibrary/Reflectance.c ****     Timer_R1_ReadStatusRegister();
+ 199              		.loc 1 68 0
+ 200 00f0 FFF7FEFF 		bl	Timer_R1_ReadStatusRegister
+ 201              	.LVL36:
+  69:ZumoLibrary/Reflectance.c ****     Timer_R3_ReadStatusRegister();
+ 202              		.loc 1 69 0
+ 203 00f4 FFF7FEFF 		bl	Timer_R3_ReadStatusRegister
+ 204              	.LVL37:
+  70:ZumoLibrary/Reflectance.c ****     Timer_L3_ReadStatusRegister();
+ 205              		.loc 1 70 0
+ 206 00f8 FFF7FEFF 		bl	Timer_L3_ReadStatusRegister
+ 207              	.LVL38:
+  71:ZumoLibrary/Reflectance.c ****     Timer_L1_ReadStatusRegister();
+ 208              		.loc 1 71 0
+ 209 00fc FFF7FEFF 		bl	Timer_L1_ReadStatusRegister
+ 210              	.LVL39:
+ 211 0100 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 212              	.LVL40:
+ 213              	.L12:
+ 214 0102 00BF     		.align	2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 6
+
+
+ 215              	.L11:
+ 216 0104 00000000 		.word	.LANCHOR0
+ 217              		.cfi_endproc
+ 218              	.LFE64:
+ 219              		.size	sensor_isr_handler, .-sensor_isr_handler
+ 220              		.section	.text.reflectance_start,"ax",%progbits
+ 221              		.align	2
+ 222              		.global	reflectance_start
+ 223              		.thumb
+ 224              		.thumb_func
+ 225              		.type	reflectance_start, %function
+ 226              	reflectance_start:
+ 227              	.LFB65:
+  72:ZumoLibrary/Reflectance.c **** }
+  73:ZumoLibrary/Reflectance.c **** 
+  74:ZumoLibrary/Reflectance.c **** 
+  75:ZumoLibrary/Reflectance.c **** /**
+  76:ZumoLibrary/Reflectance.c **** * @brief    Starting Reflectance Sensor
+  77:ZumoLibrary/Reflectance.c **** * @details 
+  78:ZumoLibrary/Reflectance.c **** */
+  79:ZumoLibrary/Reflectance.c **** void reflectance_start()
+  80:ZumoLibrary/Reflectance.c **** {
+ 228              		.loc 1 80 0
+ 229              		.cfi_startproc
+ 230              		@ args = 0, pretend = 0, frame = 0
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232 0000 08B5     		push	{r3, lr}
+ 233              		.cfi_def_cfa_offset 8
+ 234              		.cfi_offset 3, -8
+ 235              		.cfi_offset 14, -4
+  81:ZumoLibrary/Reflectance.c ****     sensor_isr_StartEx(sensor_isr_handler);
+ 236              		.loc 1 81 0
+ 237 0002 0648     		ldr	r0, .L15
+ 238 0004 FFF7FEFF 		bl	sensor_isr_StartEx
+ 239              	.LVL41:
+  82:ZumoLibrary/Reflectance.c ****     Timer_R1_Start();
+ 240              		.loc 1 82 0
+ 241 0008 FFF7FEFF 		bl	Timer_R1_Start
+ 242              	.LVL42:
+  83:ZumoLibrary/Reflectance.c ****     Timer_R3_Start();
+ 243              		.loc 1 83 0
+ 244 000c FFF7FEFF 		bl	Timer_R3_Start
+ 245              	.LVL43:
+  84:ZumoLibrary/Reflectance.c ****     Timer_L3_Start();
+ 246              		.loc 1 84 0
+ 247 0010 FFF7FEFF 		bl	Timer_L3_Start
+ 248              	.LVL44:
+  85:ZumoLibrary/Reflectance.c ****     Timer_L1_Start();
+ 249              		.loc 1 85 0
+ 250 0014 FFF7FEFF 		bl	Timer_L1_Start
+ 251              	.LVL45:
+ 252 0018 08BD     		pop	{r3, pc}
+ 253              	.L16:
+ 254 001a 00BF     		.align	2
+ 255              	.L15:
+ 256 001c 00000000 		.word	sensor_isr_handler
+ 257              		.cfi_endproc
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 7
+
+
+ 258              	.LFE65:
+ 259              		.size	reflectance_start, .-reflectance_start
+ 260              		.section	.text.reflectance_read,"ax",%progbits
+ 261              		.align	2
+ 262              		.global	reflectance_read
+ 263              		.thumb
+ 264              		.thumb_func
+ 265              		.type	reflectance_read, %function
+ 266              	reflectance_read:
+ 267              	.LFB66:
+  86:ZumoLibrary/Reflectance.c **** }
+  87:ZumoLibrary/Reflectance.c **** 
+  88:ZumoLibrary/Reflectance.c **** 
+  89:ZumoLibrary/Reflectance.c **** /**
+  90:ZumoLibrary/Reflectance.c **** * @brief    Read reflectance sensor values
+  91:ZumoLibrary/Reflectance.c **** * @details
+  92:ZumoLibrary/Reflectance.c **** */
+  93:ZumoLibrary/Reflectance.c **** void reflectance_read(struct sensors_ *values)
+  94:ZumoLibrary/Reflectance.c **** {
+ 268              		.loc 1 94 0
+ 269              		.cfi_startproc
+ 270              		@ args = 0, pretend = 0, frame = 0
+ 271              		@ frame_needed = 0, uses_anonymous_args = 0
+ 272              		@ link register save eliminated.
+ 273              	.LVL46:
+ 274 0000 0246     		mov	r2, r0
+  95:ZumoLibrary/Reflectance.c ****     *values = sensors;
+ 275              		.loc 1 95 0
+ 276 0002 024B     		ldr	r3, .L18
+ 277 0004 03CB     		ldmia	r3!, {r0, r1}
+ 278              	.LVL47:
+ 279 0006 1060     		str	r0, [r2]	@ unaligned
+ 280 0008 5160     		str	r1, [r2, #4]	@ unaligned
+ 281 000a 7047     		bx	lr
+ 282              	.L19:
+ 283              		.align	2
+ 284              	.L18:
+ 285 000c 00000000 		.word	.LANCHOR0
+ 286              		.cfi_endproc
+ 287              	.LFE66:
+ 288              		.size	reflectance_read, .-reflectance_read
+ 289              		.section	.text.reflectance_digital,"ax",%progbits
+ 290              		.align	2
+ 291              		.global	reflectance_digital
+ 292              		.thumb
+ 293              		.thumb_func
+ 294              		.type	reflectance_digital, %function
+ 295              	reflectance_digital:
+ 296              	.LFB67:
+  96:ZumoLibrary/Reflectance.c **** }
+  97:ZumoLibrary/Reflectance.c **** 
+  98:ZumoLibrary/Reflectance.c **** 
+  99:ZumoLibrary/Reflectance.c **** /**
+ 100:ZumoLibrary/Reflectance.c **** * @brief    Making Reflectance Sensor's period to digital
+ 101:ZumoLibrary/Reflectance.c **** * @details
+ 102:ZumoLibrary/Reflectance.c **** */
+ 103:ZumoLibrary/Reflectance.c **** void reflectance_digital(struct sensors_ *digital)
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 8
+
+
+ 104:ZumoLibrary/Reflectance.c **** {
+ 297              		.loc 1 104 0
+ 298              		.cfi_startproc
+ 299              		@ args = 0, pretend = 0, frame = 0
+ 300              		@ frame_needed = 0, uses_anonymous_args = 0
+ 301              		@ link register save eliminated.
+ 302              	.LVL48:
+ 105:ZumoLibrary/Reflectance.c ****     //if the results of reflectance_period function is over threshold, set digital_sensor_value to 
+ 106:ZumoLibrary/Reflectance.c ****     if(sensors.l3 > threshold.l3)
+ 303              		.loc 1 106 0
+ 304 0000 184B     		ldr	r3, .L29
+ 305 0002 1B88     		ldrh	r3, [r3]
+ 306 0004 9BB2     		uxth	r3, r3
+ 307 0006 184A     		ldr	r2, .L29+4
+ 308 0008 1288     		ldrh	r2, [r2]
+ 309 000a 9342     		cmp	r3, r2
+ 310 000c 02D9     		bls	.L21
+ 107:ZumoLibrary/Reflectance.c ****         digital->l3 = 0;
+ 311              		.loc 1 107 0
+ 312 000e 0023     		movs	r3, #0
+ 313 0010 0380     		strh	r3, [r0]	@ movhi
+ 314 0012 01E0     		b	.L22
+ 315              	.L21:
+ 108:ZumoLibrary/Reflectance.c ****     else
+ 109:ZumoLibrary/Reflectance.c ****         digital->l3 = 1;
+ 316              		.loc 1 109 0
+ 317 0014 0123     		movs	r3, #1
+ 318 0016 0380     		strh	r3, [r0]	@ movhi
+ 319              	.L22:
+ 110:ZumoLibrary/Reflectance.c ****     
+ 111:ZumoLibrary/Reflectance.c ****     if(sensors.l1 > threshold.l1)
+ 320              		.loc 1 111 0
+ 321 0018 124B     		ldr	r3, .L29
+ 322 001a 5B88     		ldrh	r3, [r3, #2]
+ 323 001c 9BB2     		uxth	r3, r3
+ 324 001e 124A     		ldr	r2, .L29+4
+ 325 0020 5288     		ldrh	r2, [r2, #2]
+ 326 0022 9342     		cmp	r3, r2
+ 327 0024 02D9     		bls	.L23
+ 112:ZumoLibrary/Reflectance.c ****         digital->l1 = 0;
+ 328              		.loc 1 112 0
+ 329 0026 0023     		movs	r3, #0
+ 330 0028 4380     		strh	r3, [r0, #2]	@ movhi
+ 331 002a 01E0     		b	.L24
+ 332              	.L23:
+ 113:ZumoLibrary/Reflectance.c ****     else
+ 114:ZumoLibrary/Reflectance.c ****         digital->l1 = 1;
+ 333              		.loc 1 114 0
+ 334 002c 0123     		movs	r3, #1
+ 335 002e 4380     		strh	r3, [r0, #2]	@ movhi
+ 336              	.L24:
+ 115:ZumoLibrary/Reflectance.c ****     
+ 116:ZumoLibrary/Reflectance.c ****     if(sensors.r1 > threshold.r1)
+ 337              		.loc 1 116 0
+ 338 0030 0C4B     		ldr	r3, .L29
+ 339 0032 9B88     		ldrh	r3, [r3, #4]
+ 340 0034 9BB2     		uxth	r3, r3
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 9
+
+
+ 341 0036 0C4A     		ldr	r2, .L29+4
+ 342 0038 9288     		ldrh	r2, [r2, #4]
+ 343 003a 9342     		cmp	r3, r2
+ 344 003c 02D9     		bls	.L25
+ 117:ZumoLibrary/Reflectance.c ****         digital->r1 = 0;
+ 345              		.loc 1 117 0
+ 346 003e 0023     		movs	r3, #0
+ 347 0040 8380     		strh	r3, [r0, #4]	@ movhi
+ 348 0042 01E0     		b	.L26
+ 349              	.L25:
+ 118:ZumoLibrary/Reflectance.c ****     else
+ 119:ZumoLibrary/Reflectance.c ****         digital->r1 = 1;
+ 350              		.loc 1 119 0
+ 351 0044 0123     		movs	r3, #1
+ 352 0046 8380     		strh	r3, [r0, #4]	@ movhi
+ 353              	.L26:
+ 120:ZumoLibrary/Reflectance.c ****     
+ 121:ZumoLibrary/Reflectance.c ****     if(sensors.r3 > threshold.r3)
+ 354              		.loc 1 121 0
+ 355 0048 064B     		ldr	r3, .L29
+ 356 004a DB88     		ldrh	r3, [r3, #6]
+ 357 004c 9BB2     		uxth	r3, r3
+ 358 004e 064A     		ldr	r2, .L29+4
+ 359 0050 D288     		ldrh	r2, [r2, #6]
+ 360 0052 9342     		cmp	r3, r2
+ 361 0054 02D9     		bls	.L27
+ 122:ZumoLibrary/Reflectance.c ****         digital->r3 = 0;
+ 362              		.loc 1 122 0
+ 363 0056 0023     		movs	r3, #0
+ 364 0058 C380     		strh	r3, [r0, #6]	@ movhi
+ 365 005a 7047     		bx	lr
+ 366              	.L27:
+ 123:ZumoLibrary/Reflectance.c ****     else
+ 124:ZumoLibrary/Reflectance.c ****         digital->r3 = 1;
+ 367              		.loc 1 124 0
+ 368 005c 0123     		movs	r3, #1
+ 369 005e C380     		strh	r3, [r0, #6]	@ movhi
+ 370 0060 7047     		bx	lr
+ 371              	.L30:
+ 372 0062 00BF     		.align	2
+ 373              	.L29:
+ 374 0064 00000000 		.word	.LANCHOR0
+ 375 0068 00000000 		.word	.LANCHOR1
+ 376              		.cfi_endproc
+ 377              	.LFE67:
+ 378              		.size	reflectance_digital, .-reflectance_digital
+ 379              		.section	.text.reflectance_set_threshold,"ax",%progbits
+ 380              		.align	2
+ 381              		.global	reflectance_set_threshold
+ 382              		.thumb
+ 383              		.thumb_func
+ 384              		.type	reflectance_set_threshold, %function
+ 385              	reflectance_set_threshold:
+ 386              	.LFB68:
+ 125:ZumoLibrary/Reflectance.c ****         
+ 126:ZumoLibrary/Reflectance.c **** }
+ 127:ZumoLibrary/Reflectance.c **** 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 10
+
+
+ 128:ZumoLibrary/Reflectance.c **** void reflectance_set_threshold(uint16_t l3, uint16_t l1, uint16_t r1, uint16_t r3)
+ 129:ZumoLibrary/Reflectance.c **** {
+ 387              		.loc 1 129 0
+ 388              		.cfi_startproc
+ 389              		@ args = 0, pretend = 0, frame = 0
+ 390              		@ frame_needed = 0, uses_anonymous_args = 0
+ 391              		@ link register save eliminated.
+ 392              	.LVL49:
+ 393 0000 10B4     		push	{r4}
+ 394              		.cfi_def_cfa_offset 4
+ 395              		.cfi_offset 4, -4
+ 130:ZumoLibrary/Reflectance.c ****     threshold.l3 = l3;
+ 396              		.loc 1 130 0
+ 397 0002 034C     		ldr	r4, .L33
+ 398 0004 2080     		strh	r0, [r4]	@ movhi
+ 131:ZumoLibrary/Reflectance.c ****     threshold.l1 = l1;
+ 399              		.loc 1 131 0
+ 400 0006 6180     		strh	r1, [r4, #2]	@ movhi
+ 132:ZumoLibrary/Reflectance.c ****     threshold.r3 = r3;
+ 401              		.loc 1 132 0
+ 402 0008 E380     		strh	r3, [r4, #6]	@ movhi
+ 133:ZumoLibrary/Reflectance.c ****     threshold.r1 = r1;
+ 403              		.loc 1 133 0
+ 404 000a A280     		strh	r2, [r4, #4]	@ movhi
+ 134:ZumoLibrary/Reflectance.c **** }
+ 405              		.loc 1 134 0
+ 406 000c 10BC     		pop	{r4}
+ 407              		.cfi_restore 4
+ 408              		.cfi_def_cfa_offset 0
+ 409 000e 7047     		bx	lr
+ 410              	.L34:
+ 411              		.align	2
+ 412              	.L33:
+ 413 0010 00000000 		.word	.LANCHOR1
+ 414              		.cfi_endproc
+ 415              	.LFE68:
+ 416              		.size	reflectance_set_threshold, .-reflectance_set_threshold
+ 417              		.data
+ 418              		.align	2
+ 419              		.set	.LANCHOR1,. + 0
+ 420              		.type	threshold, %object
+ 421              		.size	threshold, 8
+ 422              	threshold:
+ 423 0000 1027     		.short	10000
+ 424 0002 1027     		.short	10000
+ 425 0004 1027     		.short	10000
+ 426 0006 1027     		.short	10000
+ 427              		.bss
+ 428              		.align	2
+ 429              		.set	.LANCHOR0,. + 0
+ 430              		.type	sensors, %object
+ 431              		.size	sensors, 8
+ 432              	sensors:
+ 433 0000 00000000 		.space	8
+ 433      00000000 
+ 434              		.type	digital_sensor_value, %object
+ 435              		.size	digital_sensor_value, 8
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 11
+
+
+ 436              	digital_sensor_value:
+ 437 0008 00000000 		.space	8
+ 437      00000000 
+ 438              		.text
+ 439              	.Letext0:
+ 440              		.file 2 "j:\\psoc\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\includ
+ 441              		.file 3 "j:\\psoc\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\includ
+ 442              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 443              		.file 5 "ZumoLibrary\\Reflectance.h"
+ 444              		.file 6 "Generated_Source\\PSoC5/Timer_R1.h"
+ 445              		.file 7 "Generated_Source\\PSoC5/Timer_R3.h"
+ 446              		.file 8 "Generated_Source\\PSoC5/Timer_L3.h"
+ 447              		.file 9 "Generated_Source\\PSoC5/Timer_L1.h"
+ 448              		.file 10 "Generated_Source\\PSoC5/R1.h"
+ 449              		.file 11 "Generated_Source\\PSoC5/R3.h"
+ 450              		.file 12 "Generated_Source\\PSoC5/L3.h"
+ 451              		.file 13 "Generated_Source\\PSoC5/L1.h"
+ 452              		.file 14 "Generated_Source\\PSoC5/CyLib.h"
+ 453              		.file 15 "Generated_Source\\PSoC5/sensor_isr.h"
+ 454              		.file 16 "Generated_Source\\PSoC5/core_cm3.h"
+ 455              		.section	.debug_info,"",%progbits
+ 456              	.Ldebug_info0:
+ 457 0000 5B050000 		.4byte	0x55b
+ 458 0004 0400     		.2byte	0x4
+ 459 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 460 000a 04       		.byte	0x4
+ 461 000b 01       		.uleb128 0x1
+ 462 000c 88030000 		.4byte	.LASF61
+ 463 0010 0C       		.byte	0xc
+ 464 0011 32040000 		.4byte	.LASF62
+ 465 0015 8F020000 		.4byte	.LASF63
+ 466 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 467 001d 00000000 		.4byte	0
+ 468 0021 00000000 		.4byte	.Ldebug_line0
+ 469 0025 02       		.uleb128 0x2
+ 470 0026 01       		.byte	0x1
+ 471 0027 06       		.byte	0x6
+ 472 0028 C4010000 		.4byte	.LASF0
+ 473 002c 02       		.uleb128 0x2
+ 474 002d 01       		.byte	0x1
+ 475 002e 08       		.byte	0x8
+ 476 002f 8C010000 		.4byte	.LASF1
+ 477 0033 02       		.uleb128 0x2
+ 478 0034 02       		.byte	0x2
+ 479 0035 05       		.byte	0x5
+ 480 0036 34000000 		.4byte	.LASF2
+ 481 003a 03       		.uleb128 0x3
+ 482 003b 78000000 		.4byte	.LASF4
+ 483 003f 02       		.byte	0x2
+ 484 0040 2B       		.byte	0x2b
+ 485 0041 45000000 		.4byte	0x45
+ 486 0045 02       		.uleb128 0x2
+ 487 0046 02       		.byte	0x2
+ 488 0047 07       		.byte	0x7
+ 489 0048 0F020000 		.4byte	.LASF3
+ 490 004c 03       		.uleb128 0x3
+ 491 004d 46030000 		.4byte	.LASF5
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 12
+
+
+ 492 0051 02       		.byte	0x2
+ 493 0052 3F       		.byte	0x3f
+ 494 0053 57000000 		.4byte	0x57
+ 495 0057 02       		.uleb128 0x2
+ 496 0058 04       		.byte	0x4
+ 497 0059 05       		.byte	0x5
+ 498 005a 47010000 		.4byte	.LASF6
+ 499 005e 03       		.uleb128 0x3
+ 500 005f 5D000000 		.4byte	.LASF7
+ 501 0063 02       		.byte	0x2
+ 502 0064 41       		.byte	0x41
+ 503 0065 69000000 		.4byte	0x69
+ 504 0069 02       		.uleb128 0x2
+ 505 006a 04       		.byte	0x4
+ 506 006b 07       		.byte	0x7
+ 507 006c E6020000 		.4byte	.LASF8
+ 508 0070 02       		.uleb128 0x2
+ 509 0071 08       		.byte	0x8
+ 510 0072 05       		.byte	0x5
+ 511 0073 4F000000 		.4byte	.LASF9
+ 512 0077 02       		.uleb128 0x2
+ 513 0078 08       		.byte	0x8
+ 514 0079 07       		.byte	0x7
+ 515 007a D0010000 		.4byte	.LASF10
+ 516 007e 04       		.uleb128 0x4
+ 517 007f 04       		.byte	0x4
+ 518 0080 05       		.byte	0x5
+ 519 0081 696E7400 		.ascii	"int\000"
+ 520 0085 02       		.uleb128 0x2
+ 521 0086 04       		.byte	0x4
+ 522 0087 07       		.byte	0x7
+ 523 0088 F0010000 		.4byte	.LASF11
+ 524 008c 03       		.uleb128 0x3
+ 525 008d FD010000 		.4byte	.LASF12
+ 526 0091 03       		.byte	0x3
+ 527 0092 24       		.byte	0x24
+ 528 0093 3A000000 		.4byte	0x3a
+ 529 0097 03       		.uleb128 0x3
+ 530 0098 5E020000 		.4byte	.LASF13
+ 531 009c 03       		.byte	0x3
+ 532 009d 2C       		.byte	0x2c
+ 533 009e 4C000000 		.4byte	0x4c
+ 534 00a2 03       		.uleb128 0x3
+ 535 00a3 E7010000 		.4byte	.LASF14
+ 536 00a7 03       		.byte	0x3
+ 537 00a8 30       		.byte	0x30
+ 538 00a9 5E000000 		.4byte	0x5e
+ 539 00ad 05       		.uleb128 0x5
+ 540 00ae 95000000 		.4byte	.LASF15
+ 541 00b2 04       		.byte	0x4
+ 542 00b3 9201     		.2byte	0x192
+ 543 00b5 2C000000 		.4byte	0x2c
+ 544 00b9 02       		.uleb128 0x2
+ 545 00ba 04       		.byte	0x4
+ 546 00bb 04       		.byte	0x4
+ 547 00bc DE000000 		.4byte	.LASF16
+ 548 00c0 02       		.uleb128 0x2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 13
+
+
+ 549 00c1 08       		.byte	0x8
+ 550 00c2 04       		.byte	0x4
+ 551 00c3 74030000 		.4byte	.LASF17
+ 552 00c7 02       		.uleb128 0x2
+ 553 00c8 01       		.byte	0x1
+ 554 00c9 08       		.byte	0x8
+ 555 00ca 2E010000 		.4byte	.LASF18
+ 556 00ce 02       		.uleb128 0x2
+ 557 00cf 08       		.byte	0x8
+ 558 00d0 04       		.byte	0x4
+ 559 00d1 76010000 		.4byte	.LASF19
+ 560 00d5 02       		.uleb128 0x2
+ 561 00d6 04       		.byte	0x4
+ 562 00d7 07       		.byte	0x7
+ 563 00d8 3E000000 		.4byte	.LASF20
+ 564 00dc 06       		.uleb128 0x6
+ 565 00dd 83000000 		.4byte	.LASF64
+ 566 00e1 08       		.byte	0x8
+ 567 00e2 05       		.byte	0x5
+ 568 00e3 11       		.byte	0x11
+ 569 00e4 15010000 		.4byte	0x115
+ 570 00e8 07       		.uleb128 0x7
+ 571 00e9 6C3300   		.ascii	"l3\000"
+ 572 00ec 05       		.byte	0x5
+ 573 00ed 12       		.byte	0x12
+ 574 00ee 8C000000 		.4byte	0x8c
+ 575 00f2 00       		.byte	0
+ 576 00f3 07       		.uleb128 0x7
+ 577 00f4 6C3100   		.ascii	"l1\000"
+ 578 00f7 05       		.byte	0x5
+ 579 00f8 14       		.byte	0x14
+ 580 00f9 8C000000 		.4byte	0x8c
+ 581 00fd 02       		.byte	0x2
+ 582 00fe 07       		.uleb128 0x7
+ 583 00ff 723100   		.ascii	"r1\000"
+ 584 0102 05       		.byte	0x5
+ 585 0103 15       		.byte	0x15
+ 586 0104 8C000000 		.4byte	0x8c
+ 587 0108 04       		.byte	0x4
+ 588 0109 07       		.uleb128 0x7
+ 589 010a 723300   		.ascii	"r3\000"
+ 590 010d 05       		.byte	0x5
+ 591 010e 17       		.byte	0x17
+ 592 010f 8C000000 		.4byte	0x8c
+ 593 0113 06       		.byte	0x6
+ 594 0114 00       		.byte	0
+ 595 0115 08       		.uleb128 0x8
+ 596 0116 50030000 		.4byte	.LASF25
+ 597 011a 01       		.byte	0x1
+ 598 011b 13       		.byte	0x13
+ 599 011c 00000000 		.4byte	.LFB64
+ 600 0120 08010000 		.4byte	.LFE64-.LFB64
+ 601 0124 01       		.uleb128 0x1
+ 602 0125 9C       		.byte	0x9c
+ 603 0126 12030000 		.4byte	0x312
+ 604 012a 09       		.uleb128 0x9
+ 605 012b 8C000000 		.4byte	.LASF21
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 14
+
+
+ 606 012f 01       		.byte	0x1
+ 607 0130 15       		.byte	0x15
+ 608 0131 A2000000 		.4byte	0xa2
+ 609 0135 00000000 		.4byte	.LLST0
+ 610 0139 09       		.uleb128 0x9
+ 611 013a 9B000000 		.4byte	.LASF22
+ 612 013e 01       		.byte	0x1
+ 613 013f 16       		.byte	0x16
+ 614 0140 A2000000 		.4byte	0xa2
+ 615 0144 28000000 		.4byte	.LLST1
+ 616 0148 09       		.uleb128 0x9
+ 617 0149 55020000 		.4byte	.LASF23
+ 618 014d 01       		.byte	0x1
+ 619 014e 17       		.byte	0x17
+ 620 014f A2000000 		.4byte	0xa2
+ 621 0153 40000000 		.4byte	.LLST2
+ 622 0157 09       		.uleb128 0x9
+ 623 0158 0C030000 		.4byte	.LASF24
+ 624 015c 01       		.byte	0x1
+ 625 015d 18       		.byte	0x18
+ 626 015e A2000000 		.4byte	0xa2
+ 627 0162 58000000 		.4byte	.LLST3
+ 628 0166 0A       		.uleb128 0xa
+ 629 0167 06000000 		.4byte	.LVL0
+ 630 016b 40040000 		.4byte	0x440
+ 631 016f 0A       		.uleb128 0xa
+ 632 0170 0C000000 		.4byte	.LVL2
+ 633 0174 4B040000 		.4byte	0x44b
+ 634 0178 0A       		.uleb128 0xa
+ 635 0179 12000000 		.4byte	.LVL4
+ 636 017d 56040000 		.4byte	0x456
+ 637 0181 0A       		.uleb128 0xa
+ 638 0182 18000000 		.4byte	.LVL6
+ 639 0186 61040000 		.4byte	0x461
+ 640 018a 0A       		.uleb128 0xa
+ 641 018b 24000000 		.4byte	.LVL8
+ 642 018f 6C040000 		.4byte	0x46c
+ 643 0193 0A       		.uleb128 0xa
+ 644 0194 2A000000 		.4byte	.LVL10
+ 645 0198 77040000 		.4byte	0x477
+ 646 019c 0A       		.uleb128 0xa
+ 647 019d 38000000 		.4byte	.LVL12
+ 648 01a1 6C040000 		.4byte	0x46c
+ 649 01a5 0A       		.uleb128 0xa
+ 650 01a6 46000000 		.4byte	.LVL14
+ 651 01aa 82040000 		.4byte	0x482
+ 652 01ae 0A       		.uleb128 0xa
+ 653 01af 4C000000 		.4byte	.LVL15
+ 654 01b3 8D040000 		.4byte	0x48d
+ 655 01b7 0A       		.uleb128 0xa
+ 656 01b8 5A000000 		.4byte	.LVL16
+ 657 01bc 82040000 		.4byte	0x482
+ 658 01c0 0A       		.uleb128 0xa
+ 659 01c1 68000000 		.4byte	.LVL17
+ 660 01c5 98040000 		.4byte	0x498
+ 661 01c9 0A       		.uleb128 0xa
+ 662 01ca 6E000000 		.4byte	.LVL18
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 15
+
+
+ 663 01ce A3040000 		.4byte	0x4a3
+ 664 01d2 0A       		.uleb128 0xa
+ 665 01d3 7C000000 		.4byte	.LVL19
+ 666 01d7 98040000 		.4byte	0x498
+ 667 01db 0A       		.uleb128 0xa
+ 668 01dc 8A000000 		.4byte	.LVL20
+ 669 01e0 AE040000 		.4byte	0x4ae
+ 670 01e4 0A       		.uleb128 0xa
+ 671 01e5 90000000 		.4byte	.LVL21
+ 672 01e9 B9040000 		.4byte	0x4b9
+ 673 01ed 0A       		.uleb128 0xa
+ 674 01ee 9E000000 		.4byte	.LVL22
+ 675 01f2 AE040000 		.4byte	0x4ae
+ 676 01f6 0B       		.uleb128 0xb
+ 677 01f7 A8000000 		.4byte	.LVL23
+ 678 01fb C4040000 		.4byte	0x4c4
+ 679 01ff 09020000 		.4byte	0x209
+ 680 0203 0C       		.uleb128 0xc
+ 681 0204 01       		.uleb128 0x1
+ 682 0205 50       		.byte	0x50
+ 683 0206 01       		.uleb128 0x1
+ 684 0207 3C       		.byte	0x3c
+ 685 0208 00       		.byte	0
+ 686 0209 0B       		.uleb128 0xb
+ 687 020a AE000000 		.4byte	.LVL24
+ 688 020e CF040000 		.4byte	0x4cf
+ 689 0212 1C020000 		.4byte	0x21c
+ 690 0216 0C       		.uleb128 0xc
+ 691 0217 01       		.uleb128 0x1
+ 692 0218 50       		.byte	0x50
+ 693 0219 01       		.uleb128 0x1
+ 694 021a 31       		.byte	0x31
+ 695 021b 00       		.byte	0
+ 696 021c 0B       		.uleb128 0xb
+ 697 021d B4000000 		.4byte	.LVL25
+ 698 0221 DA040000 		.4byte	0x4da
+ 699 0225 2F020000 		.4byte	0x22f
+ 700 0229 0C       		.uleb128 0xc
+ 701 022a 01       		.uleb128 0x1
+ 702 022b 50       		.byte	0x50
+ 703 022c 01       		.uleb128 0x1
+ 704 022d 3C       		.byte	0x3c
+ 705 022e 00       		.byte	0
+ 706 022f 0B       		.uleb128 0xb
+ 707 0230 BA000000 		.4byte	.LVL26
+ 708 0234 E5040000 		.4byte	0x4e5
+ 709 0238 42020000 		.4byte	0x242
+ 710 023c 0C       		.uleb128 0xc
+ 711 023d 01       		.uleb128 0x1
+ 712 023e 50       		.byte	0x50
+ 713 023f 01       		.uleb128 0x1
+ 714 0240 31       		.byte	0x31
+ 715 0241 00       		.byte	0
+ 716 0242 0B       		.uleb128 0xb
+ 717 0243 C0000000 		.4byte	.LVL27
+ 718 0247 F0040000 		.4byte	0x4f0
+ 719 024b 55020000 		.4byte	0x255
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 16
+
+
+ 720 024f 0C       		.uleb128 0xc
+ 721 0250 01       		.uleb128 0x1
+ 722 0251 50       		.byte	0x50
+ 723 0252 01       		.uleb128 0x1
+ 724 0253 3C       		.byte	0x3c
+ 725 0254 00       		.byte	0
+ 726 0255 0B       		.uleb128 0xb
+ 727 0256 C6000000 		.4byte	.LVL28
+ 728 025a FB040000 		.4byte	0x4fb
+ 729 025e 68020000 		.4byte	0x268
+ 730 0262 0C       		.uleb128 0xc
+ 731 0263 01       		.uleb128 0x1
+ 732 0264 50       		.byte	0x50
+ 733 0265 01       		.uleb128 0x1
+ 734 0266 31       		.byte	0x31
+ 735 0267 00       		.byte	0
+ 736 0268 0B       		.uleb128 0xb
+ 737 0269 CC000000 		.4byte	.LVL29
+ 738 026d 06050000 		.4byte	0x506
+ 739 0271 7B020000 		.4byte	0x27b
+ 740 0275 0C       		.uleb128 0xc
+ 741 0276 01       		.uleb128 0x1
+ 742 0277 50       		.byte	0x50
+ 743 0278 01       		.uleb128 0x1
+ 744 0279 3C       		.byte	0x3c
+ 745 027a 00       		.byte	0
+ 746 027b 0B       		.uleb128 0xb
+ 747 027c D2000000 		.4byte	.LVL30
+ 748 0280 11050000 		.4byte	0x511
+ 749 0284 8E020000 		.4byte	0x28e
+ 750 0288 0C       		.uleb128 0xc
+ 751 0289 01       		.uleb128 0x1
+ 752 028a 50       		.byte	0x50
+ 753 028b 01       		.uleb128 0x1
+ 754 028c 31       		.byte	0x31
+ 755 028d 00       		.byte	0
+ 756 028e 0B       		.uleb128 0xb
+ 757 028f D8000000 		.4byte	.LVL31
+ 758 0293 1C050000 		.4byte	0x51c
+ 759 0297 A1020000 		.4byte	0x2a1
+ 760 029b 0C       		.uleb128 0xc
+ 761 029c 01       		.uleb128 0x1
+ 762 029d 50       		.byte	0x50
+ 763 029e 01       		.uleb128 0x1
+ 764 029f 3A       		.byte	0x3a
+ 765 02a0 00       		.byte	0
+ 766 02a1 0B       		.uleb128 0xb
+ 767 02a2 DE000000 		.4byte	.LVL32
+ 768 02a6 C4040000 		.4byte	0x4c4
+ 769 02aa B4020000 		.4byte	0x2b4
+ 770 02ae 0C       		.uleb128 0xc
+ 771 02af 01       		.uleb128 0x1
+ 772 02b0 50       		.byte	0x50
+ 773 02b1 01       		.uleb128 0x1
+ 774 02b2 32       		.byte	0x32
+ 775 02b3 00       		.byte	0
+ 776 02b4 0B       		.uleb128 0xb
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 17
+
+
+ 777 02b5 E4000000 		.4byte	.LVL33
+ 778 02b9 DA040000 		.4byte	0x4da
+ 779 02bd C7020000 		.4byte	0x2c7
+ 780 02c1 0C       		.uleb128 0xc
+ 781 02c2 01       		.uleb128 0x1
+ 782 02c3 50       		.byte	0x50
+ 783 02c4 01       		.uleb128 0x1
+ 784 02c5 32       		.byte	0x32
+ 785 02c6 00       		.byte	0
+ 786 02c7 0B       		.uleb128 0xb
+ 787 02c8 EA000000 		.4byte	.LVL34
+ 788 02cc F0040000 		.4byte	0x4f0
+ 789 02d0 DA020000 		.4byte	0x2da
+ 790 02d4 0C       		.uleb128 0xc
+ 791 02d5 01       		.uleb128 0x1
+ 792 02d6 50       		.byte	0x50
+ 793 02d7 01       		.uleb128 0x1
+ 794 02d8 32       		.byte	0x32
+ 795 02d9 00       		.byte	0
+ 796 02da 0B       		.uleb128 0xb
+ 797 02db F0000000 		.4byte	.LVL35
+ 798 02df 06050000 		.4byte	0x506
+ 799 02e3 ED020000 		.4byte	0x2ed
+ 800 02e7 0C       		.uleb128 0xc
+ 801 02e8 01       		.uleb128 0x1
+ 802 02e9 50       		.byte	0x50
+ 803 02ea 01       		.uleb128 0x1
+ 804 02eb 32       		.byte	0x32
+ 805 02ec 00       		.byte	0
+ 806 02ed 0A       		.uleb128 0xa
+ 807 02ee F4000000 		.4byte	.LVL36
+ 808 02f2 40040000 		.4byte	0x440
+ 809 02f6 0A       		.uleb128 0xa
+ 810 02f7 F8000000 		.4byte	.LVL37
+ 811 02fb 4B040000 		.4byte	0x44b
+ 812 02ff 0A       		.uleb128 0xa
+ 813 0300 FC000000 		.4byte	.LVL38
+ 814 0304 56040000 		.4byte	0x456
+ 815 0308 0A       		.uleb128 0xa
+ 816 0309 00010000 		.4byte	.LVL39
+ 817 030d 61040000 		.4byte	0x461
+ 818 0311 00       		.byte	0
+ 819 0312 08       		.uleb128 0x8
+ 820 0313 CC000000 		.4byte	.LASF26
+ 821 0317 01       		.byte	0x1
+ 822 0318 4F       		.byte	0x4f
+ 823 0319 00000000 		.4byte	.LFB65
+ 824 031d 20000000 		.4byte	.LFE65-.LFB65
+ 825 0321 01       		.uleb128 0x1
+ 826 0322 9C       		.byte	0x9c
+ 827 0323 63030000 		.4byte	0x363
+ 828 0327 0B       		.uleb128 0xb
+ 829 0328 08000000 		.4byte	.LVL41
+ 830 032c 27050000 		.4byte	0x527
+ 831 0330 3E030000 		.4byte	0x33e
+ 832 0334 0C       		.uleb128 0xc
+ 833 0335 01       		.uleb128 0x1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 18
+
+
+ 834 0336 50       		.byte	0x50
+ 835 0337 05       		.uleb128 0x5
+ 836 0338 03       		.byte	0x3
+ 837 0339 00000000 		.4byte	sensor_isr_handler
+ 838 033d 00       		.byte	0
+ 839 033e 0A       		.uleb128 0xa
+ 840 033f 0C000000 		.4byte	.LVL42
+ 841 0343 32050000 		.4byte	0x532
+ 842 0347 0A       		.uleb128 0xa
+ 843 0348 10000000 		.4byte	.LVL43
+ 844 034c 3D050000 		.4byte	0x53d
+ 845 0350 0A       		.uleb128 0xa
+ 846 0351 14000000 		.4byte	.LVL44
+ 847 0355 48050000 		.4byte	0x548
+ 848 0359 0A       		.uleb128 0xa
+ 849 035a 18000000 		.4byte	.LVL45
+ 850 035e 53050000 		.4byte	0x553
+ 851 0362 00       		.byte	0
+ 852 0363 08       		.uleb128 0x8
+ 853 0364 63030000 		.4byte	.LASF27
+ 854 0368 01       		.byte	0x1
+ 855 0369 5D       		.byte	0x5d
+ 856 036a 00000000 		.4byte	.LFB66
+ 857 036e 10000000 		.4byte	.LFE66-.LFB66
+ 858 0372 01       		.uleb128 0x1
+ 859 0373 9C       		.byte	0x9c
+ 860 0374 88030000 		.4byte	0x388
+ 861 0378 0D       		.uleb128 0xd
+ 862 0379 50010000 		.4byte	.LASF29
+ 863 037d 01       		.byte	0x1
+ 864 037e 5D       		.byte	0x5d
+ 865 037f 88030000 		.4byte	0x388
+ 866 0383 70000000 		.4byte	.LLST4
+ 867 0387 00       		.byte	0
+ 868 0388 0E       		.uleb128 0xe
+ 869 0389 04       		.byte	0x4
+ 870 038a DC000000 		.4byte	0xdc
+ 871 038e 08       		.uleb128 0x8
+ 872 038f 10010000 		.4byte	.LASF28
+ 873 0393 01       		.byte	0x1
+ 874 0394 67       		.byte	0x67
+ 875 0395 00000000 		.4byte	.LFB67
+ 876 0399 6C000000 		.4byte	.LFE67-.LFB67
+ 877 039d 01       		.uleb128 0x1
+ 878 039e 9C       		.byte	0x9c
+ 879 039f B1030000 		.4byte	0x3b1
+ 880 03a3 0F       		.uleb128 0xf
+ 881 03a4 15030000 		.4byte	.LASF30
+ 882 03a8 01       		.byte	0x1
+ 883 03a9 67       		.byte	0x67
+ 884 03aa 88030000 		.4byte	0x388
+ 885 03ae 01       		.uleb128 0x1
+ 886 03af 50       		.byte	0x50
+ 887 03b0 00       		.byte	0
+ 888 03b1 08       		.uleb128 0x8
+ 889 03b2 AA010000 		.4byte	.LASF31
+ 890 03b6 01       		.byte	0x1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 19
+
+
+ 891 03b7 80       		.byte	0x80
+ 892 03b8 00000000 		.4byte	.LFB68
+ 893 03bc 14000000 		.4byte	.LFE68-.LFB68
+ 894 03c0 01       		.uleb128 0x1
+ 895 03c1 9C       		.byte	0x9c
+ 896 03c2 F7030000 		.4byte	0x3f7
+ 897 03c6 10       		.uleb128 0x10
+ 898 03c7 6C3300   		.ascii	"l3\000"
+ 899 03ca 01       		.byte	0x1
+ 900 03cb 80       		.byte	0x80
+ 901 03cc 8C000000 		.4byte	0x8c
+ 902 03d0 01       		.uleb128 0x1
+ 903 03d1 50       		.byte	0x50
+ 904 03d2 10       		.uleb128 0x10
+ 905 03d3 6C3100   		.ascii	"l1\000"
+ 906 03d6 01       		.byte	0x1
+ 907 03d7 80       		.byte	0x80
+ 908 03d8 8C000000 		.4byte	0x8c
+ 909 03dc 01       		.uleb128 0x1
+ 910 03dd 51       		.byte	0x51
+ 911 03de 10       		.uleb128 0x10
+ 912 03df 723100   		.ascii	"r1\000"
+ 913 03e2 01       		.byte	0x1
+ 914 03e3 80       		.byte	0x80
+ 915 03e4 8C000000 		.4byte	0x8c
+ 916 03e8 01       		.uleb128 0x1
+ 917 03e9 52       		.byte	0x52
+ 918 03ea 10       		.uleb128 0x10
+ 919 03eb 723300   		.ascii	"r3\000"
+ 920 03ee 01       		.byte	0x1
+ 921 03ef 80       		.byte	0x80
+ 922 03f0 8C000000 		.4byte	0x8c
+ 923 03f4 01       		.uleb128 0x1
+ 924 03f5 53       		.byte	0x53
+ 925 03f6 00       		.byte	0
+ 926 03f7 11       		.uleb128 0x11
+ 927 03f8 47000000 		.4byte	.LASF32
+ 928 03fc 01       		.byte	0x1
+ 929 03fd 0B       		.byte	0xb
+ 930 03fe 08040000 		.4byte	0x408
+ 931 0402 05       		.uleb128 0x5
+ 932 0403 03       		.byte	0x3
+ 933 0404 00000000 		.4byte	sensors
+ 934 0408 12       		.uleb128 0x12
+ 935 0409 DC000000 		.4byte	0xdc
+ 936 040d 11       		.uleb128 0x11
+ 937 040e 37020000 		.4byte	.LASF33
+ 938 0412 01       		.byte	0x1
+ 939 0413 0C       		.byte	0xc
+ 940 0414 08040000 		.4byte	0x408
+ 941 0418 05       		.uleb128 0x5
+ 942 0419 03       		.byte	0x3
+ 943 041a 08000000 		.4byte	digital_sensor_value
+ 944 041e 11       		.uleb128 0x11
+ 945 041f 24010000 		.4byte	.LASF34
+ 946 0423 01       		.byte	0x1
+ 947 0424 0D       		.byte	0xd
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 20
+
+
+ 948 0425 DC000000 		.4byte	0xdc
+ 949 0429 05       		.uleb128 0x5
+ 950 042a 03       		.byte	0x3
+ 951 042b 00000000 		.4byte	threshold
+ 952 042f 13       		.uleb128 0x13
+ 953 0430 7B030000 		.4byte	.LASF65
+ 954 0434 10       		.byte	0x10
+ 955 0435 9606     		.2byte	0x696
+ 956 0437 3B040000 		.4byte	0x43b
+ 957 043b 12       		.uleb128 0x12
+ 958 043c 97000000 		.4byte	0x97
+ 959 0440 14       		.uleb128 0x14
+ 960 0441 F4000000 		.4byte	.LASF35
+ 961 0445 F4000000 		.4byte	.LASF35
+ 962 0449 06       		.byte	0x6
+ 963 044a 5E       		.byte	0x5e
+ 964 044b 14       		.uleb128 0x14
+ 965 044c CA020000 		.4byte	.LASF36
+ 966 0450 CA020000 		.4byte	.LASF36
+ 967 0454 07       		.byte	0x7
+ 968 0455 5E       		.byte	0x5e
+ 969 0456 14       		.uleb128 0x14
+ 970 0457 16040000 		.4byte	.LASF37
+ 971 045b 16040000 		.4byte	.LASF37
+ 972 045f 08       		.byte	0x8
+ 973 0460 5E       		.byte	0x5e
+ 974 0461 14       		.uleb128 0x14
+ 975 0462 18000000 		.4byte	.LASF38
+ 976 0466 18000000 		.4byte	.LASF38
+ 977 046a 09       		.byte	0x9
+ 978 046b 5E       		.byte	0x5e
+ 979 046c 14       		.uleb128 0x14
+ 980 046d 1D030000 		.4byte	.LASF39
+ 981 0471 1D030000 		.4byte	.LASF39
+ 982 0475 06       		.byte	0x6
+ 983 0476 67       		.byte	0x67
+ 984 0477 14       		.uleb128 0x14
+ 985 0478 B7000000 		.4byte	.LASF40
+ 986 047c B7000000 		.4byte	.LASF40
+ 987 0480 06       		.byte	0x6
+ 988 0481 6B       		.byte	0x6b
+ 989 0482 14       		.uleb128 0x14
+ 990 0483 33010000 		.4byte	.LASF41
+ 991 0487 33010000 		.4byte	.LASF41
+ 992 048b 07       		.byte	0x7
+ 993 048c 67       		.byte	0x67
+ 994 048d 14       		.uleb128 0x14
+ 995 048e 31030000 		.4byte	.LASF42
+ 996 0492 31030000 		.4byte	.LASF42
+ 997 0496 07       		.byte	0x7
+ 998 0497 6B       		.byte	0x6b
+ 999 0498 14       		.uleb128 0x14
+ 1000 0499 F8020000 		.4byte	.LASF43
+ 1001 049d F8020000 		.4byte	.LASF43
+ 1002 04a1 08       		.byte	0x8
+ 1003 04a2 67       		.byte	0x67
+ 1004 04a3 14       		.uleb128 0x14
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 21
+
+
+ 1005 04a4 66020000 		.4byte	.LASF44
+ 1006 04a8 66020000 		.4byte	.LASF44
+ 1007 04ac 08       		.byte	0x8
+ 1008 04ad 6B       		.byte	0x6b
+ 1009 04ae 14       		.uleb128 0x14
+ 1010 04af 7B020000 		.4byte	.LASF45
+ 1011 04b3 7B020000 		.4byte	.LASF45
+ 1012 04b7 09       		.byte	0x9
+ 1013 04b8 67       		.byte	0x67
+ 1014 04b9 14       		.uleb128 0x14
+ 1015 04ba 22020000 		.4byte	.LASF46
+ 1016 04be 22020000 		.4byte	.LASF46
+ 1017 04c2 09       		.byte	0x9
+ 1018 04c3 6B       		.byte	0x6b
+ 1019 04c4 14       		.uleb128 0x14
+ 1020 04c5 9A010000 		.4byte	.LASF47
+ 1021 04c9 9A010000 		.4byte	.LASF47
+ 1022 04cd 0A       		.byte	0xa
+ 1023 04ce 27       		.byte	0x27
+ 1024 04cf 14       		.uleb128 0x14
+ 1025 04d0 06020000 		.4byte	.LASF48
+ 1026 04d4 06020000 		.4byte	.LASF48
+ 1027 04d8 0A       		.byte	0xa
+ 1028 04d9 26       		.byte	0x26
+ 1029 04da 14       		.uleb128 0x14
+ 1030 04db E4000000 		.4byte	.LASF49
+ 1031 04df E4000000 		.4byte	.LASF49
+ 1032 04e3 0B       		.byte	0xb
+ 1033 04e4 27       		.byte	0x27
+ 1034 04e5 14       		.uleb128 0x14
+ 1035 04e6 4C020000 		.4byte	.LASF50
+ 1036 04ea 4C020000 		.4byte	.LASF50
+ 1037 04ee 0B       		.byte	0xb
+ 1038 04ef 26       		.byte	0x26
+ 1039 04f0 14       		.uleb128 0x14
+ 1040 04f1 68000000 		.4byte	.LASF51
+ 1041 04f5 68000000 		.4byte	.LASF51
+ 1042 04f9 0C       		.byte	0xc
+ 1043 04fa 27       		.byte	0x27
+ 1044 04fb 14       		.uleb128 0x14
+ 1045 04fc 0F000000 		.4byte	.LASF52
+ 1046 0500 0F000000 		.4byte	.LASF52
+ 1047 0504 0C       		.byte	0xc
+ 1048 0505 26       		.byte	0x26
+ 1049 0506 14       		.uleb128 0x14
+ 1050 0507 66010000 		.4byte	.LASF53
+ 1051 050b 66010000 		.4byte	.LASF53
+ 1052 050f 0D       		.byte	0xd
+ 1053 0510 27       		.byte	0x27
+ 1054 0511 14       		.uleb128 0x14
+ 1055 0512 5B040000 		.4byte	.LASF54
+ 1056 0516 5B040000 		.4byte	.LASF54
+ 1057 051a 0D       		.byte	0xd
+ 1058 051b 26       		.byte	0x26
+ 1059 051c 14       		.uleb128 0x14
+ 1060 051d 82010000 		.4byte	.LASF55
+ 1061 0521 82010000 		.4byte	.LASF55
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 22
+
+
+ 1062 0525 0E       		.byte	0xe
+ 1063 0526 77       		.byte	0x77
+ 1064 0527 14       		.uleb128 0x14
+ 1065 0528 A4000000 		.4byte	.LASF56
+ 1066 052c A4000000 		.4byte	.LASF56
+ 1067 0530 0F       		.byte	0xf
+ 1068 0531 18       		.byte	0x18
+ 1069 0532 14       		.uleb128 0x14
+ 1070 0533 4C040000 		.4byte	.LASF57
+ 1071 0537 4C040000 		.4byte	.LASF57
+ 1072 053b 06       		.byte	0x6
+ 1073 053c 5A       		.byte	0x5a
+ 1074 053d 14       		.uleb128 0x14
+ 1075 053e 00000000 		.4byte	.LASF58
+ 1076 0542 00000000 		.4byte	.LASF58
+ 1077 0546 07       		.byte	0x7
+ 1078 0547 5A       		.byte	0x5a
+ 1079 0548 14       		.uleb128 0x14
+ 1080 0549 BB020000 		.4byte	.LASF59
+ 1081 054d BB020000 		.4byte	.LASF59
+ 1082 0551 08       		.byte	0x8
+ 1083 0552 5A       		.byte	0x5a
+ 1084 0553 14       		.uleb128 0x14
+ 1085 0554 57010000 		.4byte	.LASF60
+ 1086 0558 57010000 		.4byte	.LASF60
+ 1087 055c 09       		.byte	0x9
+ 1088 055d 5A       		.byte	0x5a
+ 1089 055e 00       		.byte	0
+ 1090              		.section	.debug_abbrev,"",%progbits
+ 1091              	.Ldebug_abbrev0:
+ 1092 0000 01       		.uleb128 0x1
+ 1093 0001 11       		.uleb128 0x11
+ 1094 0002 01       		.byte	0x1
+ 1095 0003 25       		.uleb128 0x25
+ 1096 0004 0E       		.uleb128 0xe
+ 1097 0005 13       		.uleb128 0x13
+ 1098 0006 0B       		.uleb128 0xb
+ 1099 0007 03       		.uleb128 0x3
+ 1100 0008 0E       		.uleb128 0xe
+ 1101 0009 1B       		.uleb128 0x1b
+ 1102 000a 0E       		.uleb128 0xe
+ 1103 000b 55       		.uleb128 0x55
+ 1104 000c 17       		.uleb128 0x17
+ 1105 000d 11       		.uleb128 0x11
+ 1106 000e 01       		.uleb128 0x1
+ 1107 000f 10       		.uleb128 0x10
+ 1108 0010 17       		.uleb128 0x17
+ 1109 0011 00       		.byte	0
+ 1110 0012 00       		.byte	0
+ 1111 0013 02       		.uleb128 0x2
+ 1112 0014 24       		.uleb128 0x24
+ 1113 0015 00       		.byte	0
+ 1114 0016 0B       		.uleb128 0xb
+ 1115 0017 0B       		.uleb128 0xb
+ 1116 0018 3E       		.uleb128 0x3e
+ 1117 0019 0B       		.uleb128 0xb
+ 1118 001a 03       		.uleb128 0x3
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 23
+
+
+ 1119 001b 0E       		.uleb128 0xe
+ 1120 001c 00       		.byte	0
+ 1121 001d 00       		.byte	0
+ 1122 001e 03       		.uleb128 0x3
+ 1123 001f 16       		.uleb128 0x16
+ 1124 0020 00       		.byte	0
+ 1125 0021 03       		.uleb128 0x3
+ 1126 0022 0E       		.uleb128 0xe
+ 1127 0023 3A       		.uleb128 0x3a
+ 1128 0024 0B       		.uleb128 0xb
+ 1129 0025 3B       		.uleb128 0x3b
+ 1130 0026 0B       		.uleb128 0xb
+ 1131 0027 49       		.uleb128 0x49
+ 1132 0028 13       		.uleb128 0x13
+ 1133 0029 00       		.byte	0
+ 1134 002a 00       		.byte	0
+ 1135 002b 04       		.uleb128 0x4
+ 1136 002c 24       		.uleb128 0x24
+ 1137 002d 00       		.byte	0
+ 1138 002e 0B       		.uleb128 0xb
+ 1139 002f 0B       		.uleb128 0xb
+ 1140 0030 3E       		.uleb128 0x3e
+ 1141 0031 0B       		.uleb128 0xb
+ 1142 0032 03       		.uleb128 0x3
+ 1143 0033 08       		.uleb128 0x8
+ 1144 0034 00       		.byte	0
+ 1145 0035 00       		.byte	0
+ 1146 0036 05       		.uleb128 0x5
+ 1147 0037 16       		.uleb128 0x16
+ 1148 0038 00       		.byte	0
+ 1149 0039 03       		.uleb128 0x3
+ 1150 003a 0E       		.uleb128 0xe
+ 1151 003b 3A       		.uleb128 0x3a
+ 1152 003c 0B       		.uleb128 0xb
+ 1153 003d 3B       		.uleb128 0x3b
+ 1154 003e 05       		.uleb128 0x5
+ 1155 003f 49       		.uleb128 0x49
+ 1156 0040 13       		.uleb128 0x13
+ 1157 0041 00       		.byte	0
+ 1158 0042 00       		.byte	0
+ 1159 0043 06       		.uleb128 0x6
+ 1160 0044 13       		.uleb128 0x13
+ 1161 0045 01       		.byte	0x1
+ 1162 0046 03       		.uleb128 0x3
+ 1163 0047 0E       		.uleb128 0xe
+ 1164 0048 0B       		.uleb128 0xb
+ 1165 0049 0B       		.uleb128 0xb
+ 1166 004a 3A       		.uleb128 0x3a
+ 1167 004b 0B       		.uleb128 0xb
+ 1168 004c 3B       		.uleb128 0x3b
+ 1169 004d 0B       		.uleb128 0xb
+ 1170 004e 01       		.uleb128 0x1
+ 1171 004f 13       		.uleb128 0x13
+ 1172 0050 00       		.byte	0
+ 1173 0051 00       		.byte	0
+ 1174 0052 07       		.uleb128 0x7
+ 1175 0053 0D       		.uleb128 0xd
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 24
+
+
+ 1176 0054 00       		.byte	0
+ 1177 0055 03       		.uleb128 0x3
+ 1178 0056 08       		.uleb128 0x8
+ 1179 0057 3A       		.uleb128 0x3a
+ 1180 0058 0B       		.uleb128 0xb
+ 1181 0059 3B       		.uleb128 0x3b
+ 1182 005a 0B       		.uleb128 0xb
+ 1183 005b 49       		.uleb128 0x49
+ 1184 005c 13       		.uleb128 0x13
+ 1185 005d 38       		.uleb128 0x38
+ 1186 005e 0B       		.uleb128 0xb
+ 1187 005f 00       		.byte	0
+ 1188 0060 00       		.byte	0
+ 1189 0061 08       		.uleb128 0x8
+ 1190 0062 2E       		.uleb128 0x2e
+ 1191 0063 01       		.byte	0x1
+ 1192 0064 3F       		.uleb128 0x3f
+ 1193 0065 19       		.uleb128 0x19
+ 1194 0066 03       		.uleb128 0x3
+ 1195 0067 0E       		.uleb128 0xe
+ 1196 0068 3A       		.uleb128 0x3a
+ 1197 0069 0B       		.uleb128 0xb
+ 1198 006a 3B       		.uleb128 0x3b
+ 1199 006b 0B       		.uleb128 0xb
+ 1200 006c 27       		.uleb128 0x27
+ 1201 006d 19       		.uleb128 0x19
+ 1202 006e 11       		.uleb128 0x11
+ 1203 006f 01       		.uleb128 0x1
+ 1204 0070 12       		.uleb128 0x12
+ 1205 0071 06       		.uleb128 0x6
+ 1206 0072 40       		.uleb128 0x40
+ 1207 0073 18       		.uleb128 0x18
+ 1208 0074 9742     		.uleb128 0x2117
+ 1209 0076 19       		.uleb128 0x19
+ 1210 0077 01       		.uleb128 0x1
+ 1211 0078 13       		.uleb128 0x13
+ 1212 0079 00       		.byte	0
+ 1213 007a 00       		.byte	0
+ 1214 007b 09       		.uleb128 0x9
+ 1215 007c 34       		.uleb128 0x34
+ 1216 007d 00       		.byte	0
+ 1217 007e 03       		.uleb128 0x3
+ 1218 007f 0E       		.uleb128 0xe
+ 1219 0080 3A       		.uleb128 0x3a
+ 1220 0081 0B       		.uleb128 0xb
+ 1221 0082 3B       		.uleb128 0x3b
+ 1222 0083 0B       		.uleb128 0xb
+ 1223 0084 49       		.uleb128 0x49
+ 1224 0085 13       		.uleb128 0x13
+ 1225 0086 02       		.uleb128 0x2
+ 1226 0087 17       		.uleb128 0x17
+ 1227 0088 00       		.byte	0
+ 1228 0089 00       		.byte	0
+ 1229 008a 0A       		.uleb128 0xa
+ 1230 008b 898201   		.uleb128 0x4109
+ 1231 008e 00       		.byte	0
+ 1232 008f 11       		.uleb128 0x11
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 25
+
+
+ 1233 0090 01       		.uleb128 0x1
+ 1234 0091 31       		.uleb128 0x31
+ 1235 0092 13       		.uleb128 0x13
+ 1236 0093 00       		.byte	0
+ 1237 0094 00       		.byte	0
+ 1238 0095 0B       		.uleb128 0xb
+ 1239 0096 898201   		.uleb128 0x4109
+ 1240 0099 01       		.byte	0x1
+ 1241 009a 11       		.uleb128 0x11
+ 1242 009b 01       		.uleb128 0x1
+ 1243 009c 31       		.uleb128 0x31
+ 1244 009d 13       		.uleb128 0x13
+ 1245 009e 01       		.uleb128 0x1
+ 1246 009f 13       		.uleb128 0x13
+ 1247 00a0 00       		.byte	0
+ 1248 00a1 00       		.byte	0
+ 1249 00a2 0C       		.uleb128 0xc
+ 1250 00a3 8A8201   		.uleb128 0x410a
+ 1251 00a6 00       		.byte	0
+ 1252 00a7 02       		.uleb128 0x2
+ 1253 00a8 18       		.uleb128 0x18
+ 1254 00a9 9142     		.uleb128 0x2111
+ 1255 00ab 18       		.uleb128 0x18
+ 1256 00ac 00       		.byte	0
+ 1257 00ad 00       		.byte	0
+ 1258 00ae 0D       		.uleb128 0xd
+ 1259 00af 05       		.uleb128 0x5
+ 1260 00b0 00       		.byte	0
+ 1261 00b1 03       		.uleb128 0x3
+ 1262 00b2 0E       		.uleb128 0xe
+ 1263 00b3 3A       		.uleb128 0x3a
+ 1264 00b4 0B       		.uleb128 0xb
+ 1265 00b5 3B       		.uleb128 0x3b
+ 1266 00b6 0B       		.uleb128 0xb
+ 1267 00b7 49       		.uleb128 0x49
+ 1268 00b8 13       		.uleb128 0x13
+ 1269 00b9 02       		.uleb128 0x2
+ 1270 00ba 17       		.uleb128 0x17
+ 1271 00bb 00       		.byte	0
+ 1272 00bc 00       		.byte	0
+ 1273 00bd 0E       		.uleb128 0xe
+ 1274 00be 0F       		.uleb128 0xf
+ 1275 00bf 00       		.byte	0
+ 1276 00c0 0B       		.uleb128 0xb
+ 1277 00c1 0B       		.uleb128 0xb
+ 1278 00c2 49       		.uleb128 0x49
+ 1279 00c3 13       		.uleb128 0x13
+ 1280 00c4 00       		.byte	0
+ 1281 00c5 00       		.byte	0
+ 1282 00c6 0F       		.uleb128 0xf
+ 1283 00c7 05       		.uleb128 0x5
+ 1284 00c8 00       		.byte	0
+ 1285 00c9 03       		.uleb128 0x3
+ 1286 00ca 0E       		.uleb128 0xe
+ 1287 00cb 3A       		.uleb128 0x3a
+ 1288 00cc 0B       		.uleb128 0xb
+ 1289 00cd 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 26
+
+
+ 1290 00ce 0B       		.uleb128 0xb
+ 1291 00cf 49       		.uleb128 0x49
+ 1292 00d0 13       		.uleb128 0x13
+ 1293 00d1 02       		.uleb128 0x2
+ 1294 00d2 18       		.uleb128 0x18
+ 1295 00d3 00       		.byte	0
+ 1296 00d4 00       		.byte	0
+ 1297 00d5 10       		.uleb128 0x10
+ 1298 00d6 05       		.uleb128 0x5
+ 1299 00d7 00       		.byte	0
+ 1300 00d8 03       		.uleb128 0x3
+ 1301 00d9 08       		.uleb128 0x8
+ 1302 00da 3A       		.uleb128 0x3a
+ 1303 00db 0B       		.uleb128 0xb
+ 1304 00dc 3B       		.uleb128 0x3b
+ 1305 00dd 0B       		.uleb128 0xb
+ 1306 00de 49       		.uleb128 0x49
+ 1307 00df 13       		.uleb128 0x13
+ 1308 00e0 02       		.uleb128 0x2
+ 1309 00e1 18       		.uleb128 0x18
+ 1310 00e2 00       		.byte	0
+ 1311 00e3 00       		.byte	0
+ 1312 00e4 11       		.uleb128 0x11
+ 1313 00e5 34       		.uleb128 0x34
+ 1314 00e6 00       		.byte	0
+ 1315 00e7 03       		.uleb128 0x3
+ 1316 00e8 0E       		.uleb128 0xe
+ 1317 00e9 3A       		.uleb128 0x3a
+ 1318 00ea 0B       		.uleb128 0xb
+ 1319 00eb 3B       		.uleb128 0x3b
+ 1320 00ec 0B       		.uleb128 0xb
+ 1321 00ed 49       		.uleb128 0x49
+ 1322 00ee 13       		.uleb128 0x13
+ 1323 00ef 02       		.uleb128 0x2
+ 1324 00f0 18       		.uleb128 0x18
+ 1325 00f1 00       		.byte	0
+ 1326 00f2 00       		.byte	0
+ 1327 00f3 12       		.uleb128 0x12
+ 1328 00f4 35       		.uleb128 0x35
+ 1329 00f5 00       		.byte	0
+ 1330 00f6 49       		.uleb128 0x49
+ 1331 00f7 13       		.uleb128 0x13
+ 1332 00f8 00       		.byte	0
+ 1333 00f9 00       		.byte	0
+ 1334 00fa 13       		.uleb128 0x13
+ 1335 00fb 34       		.uleb128 0x34
+ 1336 00fc 00       		.byte	0
+ 1337 00fd 03       		.uleb128 0x3
+ 1338 00fe 0E       		.uleb128 0xe
+ 1339 00ff 3A       		.uleb128 0x3a
+ 1340 0100 0B       		.uleb128 0xb
+ 1341 0101 3B       		.uleb128 0x3b
+ 1342 0102 05       		.uleb128 0x5
+ 1343 0103 49       		.uleb128 0x49
+ 1344 0104 13       		.uleb128 0x13
+ 1345 0105 3F       		.uleb128 0x3f
+ 1346 0106 19       		.uleb128 0x19
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 27
+
+
+ 1347 0107 3C       		.uleb128 0x3c
+ 1348 0108 19       		.uleb128 0x19
+ 1349 0109 00       		.byte	0
+ 1350 010a 00       		.byte	0
+ 1351 010b 14       		.uleb128 0x14
+ 1352 010c 2E       		.uleb128 0x2e
+ 1353 010d 00       		.byte	0
+ 1354 010e 3F       		.uleb128 0x3f
+ 1355 010f 19       		.uleb128 0x19
+ 1356 0110 3C       		.uleb128 0x3c
+ 1357 0111 19       		.uleb128 0x19
+ 1358 0112 6E       		.uleb128 0x6e
+ 1359 0113 0E       		.uleb128 0xe
+ 1360 0114 03       		.uleb128 0x3
+ 1361 0115 0E       		.uleb128 0xe
+ 1362 0116 3A       		.uleb128 0x3a
+ 1363 0117 0B       		.uleb128 0xb
+ 1364 0118 3B       		.uleb128 0x3b
+ 1365 0119 0B       		.uleb128 0xb
+ 1366 011a 00       		.byte	0
+ 1367 011b 00       		.byte	0
+ 1368 011c 00       		.byte	0
+ 1369              		.section	.debug_loc,"",%progbits
+ 1370              	.Ldebug_loc0:
+ 1371              	.LLST0:
+ 1372 0000 08000000 		.4byte	.LVL1
+ 1373 0004 26000000 		.4byte	.LVL9
+ 1374 0008 0600     		.2byte	0x6
+ 1375 000a 74       		.byte	0x74
+ 1376 000b 00       		.sleb128 0
+ 1377 000c 08       		.byte	0x8
+ 1378 000d FF       		.byte	0xff
+ 1379 000e 1A       		.byte	0x1a
+ 1380 000f 9F       		.byte	0x9f
+ 1381 0010 34000000 		.4byte	.LVL11
+ 1382 0014 3C000000 		.4byte	.LVL13
+ 1383 0018 0600     		.2byte	0x6
+ 1384 001a 74       		.byte	0x74
+ 1385 001b 00       		.sleb128 0
+ 1386 001c 08       		.byte	0x8
+ 1387 001d FF       		.byte	0xff
+ 1388 001e 1A       		.byte	0x1a
+ 1389 001f 9F       		.byte	0x9f
+ 1390 0020 00000000 		.4byte	0
+ 1391 0024 00000000 		.4byte	0
+ 1392              	.LLST1:
+ 1393 0028 0E000000 		.4byte	.LVL3
+ 1394 002c 02010000 		.4byte	.LVL40
+ 1395 0030 0600     		.2byte	0x6
+ 1396 0032 77       		.byte	0x77
+ 1397 0033 00       		.sleb128 0
+ 1398 0034 08       		.byte	0x8
+ 1399 0035 FF       		.byte	0xff
+ 1400 0036 1A       		.byte	0x1a
+ 1401 0037 9F       		.byte	0x9f
+ 1402 0038 00000000 		.4byte	0
+ 1403 003c 00000000 		.4byte	0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 28
+
+
+ 1404              	.LLST2:
+ 1405 0040 14000000 		.4byte	.LVL5
+ 1406 0044 02010000 		.4byte	.LVL40
+ 1407 0048 0600     		.2byte	0x6
+ 1408 004a 76       		.byte	0x76
+ 1409 004b 00       		.sleb128 0
+ 1410 004c 08       		.byte	0x8
+ 1411 004d FF       		.byte	0xff
+ 1412 004e 1A       		.byte	0x1a
+ 1413 004f 9F       		.byte	0x9f
+ 1414 0050 00000000 		.4byte	0
+ 1415 0054 00000000 		.4byte	0
+ 1416              	.LLST3:
+ 1417 0058 1A000000 		.4byte	.LVL7
+ 1418 005c 02010000 		.4byte	.LVL40
+ 1419 0060 0600     		.2byte	0x6
+ 1420 0062 75       		.byte	0x75
+ 1421 0063 00       		.sleb128 0
+ 1422 0064 08       		.byte	0x8
+ 1423 0065 FF       		.byte	0xff
+ 1424 0066 1A       		.byte	0x1a
+ 1425 0067 9F       		.byte	0x9f
+ 1426 0068 00000000 		.4byte	0
+ 1427 006c 00000000 		.4byte	0
+ 1428              	.LLST4:
+ 1429 0070 00000000 		.4byte	.LVL46
+ 1430 0074 06000000 		.4byte	.LVL47
+ 1431 0078 0100     		.2byte	0x1
+ 1432 007a 50       		.byte	0x50
+ 1433 007b 06000000 		.4byte	.LVL47
+ 1434 007f 10000000 		.4byte	.LFE66
+ 1435 0083 0100     		.2byte	0x1
+ 1436 0085 52       		.byte	0x52
+ 1437 0086 00000000 		.4byte	0
+ 1438 008a 00000000 		.4byte	0
+ 1439              		.section	.debug_aranges,"",%progbits
+ 1440 0000 3C000000 		.4byte	0x3c
+ 1441 0004 0200     		.2byte	0x2
+ 1442 0006 00000000 		.4byte	.Ldebug_info0
+ 1443 000a 04       		.byte	0x4
+ 1444 000b 00       		.byte	0
+ 1445 000c 0000     		.2byte	0
+ 1446 000e 0000     		.2byte	0
+ 1447 0010 00000000 		.4byte	.LFB64
+ 1448 0014 08010000 		.4byte	.LFE64-.LFB64
+ 1449 0018 00000000 		.4byte	.LFB65
+ 1450 001c 20000000 		.4byte	.LFE65-.LFB65
+ 1451 0020 00000000 		.4byte	.LFB66
+ 1452 0024 10000000 		.4byte	.LFE66-.LFB66
+ 1453 0028 00000000 		.4byte	.LFB67
+ 1454 002c 6C000000 		.4byte	.LFE67-.LFB67
+ 1455 0030 00000000 		.4byte	.LFB68
+ 1456 0034 14000000 		.4byte	.LFE68-.LFB68
+ 1457 0038 00000000 		.4byte	0
+ 1458 003c 00000000 		.4byte	0
+ 1459              		.section	.debug_ranges,"",%progbits
+ 1460              	.Ldebug_ranges0:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 29
+
+
+ 1461 0000 00000000 		.4byte	.LFB64
+ 1462 0004 08010000 		.4byte	.LFE64
+ 1463 0008 00000000 		.4byte	.LFB65
+ 1464 000c 20000000 		.4byte	.LFE65
+ 1465 0010 00000000 		.4byte	.LFB66
+ 1466 0014 10000000 		.4byte	.LFE66
+ 1467 0018 00000000 		.4byte	.LFB67
+ 1468 001c 6C000000 		.4byte	.LFE67
+ 1469 0020 00000000 		.4byte	.LFB68
+ 1470 0024 14000000 		.4byte	.LFE68
+ 1471 0028 00000000 		.4byte	0
+ 1472 002c 00000000 		.4byte	0
+ 1473              		.section	.debug_line,"",%progbits
+ 1474              	.Ldebug_line0:
+ 1475 0000 42020000 		.section	.debug_str,"MS",%progbits,1
+ 1475      0200B501 
+ 1475      00000201 
+ 1475      FB0E0D00 
+ 1475      01010101 
+ 1476              	.LASF58:
+ 1477 0000 54696D65 		.ascii	"Timer_R3_Start\000"
+ 1477      725F5233 
+ 1477      5F537461 
+ 1477      727400
+ 1478              	.LASF52:
+ 1479 000f 4C335F57 		.ascii	"L3_Write\000"
+ 1479      72697465 
+ 1479      00
+ 1480              	.LASF38:
+ 1481 0018 54696D65 		.ascii	"Timer_L1_ReadStatusRegister\000"
+ 1481      725F4C31 
+ 1481      5F526561 
+ 1481      64537461 
+ 1481      74757352 
+ 1482              	.LASF2:
+ 1483 0034 73686F72 		.ascii	"short int\000"
+ 1483      7420696E 
+ 1483      7400
+ 1484              	.LASF20:
+ 1485 003e 73697A65 		.ascii	"sizetype\000"
+ 1485      74797065 
+ 1485      00
+ 1486              	.LASF32:
+ 1487 0047 73656E73 		.ascii	"sensors\000"
+ 1487      6F727300 
+ 1488              	.LASF9:
+ 1489 004f 6C6F6E67 		.ascii	"long long int\000"
+ 1489      206C6F6E 
+ 1489      6720696E 
+ 1489      7400
+ 1490              	.LASF7:
+ 1491 005d 5F5F7569 		.ascii	"__uint32_t\000"
+ 1491      6E743332 
+ 1491      5F7400
+ 1492              	.LASF51:
+ 1493 0068 4C335F53 		.ascii	"L3_SetDriveMode\000"
+ 1493      65744472 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 30
+
+
+ 1493      6976654D 
+ 1493      6F646500 
+ 1494              	.LASF4:
+ 1495 0078 5F5F7569 		.ascii	"__uint16_t\000"
+ 1495      6E743136 
+ 1495      5F7400
+ 1496              	.LASF64:
+ 1497 0083 73656E73 		.ascii	"sensors_\000"
+ 1497      6F72735F 
+ 1497      00
+ 1498              	.LASF21:
+ 1499 008c 73746174 		.ascii	"statusR1\000"
+ 1499      75735231 
+ 1499      00
+ 1500              	.LASF15:
+ 1501 0095 75696E74 		.ascii	"uint8\000"
+ 1501      3800
+ 1502              	.LASF22:
+ 1503 009b 73746174 		.ascii	"statusR3\000"
+ 1503      75735233 
+ 1503      00
+ 1504              	.LASF56:
+ 1505 00a4 73656E73 		.ascii	"sensor_isr_StartEx\000"
+ 1505      6F725F69 
+ 1505      73725F53 
+ 1505      74617274 
+ 1505      457800
+ 1506              	.LASF40:
+ 1507 00b7 54696D65 		.ascii	"Timer_R1_ReadCapture\000"
+ 1507      725F5231 
+ 1507      5F526561 
+ 1507      64436170 
+ 1507      74757265 
+ 1508              	.LASF26:
+ 1509 00cc 7265666C 		.ascii	"reflectance_start\000"
+ 1509      65637461 
+ 1509      6E63655F 
+ 1509      73746172 
+ 1509      7400
+ 1510              	.LASF16:
+ 1511 00de 666C6F61 		.ascii	"float\000"
+ 1511      7400
+ 1512              	.LASF49:
+ 1513 00e4 52335F53 		.ascii	"R3_SetDriveMode\000"
+ 1513      65744472 
+ 1513      6976654D 
+ 1513      6F646500 
+ 1514              	.LASF35:
+ 1515 00f4 54696D65 		.ascii	"Timer_R1_ReadStatusRegister\000"
+ 1515      725F5231 
+ 1515      5F526561 
+ 1515      64537461 
+ 1515      74757352 
+ 1516              	.LASF28:
+ 1517 0110 7265666C 		.ascii	"reflectance_digital\000"
+ 1517      65637461 
+ 1517      6E63655F 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 31
+
+
+ 1517      64696769 
+ 1517      74616C00 
+ 1518              	.LASF34:
+ 1519 0124 74687265 		.ascii	"threshold\000"
+ 1519      73686F6C 
+ 1519      6400
+ 1520              	.LASF18:
+ 1521 012e 63686172 		.ascii	"char\000"
+ 1521      00
+ 1522              	.LASF41:
+ 1523 0133 54696D65 		.ascii	"Timer_R3_ReadPeriod\000"
+ 1523      725F5233 
+ 1523      5F526561 
+ 1523      64506572 
+ 1523      696F6400 
+ 1524              	.LASF6:
+ 1525 0147 6C6F6E67 		.ascii	"long int\000"
+ 1525      20696E74 
+ 1525      00
+ 1526              	.LASF29:
+ 1527 0150 76616C75 		.ascii	"values\000"
+ 1527      657300
+ 1528              	.LASF60:
+ 1529 0157 54696D65 		.ascii	"Timer_L1_Start\000"
+ 1529      725F4C31 
+ 1529      5F537461 
+ 1529      727400
+ 1530              	.LASF53:
+ 1531 0166 4C315F53 		.ascii	"L1_SetDriveMode\000"
+ 1531      65744472 
+ 1531      6976654D 
+ 1531      6F646500 
+ 1532              	.LASF19:
+ 1533 0176 6C6F6E67 		.ascii	"long double\000"
+ 1533      20646F75 
+ 1533      626C6500 
+ 1534              	.LASF55:
+ 1535 0182 43794465 		.ascii	"CyDelayUs\000"
+ 1535      6C617955 
+ 1535      7300
+ 1536              	.LASF1:
+ 1537 018c 756E7369 		.ascii	"unsigned char\000"
+ 1537      676E6564 
+ 1537      20636861 
+ 1537      7200
+ 1538              	.LASF47:
+ 1539 019a 52315F53 		.ascii	"R1_SetDriveMode\000"
+ 1539      65744472 
+ 1539      6976654D 
+ 1539      6F646500 
+ 1540              	.LASF31:
+ 1541 01aa 7265666C 		.ascii	"reflectance_set_threshold\000"
+ 1541      65637461 
+ 1541      6E63655F 
+ 1541      7365745F 
+ 1541      74687265 
+ 1542              	.LASF0:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 32
+
+
+ 1543 01c4 7369676E 		.ascii	"signed char\000"
+ 1543      65642063 
+ 1543      68617200 
+ 1544              	.LASF10:
+ 1545 01d0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1545      206C6F6E 
+ 1545      6720756E 
+ 1545      7369676E 
+ 1545      65642069 
+ 1546              	.LASF14:
+ 1547 01e7 75696E74 		.ascii	"uint32_t\000"
+ 1547      33325F74 
+ 1547      00
+ 1548              	.LASF11:
+ 1549 01f0 756E7369 		.ascii	"unsigned int\000"
+ 1549      676E6564 
+ 1549      20696E74 
+ 1549      00
+ 1550              	.LASF12:
+ 1551 01fd 75696E74 		.ascii	"uint16_t\000"
+ 1551      31365F74 
+ 1551      00
+ 1552              	.LASF48:
+ 1553 0206 52315F57 		.ascii	"R1_Write\000"
+ 1553      72697465 
+ 1553      00
+ 1554              	.LASF3:
+ 1555 020f 73686F72 		.ascii	"short unsigned int\000"
+ 1555      7420756E 
+ 1555      7369676E 
+ 1555      65642069 
+ 1555      6E7400
+ 1556              	.LASF46:
+ 1557 0222 54696D65 		.ascii	"Timer_L1_ReadCapture\000"
+ 1557      725F4C31 
+ 1557      5F526561 
+ 1557      64436170 
+ 1557      74757265 
+ 1558              	.LASF33:
+ 1559 0237 64696769 		.ascii	"digital_sensor_value\000"
+ 1559      74616C5F 
+ 1559      73656E73 
+ 1559      6F725F76 
+ 1559      616C7565 
+ 1560              	.LASF50:
+ 1561 024c 52335F57 		.ascii	"R3_Write\000"
+ 1561      72697465 
+ 1561      00
+ 1562              	.LASF23:
+ 1563 0255 73746174 		.ascii	"statusL3\000"
+ 1563      75734C33 
+ 1563      00
+ 1564              	.LASF13:
+ 1565 025e 696E7433 		.ascii	"int32_t\000"
+ 1565      325F7400 
+ 1566              	.LASF44:
+ 1567 0266 54696D65 		.ascii	"Timer_L3_ReadCapture\000"
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 33
+
+
+ 1567      725F4C33 
+ 1567      5F526561 
+ 1567      64436170 
+ 1567      74757265 
+ 1568              	.LASF45:
+ 1569 027b 54696D65 		.ascii	"Timer_L1_ReadPeriod\000"
+ 1569      725F4C31 
+ 1569      5F526561 
+ 1569      64506572 
+ 1569      696F6400 
+ 1570              	.LASF63:
+ 1571 028f 4A3A5C50 		.ascii	"J:\\Project\\Steve Brain\\Zumo01\\ZumoBot.cydsn\000"
+ 1571      726F6A65 
+ 1571      63745C53 
+ 1571      74657665 
+ 1571      20427261 
+ 1572              	.LASF59:
+ 1573 02bb 54696D65 		.ascii	"Timer_L3_Start\000"
+ 1573      725F4C33 
+ 1573      5F537461 
+ 1573      727400
+ 1574              	.LASF36:
+ 1575 02ca 54696D65 		.ascii	"Timer_R3_ReadStatusRegister\000"
+ 1575      725F5233 
+ 1575      5F526561 
+ 1575      64537461 
+ 1575      74757352 
+ 1576              	.LASF8:
+ 1577 02e6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1577      20756E73 
+ 1577      69676E65 
+ 1577      6420696E 
+ 1577      7400
+ 1578              	.LASF43:
+ 1579 02f8 54696D65 		.ascii	"Timer_L3_ReadPeriod\000"
+ 1579      725F4C33 
+ 1579      5F526561 
+ 1579      64506572 
+ 1579      696F6400 
+ 1580              	.LASF24:
+ 1581 030c 73746174 		.ascii	"statusL1\000"
+ 1581      75734C31 
+ 1581      00
+ 1582              	.LASF30:
+ 1583 0315 64696769 		.ascii	"digital\000"
+ 1583      74616C00 
+ 1584              	.LASF39:
+ 1585 031d 54696D65 		.ascii	"Timer_R1_ReadPeriod\000"
+ 1585      725F5231 
+ 1585      5F526561 
+ 1585      64506572 
+ 1585      696F6400 
+ 1586              	.LASF42:
+ 1587 0331 54696D65 		.ascii	"Timer_R3_ReadCapture\000"
+ 1587      725F5233 
+ 1587      5F526561 
+ 1587      64436170 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 34
+
+
+ 1587      74757265 
+ 1588              	.LASF5:
+ 1589 0346 5F5F696E 		.ascii	"__int32_t\000"
+ 1589      7433325F 
+ 1589      7400
+ 1590              	.LASF25:
+ 1591 0350 73656E73 		.ascii	"sensor_isr_handler\000"
+ 1591      6F725F69 
+ 1591      73725F68 
+ 1591      616E646C 
+ 1591      657200
+ 1592              	.LASF27:
+ 1593 0363 7265666C 		.ascii	"reflectance_read\000"
+ 1593      65637461 
+ 1593      6E63655F 
+ 1593      72656164 
+ 1593      00
+ 1594              	.LASF17:
+ 1595 0374 646F7562 		.ascii	"double\000"
+ 1595      6C6500
+ 1596              	.LASF65:
+ 1597 037b 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1597      52784275 
+ 1597      66666572 
+ 1597      00
+ 1598              	.LASF61:
+ 1599 0388 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1599      43313120 
+ 1599      352E342E 
+ 1599      31203230 
+ 1599      31363036 
+ 1600 03bb 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1600      20726576 
+ 1600      6973696F 
+ 1600      6E203233 
+ 1600      37373135 
+ 1601 03ee 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1601      66756E63 
+ 1601      74696F6E 
+ 1601      2D736563 
+ 1601      74696F6E 
+ 1602              	.LASF37:
+ 1603 0416 54696D65 		.ascii	"Timer_L3_ReadStatusRegister\000"
+ 1603      725F4C33 
+ 1603      5F526561 
+ 1603      64537461 
+ 1603      74757352 
+ 1604              	.LASF62:
+ 1605 0432 5A756D6F 		.ascii	"ZumoLibrary\\Reflectance.c\000"
+ 1605      4C696272 
+ 1605      6172795C 
+ 1605      5265666C 
+ 1605      65637461 
+ 1606              	.LASF57:
+ 1607 044c 54696D65 		.ascii	"Timer_R1_Start\000"
+ 1607      725F5231 
+ 1607      5F537461 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 35
+
+
+ 1607      727400
+ 1608              	.LASF54:
+ 1609 045b 4C315F57 		.ascii	"L1_Write\000"
+ 1609      72697465 
+ 1609      00
+ 1610              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

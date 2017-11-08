@@ -1,0 +1,1206 @@
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"IR.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.wait_going_up,"ax",%progbits
+  20              		.align	2
+  21              		.global	wait_going_up
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	wait_going_up, %function
+  25              	wait_going_up:
+  26              	.LFB64:
+  27              		.file 1 "ZumoLibrary\\IR.c"
+   1:ZumoLibrary/IR.c **** /**
+   2:ZumoLibrary/IR.c ****  * @file IR.c
+   3:ZumoLibrary/IR.c ****  * @brief Basic methods for operating IR receiver. For more details, please refer to IR.h file. 
+   4:ZumoLibrary/IR.c ****  * @details part number: TSOP-2236
+   5:ZumoLibrary/IR.c **** */
+   6:ZumoLibrary/IR.c **** #include "IR.h"
+   7:ZumoLibrary/IR.c **** 
+   8:ZumoLibrary/IR.c **** 
+   9:ZumoLibrary/IR.c **** /**
+  10:ZumoLibrary/IR.c **** * @brief Waiting until signal goes up
+  11:ZumoLibrary/IR.c **** * @details continue looping before IR_receiver value becomes 1
+  12:ZumoLibrary/IR.c **** */
+  13:ZumoLibrary/IR.c **** void wait_going_up()
+  14:ZumoLibrary/IR.c **** {
+  28              		.loc 1 14 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  36              	.L2:
+  15:ZumoLibrary/IR.c ****     while(!IR_receiver_Read()==1);
+  37              		.loc 1 15 0 discriminator 1
+  38 0002 FFF7FEFF 		bl	IR_receiver_Read
+  39              	.LVL0:
+  40 0006 0028     		cmp	r0, #0
+  41 0008 FBD0     		beq	.L2
+  16:ZumoLibrary/IR.c **** }    
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 2
+
+
+  42              		.loc 1 16 0
+  43 000a 08BD     		pop	{r3, pc}
+  44              		.cfi_endproc
+  45              	.LFE64:
+  46              		.size	wait_going_up, .-wait_going_up
+  47              		.section	.text.wait_going_down,"ax",%progbits
+  48              		.align	2
+  49              		.global	wait_going_down
+  50              		.thumb
+  51              		.thumb_func
+  52              		.type	wait_going_down, %function
+  53              	wait_going_down:
+  54              	.LFB65:
+  17:ZumoLibrary/IR.c **** 
+  18:ZumoLibrary/IR.c **** 
+  19:ZumoLibrary/IR.c **** /**
+  20:ZumoLibrary/IR.c **** * @brief Waiting until signal goes down
+  21:ZumoLibrary/IR.c **** * @details continue looping before IR_receiver value becomes 0
+  22:ZumoLibrary/IR.c **** */
+  23:ZumoLibrary/IR.c **** void wait_going_down()
+  24:ZumoLibrary/IR.c **** {
+  55              		.loc 1 24 0
+  56              		.cfi_startproc
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59 0000 08B5     		push	{r3, lr}
+  60              		.cfi_def_cfa_offset 8
+  61              		.cfi_offset 3, -8
+  62              		.cfi_offset 14, -4
+  63              	.L5:
+  25:ZumoLibrary/IR.c ****     while(IR_receiver_Read()==1);
+  64              		.loc 1 25 0 discriminator 1
+  65 0002 FFF7FEFF 		bl	IR_receiver_Read
+  66              	.LVL1:
+  67 0006 0128     		cmp	r0, #1
+  68 0008 FBD0     		beq	.L5
+  26:ZumoLibrary/IR.c **** }
+  69              		.loc 1 26 0
+  70 000a 08BD     		pop	{r3, pc}
+  71              		.cfi_endproc
+  72              	.LFE65:
+  73              		.size	wait_going_down, .-wait_going_down
+  74              		.section	.text.count_downtime,"ax",%progbits
+  75              		.align	2
+  76              		.global	count_downtime
+  77              		.thumb
+  78              		.thumb_func
+  79              		.type	count_downtime, %function
+  80              	count_downtime:
+  81              	.LFB66:
+  27:ZumoLibrary/IR.c **** 
+  28:ZumoLibrary/IR.c **** 
+  29:ZumoLibrary/IR.c **** /**
+  30:ZumoLibrary/IR.c **** * @brief Counting to signal down
+  31:ZumoLibrary/IR.c **** * @details Measuring the time until IR_receiver value goes up
+  32:ZumoLibrary/IR.c **** * @return int
+  33:ZumoLibrary/IR.c **** *   - returns count time
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 3
+
+
+  34:ZumoLibrary/IR.c **** */
+  35:ZumoLibrary/IR.c **** int count_downtime()
+  36:ZumoLibrary/IR.c **** {
+  82              		.loc 1 36 0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86 0000 10B5     		push	{r4, lr}
+  87              		.cfi_def_cfa_offset 8
+  88              		.cfi_offset 4, -8
+  89              		.cfi_offset 14, -4
+  90              	.LVL2:
+  37:ZumoLibrary/IR.c ****     int cnt =0;
+  91              		.loc 1 37 0
+  92 0002 0024     		movs	r4, #0
+  38:ZumoLibrary/IR.c ****     while(!IR_receiver_Read()==1)
+  93              		.loc 1 38 0
+  94 0004 00E0     		b	.L8
+  95              	.LVL3:
+  96              	.L9:
+  39:ZumoLibrary/IR.c ****         cnt++;
+  97              		.loc 1 39 0
+  98 0006 0134     		adds	r4, r4, #1
+  99              	.LVL4:
+ 100              	.L8:
+  38:ZumoLibrary/IR.c ****     while(!IR_receiver_Read()==1)
+ 101              		.loc 1 38 0
+ 102 0008 FFF7FEFF 		bl	IR_receiver_Read
+ 103              	.LVL5:
+ 104 000c 0028     		cmp	r0, #0
+ 105 000e FAD0     		beq	.L9
+  40:ZumoLibrary/IR.c ****     
+  41:ZumoLibrary/IR.c ****     return cnt;
+  42:ZumoLibrary/IR.c **** }
+ 106              		.loc 1 42 0
+ 107 0010 2046     		mov	r0, r4
+ 108 0012 10BD     		pop	{r4, pc}
+ 109              		.cfi_endproc
+ 110              	.LFE66:
+ 111              		.size	count_downtime, .-count_downtime
+ 112              		.section	.text.count_uptime,"ax",%progbits
+ 113              		.align	2
+ 114              		.global	count_uptime
+ 115              		.thumb
+ 116              		.thumb_func
+ 117              		.type	count_uptime, %function
+ 118              	count_uptime:
+ 119              	.LFB67:
+  43:ZumoLibrary/IR.c **** 
+  44:ZumoLibrary/IR.c **** 
+  45:ZumoLibrary/IR.c **** /**
+  46:ZumoLibrary/IR.c **** * @brief    Counting to signal up 
+  47:ZumoLibrary/IR.c **** * @details  Measuring the time until IR_receiver value goes down
+  48:ZumoLibrary/IR.c **** * @return   int
+  49:ZumoLibrary/IR.c **** *   - returns count time
+  50:ZumoLibrary/IR.c **** */
+  51:ZumoLibrary/IR.c **** int count_uptime()
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 4
+
+
+  52:ZumoLibrary/IR.c **** {
+ 120              		.loc 1 52 0
+ 121              		.cfi_startproc
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124 0000 10B5     		push	{r4, lr}
+ 125              		.cfi_def_cfa_offset 8
+ 126              		.cfi_offset 4, -8
+ 127              		.cfi_offset 14, -4
+ 128              	.LVL6:
+  53:ZumoLibrary/IR.c ****     int cnt =0;
+ 129              		.loc 1 53 0
+ 130 0002 0024     		movs	r4, #0
+  54:ZumoLibrary/IR.c ****     while(IR_receiver_Read()==1)
+ 131              		.loc 1 54 0
+ 132 0004 00E0     		b	.L12
+ 133              	.LVL7:
+ 134              	.L13:
+  55:ZumoLibrary/IR.c ****         cnt++;
+ 135              		.loc 1 55 0
+ 136 0006 0134     		adds	r4, r4, #1
+ 137              	.LVL8:
+ 138              	.L12:
+  54:ZumoLibrary/IR.c ****     while(IR_receiver_Read()==1)
+ 139              		.loc 1 54 0
+ 140 0008 FFF7FEFF 		bl	IR_receiver_Read
+ 141              	.LVL9:
+ 142 000c 0128     		cmp	r0, #1
+ 143 000e FAD0     		beq	.L13
+  56:ZumoLibrary/IR.c ****     
+  57:ZumoLibrary/IR.c ****     return cnt;
+  58:ZumoLibrary/IR.c **** }
+ 144              		.loc 1 58 0
+ 145 0010 2046     		mov	r0, r4
+ 146 0012 10BD     		pop	{r4, pc}
+ 147              		.cfi_endproc
+ 148              	.LFE67:
+ 149              		.size	count_uptime, .-count_uptime
+ 150              		.section	.text.get_IR,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	get_IR
+ 153              		.thumb
+ 154              		.thumb_func
+ 155              		.type	get_IR, %function
+ 156              	get_IR:
+ 157              	.LFB68:
+  59:ZumoLibrary/IR.c **** 
+  60:ZumoLibrary/IR.c **** 
+  61:ZumoLibrary/IR.c **** /**
+  62:ZumoLibrary/IR.c **** * @brief    Getting remote controller value
+  63:ZumoLibrary/IR.c **** * @details  Getting each of the value sent by remote controller
+  64:ZumoLibrary/IR.c **** * @return   int
+  65:ZumoLibrary/IR.c ****     - returns hex value
+  66:ZumoLibrary/IR.c **** */
+  67:ZumoLibrary/IR.c **** int get_IR()
+  68:ZumoLibrary/IR.c **** {
+ 158              		.loc 1 68 0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 5
+
+
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 40
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162 0000 30B5     		push	{r4, r5, lr}
+ 163              		.cfi_def_cfa_offset 12
+ 164              		.cfi_offset 4, -12
+ 165              		.cfi_offset 5, -8
+ 166              		.cfi_offset 14, -4
+ 167 0002 8BB0     		sub	sp, sp, #44
+ 168              		.cfi_def_cfa_offset 56
+  69:ZumoLibrary/IR.c ****     uint8 bit[33]={0};
+ 169              		.loc 1 69 0
+ 170 0004 2122     		movs	r2, #33
+ 171 0006 0021     		movs	r1, #0
+ 172 0008 01A8     		add	r0, sp, #4
+ 173 000a FFF7FEFF 		bl	memset
+ 174              	.LVL10:
+  70:ZumoLibrary/IR.c ****     unsigned int val=0;
+  71:ZumoLibrary/IR.c ****     uint t1, t2, i;
+  72:ZumoLibrary/IR.c ****     
+  73:ZumoLibrary/IR.c ****     wait_going_down();
+ 175              		.loc 1 73 0
+ 176 000e FFF7FEFF 		bl	wait_going_down
+ 177              	.LVL11:
+  74:ZumoLibrary/IR.c ****     
+  75:ZumoLibrary/IR.c ****     for(i = 0; i < 33; i++)     // loop 33times ( 1bit - Start bit, 32bits - Databit)
+ 178              		.loc 1 75 0
+ 179 0012 0024     		movs	r4, #0
+ 180 0014 12E0     		b	.L16
+ 181              	.LVL12:
+ 182              	.L19:
+  76:ZumoLibrary/IR.c ****     {
+  77:ZumoLibrary/IR.c ****         t1 = 0;
+  78:ZumoLibrary/IR.c ****         t2 = 0;
+  79:ZumoLibrary/IR.c ****         
+  80:ZumoLibrary/IR.c ****         t1 = count_downtime();
+ 183              		.loc 1 80 0
+ 184 0016 FFF7FEFF 		bl	count_downtime
+ 185              	.LVL13:
+ 186 001a 0546     		mov	r5, r0
+ 187              	.LVL14:
+  81:ZumoLibrary/IR.c ****         t2 = count_uptime();
+ 188              		.loc 1 81 0
+ 189 001c FFF7FEFF 		bl	count_uptime
+ 190              	.LVL15:
+  82:ZumoLibrary/IR.c ****         
+  83:ZumoLibrary/IR.c ****         // If up time is longer than down time, value of the bit becomes 1
+  84:ZumoLibrary/IR.c ****         if(t2 > t1)
+ 191              		.loc 1 84 0
+ 192 0020 8542     		cmp	r5, r0
+ 193 0022 05D2     		bcs	.L17
+  85:ZumoLibrary/IR.c ****             bit[i]=1;
+ 194              		.loc 1 85 0
+ 195 0024 0122     		movs	r2, #1
+ 196 0026 0AAB     		add	r3, sp, #40
+ 197 0028 2344     		add	r3, r3, r4
+ 198 002a 03F8242C 		strb	r2, [r3, #-36]
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 6
+
+
+ 199 002e 04E0     		b	.L18
+ 200              	.L17:
+  86:ZumoLibrary/IR.c ****         else
+  87:ZumoLibrary/IR.c ****             bit[i]=0; 
+ 201              		.loc 1 87 0
+ 202 0030 0022     		movs	r2, #0
+ 203 0032 0AAB     		add	r3, sp, #40
+ 204 0034 2344     		add	r3, r3, r4
+ 205 0036 03F8242C 		strb	r2, [r3, #-36]
+ 206              	.L18:
+  75:ZumoLibrary/IR.c ****     {
+ 207              		.loc 1 75 0 discriminator 2
+ 208 003a 0134     		adds	r4, r4, #1
+ 209              	.LVL16:
+ 210              	.L16:
+  75:ZumoLibrary/IR.c ****     {
+ 211              		.loc 1 75 0 is_stmt 0 discriminator 1
+ 212 003c 202C     		cmp	r4, #32
+ 213 003e EAD9     		bls	.L19
+ 214 0040 0023     		movs	r3, #0
+ 215 0042 1846     		mov	r0, r3
+ 216 0044 08E0     		b	.L20
+ 217              	.LVL17:
+ 218              	.L21:
+  88:ZumoLibrary/IR.c ****     } 
+  89:ZumoLibrary/IR.c ****    
+  90:ZumoLibrary/IR.c ****     /* // If you want to see binary value
+  91:ZumoLibrary/IR.c ****     int cnt;
+  92:ZumoLibrary/IR.c ****     for(cnt=0; cnt<33; cnt++)
+  93:ZumoLibrary/IR.c ****         printf("%d ",bit[cnt]);
+  94:ZumoLibrary/IR.c ****     printf("\r\n\n");
+  95:ZumoLibrary/IR.c ****     */
+  96:ZumoLibrary/IR.c ****    
+  97:ZumoLibrary/IR.c ****     // compress bits to single int, ignore start bit
+  98:ZumoLibrary/IR.c **** 
+  99:ZumoLibrary/IR.c ****     for( i=0; i<32; i++)
+ 100:ZumoLibrary/IR.c ****         val |= bit[i+1] << i;
+ 219              		.loc 1 100 0 is_stmt 1 discriminator 3
+ 220 0046 591C     		adds	r1, r3, #1
+ 221 0048 0AAA     		add	r2, sp, #40
+ 222 004a 0A44     		add	r2, r2, r1
+ 223 004c 12F8242C 		ldrb	r2, [r2, #-36]	@ zero_extendqisi2
+ 224 0050 02FA03F3 		lsl	r3, r2, r3
+ 225              	.LVL18:
+ 226 0054 1843     		orrs	r0, r0, r3
+ 227              	.LVL19:
+  99:ZumoLibrary/IR.c ****         val |= bit[i+1] << i;
+ 228              		.loc 1 99 0 discriminator 3
+ 229 0056 0B46     		mov	r3, r1
+ 230              	.LVL20:
+ 231              	.L20:
+  99:ZumoLibrary/IR.c ****         val |= bit[i+1] << i;
+ 232              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 233 0058 1F2B     		cmp	r3, #31
+ 234 005a F4D9     		bls	.L21
+ 101:ZumoLibrary/IR.c ****     
+ 102:ZumoLibrary/IR.c ****     return val;
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 7
+
+
+ 103:ZumoLibrary/IR.c **** }...
+ 235              		.loc 1 103 0 is_stmt 1
+ 236 005c 0BB0     		add	sp, sp, #44
+ 237              		.cfi_def_cfa_offset 12
+ 238              		@ sp needed
+ 239 005e 30BD     		pop	{r4, r5, pc}
+ 240              		.cfi_endproc
+ 241              	.LFE68:
+ 242              		.size	get_IR, .-get_IR
+ 243              		.text
+ 244              	.Letext0:
+ 245              		.file 2 "j:\\psoc\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\includ
+ 246              		.file 3 "j:\\psoc\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\includ
+ 247              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 248              		.file 5 "j:\\psoc\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\includ
+ 249              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 250              		.file 7 "Generated_Source\\PSoC5/IR_receiver.h"
+ 251              		.section	.debug_info,"",%progbits
+ 252              	.Ldebug_info0:
+ 253 0000 29020000 		.4byte	0x229
+ 254 0004 0400     		.2byte	0x4
+ 255 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 256 000a 04       		.byte	0x4
+ 257 000b 01       		.uleb128 0x1
+ 258 000c 39000000 		.4byte	.LASF23
+ 259 0010 0C       		.byte	0xc
+ 260 0011 25010000 		.4byte	.LASF24
+ 261 0015 75010000 		.4byte	.LASF25
+ 262 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 263 001d 00000000 		.4byte	0
+ 264 0021 00000000 		.4byte	.Ldebug_line0
+ 265 0025 02       		.uleb128 0x2
+ 266 0026 01       		.byte	0x1
+ 267 0027 06       		.byte	0x6
+ 268 0028 ED010000 		.4byte	.LASF0
+ 269 002c 02       		.uleb128 0x2
+ 270 002d 01       		.byte	0x1
+ 271 002e 08       		.byte	0x8
+ 272 002f 2B000000 		.4byte	.LASF1
+ 273 0033 02       		.uleb128 0x2
+ 274 0034 02       		.byte	0x2
+ 275 0035 05       		.byte	0x5
+ 276 0036 C8010000 		.4byte	.LASF2
+ 277 003a 02       		.uleb128 0x2
+ 278 003b 02       		.byte	0x2
+ 279 003c 07       		.byte	0x7
+ 280 003d E9000000 		.4byte	.LASF3
+ 281 0041 03       		.uleb128 0x3
+ 282 0042 0E000000 		.4byte	.LASF9
+ 283 0046 02       		.byte	0x2
+ 284 0047 3F       		.byte	0x3f
+ 285 0048 4C000000 		.4byte	0x4c
+ 286 004c 02       		.uleb128 0x2
+ 287 004d 04       		.byte	0x4
+ 288 004e 05       		.byte	0x5
+ 289 004f D8010000 		.4byte	.LASF4
+ 290 0053 02       		.uleb128 0x2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 8
+
+
+ 291 0054 04       		.byte	0x4
+ 292 0055 07       		.byte	0x7
+ 293 0056 D7000000 		.4byte	.LASF5
+ 294 005a 02       		.uleb128 0x2
+ 295 005b 08       		.byte	0x8
+ 296 005c 05       		.byte	0x5
+ 297 005d 00000000 		.4byte	.LASF6
+ 298 0061 02       		.uleb128 0x2
+ 299 0062 08       		.byte	0x8
+ 300 0063 07       		.byte	0x7
+ 301 0064 5E010000 		.4byte	.LASF7
+ 302 0068 04       		.uleb128 0x4
+ 303 0069 04       		.byte	0x4
+ 304 006a 05       		.byte	0x5
+ 305 006b 696E7400 		.ascii	"int\000"
+ 306 006f 02       		.uleb128 0x2
+ 307 0070 04       		.byte	0x4
+ 308 0071 07       		.byte	0x7
+ 309 0072 3B010000 		.4byte	.LASF8
+ 310 0076 03       		.uleb128 0x3
+ 311 0077 A1010000 		.4byte	.LASF10
+ 312 007b 03       		.byte	0x3
+ 313 007c 2C       		.byte	0x2c
+ 314 007d 41000000 		.4byte	0x41
+ 315 0081 05       		.uleb128 0x5
+ 316 0082 D2010000 		.4byte	.LASF11
+ 317 0086 04       		.byte	0x4
+ 318 0087 9201     		.2byte	0x192
+ 319 0089 2C000000 		.4byte	0x2c
+ 320 008d 02       		.uleb128 0x2
+ 321 008e 04       		.byte	0x4
+ 322 008f 04       		.byte	0x4
+ 323 0090 18000000 		.4byte	.LASF12
+ 324 0094 02       		.uleb128 0x2
+ 325 0095 08       		.byte	0x8
+ 326 0096 04       		.byte	0x4
+ 327 0097 1E010000 		.4byte	.LASF13
+ 328 009b 02       		.uleb128 0x2
+ 329 009c 01       		.byte	0x1
+ 330 009d 08       		.byte	0x8
+ 331 009e B2010000 		.4byte	.LASF14
+ 332 00a2 02       		.uleb128 0x2
+ 333 00a3 08       		.byte	0x8
+ 334 00a4 04       		.byte	0x4
+ 335 00a5 E1010000 		.4byte	.LASF15
+ 336 00a9 02       		.uleb128 0x2
+ 337 00aa 04       		.byte	0x4
+ 338 00ab 07       		.byte	0x7
+ 339 00ac A9010000 		.4byte	.LASF16
+ 340 00b0 03       		.uleb128 0x3
+ 341 00b1 36010000 		.4byte	.LASF17
+ 342 00b5 05       		.byte	0x5
+ 343 00b6 6C       		.byte	0x6c
+ 344 00b7 6F000000 		.4byte	0x6f
+ 345 00bb 06       		.uleb128 0x6
+ 346 00bc FC000000 		.4byte	.LASF18
+ 347 00c0 01       		.byte	0x1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 9
+
+
+ 348 00c1 0D       		.byte	0xd
+ 349 00c2 00000000 		.4byte	.LFB64
+ 350 00c6 0C000000 		.4byte	.LFE64-.LFB64
+ 351 00ca 01       		.uleb128 0x1
+ 352 00cb 9C       		.byte	0x9c
+ 353 00cc DA000000 		.4byte	0xda
+ 354 00d0 07       		.uleb128 0x7
+ 355 00d1 06000000 		.4byte	.LVL0
+ 356 00d5 18020000 		.4byte	0x218
+ 357 00d9 00       		.byte	0
+ 358 00da 06       		.uleb128 0x6
+ 359 00db C7000000 		.4byte	.LASF19
+ 360 00df 01       		.byte	0x1
+ 361 00e0 17       		.byte	0x17
+ 362 00e1 00000000 		.4byte	.LFB65
+ 363 00e5 0C000000 		.4byte	.LFE65-.LFB65
+ 364 00e9 01       		.uleb128 0x1
+ 365 00ea 9C       		.byte	0x9c
+ 366 00eb F9000000 		.4byte	0xf9
+ 367 00ef 07       		.uleb128 0x7
+ 368 00f0 06000000 		.4byte	.LVL1
+ 369 00f4 18020000 		.4byte	0x218
+ 370 00f8 00       		.byte	0
+ 371 00f9 08       		.uleb128 0x8
+ 372 00fa 48010000 		.4byte	.LASF20
+ 373 00fe 01       		.byte	0x1
+ 374 00ff 23       		.byte	0x23
+ 375 0100 68000000 		.4byte	0x68
+ 376 0104 00000000 		.4byte	.LFB66
+ 377 0108 14000000 		.4byte	.LFE66-.LFB66
+ 378 010c 01       		.uleb128 0x1
+ 379 010d 9C       		.byte	0x9c
+ 380 010e 2B010000 		.4byte	0x12b
+ 381 0112 09       		.uleb128 0x9
+ 382 0113 636E7400 		.ascii	"cnt\000"
+ 383 0117 01       		.byte	0x1
+ 384 0118 25       		.byte	0x25
+ 385 0119 68000000 		.4byte	0x68
+ 386 011d 00000000 		.4byte	.LLST0
+ 387 0121 07       		.uleb128 0x7
+ 388 0122 0C000000 		.4byte	.LVL5
+ 389 0126 18020000 		.4byte	0x218
+ 390 012a 00       		.byte	0
+ 391 012b 08       		.uleb128 0x8
+ 392 012c 1E000000 		.4byte	.LASF21
+ 393 0130 01       		.byte	0x1
+ 394 0131 33       		.byte	0x33
+ 395 0132 68000000 		.4byte	0x68
+ 396 0136 00000000 		.4byte	.LFB67
+ 397 013a 14000000 		.4byte	.LFE67-.LFB67
+ 398 013e 01       		.uleb128 0x1
+ 399 013f 9C       		.byte	0x9c
+ 400 0140 5D010000 		.4byte	0x15d
+ 401 0144 09       		.uleb128 0x9
+ 402 0145 636E7400 		.ascii	"cnt\000"
+ 403 0149 01       		.byte	0x1
+ 404 014a 35       		.byte	0x35
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 10
+
+
+ 405 014b 68000000 		.4byte	0x68
+ 406 014f 1F000000 		.4byte	.LLST1
+ 407 0153 07       		.uleb128 0x7
+ 408 0154 0C000000 		.4byte	.LVL9
+ 409 0158 18020000 		.4byte	0x218
+ 410 015c 00       		.byte	0
+ 411 015d 08       		.uleb128 0x8
+ 412 015e 57010000 		.4byte	.LASF22
+ 413 0162 01       		.byte	0x1
+ 414 0163 43       		.byte	0x43
+ 415 0164 68000000 		.4byte	0x68
+ 416 0168 00000000 		.4byte	.LFB68
+ 417 016c 60000000 		.4byte	.LFE68-.LFB68
+ 418 0170 01       		.uleb128 0x1
+ 419 0171 9C       		.byte	0x9c
+ 420 0172 F7010000 		.4byte	0x1f7
+ 421 0176 0A       		.uleb128 0xa
+ 422 0177 62697400 		.ascii	"bit\000"
+ 423 017b 01       		.byte	0x1
+ 424 017c 45       		.byte	0x45
+ 425 017d F7010000 		.4byte	0x1f7
+ 426 0181 02       		.uleb128 0x2
+ 427 0182 91       		.byte	0x91
+ 428 0183 4C       		.sleb128 -52
+ 429 0184 09       		.uleb128 0x9
+ 430 0185 76616C00 		.ascii	"val\000"
+ 431 0189 01       		.byte	0x1
+ 432 018a 46       		.byte	0x46
+ 433 018b 6F000000 		.4byte	0x6f
+ 434 018f 3E000000 		.4byte	.LLST2
+ 435 0193 09       		.uleb128 0x9
+ 436 0194 743100   		.ascii	"t1\000"
+ 437 0197 01       		.byte	0x1
+ 438 0198 47       		.byte	0x47
+ 439 0199 B0000000 		.4byte	0xb0
+ 440 019d 5D000000 		.4byte	.LLST3
+ 441 01a1 09       		.uleb128 0x9
+ 442 01a2 743200   		.ascii	"t2\000"
+ 443 01a5 01       		.byte	0x1
+ 444 01a6 47       		.byte	0x47
+ 445 01a7 B0000000 		.4byte	0xb0
+ 446 01ab 87000000 		.4byte	.LLST4
+ 447 01af 09       		.uleb128 0x9
+ 448 01b0 6900     		.ascii	"i\000"
+ 449 01b2 01       		.byte	0x1
+ 450 01b3 47       		.byte	0x47
+ 451 01b4 B0000000 		.4byte	0xb0
+ 452 01b8 A6000000 		.4byte	.LLST5
+ 453 01bc 0B       		.uleb128 0xb
+ 454 01bd 0E000000 		.4byte	.LVL10
+ 455 01c1 23020000 		.4byte	0x223
+ 456 01c5 DB010000 		.4byte	0x1db
+ 457 01c9 0C       		.uleb128 0xc
+ 458 01ca 01       		.uleb128 0x1
+ 459 01cb 50       		.byte	0x50
+ 460 01cc 02       		.uleb128 0x2
+ 461 01cd 91       		.byte	0x91
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 11
+
+
+ 462 01ce 4C       		.sleb128 -52
+ 463 01cf 0C       		.uleb128 0xc
+ 464 01d0 01       		.uleb128 0x1
+ 465 01d1 51       		.byte	0x51
+ 466 01d2 01       		.uleb128 0x1
+ 467 01d3 30       		.byte	0x30
+ 468 01d4 0C       		.uleb128 0xc
+ 469 01d5 01       		.uleb128 0x1
+ 470 01d6 52       		.byte	0x52
+ 471 01d7 02       		.uleb128 0x2
+ 472 01d8 08       		.byte	0x8
+ 473 01d9 21       		.byte	0x21
+ 474 01da 00       		.byte	0
+ 475 01db 07       		.uleb128 0x7
+ 476 01dc 12000000 		.4byte	.LVL11
+ 477 01e0 DA000000 		.4byte	0xda
+ 478 01e4 07       		.uleb128 0x7
+ 479 01e5 1A000000 		.4byte	.LVL13
+ 480 01e9 F9000000 		.4byte	0xf9
+ 481 01ed 07       		.uleb128 0x7
+ 482 01ee 20000000 		.4byte	.LVL15
+ 483 01f2 2B010000 		.4byte	0x12b
+ 484 01f6 00       		.byte	0
+ 485 01f7 0D       		.uleb128 0xd
+ 486 01f8 81000000 		.4byte	0x81
+ 487 01fc 07020000 		.4byte	0x207
+ 488 0200 0E       		.uleb128 0xe
+ 489 0201 A9000000 		.4byte	0xa9
+ 490 0205 20       		.byte	0x20
+ 491 0206 00       		.byte	0
+ 492 0207 0F       		.uleb128 0xf
+ 493 0208 0A010000 		.4byte	.LASF26
+ 494 020c 06       		.byte	0x6
+ 495 020d 9606     		.2byte	0x696
+ 496 020f 13020000 		.4byte	0x213
+ 497 0213 10       		.uleb128 0x10
+ 498 0214 76000000 		.4byte	0x76
+ 499 0218 11       		.uleb128 0x11
+ 500 0219 B7010000 		.4byte	.LASF27
+ 501 021d B7010000 		.4byte	.LASF27
+ 502 0221 07       		.byte	0x7
+ 503 0222 29       		.byte	0x29
+ 504 0223 12       		.uleb128 0x12
+ 505 0224 17010000 		.4byte	.LASF28
+ 506 0228 17010000 		.4byte	.LASF28
+ 507 022c 00       		.byte	0
+ 508              		.section	.debug_abbrev,"",%progbits
+ 509              	.Ldebug_abbrev0:
+ 510 0000 01       		.uleb128 0x1
+ 511 0001 11       		.uleb128 0x11
+ 512 0002 01       		.byte	0x1
+ 513 0003 25       		.uleb128 0x25
+ 514 0004 0E       		.uleb128 0xe
+ 515 0005 13       		.uleb128 0x13
+ 516 0006 0B       		.uleb128 0xb
+ 517 0007 03       		.uleb128 0x3
+ 518 0008 0E       		.uleb128 0xe
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 12
+
+
+ 519 0009 1B       		.uleb128 0x1b
+ 520 000a 0E       		.uleb128 0xe
+ 521 000b 55       		.uleb128 0x55
+ 522 000c 17       		.uleb128 0x17
+ 523 000d 11       		.uleb128 0x11
+ 524 000e 01       		.uleb128 0x1
+ 525 000f 10       		.uleb128 0x10
+ 526 0010 17       		.uleb128 0x17
+ 527 0011 00       		.byte	0
+ 528 0012 00       		.byte	0
+ 529 0013 02       		.uleb128 0x2
+ 530 0014 24       		.uleb128 0x24
+ 531 0015 00       		.byte	0
+ 532 0016 0B       		.uleb128 0xb
+ 533 0017 0B       		.uleb128 0xb
+ 534 0018 3E       		.uleb128 0x3e
+ 535 0019 0B       		.uleb128 0xb
+ 536 001a 03       		.uleb128 0x3
+ 537 001b 0E       		.uleb128 0xe
+ 538 001c 00       		.byte	0
+ 539 001d 00       		.byte	0
+ 540 001e 03       		.uleb128 0x3
+ 541 001f 16       		.uleb128 0x16
+ 542 0020 00       		.byte	0
+ 543 0021 03       		.uleb128 0x3
+ 544 0022 0E       		.uleb128 0xe
+ 545 0023 3A       		.uleb128 0x3a
+ 546 0024 0B       		.uleb128 0xb
+ 547 0025 3B       		.uleb128 0x3b
+ 548 0026 0B       		.uleb128 0xb
+ 549 0027 49       		.uleb128 0x49
+ 550 0028 13       		.uleb128 0x13
+ 551 0029 00       		.byte	0
+ 552 002a 00       		.byte	0
+ 553 002b 04       		.uleb128 0x4
+ 554 002c 24       		.uleb128 0x24
+ 555 002d 00       		.byte	0
+ 556 002e 0B       		.uleb128 0xb
+ 557 002f 0B       		.uleb128 0xb
+ 558 0030 3E       		.uleb128 0x3e
+ 559 0031 0B       		.uleb128 0xb
+ 560 0032 03       		.uleb128 0x3
+ 561 0033 08       		.uleb128 0x8
+ 562 0034 00       		.byte	0
+ 563 0035 00       		.byte	0
+ 564 0036 05       		.uleb128 0x5
+ 565 0037 16       		.uleb128 0x16
+ 566 0038 00       		.byte	0
+ 567 0039 03       		.uleb128 0x3
+ 568 003a 0E       		.uleb128 0xe
+ 569 003b 3A       		.uleb128 0x3a
+ 570 003c 0B       		.uleb128 0xb
+ 571 003d 3B       		.uleb128 0x3b
+ 572 003e 05       		.uleb128 0x5
+ 573 003f 49       		.uleb128 0x49
+ 574 0040 13       		.uleb128 0x13
+ 575 0041 00       		.byte	0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 13
+
+
+ 576 0042 00       		.byte	0
+ 577 0043 06       		.uleb128 0x6
+ 578 0044 2E       		.uleb128 0x2e
+ 579 0045 01       		.byte	0x1
+ 580 0046 3F       		.uleb128 0x3f
+ 581 0047 19       		.uleb128 0x19
+ 582 0048 03       		.uleb128 0x3
+ 583 0049 0E       		.uleb128 0xe
+ 584 004a 3A       		.uleb128 0x3a
+ 585 004b 0B       		.uleb128 0xb
+ 586 004c 3B       		.uleb128 0x3b
+ 587 004d 0B       		.uleb128 0xb
+ 588 004e 11       		.uleb128 0x11
+ 589 004f 01       		.uleb128 0x1
+ 590 0050 12       		.uleb128 0x12
+ 591 0051 06       		.uleb128 0x6
+ 592 0052 40       		.uleb128 0x40
+ 593 0053 18       		.uleb128 0x18
+ 594 0054 9742     		.uleb128 0x2117
+ 595 0056 19       		.uleb128 0x19
+ 596 0057 01       		.uleb128 0x1
+ 597 0058 13       		.uleb128 0x13
+ 598 0059 00       		.byte	0
+ 599 005a 00       		.byte	0
+ 600 005b 07       		.uleb128 0x7
+ 601 005c 898201   		.uleb128 0x4109
+ 602 005f 00       		.byte	0
+ 603 0060 11       		.uleb128 0x11
+ 604 0061 01       		.uleb128 0x1
+ 605 0062 31       		.uleb128 0x31
+ 606 0063 13       		.uleb128 0x13
+ 607 0064 00       		.byte	0
+ 608 0065 00       		.byte	0
+ 609 0066 08       		.uleb128 0x8
+ 610 0067 2E       		.uleb128 0x2e
+ 611 0068 01       		.byte	0x1
+ 612 0069 3F       		.uleb128 0x3f
+ 613 006a 19       		.uleb128 0x19
+ 614 006b 03       		.uleb128 0x3
+ 615 006c 0E       		.uleb128 0xe
+ 616 006d 3A       		.uleb128 0x3a
+ 617 006e 0B       		.uleb128 0xb
+ 618 006f 3B       		.uleb128 0x3b
+ 619 0070 0B       		.uleb128 0xb
+ 620 0071 49       		.uleb128 0x49
+ 621 0072 13       		.uleb128 0x13
+ 622 0073 11       		.uleb128 0x11
+ 623 0074 01       		.uleb128 0x1
+ 624 0075 12       		.uleb128 0x12
+ 625 0076 06       		.uleb128 0x6
+ 626 0077 40       		.uleb128 0x40
+ 627 0078 18       		.uleb128 0x18
+ 628 0079 9742     		.uleb128 0x2117
+ 629 007b 19       		.uleb128 0x19
+ 630 007c 01       		.uleb128 0x1
+ 631 007d 13       		.uleb128 0x13
+ 632 007e 00       		.byte	0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 14
+
+
+ 633 007f 00       		.byte	0
+ 634 0080 09       		.uleb128 0x9
+ 635 0081 34       		.uleb128 0x34
+ 636 0082 00       		.byte	0
+ 637 0083 03       		.uleb128 0x3
+ 638 0084 08       		.uleb128 0x8
+ 639 0085 3A       		.uleb128 0x3a
+ 640 0086 0B       		.uleb128 0xb
+ 641 0087 3B       		.uleb128 0x3b
+ 642 0088 0B       		.uleb128 0xb
+ 643 0089 49       		.uleb128 0x49
+ 644 008a 13       		.uleb128 0x13
+ 645 008b 02       		.uleb128 0x2
+ 646 008c 17       		.uleb128 0x17
+ 647 008d 00       		.byte	0
+ 648 008e 00       		.byte	0
+ 649 008f 0A       		.uleb128 0xa
+ 650 0090 34       		.uleb128 0x34
+ 651 0091 00       		.byte	0
+ 652 0092 03       		.uleb128 0x3
+ 653 0093 08       		.uleb128 0x8
+ 654 0094 3A       		.uleb128 0x3a
+ 655 0095 0B       		.uleb128 0xb
+ 656 0096 3B       		.uleb128 0x3b
+ 657 0097 0B       		.uleb128 0xb
+ 658 0098 49       		.uleb128 0x49
+ 659 0099 13       		.uleb128 0x13
+ 660 009a 02       		.uleb128 0x2
+ 661 009b 18       		.uleb128 0x18
+ 662 009c 00       		.byte	0
+ 663 009d 00       		.byte	0
+ 664 009e 0B       		.uleb128 0xb
+ 665 009f 898201   		.uleb128 0x4109
+ 666 00a2 01       		.byte	0x1
+ 667 00a3 11       		.uleb128 0x11
+ 668 00a4 01       		.uleb128 0x1
+ 669 00a5 31       		.uleb128 0x31
+ 670 00a6 13       		.uleb128 0x13
+ 671 00a7 01       		.uleb128 0x1
+ 672 00a8 13       		.uleb128 0x13
+ 673 00a9 00       		.byte	0
+ 674 00aa 00       		.byte	0
+ 675 00ab 0C       		.uleb128 0xc
+ 676 00ac 8A8201   		.uleb128 0x410a
+ 677 00af 00       		.byte	0
+ 678 00b0 02       		.uleb128 0x2
+ 679 00b1 18       		.uleb128 0x18
+ 680 00b2 9142     		.uleb128 0x2111
+ 681 00b4 18       		.uleb128 0x18
+ 682 00b5 00       		.byte	0
+ 683 00b6 00       		.byte	0
+ 684 00b7 0D       		.uleb128 0xd
+ 685 00b8 01       		.uleb128 0x1
+ 686 00b9 01       		.byte	0x1
+ 687 00ba 49       		.uleb128 0x49
+ 688 00bb 13       		.uleb128 0x13
+ 689 00bc 01       		.uleb128 0x1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 15
+
+
+ 690 00bd 13       		.uleb128 0x13
+ 691 00be 00       		.byte	0
+ 692 00bf 00       		.byte	0
+ 693 00c0 0E       		.uleb128 0xe
+ 694 00c1 21       		.uleb128 0x21
+ 695 00c2 00       		.byte	0
+ 696 00c3 49       		.uleb128 0x49
+ 697 00c4 13       		.uleb128 0x13
+ 698 00c5 2F       		.uleb128 0x2f
+ 699 00c6 0B       		.uleb128 0xb
+ 700 00c7 00       		.byte	0
+ 701 00c8 00       		.byte	0
+ 702 00c9 0F       		.uleb128 0xf
+ 703 00ca 34       		.uleb128 0x34
+ 704 00cb 00       		.byte	0
+ 705 00cc 03       		.uleb128 0x3
+ 706 00cd 0E       		.uleb128 0xe
+ 707 00ce 3A       		.uleb128 0x3a
+ 708 00cf 0B       		.uleb128 0xb
+ 709 00d0 3B       		.uleb128 0x3b
+ 710 00d1 05       		.uleb128 0x5
+ 711 00d2 49       		.uleb128 0x49
+ 712 00d3 13       		.uleb128 0x13
+ 713 00d4 3F       		.uleb128 0x3f
+ 714 00d5 19       		.uleb128 0x19
+ 715 00d6 3C       		.uleb128 0x3c
+ 716 00d7 19       		.uleb128 0x19
+ 717 00d8 00       		.byte	0
+ 718 00d9 00       		.byte	0
+ 719 00da 10       		.uleb128 0x10
+ 720 00db 35       		.uleb128 0x35
+ 721 00dc 00       		.byte	0
+ 722 00dd 49       		.uleb128 0x49
+ 723 00de 13       		.uleb128 0x13
+ 724 00df 00       		.byte	0
+ 725 00e0 00       		.byte	0
+ 726 00e1 11       		.uleb128 0x11
+ 727 00e2 2E       		.uleb128 0x2e
+ 728 00e3 00       		.byte	0
+ 729 00e4 3F       		.uleb128 0x3f
+ 730 00e5 19       		.uleb128 0x19
+ 731 00e6 3C       		.uleb128 0x3c
+ 732 00e7 19       		.uleb128 0x19
+ 733 00e8 6E       		.uleb128 0x6e
+ 734 00e9 0E       		.uleb128 0xe
+ 735 00ea 03       		.uleb128 0x3
+ 736 00eb 0E       		.uleb128 0xe
+ 737 00ec 3A       		.uleb128 0x3a
+ 738 00ed 0B       		.uleb128 0xb
+ 739 00ee 3B       		.uleb128 0x3b
+ 740 00ef 0B       		.uleb128 0xb
+ 741 00f0 00       		.byte	0
+ 742 00f1 00       		.byte	0
+ 743 00f2 12       		.uleb128 0x12
+ 744 00f3 2E       		.uleb128 0x2e
+ 745 00f4 00       		.byte	0
+ 746 00f5 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 16
+
+
+ 747 00f6 19       		.uleb128 0x19
+ 748 00f7 3C       		.uleb128 0x3c
+ 749 00f8 19       		.uleb128 0x19
+ 750 00f9 6E       		.uleb128 0x6e
+ 751 00fa 0E       		.uleb128 0xe
+ 752 00fb 03       		.uleb128 0x3
+ 753 00fc 0E       		.uleb128 0xe
+ 754 00fd 00       		.byte	0
+ 755 00fe 00       		.byte	0
+ 756 00ff 00       		.byte	0
+ 757              		.section	.debug_loc,"",%progbits
+ 758              	.Ldebug_loc0:
+ 759              	.LLST0:
+ 760 0000 02000000 		.4byte	.LVL2
+ 761 0004 06000000 		.4byte	.LVL3
+ 762 0008 0200     		.2byte	0x2
+ 763 000a 30       		.byte	0x30
+ 764 000b 9F       		.byte	0x9f
+ 765 000c 06000000 		.4byte	.LVL3
+ 766 0010 14000000 		.4byte	.LFE66
+ 767 0014 0100     		.2byte	0x1
+ 768 0016 54       		.byte	0x54
+ 769 0017 00000000 		.4byte	0
+ 770 001b 00000000 		.4byte	0
+ 771              	.LLST1:
+ 772 001f 02000000 		.4byte	.LVL6
+ 773 0023 06000000 		.4byte	.LVL7
+ 774 0027 0200     		.2byte	0x2
+ 775 0029 30       		.byte	0x30
+ 776 002a 9F       		.byte	0x9f
+ 777 002b 06000000 		.4byte	.LVL7
+ 778 002f 14000000 		.4byte	.LFE67
+ 779 0033 0100     		.2byte	0x1
+ 780 0035 54       		.byte	0x54
+ 781 0036 00000000 		.4byte	0
+ 782 003a 00000000 		.4byte	0
+ 783              	.LLST2:
+ 784 003e 0E000000 		.4byte	.LVL10
+ 785 0042 46000000 		.4byte	.LVL17
+ 786 0046 0200     		.2byte	0x2
+ 787 0048 30       		.byte	0x30
+ 788 0049 9F       		.byte	0x9f
+ 789 004a 46000000 		.4byte	.LVL17
+ 790 004e 60000000 		.4byte	.LFE68
+ 791 0052 0100     		.2byte	0x1
+ 792 0054 50       		.byte	0x50
+ 793 0055 00000000 		.4byte	0
+ 794 0059 00000000 		.4byte	0
+ 795              	.LLST3:
+ 796 005d 16000000 		.4byte	.LVL12
+ 797 0061 1C000000 		.4byte	.LVL14
+ 798 0065 0200     		.2byte	0x2
+ 799 0067 30       		.byte	0x30
+ 800 0068 9F       		.byte	0x9f
+ 801 0069 1C000000 		.4byte	.LVL14
+ 802 006d 1F000000 		.4byte	.LVL15-1
+ 803 0071 0100     		.2byte	0x1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 17
+
+
+ 804 0073 50       		.byte	0x50
+ 805 0074 1F000000 		.4byte	.LVL15-1
+ 806 0078 3C000000 		.4byte	.LVL16
+ 807 007c 0100     		.2byte	0x1
+ 808 007e 55       		.byte	0x55
+ 809 007f 00000000 		.4byte	0
+ 810 0083 00000000 		.4byte	0
+ 811              	.LLST4:
+ 812 0087 16000000 		.4byte	.LVL12
+ 813 008b 20000000 		.4byte	.LVL15
+ 814 008f 0200     		.2byte	0x2
+ 815 0091 30       		.byte	0x30
+ 816 0092 9F       		.byte	0x9f
+ 817 0093 20000000 		.4byte	.LVL15
+ 818 0097 3C000000 		.4byte	.LVL16
+ 819 009b 0100     		.2byte	0x1
+ 820 009d 50       		.byte	0x50
+ 821 009e 00000000 		.4byte	0
+ 822 00a2 00000000 		.4byte	0
+ 823              	.LLST5:
+ 824 00a6 12000000 		.4byte	.LVL11
+ 825 00aa 16000000 		.4byte	.LVL12
+ 826 00ae 0200     		.2byte	0x2
+ 827 00b0 30       		.byte	0x30
+ 828 00b1 9F       		.byte	0x9f
+ 829 00b2 16000000 		.4byte	.LVL12
+ 830 00b6 46000000 		.4byte	.LVL17
+ 831 00ba 0100     		.2byte	0x1
+ 832 00bc 54       		.byte	0x54
+ 833 00bd 46000000 		.4byte	.LVL17
+ 834 00c1 54000000 		.4byte	.LVL18
+ 835 00c5 0100     		.2byte	0x1
+ 836 00c7 53       		.byte	0x53
+ 837 00c8 54000000 		.4byte	.LVL18
+ 838 00cc 56000000 		.4byte	.LVL19
+ 839 00d0 0300     		.2byte	0x3
+ 840 00d2 71       		.byte	0x71
+ 841 00d3 7F       		.sleb128 -1
+ 842 00d4 9F       		.byte	0x9f
+ 843 00d5 56000000 		.4byte	.LVL19
+ 844 00d9 58000000 		.4byte	.LVL20
+ 845 00dd 0100     		.2byte	0x1
+ 846 00df 51       		.byte	0x51
+ 847 00e0 58000000 		.4byte	.LVL20
+ 848 00e4 60000000 		.4byte	.LFE68
+ 849 00e8 0100     		.2byte	0x1
+ 850 00ea 53       		.byte	0x53
+ 851 00eb 00000000 		.4byte	0
+ 852 00ef 00000000 		.4byte	0
+ 853              		.section	.debug_aranges,"",%progbits
+ 854 0000 3C000000 		.4byte	0x3c
+ 855 0004 0200     		.2byte	0x2
+ 856 0006 00000000 		.4byte	.Ldebug_info0
+ 857 000a 04       		.byte	0x4
+ 858 000b 00       		.byte	0
+ 859 000c 0000     		.2byte	0
+ 860 000e 0000     		.2byte	0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 18
+
+
+ 861 0010 00000000 		.4byte	.LFB64
+ 862 0014 0C000000 		.4byte	.LFE64-.LFB64
+ 863 0018 00000000 		.4byte	.LFB65
+ 864 001c 0C000000 		.4byte	.LFE65-.LFB65
+ 865 0020 00000000 		.4byte	.LFB66
+ 866 0024 14000000 		.4byte	.LFE66-.LFB66
+ 867 0028 00000000 		.4byte	.LFB67
+ 868 002c 14000000 		.4byte	.LFE67-.LFB67
+ 869 0030 00000000 		.4byte	.LFB68
+ 870 0034 60000000 		.4byte	.LFE68-.LFB68
+ 871 0038 00000000 		.4byte	0
+ 872 003c 00000000 		.4byte	0
+ 873              		.section	.debug_ranges,"",%progbits
+ 874              	.Ldebug_ranges0:
+ 875 0000 00000000 		.4byte	.LFB64
+ 876 0004 0C000000 		.4byte	.LFE64
+ 877 0008 00000000 		.4byte	.LFB65
+ 878 000c 0C000000 		.4byte	.LFE65
+ 879 0010 00000000 		.4byte	.LFB66
+ 880 0014 14000000 		.4byte	.LFE66
+ 881 0018 00000000 		.4byte	.LFB67
+ 882 001c 14000000 		.4byte	.LFE67
+ 883 0020 00000000 		.4byte	.LFB68
+ 884 0024 60000000 		.4byte	.LFE68
+ 885 0028 00000000 		.4byte	0
+ 886 002c 00000000 		.4byte	0
+ 887              		.section	.debug_line,"",%progbits
+ 888              	.Ldebug_line0:
+ 889 0000 D6010000 		.section	.debug_str,"MS",%progbits,1
+ 889      02004401 
+ 889      00000201 
+ 889      FB0E0D00 
+ 889      01010101 
+ 890              	.LASF6:
+ 891 0000 6C6F6E67 		.ascii	"long long int\000"
+ 891      206C6F6E 
+ 891      6720696E 
+ 891      7400
+ 892              	.LASF9:
+ 893 000e 5F5F696E 		.ascii	"__int32_t\000"
+ 893      7433325F 
+ 893      7400
+ 894              	.LASF12:
+ 895 0018 666C6F61 		.ascii	"float\000"
+ 895      7400
+ 896              	.LASF21:
+ 897 001e 636F756E 		.ascii	"count_uptime\000"
+ 897      745F7570 
+ 897      74696D65 
+ 897      00
+ 898              	.LASF1:
+ 899 002b 756E7369 		.ascii	"unsigned char\000"
+ 899      676E6564 
+ 899      20636861 
+ 899      7200
+ 900              	.LASF23:
+ 901 0039 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 19
+
+
+ 901      43313120 
+ 901      352E342E 
+ 901      31203230 
+ 901      31363036 
+ 902 006c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 902      20726576 
+ 902      6973696F 
+ 902      6E203233 
+ 902      37373135 
+ 903 009f 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 903      66756E63 
+ 903      74696F6E 
+ 903      2D736563 
+ 903      74696F6E 
+ 904              	.LASF19:
+ 905 00c7 77616974 		.ascii	"wait_going_down\000"
+ 905      5F676F69 
+ 905      6E675F64 
+ 905      6F776E00 
+ 906              	.LASF5:
+ 907 00d7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 907      20756E73 
+ 907      69676E65 
+ 907      6420696E 
+ 907      7400
+ 908              	.LASF3:
+ 909 00e9 73686F72 		.ascii	"short unsigned int\000"
+ 909      7420756E 
+ 909      7369676E 
+ 909      65642069 
+ 909      6E7400
+ 910              	.LASF18:
+ 911 00fc 77616974 		.ascii	"wait_going_up\000"
+ 911      5F676F69 
+ 911      6E675F75 
+ 911      7000
+ 912              	.LASF26:
+ 913 010a 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 913      52784275 
+ 913      66666572 
+ 913      00
+ 914              	.LASF28:
+ 915 0117 6D656D73 		.ascii	"memset\000"
+ 915      657400
+ 916              	.LASF13:
+ 917 011e 646F7562 		.ascii	"double\000"
+ 917      6C6500
+ 918              	.LASF24:
+ 919 0125 5A756D6F 		.ascii	"ZumoLibrary\\IR.c\000"
+ 919      4C696272 
+ 919      6172795C 
+ 919      49522E63 
+ 919      00
+ 920              	.LASF17:
+ 921 0136 75696E74 		.ascii	"uint\000"
+ 921      00
+ 922              	.LASF8:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 20
+
+
+ 923 013b 756E7369 		.ascii	"unsigned int\000"
+ 923      676E6564 
+ 923      20696E74 
+ 923      00
+ 924              	.LASF20:
+ 925 0148 636F756E 		.ascii	"count_downtime\000"
+ 925      745F646F 
+ 925      776E7469 
+ 925      6D6500
+ 926              	.LASF22:
+ 927 0157 6765745F 		.ascii	"get_IR\000"
+ 927      495200
+ 928              	.LASF7:
+ 929 015e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 929      206C6F6E 
+ 929      6720756E 
+ 929      7369676E 
+ 929      65642069 
+ 930              	.LASF25:
+ 931 0175 4A3A5C50 		.ascii	"J:\\Project\\Steve Brain\\Zumo01\\ZumoBot.cydsn\000"
+ 931      726F6A65 
+ 931      63745C53 
+ 931      74657665 
+ 931      20427261 
+ 932              	.LASF10:
+ 933 01a1 696E7433 		.ascii	"int32_t\000"
+ 933      325F7400 
+ 934              	.LASF16:
+ 935 01a9 73697A65 		.ascii	"sizetype\000"
+ 935      74797065 
+ 935      00
+ 936              	.LASF14:
+ 937 01b2 63686172 		.ascii	"char\000"
+ 937      00
+ 938              	.LASF27:
+ 939 01b7 49525F72 		.ascii	"IR_receiver_Read\000"
+ 939      65636569 
+ 939      7665725F 
+ 939      52656164 
+ 939      00
+ 940              	.LASF2:
+ 941 01c8 73686F72 		.ascii	"short int\000"
+ 941      7420696E 
+ 941      7400
+ 942              	.LASF11:
+ 943 01d2 75696E74 		.ascii	"uint8\000"
+ 943      3800
+ 944              	.LASF4:
+ 945 01d8 6C6F6E67 		.ascii	"long int\000"
+ 945      20696E74 
+ 945      00
+ 946              	.LASF15:
+ 947 01e1 6C6F6E67 		.ascii	"long double\000"
+ 947      20646F75 
+ 947      626C6500 
+ 948              	.LASF0:
+ 949 01ed 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cckWhVOw.s 			page 21
+
+
+ 949      65642063 
+ 949      68617200 
+ 950              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
