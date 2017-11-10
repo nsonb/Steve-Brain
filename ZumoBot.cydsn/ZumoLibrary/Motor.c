@@ -41,6 +41,15 @@ void motor_forward(uint8 speed,uint32 delay)
     CyDelay(delay);
 }
 
+void motor_forward_modded(uint8 speed,uint32 delay)
+{
+    MotorDirLeft_Write(0);      // set LeftMotor forward mode
+    MotorDirRight_Write(0);     // set RightMotor forward mode
+    PWM_WriteCompare1(speed);
+    PWM_WriteCompare2(speed); 
+    CyDelay(delay);
+}
+
 
 /**
 * @brief    Moving motors to make a turn 

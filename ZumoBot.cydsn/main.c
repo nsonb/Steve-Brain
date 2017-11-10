@@ -50,7 +50,7 @@ int rread(void);
  * @details  ** You should enable global interrupt for operating properly. **<br>&nbsp;&nbsp;&nbsp;CyGlobalIntEnable;<br>
 */
 
-
+/*
 //battery level//
 int main()
 {
@@ -58,7 +58,7 @@ int main()
     UART_1_Start();
     ADC_Battery_Start();        
     int16 adcresult =0;
-    float volts = 0.0;
+    //float volts = 0.0;
 
     printf("\nBoot\n");
 
@@ -67,7 +67,7 @@ int main()
     //uint8 button;
     //button = SW1_Read(); // read SW1 on pSoC board
 
-    /*for(;;)
+    for(;;)
     {
         
         ADC_Battery_StartConvert();
@@ -80,40 +80,29 @@ int main()
         }
         CyDelay(500);
     }
-    */
+   
     int choice;
-    do
-    {
-    printf("what you want steve to do: 1.forward 2.backward 3.left 4. right");
-    scanf("%d",&choice);
-    switch (choice)
-    {
-        case 1:
-            motor_start();
-            motor_forward(100,500);
-            break;
-        case 2:
-            motor_start();
-            motor_backward(100,500);
-            break;
-        case 3:
-            motor_start();
-            motor_turn(100,200,500);
-            break;
-        case 4:
-            motor_start();
-            motor_turn(200,100,500);
-            break;
-        case 5:
-            motor_start();
-            motor_turn(250,0,1000);
-            break;
-            
+    int IR_val;
+    while(1) {
+        do {
+            IR_val = get_IR();
+        }
+        while(!IR_val);
+        motor_start();
+       
+        motor_forward(110,4800);
+        motor_turn(160,0,470);
+        motor_forward(100,3800);
+        motor_turn(170,0,470);
+        motor_forward(200,2450);
+        motor_turn(230,0,600);
+        motor_turn(90,120,3620);
+        
+        motor_stop();
+
     }
-    motor_stop();
-    }while(1);
- }   
-//*/
+}
+*/
 
 
 /*//ultra sonic sensor//
@@ -241,7 +230,7 @@ int main()
 //*/
 
 
-/*//reflectance//
+//reflectance//
 int main()
 {
     struct sensors_ ref;
@@ -256,15 +245,53 @@ int main()
     IR_led_Write(1);
     for(;;)
     {
-        reflectance_read(&ref);
-        printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
-        reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
-        printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
+        //reflectance_read(&ref);
+        //printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
+        //reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
+        //printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
+        int IR_val;
+         
+        do {
+            IR_val = get_IR();
+        }
+        
+        while(!IR_val);
+        motor_start();
+        do{ 
+            reflectance_read(&ref);
+            reflectance_digital(&dig);
+            if(dig.r1+dig.l1==0)
+            {
+                motor_forward(120,50);
+                CyDelay(50);
+            }
+            else if (dig.r1==1 && dig.l1==0)
+            {
+                motor_forward(1,1);
+                motor_turn(0,140,50);
+                CyDelay(50);
+                
+            }
+            else if (dig.r1==0 && dig.l1==1)
+            {   
+                motor_forward(1,1);
+                motor_turn(140,0,50);
+                CyDelay(50);
+            }
+            else
+            {
+                motor_backward(100,50);
+                motor_turn(150,0,100);
+                CyDelay(100);
+            }
+        }
+        while(1);
+            
         
         CyDelay(500);
     }
 }   
-//*/
+//
 
  /* //motor//
 int main()
