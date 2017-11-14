@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 1
 
 
    1              		.syntax unified
@@ -30,7 +30,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
   27              		.file 1 "Generated_Source\\PSoC5\\ADC_Battery_Bypass.c"
    1:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** /*******************************************************************************
    2:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * File Name: ADC_Battery_Bypass.c  
-   3:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Version 1.90
+   3:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Version 2.20
    4:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
    5:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Description:
    6:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  This file contains API to enable firmware control of a Pins component.
@@ -38,7 +38,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
    8:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Note:
    9:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
   10:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** ********************************************************************************
-  11:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  11:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
   12:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * You may use this file only in accordance with the license, terms, conditions, 
   13:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * disclaimers, and limitations in the end user license agreement accompanying 
   14:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * the software package with which this file was provided.
@@ -54,37 +54,55 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
   24:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
   25:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** /*******************************************************************************
   26:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Function Name: ADC_Battery_Bypass_Write
-  27:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** ********************************************************************************
+  27:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** ****************************************************************************//**
   28:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  29:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Summary:
-  30:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Assign a new value to the digital port's data output register.  
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 2
+  29:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \brief Writes the value to the physical port (data output register), masking
+  30:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  and shifting the bits appropriately. 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 2
 
 
   31:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  32:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Parameters:  
-  33:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  prtValue:  The value to be assigned to the Digital Port. 
-  34:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  35:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Return: 
-  36:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  None
-  37:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  
-  38:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *******************************************************************************/
-  39:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** void ADC_Battery_Bypass_Write(uint8 value) 
-  40:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** {
-  28              		.loc 1 40 0
+  32:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * The data output register controls the signal applied to the physical pin in 
+  33:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  34:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  35:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * bit banding).
+  36:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  37:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  38:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * as it is driven by the hardware signal attached to it.
+  39:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  40:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \param value
+  41:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Value to write to the component instance.
+  42:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  43:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \return 
+  44:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  None 
+  45:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  46:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \sideeffect
+  47:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+  48:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+  49:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  interrupts this function and performs writes to the Pins component data 
+  50:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+  51:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+  52:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  this function.
+  53:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  54:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \funcusage
+  55:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  \snippet ADC_Battery_Bypass_SUT.c usage_ADC_Battery_Bypass_Write
+  56:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *******************************************************************************/
+  57:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** void ADC_Battery_Bypass_Write(uint8 value)
+  58:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** {
+  28              		.loc 1 58 0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
   33              	.LVL0:
-  41:Generated_Source\PSoC5/ADC_Battery_Bypass.c ****     uint8 staticBits = (ADC_Battery_Bypass_DR & (uint8)(~ADC_Battery_Bypass_MASK));
-  34              		.loc 1 41 0
+  59:Generated_Source\PSoC5/ADC_Battery_Bypass.c ****     uint8 staticBits = (ADC_Battery_Bypass_DR & (uint8)(~ADC_Battery_Bypass_MASK));
+  34              		.loc 1 59 0
   35 0000 044A     		ldr	r2, .L2
   36 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
   37 0004 03F0FB03 		and	r3, r3, #251
   38              	.LVL1:
-  42:Generated_Source\PSoC5/ADC_Battery_Bypass.c ****     ADC_Battery_Bypass_DR = staticBits | ((uint8)(value << ADC_Battery_Bypass_SHIFT) & ADC_Battery_
-  39              		.loc 1 42 0
+  60:Generated_Source\PSoC5/ADC_Battery_Bypass.c ****     ADC_Battery_Bypass_DR = staticBits | ((uint8)(value << ADC_Battery_Bypass_SHIFT) & ADC_Battery_
+  39              		.loc 1 60 0
   40 0008 8000     		lsls	r0, r0, #2
   41              	.LVL2:
   42 000a 00F00400 		and	r0, r0, #4
@@ -100,42 +118,54 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
   52              		.size	ADC_Battery_Bypass_Write, .-ADC_Battery_Bypass_Write
   53              		.section	.text.ADC_Battery_Bypass_SetDriveMode,"ax",%progbits
   54              		.align	2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 3
+
+
   55              		.global	ADC_Battery_Bypass_SetDriveMode
   56              		.thumb
   57              		.thumb_func
   58              		.type	ADC_Battery_Bypass_SetDriveMode, %function
   59              	ADC_Battery_Bypass_SetDriveMode:
   60              	.LFB1:
-  43:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** }
-  44:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
-  45:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
-  46:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** /*******************************************************************************
-  47:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Function Name: ADC_Battery_Bypass_SetDriveMode
-  48:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** ********************************************************************************
-  49:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  50:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Summary:
-  51:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Change the drive mode on the pins of the port.
-  52:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * 
-  53:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Parameters:  
-  54:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  mode:  Change the pins to this drive mode.
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 3
-
-
-  55:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  56:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Return: 
-  57:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  None
-  58:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  59:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *******************************************************************************/
-  60:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** void ADC_Battery_Bypass_SetDriveMode(uint8 mode) 
-  61:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** {
-  61              		.loc 1 61 0
+  61:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** }
+  62:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
+  63:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
+  64:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** /*******************************************************************************
+  65:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Function Name: ADC_Battery_Bypass_SetDriveMode
+  66:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** ****************************************************************************//**
+  67:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  68:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \brief Sets the drive mode for each of the Pins component's pins.
+  69:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * 
+  70:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  71:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Per-Pin APIs if you wish to control individual pin's drive modes.
+  72:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  73:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \param mode
+  74:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Mode for the selected signals. Valid options are documented in 
+  75:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  \ref driveMode.
+  76:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  77:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \return
+  78:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  None
+  79:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  80:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \sideeffect
+  81:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  If you use read-modify-write operations that are not atomic, the ISR can
+  82:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  cause corruption of this function. An ISR that interrupts this function 
+  83:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  and performs writes to the Pins component Drive Mode registers can cause 
+  84:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  85:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  APIs (primary method) or disable interrupts around this function.
+  86:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+  87:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \funcusage
+  88:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  \snippet ADC_Battery_Bypass_SUT.c usage_ADC_Battery_Bypass_SetDriveMode
+  89:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *******************************************************************************/
+  90:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** void ADC_Battery_Bypass_SetDriveMode(uint8 mode)
+  91:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** {
+  61              		.loc 1 91 0
   62              		.cfi_startproc
   63              		@ args = 0, pretend = 0, frame = 0
   64              		@ frame_needed = 0, uses_anonymous_args = 0
   65              		@ link register save eliminated.
   66              	.LVL3:
-  62:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 	CyPins_SetPinDriveMode(ADC_Battery_Bypass_0, mode);
-  67              		.loc 1 62 0
+  92:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 	CyPins_SetPinDriveMode(ADC_Battery_Bypass_0, mode);
+  67              		.loc 1 92 0
   68 0000 044A     		ldr	r2, .L5
   69 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
   70 0004 03F0F103 		and	r3, r3, #241
@@ -148,6 +178,9 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
   77 0012 00BF     		.align	2
   78              	.L5:
   79 0014 02500040 		.word	1073762306
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 4
+
+
   80              		.cfi_endproc
   81              	.LFE1:
   82              		.size	ADC_Battery_Bypass_SetDriveMode, .-ADC_Battery_Bypass_SetDriveMode
@@ -159,43 +192,39 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
   88              		.type	ADC_Battery_Bypass_Read, %function
   89              	ADC_Battery_Bypass_Read:
   90              	.LFB2:
-  63:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** }
-  64:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
-  65:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
-  66:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** /*******************************************************************************
-  67:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Function Name: ADC_Battery_Bypass_Read
-  68:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** ********************************************************************************
-  69:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  70:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Summary:
-  71:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Read the current value on the pins of the Digital Port in right justified 
-  72:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  form.
-  73:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  74:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Parameters:  
-  75:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  None
-  76:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  77:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Return: 
-  78:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Returns the current value of the Digital Port as a right justified number
-  79:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  
-  80:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Note:
-  81:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Macro ADC_Battery_Bypass_ReadPS calls this function. 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 4
-
-
-  82:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  
-  83:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *******************************************************************************/
-  84:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** uint8 ADC_Battery_Bypass_Read(void) 
-  85:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** {
-  91              		.loc 1 85 0
+  93:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** }
+  94:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
+  95:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
+  96:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** /*******************************************************************************
+  97:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Function Name: ADC_Battery_Bypass_Read
+  98:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** ****************************************************************************//**
+  99:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+ 100:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 101:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  the required bits according to the width and bit position of the component
+ 102:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  instance. 
+ 103:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+ 104:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * The pin's status register returns the current logic level present on the 
+ 105:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * physical pin.
+ 106:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+ 107:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \return 
+ 108:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  The current value for the pins in the component as a right justified number.
+ 109:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+ 110:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \funcusage
+ 111:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  \snippet ADC_Battery_Bypass_SUT.c usage_ADC_Battery_Bypass_Read  
+ 112:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *******************************************************************************/
+ 113:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** uint8 ADC_Battery_Bypass_Read(void)
+ 114:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** {
+  91              		.loc 1 114 0
   92              		.cfi_startproc
   93              		@ args = 0, pretend = 0, frame = 0
   94              		@ frame_needed = 0, uses_anonymous_args = 0
   95              		@ link register save eliminated.
-  86:Generated_Source\PSoC5/ADC_Battery_Bypass.c ****     return (ADC_Battery_Bypass_PS & ADC_Battery_Bypass_MASK) >> ADC_Battery_Bypass_SHIFT;
-  96              		.loc 1 86 0
+ 115:Generated_Source\PSoC5/ADC_Battery_Bypass.c ****     return (ADC_Battery_Bypass_PS & ADC_Battery_Bypass_MASK) >> ADC_Battery_Bypass_SHIFT;
+  96              		.loc 1 115 0
   97 0000 024B     		ldr	r3, .L8
   98 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
-  87:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** }
-  99              		.loc 1 87 0
+ 116:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** }
+  99              		.loc 1 116 0
  100 0004 C0F38000 		ubfx	r0, r0, #2, #1
  101 0008 7047     		bx	lr
  102              	.L9:
@@ -209,42 +238,50 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  110              		.align	2
  111              		.global	ADC_Battery_Bypass_ReadDataReg
  112              		.thumb
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 5
+
+
  113              		.thumb_func
  114              		.type	ADC_Battery_Bypass_ReadDataReg, %function
  115              	ADC_Battery_Bypass_ReadDataReg:
  116              	.LFB3:
-  88:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
-  89:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
-  90:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** /*******************************************************************************
-  91:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Function Name: ADC_Battery_Bypass_ReadDataReg
-  92:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** ********************************************************************************
-  93:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  94:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Summary:
-  95:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Read the current value assigned to a Digital Port's data output register
-  96:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
-  97:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Parameters:  
-  98:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  None 
-  99:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
- 100:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Return: 
- 101:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  Returns the current value assigned to the Digital Port's data output register
- 102:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  
- 103:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *******************************************************************************/
- 104:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** uint8 ADC_Battery_Bypass_ReadDataReg(void) 
- 105:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** {
- 117              		.loc 1 105 0
+ 117:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
+ 118:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** 
+ 119:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** /*******************************************************************************
+ 120:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * Function Name: ADC_Battery_Bypass_ReadDataReg
+ 121:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** ****************************************************************************//**
+ 122:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+ 123:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \brief Reads the associated physical port's data output register and masks 
+ 124:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  the correct bits according to the width and bit position of the component 
+ 125:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  instance. 
+ 126:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+ 127:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * The data output register controls the signal applied to the physical pin in 
+ 128:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 129:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * preferred ADC_Battery_Bypass_Read() API because the 
+ 130:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * ADC_Battery_Bypass_ReadDataReg() reads the data register instead of the status 
+ 131:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * register. For output pins this is a useful function to determine the value 
+ 132:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * just written to the pin.
+ 133:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+ 134:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \return 
+ 135:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  The current value of the data register masked and shifted into a right 
+ 136:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  justified number for the component instance.
+ 137:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *
+ 138:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** * \funcusage
+ 139:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *  \snippet ADC_Battery_Bypass_SUT.c usage_ADC_Battery_Bypass_ReadDataReg 
+ 140:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** *******************************************************************************/
+ 141:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** uint8 ADC_Battery_Bypass_ReadDataReg(void)
+ 142:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** {
+ 117              		.loc 1 142 0
  118              		.cfi_startproc
  119              		@ args = 0, pretend = 0, frame = 0
  120              		@ frame_needed = 0, uses_anonymous_args = 0
  121              		@ link register save eliminated.
- 106:Generated_Source\PSoC5/ADC_Battery_Bypass.c ****     return (ADC_Battery_Bypass_DR & ADC_Battery_Bypass_MASK) >> ADC_Battery_Bypass_SHIFT;
- 122              		.loc 1 106 0
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 5
-
-
+ 143:Generated_Source\PSoC5/ADC_Battery_Bypass.c ****     return (ADC_Battery_Bypass_DR & ADC_Battery_Bypass_MASK) >> ADC_Battery_Bypass_SHIFT;
+ 122              		.loc 1 143 0
  123 0000 024B     		ldr	r3, .L11
  124 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
- 107:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** }
- 125              		.loc 1 107 0
+ 144:Generated_Source\PSoC5/ADC_Battery_Bypass.c **** }
+ 125              		.loc 1 144 0
  126 0004 C0F38000 		ubfx	r0, r0, #2, #1
  127 0008 7047     		bx	lr
  128              	.L12:
@@ -261,6 +298,9 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  139              	.Ldebug_info0:
  140 0000 1B010000 		.4byte	0x11b
  141 0004 0400     		.2byte	0x4
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 6
+
+
  142 0006 00000000 		.4byte	.Ldebug_abbrev0
  143 000a 04       		.byte	0x4
  144 000b 01       		.uleb128 0x1
@@ -298,9 +338,6 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  176 004f 02       		.uleb128 0x2
  177 0050 08       		.byte	0x8
  178 0051 05       		.byte	0x5
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 6
-
-
  179 0052 7E010000 		.4byte	.LASF6
  180 0056 02       		.uleb128 0x2
  181 0057 08       		.byte	0x8
@@ -321,6 +358,9 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  196 0073 2C000000 		.4byte	0x2c
  197 0077 02       		.uleb128 0x2
  198 0078 04       		.byte	0x4
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 7
+
+
  199 0079 04       		.byte	0x4
  200 007a 2A000000 		.4byte	.LASF9
  201 007e 02       		.uleb128 0x2
@@ -341,7 +381,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  216 009d 06       		.uleb128 0x6
  217 009e 11000000 		.4byte	.LASF14
  218 00a2 01       		.byte	0x1
- 219 00a3 27       		.byte	0x27
+ 219 00a3 39       		.byte	0x39
  220 00a4 00000000 		.4byte	.LFB0
  221 00a8 18000000 		.4byte	.LFE0-.LFB0
  222 00ac 01       		.uleb128 0x1
@@ -350,24 +390,21 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  225 00b2 07       		.uleb128 0x7
  226 00b3 00000000 		.4byte	.LASF16
  227 00b7 01       		.byte	0x1
- 228 00b8 27       		.byte	0x27
+ 228 00b8 39       		.byte	0x39
  229 00b9 6B000000 		.4byte	0x6b
  230 00bd 00000000 		.4byte	.LLST0
  231 00c1 08       		.uleb128 0x8
  232 00c2 06000000 		.4byte	.LASF23
  233 00c6 01       		.byte	0x1
- 234 00c7 29       		.byte	0x29
+ 234 00c7 3B       		.byte	0x3b
  235 00c8 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 7
-
-
  236 00cc 01       		.uleb128 0x1
  237 00cd 53       		.byte	0x53
  238 00ce 00       		.byte	0
  239 00cf 06       		.uleb128 0x6
  240 00d0 8C010000 		.4byte	.LASF15
  241 00d4 01       		.byte	0x1
- 242 00d5 3C       		.byte	0x3c
+ 242 00d5 5A       		.byte	0x5a
  243 00d6 00000000 		.4byte	.LFB1
  244 00da 18000000 		.4byte	.LFE1-.LFB1
  245 00de 01       		.uleb128 0x1
@@ -376,14 +413,17 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  248 00e4 07       		.uleb128 0x7
  249 00e5 4D010000 		.4byte	.LASF17
  250 00e9 01       		.byte	0x1
- 251 00ea 3C       		.byte	0x3c
+ 251 00ea 5A       		.byte	0x5a
  252 00eb 6B000000 		.4byte	0x6b
  253 00ef 21000000 		.4byte	.LLST1
  254 00f3 00       		.byte	0
  255 00f4 09       		.uleb128 0x9
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 8
+
+
  256 00f5 C1010000 		.4byte	.LASF18
  257 00f9 01       		.byte	0x1
- 258 00fa 54       		.byte	0x54
+ 258 00fa 71       		.byte	0x71
  259 00fb 6B000000 		.4byte	0x6b
  260 00ff 00000000 		.4byte	.LFB2
  261 0103 10000000 		.4byte	.LFE2-.LFB2
@@ -392,7 +432,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  264 0109 09       		.uleb128 0x9
  265 010a EE010000 		.4byte	.LASF19
  266 010e 01       		.byte	0x1
- 267 010f 68       		.byte	0x68
+ 267 010f 8D       		.byte	0x8d
  268 0110 6B000000 		.4byte	0x6b
  269 0114 00000000 		.4byte	.LFB3
  270 0118 10000000 		.4byte	.LFE3-.LFB3
@@ -418,9 +458,6 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  290 000e 01       		.uleb128 0x1
  291 000f 10       		.uleb128 0x10
  292 0010 17       		.uleb128 0x17
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 8
-
-
  293 0011 00       		.byte	0
  294 0012 00       		.byte	0
  295 0013 02       		.uleb128 0x2
@@ -441,6 +478,9 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  310 0022 0B       		.uleb128 0xb
  311 0023 3E       		.uleb128 0x3e
  312 0024 0B       		.uleb128 0xb
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 9
+
+
  313 0025 03       		.uleb128 0x3
  314 0026 08       		.uleb128 0x8
  315 0027 00       		.byte	0
@@ -478,9 +518,6 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  347 0047 0B       		.uleb128 0xb
  348 0048 27       		.uleb128 0x27
  349 0049 19       		.uleb128 0x19
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 9
-
-
  350 004a 11       		.uleb128 0x11
  351 004b 01       		.uleb128 0x1
  352 004c 12       		.uleb128 0x12
@@ -501,6 +538,9 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  367 005c 3A       		.uleb128 0x3a
  368 005d 0B       		.uleb128 0xb
  369 005e 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 10
+
+
  370 005f 0B       		.uleb128 0xb
  371 0060 49       		.uleb128 0x49
  372 0061 13       		.uleb128 0x13
@@ -538,9 +578,6 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  404 0081 19       		.uleb128 0x19
  405 0082 49       		.uleb128 0x49
  406 0083 13       		.uleb128 0x13
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 10
-
-
  407 0084 11       		.uleb128 0x11
  408 0085 01       		.uleb128 0x1
  409 0086 12       		.uleb128 0x12
@@ -561,6 +598,9 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  424 000a 50       		.byte	0x50
  425 000b 0A000000 		.4byte	.LVL2
  426 000f 18000000 		.4byte	.LFE0
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 11
+
+
  427 0013 0400     		.2byte	0x4
  428 0015 F3       		.byte	0xf3
  429 0016 01       		.uleb128 0x1
@@ -598,9 +638,6 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  461 0024 10000000 		.4byte	.LFE2-.LFB2
  462 0028 00000000 		.4byte	.LFB3
  463 002c 10000000 		.4byte	.LFE3-.LFB3
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 11
-
-
  464 0030 00000000 		.4byte	0
  465 0034 00000000 		.4byte	0
  466              		.section	.debug_ranges,"",%progbits
@@ -617,10 +654,13 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  477 0024 00000000 		.4byte	0
  478              		.section	.debug_line,"",%progbits
  479              	.Ldebug_line0:
- 480 0000 9A000000 		.section	.debug_str,"MS",%progbits,1
+ 480 0000 9B000000 		.section	.debug_str,"MS",%progbits,1
  480      02004F00 
  480      00000201 
  480      FB0E0D00 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 12
+
+
  480      01010101 
  481              	.LASF16:
  482 0000 76616C75 		.ascii	"value\000"
@@ -658,9 +698,6 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  494      66756E63 
  494      74696F6E 
  494      2D736563 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 12
-
-
  494      74696F6E 
  495              	.LASF13:
  496 00cc 72656738 		.ascii	"reg8\000"
@@ -681,6 +718,9 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  502 00f6 47656E65 		.ascii	"Generated_Source\\PSoC5\\ADC_Battery_Bypass.c\000"
  502      72617465 
  502      645F536F 
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 13
+
+
  502      75726365 
  502      5C50536F 
  503              	.LASF10:
@@ -718,9 +758,6 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  516      42797061 
  516      73735F53 
  517              	.LASF11:
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 13
-
-
  518 01ac 63686172 		.ascii	"char\000"
  518      00
  519              	.LASF2:
@@ -741,6 +778,9 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccoIgvJj.s 			page 1
  526      20696E74 
  526      00
  527              	.LASF0:
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cceAeM0b.s 			page 14
+
+
  528 01e2 7369676E 		.ascii	"signed char\000"
  528      65642063 
  528      68617200 

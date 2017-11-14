@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
   39 0002 0546     		mov	r5, r0
   40 0004 0C46     		mov	r4, r1
   17:ZumoLibrary/Beep.c ****     uint8 cmp = pitch / 2;
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 2
 
 
   41              		.loc 1 17 0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
   90 0027 06       		.byte	0x6
   91 0028 F3010000 		.4byte	.LASF0
   92 002c 02       		.uleb128 0x2
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 3
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 3
 
 
   93 002d 01       		.byte	0x1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  147 0095 53000000 		.4byte	0x53
  148 0099 02       		.uleb128 0x2
  149 009a 04       		.byte	0x4
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 4
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 4
 
 
  150 009b 04       		.byte	0x4
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  204 0113 01       		.uleb128 0x1
  205 0114 50       		.byte	0x50
  206 0115 02       		.uleb128 0x2
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 5
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 5
 
 
  207 0116 76       		.byte	0x76
@@ -273,7 +273,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  236 014b 0C       		.uleb128 0xc
  237 014c 2A010000 		.4byte	.LASF29
  238 0150 07       		.byte	0x7
- 239 0151 9606     		.2byte	0x696
+ 239 0151 1207     		.2byte	0x712
  240 0153 57010000 		.4byte	0x157
  241 0157 0D       		.uleb128 0xd
  242 0158 76000000 		.4byte	0x76
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  261 0186 06       		.byte	0x6
  262 0187 76       		.byte	0x76
  263 0188 0E       		.uleb128 0xe
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 6
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 6
 
 
  264 0189 52010000 		.4byte	.LASF24
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  318 002f 0B       		.uleb128 0xb
  319 0030 3E       		.uleb128 0x3e
  320 0031 0B       		.uleb128 0xb
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 7
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 7
 
 
  321 0032 03       		.uleb128 0x3
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  375 0069 17       		.uleb128 0x17
  376 006a 00       		.byte	0
  377 006b 00       		.byte	0
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 8
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 8
 
 
  378 006c 08       		.uleb128 0x8
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  432 00a9 13       		.uleb128 0x13
  433 00aa 3F       		.uleb128 0x3f
  434 00ab 19       		.uleb128 0x19
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 9
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 9
 
 
  435 00ac 3C       		.uleb128 0x3c
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  489 0037 00000000 		.4byte	0
  490 003b 00000000 		.4byte	0
  491              		.section	.debug_aranges,"",%progbits
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 10
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 10
 
 
  492 0000 1C000000 		.4byte	0x1c
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  524              	.LASF25:
  525 0064 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
  525      43313120 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 11
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 11
 
 
  525      352E342E 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 1
  545      00
  546              	.LASF27:
  547 0167 4A3A5C50 		.ascii	"J:\\Project\\Steve Brain\\Zumo01\\ZumoBot.cydsn\000"
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccz5kcst.s 			page 12
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccI0ccjz.s 			page 12
 
 
  547      726F6A65 

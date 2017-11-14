@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
   35              		.cfi_offset 4, -20
   36              		.cfi_offset 5, -16
   37              		.cfi_offset 6, -12
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 2
 
 
   38              		.cfi_offset 7, -8
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
   82              	.LVL13:
   83              	.L3:
   31:ZumoLibrary/Reflectance.c ****     }
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 3
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 3
 
 
   32:ZumoLibrary/Reflectance.c ****     
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  125              	.L7:
   45:ZumoLibrary/Reflectance.c ****     }
   46:ZumoLibrary/Reflectance.c ****     
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 4
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 4
 
 
   47:ZumoLibrary/Reflectance.c ****     if(statusL1 & Timer_L1_STATUS_CAPTURE) {
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  167              		.loc 1 59 0
  168 00c0 0120     		movs	r0, #1
  169 00c2 FFF7FEFF 		bl	L3_Write
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 5
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 5
 
 
  170              	.LVL28:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  212              	.LVL40:
  213              	.L12:
  214 0102 00BF     		.align	2
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 6
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 6
 
 
  215              	.L11:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  255              	.L15:
  256 001c 00000000 		.word	sensor_isr_handler
  257              		.cfi_endproc
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 7
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 7
 
 
  258              	.LFE65:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  101:ZumoLibrary/Reflectance.c **** * @details
  102:ZumoLibrary/Reflectance.c **** */
  103:ZumoLibrary/Reflectance.c **** void reflectance_digital(struct sensors_ *digital)
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 8
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 8
 
 
  104:ZumoLibrary/Reflectance.c **** {
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  338 0030 0C4B     		ldr	r3, .L29
  339 0032 9B88     		ldrh	r3, [r3, #4]
  340 0034 9BB2     		uxth	r3, r3
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 9
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 9
 
 
  341 0036 0C4A     		ldr	r2, .L29+4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  125:ZumoLibrary/Reflectance.c ****         
  126:ZumoLibrary/Reflectance.c **** }
  127:ZumoLibrary/Reflectance.c **** 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 10
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 10
 
 
  128:ZumoLibrary/Reflectance.c **** void reflectance_set_threshold(uint16_t l3, uint16_t l1, uint16_t r1, uint16_t r3)
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  433      00000000 
  434              		.type	digital_sensor_value, %object
  435              		.size	digital_sensor_value, 8
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 11
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 11
 
 
  436              	digital_sensor_value:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  489 0048 0F020000 		.4byte	.LASF3
  490 004c 03       		.uleb128 0x3
  491 004d 46030000 		.4byte	.LASF5
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 12
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 12
 
 
  492 0051 02       		.byte	0x2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  546 00bb 04       		.byte	0x4
  547 00bc DE000000 		.4byte	.LASF16
  548 00c0 02       		.uleb128 0x2
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 13
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 13
 
 
  549 00c1 08       		.byte	0x8
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  603 0126 12030000 		.4byte	0x312
  604 012a 09       		.uleb128 0x9
  605 012b 8C000000 		.4byte	.LASF21
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 14
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 14
 
 
  606 012f 01       		.byte	0x1
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  660 01c5 98040000 		.4byte	0x498
  661 01c9 0A       		.uleb128 0xa
  662 01ca 6E000000 		.4byte	.LVL18
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 15
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 15
 
 
  663 01ce A3040000 		.4byte	0x4a3
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  717 0243 C0000000 		.4byte	.LVL27
  718 0247 F0040000 		.4byte	0x4f0
  719 024b 55020000 		.4byte	0x255
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 16
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 16
 
 
  720 024f 0C       		.uleb128 0xc
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  774 02b2 32       		.byte	0x32
  775 02b3 00       		.byte	0
  776 02b4 0B       		.uleb128 0xb
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 17
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 17
 
 
  777 02b5 E4000000 		.4byte	.LVL33
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  831 0330 3E030000 		.4byte	0x33e
  832 0334 0C       		.uleb128 0xc
  833 0335 01       		.uleb128 0x1
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 18
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 18
 
 
  834 0336 50       		.byte	0x50
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  888 03b1 08       		.uleb128 0x8
  889 03b2 AA010000 		.4byte	.LASF31
  890 03b6 01       		.byte	0x1
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 19
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 19
 
 
  891 03b7 80       		.byte	0x80
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  945 041f 24010000 		.4byte	.LASF34
  946 0423 01       		.byte	0x1
  947 0424 0D       		.byte	0xd
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 20
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 20
 
 
  948 0425 DC000000 		.4byte	0xdc
@@ -1148,7 +1148,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  952 042f 13       		.uleb128 0x13
  953 0430 7B030000 		.4byte	.LASF65
  954 0434 10       		.byte	0x10
- 955 0435 9606     		.2byte	0x696
+ 955 0435 1207     		.2byte	0x712
  956 0437 3B040000 		.4byte	0x43b
  957 043b 12       		.uleb128 0x12
  958 043c 97000000 		.4byte	0x97
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1002 04a1 08       		.byte	0x8
  1003 04a2 67       		.byte	0x67
  1004 04a3 14       		.uleb128 0x14
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 21
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 21
 
 
  1005 04a4 66020000 		.4byte	.LASF44
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1059 051c 14       		.uleb128 0x14
  1060 051d 82010000 		.4byte	.LASF55
  1061 0521 82010000 		.4byte	.LASF55
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 22
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 22
 
 
  1062 0525 0E       		.byte	0xe
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1116 0018 3E       		.uleb128 0x3e
  1117 0019 0B       		.uleb128 0xb
  1118 001a 03       		.uleb128 0x3
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 23
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 23
 
 
  1119 001b 0E       		.uleb128 0xe
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1173 0051 00       		.byte	0
  1174 0052 07       		.uleb128 0x7
  1175 0053 0D       		.uleb128 0xd
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 24
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 24
 
 
  1176 0054 00       		.byte	0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1230 008b 898201   		.uleb128 0x4109
  1231 008e 00       		.byte	0
  1232 008f 11       		.uleb128 0x11
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 25
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 25
 
 
  1233 0090 01       		.uleb128 0x1
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1287 00cb 3A       		.uleb128 0x3a
  1288 00cc 0B       		.uleb128 0xb
  1289 00cd 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 26
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 26
 
 
  1290 00ce 0B       		.uleb128 0xb
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1344 0104 13       		.uleb128 0x13
  1345 0105 3F       		.uleb128 0x3f
  1346 0106 19       		.uleb128 0x19
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 27
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 27
 
 
  1347 0107 3C       		.uleb128 0x3c
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1401 0037 9F       		.byte	0x9f
  1402 0038 00000000 		.4byte	0
  1403 003c 00000000 		.4byte	0
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 28
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 28
 
 
  1404              	.LLST2:
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1458 003c 00000000 		.4byte	0
  1459              		.section	.debug_ranges,"",%progbits
  1460              	.Ldebug_ranges0:
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 29
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 29
 
 
  1461 0000 00000000 		.4byte	.LFB64
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1492              	.LASF51:
  1493 0068 4C335F53 		.ascii	"L3_SetDriveMode\000"
  1493      65744472 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 30
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 30
 
 
  1493      6976654D 
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1517 0110 7265666C 		.ascii	"reflectance_digital\000"
  1517      65637461 
  1517      6E63655F 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 31
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 31
 
 
  1517      64696769 
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1541      7365745F 
  1541      74687265 
  1542              	.LASF0:
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 32
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 32
 
 
  1543 01c4 7369676E 		.ascii	"signed char\000"
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1565      325F7400 
  1566              	.LASF44:
  1567 0266 54696D65 		.ascii	"Timer_L3_ReadCapture\000"
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 33
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 33
 
 
  1567      725F4C33 
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1587      725F5233 
  1587      5F526561 
  1587      64436170 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 34
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 34
 
 
  1587      74757265 
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 1
  1607 044c 54696D65 		.ascii	"Timer_R1_Start\000"
  1607      725F5231 
  1607      5F537461 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccSp0Wii.s 			page 35
+ARM GAS  C:\Users\asd\AppData\Local\Temp\ccyFpC1b.s 			page 35
 
 
  1607      727400

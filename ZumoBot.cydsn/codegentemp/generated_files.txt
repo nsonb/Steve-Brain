@@ -160,6 +160,7 @@
   <file name="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\codegentemp\CyBootAsmIar.s" value="SOURCE_ASM;CortexM0,CortexM0p,CortexM3,CortexM4,CortexM7;;e9305a93-d091-4da5-bdc7-2813049dcdbf;;cy_boot" />
   <file name="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\codegentemp\cmsis_armcc.h" value="HEADER;;;;;cy_boot" />
   <file name="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\codegentemp\cmsis_gcc.h" value="HEADER;;;;;cy_boot" />
+  <file name="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\codegentemp\cmsis_compiler.h" value="HEADER;;;;;cy_boot" />
   <file name="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\codegentemp\project.h" value="OTHER;;;;;" />
   <file name="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\codegentemp\cycodeshareimport.ld" value="OTHER;;;;;" />
   <file name="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\codegentemp\cycodeshareexport.ld" value="OTHER;;;;;" />

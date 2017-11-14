@@ -2,7 +2,7 @@
 --	Conversion of ZumoBot.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Nov 08 14:20:55 2017
+--	Tue Nov 14 11:06:02 2017
 --
 
 USE cypress.cypress.all;
@@ -784,7 +784,7 @@ SIGNAL \Timer_L3:Net_51\ : bit;
 SIGNAL \Timer_L3:Net_261\ : bit;
 SIGNAL \Timer_L3:Net_57\ : bit;
 SIGNAL Net_3177 : bit;
-SIGNAL Net_3181 : bit;
+SIGNAL Net_3818 : bit;
 SIGNAL \Timer_L3:Net_102\ : bit;
 SIGNAL Net_3163 : bit;
 SIGNAL Net_3165 : bit;
@@ -797,7 +797,7 @@ SIGNAL \Timer_R3:Net_51\ : bit;
 SIGNAL \Timer_R3:Net_261\ : bit;
 SIGNAL \Timer_R3:Net_57\ : bit;
 SIGNAL Net_3270 : bit;
-SIGNAL Net_2791 : bit;
+SIGNAL Net_3822 : bit;
 SIGNAL \Timer_R3:Net_102\ : bit;
 SIGNAL tmpOE__IR_led_net_0 : bit;
 SIGNAL tmpFB_0__IR_led_net_0 : bit;
@@ -813,7 +813,7 @@ SIGNAL \Timer_R1:Net_51\ : bit;
 SIGNAL \Timer_R1:Net_261\ : bit;
 SIGNAL \Timer_R1:Net_57\ : bit;
 SIGNAL Net_2909 : bit;
-SIGNAL Net_2913 : bit;
+SIGNAL Net_3826 : bit;
 SIGNAL \Timer_R1:Net_102\ : bit;
 SIGNAL tmpOE__R1_net_0 : bit;
 SIGNAL tmpFB_0__R1_net_0 : bit;
@@ -833,7 +833,7 @@ SIGNAL \Timer_L1:Net_51\ : bit;
 SIGNAL \Timer_L1:Net_261\ : bit;
 SIGNAL \Timer_L1:Net_57\ : bit;
 SIGNAL Net_3205 : bit;
-SIGNAL Net_3209 : bit;
+SIGNAL Net_3830 : bit;
 SIGNAL \Timer_L1:Net_102\ : bit;
 SIGNAL tmpOE__L1_net_0 : bit;
 SIGNAL tmpFB_0__L1_net_0 : bit;
@@ -848,7 +848,7 @@ TERMINAL tmpSIOVREF__Battery_pin_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__Battery_pin_net_0 : bit;
 TERMINAL \ADC_Battery:Net_248\ : bit;
 TERMINAL \ADC_Battery:Net_235\ : bit;
-SIGNAL Net_3416 : bit;
+SIGNAL Net_3833 : bit;
 SIGNAL \ADC_Battery:vp_ctl_0\ : bit;
 SIGNAL \ADC_Battery:vp_ctl_2\ : bit;
 SIGNAL \ADC_Battery:vn_ctl_1\ : bit;
@@ -857,7 +857,8 @@ SIGNAL \ADC_Battery:vp_ctl_1\ : bit;
 SIGNAL \ADC_Battery:vp_ctl_3\ : bit;
 SIGNAL \ADC_Battery:vn_ctl_0\ : bit;
 SIGNAL \ADC_Battery:vn_ctl_2\ : bit;
-SIGNAL \ADC_Battery:Net_376\ : bit;
+SIGNAL \ADC_Battery:Net_385\ : bit;
+SIGNAL \ADC_Battery:Net_381\ : bit;
 SIGNAL \ADC_Battery:Net_188\ : bit;
 SIGNAL \ADC_Battery:Net_221\ : bit;
 TERMINAL \ADC_Battery:Net_126\ : bit;
@@ -865,7 +866,7 @@ TERMINAL \ADC_Battery:Net_215\ : bit;
 TERMINAL \ADC_Battery:Net_257\ : bit;
 SIGNAL \ADC_Battery:soc\ : bit;
 SIGNAL \ADC_Battery:Net_252\ : bit;
-SIGNAL Net_3419 : bit;
+SIGNAL Net_3836 : bit;
 SIGNAL \ADC_Battery:Net_207_11\ : bit;
 SIGNAL \ADC_Battery:Net_207_10\ : bit;
 SIGNAL \ADC_Battery:Net_207_9\ : bit;
@@ -888,7 +889,7 @@ TERMINAL \ADC_Battery:Net_149\ : bit;
 TERMINAL \ADC_Battery:Net_209\ : bit;
 TERMINAL \ADC_Battery:Net_255\ : bit;
 TERMINAL \ADC_Battery:Net_368\ : bit;
-SIGNAL \ADC_Battery:Net_381\ : bit;
+SIGNAL \ADC_Battery:Net_383\ : bit;
 SIGNAL tmpOE__BatteryLed_net_0 : bit;
 SIGNAL tmpFB_0__BatteryLed_net_0 : bit;
 SIGNAL tmpIO_0__BatteryLed_net_0 : bit;
@@ -909,7 +910,7 @@ SIGNAL Net_3425 : bit;
 SIGNAL \Timer:Net_260\ : bit;
 SIGNAL Net_3433 : bit;
 SIGNAL \Timer:Net_55\ : bit;
-SIGNAL Net_3444 : bit;
+SIGNAL Net_3839 : bit;
 SIGNAL \Timer:Net_53\ : bit;
 SIGNAL \Timer:TimerUDB:ClockOutFromEnBlock\ : bit;
 SIGNAL \Timer:TimerUDB:ctrl_enable\ : bit;
@@ -943,7 +944,7 @@ SIGNAL \Timer:TimerUDB:tc_reg_i\ : bit;
 SIGNAL \Timer:TimerUDB:hwEnable_reg\ : bit;
 SIGNAL Net_3434 : bit;
 SIGNAL \Timer:TimerUDB:capture_out_reg_i\ : bit;
-SIGNAL Net_3443 : bit;
+SIGNAL Net_3838 : bit;
 SIGNAL \Timer:TimerUDB:int_capt_count_1\ : bit;
 SIGNAL cmp_vv_vv_MODGEN_7 : bit;
 SIGNAL add_vv_vv_MODGEN_8_1 : bit;
@@ -1508,9 +1509,9 @@ SIGNAL \Buzzer_PWM:Net_114\ : bit;
 SIGNAL Net_3786 : bit;
 SIGNAL Net_3788 : bit;
 SIGNAL \Timer_1:Net_260\ : bit;
-SIGNAL Net_3809 : bit;
+SIGNAL Net_3840 : bit;
 SIGNAL \Timer_1:Net_55\ : bit;
-SIGNAL Net_3813 : bit;
+SIGNAL Net_3844 : bit;
 SIGNAL \Timer_1:Net_53\ : bit;
 SIGNAL \Timer_1:TimerUDB:ClockOutFromEnBlock\ : bit;
 SIGNAL \Timer_1:TimerUDB:Clk_Ctl_i\ : bit;
@@ -1544,7 +1545,7 @@ SIGNAL \Timer_1:TimerUDB:tc_i\ : bit;
 SIGNAL \Timer_1:TimerUDB:tc_reg_i\ : bit;
 SIGNAL \Timer_1:TimerUDB:hwEnable_reg\ : bit;
 SIGNAL \Timer_1:TimerUDB:capture_out_reg_i\ : bit;
-SIGNAL Net_3812 : bit;
+SIGNAL Net_3843 : bit;
 SIGNAL \Timer_1:TimerUDB:int_capt_count_1\ : bit;
 SIGNAL \Timer_1:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_10\ : bit;
 SIGNAL \Timer_1:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_11_1\ : bit;
@@ -3492,7 +3493,7 @@ Battery_pin:cy_psoc3_pins_v1_10
 \ADC_Battery:IRQ\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_3416);
+	PORT MAP(int_signal=>Net_3833);
 \ADC_Battery:theACLK\:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"bc9bbc67-d7f8-43cb-80c9-9415958ddc6b/696a0979-21fc-4185-bf38-6c79febcde7a",
@@ -3500,9 +3501,9 @@ Battery_pin:cy_psoc3_pins_v1_10
 		divisor=>0,
 		period=>"87962955.6327167",
 		is_direct=>'0',
-		is_digital=>'1')
-	PORT MAP(clock_out=>\ADC_Battery:Net_376\,
-		dig_domain_out=>open);
+		is_digital=>'0')
+	PORT MAP(clock_out=>\ADC_Battery:Net_385\,
+		dig_domain_out=>\ADC_Battery:Net_381\);
 \ADC_Battery:ADC_SAR\:cy_psoc5_sar_v2_0
 	GENERIC MAP(cy_registers=>"")
 	PORT MAP(vplus=>Net_3407,
@@ -3510,18 +3511,18 @@ Battery_pin:cy_psoc3_pins_v1_10
 		ext_pin=>\ADC_Battery:Net_215\,
 		vrefhi_out=>\ADC_Battery:Net_257\,
 		vref=>\ADC_Battery:Net_248\,
-		clock=>\ADC_Battery:Net_376\,
-		pump_clock=>\ADC_Battery:Net_376\,
+		clock=>\ADC_Battery:Net_385\,
+		pump_clock=>\ADC_Battery:Net_385\,
 		sof_udb=>zero,
 		clk_udb=>zero,
 		vp_ctl_udb=>(zero, zero, zero, zero),
 		vn_ctl_udb=>(zero, zero, zero, zero),
 		irq=>\ADC_Battery:Net_252\,
-		next_out=>Net_3419,
+		next_out=>Net_3836,
 		data_out=>(\ADC_Battery:Net_207_11\, \ADC_Battery:Net_207_10\, \ADC_Battery:Net_207_9\, \ADC_Battery:Net_207_8\,
 			\ADC_Battery:Net_207_7\, \ADC_Battery:Net_207_6\, \ADC_Battery:Net_207_5\, \ADC_Battery:Net_207_4\,
 			\ADC_Battery:Net_207_3\, \ADC_Battery:Net_207_2\, \ADC_Battery:Net_207_1\, \ADC_Battery:Net_207_0\),
-		eof_udb=>Net_3416);
+		eof_udb=>Net_3833);
 \ADC_Battery:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
 	GENERIC MAP(sig_width=>1,
 		is_net_join=>'0')
@@ -3557,14 +3558,14 @@ Battery_pin:cy_psoc3_pins_v1_10
 		pin_mode=>"A",
 		por_state=>4,
 		sio_group_cnt=>0,
-		sio_hifreq=>"",
-		sio_hyst=>"0",
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
 		sio_ibuf=>"00000000",
 		sio_info=>"00",
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
-		sio_vohsel=>"",
+		sio_vohsel=>"00000000",
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
@@ -3579,10 +3580,10 @@ Battery_pin:cy_psoc3_pins_v1_10
 		pa_out_clock=>-1,
 		pa_out_clock_en=>-1,
 		pa_out_reset=>-1,
-		ovt_needed=>"",
-		ovt_slew_control=>"",
-		ovt_hyst_trim=>"",
-		input_buffer_sel=>"")
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
 		fb=>(\ADC_Battery:tmpFB_0__Bypass_net_0\),

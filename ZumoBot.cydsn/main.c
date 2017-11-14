@@ -250,40 +250,93 @@ int main()
         //reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
         //printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
         int IR_val;
-         
-        do {
+        int oldSignalValue = -1;
+        int stopCounter = 0;
+        int lineChecker = 0; //variable to check if the line is still the same
+        float accelerator = 1;
+        
+        //remote control
+        do 
+        {
             IR_val = get_IR();
         }
-        
         while(!IR_val);
         motor_start();
-        do{ 
+        
+        do
+        { 
             reflectance_read(&ref);
             reflectance_digital(&dig);
+            //for pausing at extra line
+            
+            if(dig.l1 + dig.l3 + dig.r1 + dig.r3 == 0)
+            {
+                if(dig.l1 + dig.l3 + dig.r1 + dig.r3 != oldSignalValue )
+                {   
+                    stopCounter ++;
+                }
+                if(stopCounter == 1 || stopCounter == 3)
+                {
+                    motor_stop();
+                do
+                {
+                    IR_val = get_IR();
+                }
+                while(!IR_val);
+                motor_start();
+                motor_forward(100,100);
+            }
+            }
+            
+            //acceleration modifier
+            if(lineChecker == dig.l1+dig.r1)
+            {
+                accelerator+=0.2;
+            }
+            else
+            {
+                accelerator-=0.2;
+            }
+            
+            //main moving part
             if(dig.r1+dig.l1==0)
             {
-                motor_forward(120,50);
-                CyDelay(50);
+                motor_forward(120*accelerator,50);
             }
             else if (dig.r1==1 && dig.l1==0)
             {
                 motor_forward(1,1);
-                motor_turn(0,140,50);
-                CyDelay(50);
-                
+                if(dig.l3==0)
+                {
+                    motor_turn(10*accelerator,150*accelerator,35);
+                }
+                else
+                {
+                    motor_turn(10*accelerator,100*accelerator,35);
+                }
             }
             else if (dig.r1==0 && dig.l1==1)
             {   
                 motor_forward(1,1);
-                motor_turn(140,0,50);
-                CyDelay(50);
+                if(dig.r3==0)
+                {
+                    motor_turn(150*accelerator,10*accelerator,35);
+                }
+                else
+                {
+                    motor_turn(100*accelerator,10*accelerator,35);
+                }
             }
             else
-            {
-                motor_backward(100,50);
-                motor_turn(150,0,100);
-                CyDelay(100);
+            {   
+                //motor_backward(80,15);
+                //motor_turn(100,0,30);
+                //CyDelay(50);
             }
+            oldSignalValue = dig.l1 + dig.l3 + dig.r1 + dig.r3;
+            lineChecker = dig.l1 + dig.r1;
+            //the loop for running normally - hopefully
+            
         }
         while(1);
             

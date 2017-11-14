@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
   28:Generated_Source\PSoC5/Buzzer_PWM.c ****     #error PWM_v3_30 detected with a constant 0 for the enable or \
   29:Generated_Source\PSoC5/Buzzer_PWM.c ****          constant 1 for reset. This will prevent the component from operating.
   30:Generated_Source\PSoC5/Buzzer_PWM.c **** #endif /* Buzzer_PWM_PWMUDB_genblk1_ctrlreg__REMOVED */
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 2
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 2
 
 
   31:Generated_Source\PSoC5/Buzzer_PWM.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
   85:Generated_Source\PSoC5/Buzzer_PWM.c **** {
   86:Generated_Source\PSoC5/Buzzer_PWM.c ****     #if (Buzzer_PWM_UsingFixedFunction || Buzzer_PWM_UseControl)
   87:Generated_Source\PSoC5/Buzzer_PWM.c ****         uint8 ctrl;
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 3
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 3
 
 
   88:Generated_Source\PSoC5/Buzzer_PWM.c ****     #endif /* (Buzzer_PWM_UsingFixedFunction || Buzzer_PWM_UseControl) */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  142:Generated_Source\PSoC5/Buzzer_PWM.c ****             Buzzer_PWM_WriteCompare2(Buzzer_PWM_INIT_COMPARE_VALUE2);
  143:Generated_Source\PSoC5/Buzzer_PWM.c ****         #endif /* (Buzzer_PWM_UseOneCompareMode) */
  144:Generated_Source\PSoC5/Buzzer_PWM.c **** 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 4
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 4
 
 
  145:Generated_Source\PSoC5/Buzzer_PWM.c ****         #if (Buzzer_PWM_KillModeMinTime)
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  199:Generated_Source\PSoC5/Buzzer_PWM.c **** void Buzzer_PWM_Enable(void) 
  200:Generated_Source\PSoC5/Buzzer_PWM.c **** {
   28              		.loc 1 200 0
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 5
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 5
 
 
   29              		.cfi_startproc
@@ -263,7 +263,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
   39              	.L3:
   40              		.align	2
   41              	.L2:
-  42 000c 76650040 		.word	1073767798
+  42 000c 7C640040 		.word	1073767548
   43              		.cfi_endproc
   44              	.LFE2:
   45              		.size	Buzzer_PWM_Enable, .-Buzzer_PWM_Enable
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  230:Generated_Source\PSoC5/Buzzer_PWM.c **** *  has no effect on the operation of the PWM
  231:Generated_Source\PSoC5/Buzzer_PWM.c **** *
  232:Generated_Source\PSoC5/Buzzer_PWM.c **** *******************************************************************************/
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 6
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 6
 
 
  233:Generated_Source\PSoC5/Buzzer_PWM.c **** void Buzzer_PWM_Stop(void) 
@@ -319,7 +319,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
   65              	.L6:
   66              		.align	2
   67              	.L5:
-  68 000c 76650040 		.word	1073767798
+  68 000c 7C640040 		.word	1073767548
   69              		.cfi_endproc
   70              	.LFE3:
   71              		.size	Buzzer_PWM_Stop, .-Buzzer_PWM_Stop
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  261:Generated_Source\PSoC5/Buzzer_PWM.c ****         *
  262:Generated_Source\PSoC5/Buzzer_PWM.c ****         * Return:
  263:Generated_Source\PSoC5/Buzzer_PWM.c ****         *  None
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 7
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 7
 
 
  264:Generated_Source\PSoC5/Buzzer_PWM.c ****         *
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  318:Generated_Source\PSoC5/Buzzer_PWM.c ****         * Parameters:
  319:Generated_Source\PSoC5/Buzzer_PWM.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
  320:Generated_Source\PSoC5/Buzzer_PWM.c ****         *                defined in the H file as input arguments.
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 8
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 8
 
 
  321:Generated_Source\PSoC5/Buzzer_PWM.c ****         *
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  375:Generated_Source\PSoC5/Buzzer_PWM.c ****     #endif /*Buzzer_PWM_CompareMode2SW */
  376:Generated_Source\PSoC5/Buzzer_PWM.c **** 
  377:Generated_Source\PSoC5/Buzzer_PWM.c **** #endif /* UseOneCompareMode */
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 9
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 9
 
 
  378:Generated_Source\PSoC5/Buzzer_PWM.c **** 
@@ -523,7 +523,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
   90              	.L9:
   91 0006 00BF     		.align	2
   92              	.L8:
-  93 0008 06650040 		.word	1073767686
+  93 0008 08640040 		.word	1073767432
   94              		.cfi_endproc
   95              	.LFE4:
   96              		.size	Buzzer_PWM_WriteCounter, .-Buzzer_PWM_WriteCounter
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  407:Generated_Source\PSoC5/Buzzer_PWM.c ****     }
  408:Generated_Source\PSoC5/Buzzer_PWM.c **** 
  409:Generated_Source\PSoC5/Buzzer_PWM.c **** 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 10
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 10
 
 
  410:Generated_Source\PSoC5/Buzzer_PWM.c ****     /*******************************************************************************
@@ -582,8 +582,8 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  118              	.L12:
  119 000a 00BF     		.align	2
  120              	.L11:
- 121 000c 16650040 		.word	1073767702
- 122 0010 56650040 		.word	1073767766
+ 121 000c 18640040 		.word	1073767448
+ 122 0010 58640040 		.word	1073767512
  123              		.cfi_endproc
  124              	.LFE5:
  125              		.size	Buzzer_PWM_ReadCounter, .-Buzzer_PWM_ReadCounter
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  435:Generated_Source\PSoC5/Buzzer_PWM.c **** 
  436:Generated_Source\PSoC5/Buzzer_PWM.c ****     #if (Buzzer_PWM_UseStatus)
  437:Generated_Source\PSoC5/Buzzer_PWM.c **** 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 11
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 11
 
 
  438:Generated_Source\PSoC5/Buzzer_PWM.c **** 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  486:Generated_Source\PSoC5/Buzzer_PWM.c ****     #else
  487:Generated_Source\PSoC5/Buzzer_PWM.c ****         CY_SET_REG8(Buzzer_PWM_PERIOD_LSB_PTR, period);
  140              		.loc 1 487 0
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 12
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 12
 
 
  141 0000 014B     		ldr	r3, .L14
@@ -667,7 +667,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  144              	.L15:
  145 0006 00BF     		.align	2
  146              	.L14:
- 147 0008 46650040 		.word	1073767750
+ 147 0008 48640040 		.word	1073767496
  148              		.cfi_endproc
  149              	.LFE6:
  150              		.size	Buzzer_PWM_WritePeriod, .-Buzzer_PWM_WritePeriod
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  164              	.LVL2:
  519:Generated_Source\PSoC5/Buzzer_PWM.c ****         #if(Buzzer_PWM_UsingFixedFunction)
  520:Generated_Source\PSoC5/Buzzer_PWM.c ****             CY_SET_REG16(Buzzer_PWM_COMPARE1_LSB_PTR, (uint16)compare);
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 13
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 13
 
 
  521:Generated_Source\PSoC5/Buzzer_PWM.c ****         #else
@@ -730,7 +730,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  169              	.L18:
  170 0006 00BF     		.align	2
  171              	.L17:
- 172 0008 26650040 		.word	1073767718
+ 172 0008 28640040 		.word	1073767464
  173              		.cfi_endproc
  174              	.LFE7:
  175              		.size	Buzzer_PWM_WriteCompare, .-Buzzer_PWM_WriteCompare
@@ -764,7 +764,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  200 000e 1370     		strb	r3, [r2]
  126:Generated_Source\PSoC5/Buzzer_PWM.c ****         #else /* (Buzzer_PWM_Resolution == 16)*/
  201              		.loc 1 126 0
- 202 0010 2032     		adds	r2, r2, #32
+ 202 0010 1C32     		adds	r2, r2, #28
  203 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  204 0014 43F00103 		orr	r3, r3, #1
  205 0018 1370     		strb	r3, [r2]
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  211 0020 FF20     		movs	r0, #255
  212 0022 FFF7FEFF 		bl	Buzzer_PWM_WritePeriod
  213              	.LVL6:
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 14
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 14
 
 
  139:Generated_Source\PSoC5/Buzzer_PWM.c ****         #else
@@ -790,7 +790,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  219              	.L22:
  220 002e 00BF     		.align	2
  221              	.L21:
- 222 0030 76650040 		.word	1073767798
+ 222 0030 7C640040 		.word	1073767548
  223              		.cfi_endproc
  224              	.LFE1:
  225              		.size	Buzzer_PWM_Init, .-Buzzer_PWM_Init
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  262              		.cfi_endproc
  263              	.LFE0:
  264              		.size	Buzzer_PWM_Start, .-Buzzer_PWM_Start
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 15
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 15
 
 
  265              		.section	.text.Buzzer_PWM_ReadControlRegister,"ax",%progbits
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  569:Generated_Source\PSoC5/Buzzer_PWM.c ****     *
  570:Generated_Source\PSoC5/Buzzer_PWM.c ****     * Summary:
  571:Generated_Source\PSoC5/Buzzer_PWM.c ****     *  This funtion is used to change the compare value, for compare1 output.
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 16
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 16
 
 
  572:Generated_Source\PSoC5/Buzzer_PWM.c ****     *  The compare output will reflect the new value on the next UDB clock.
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  626:Generated_Source\PSoC5/Buzzer_PWM.c ****             #else
  627:Generated_Source\PSoC5/Buzzer_PWM.c ****                 Buzzer_PWM_DEADBAND_COUNT |= deadtime & Buzzer_PWM_DEADBAND_COUNT_MASK;
  628:Generated_Source\PSoC5/Buzzer_PWM.c ****             #endif /* (Buzzer_PWM_DEADBAND_COUNT_SHIFT) */
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 17
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 17
 
 
  629:Generated_Source\PSoC5/Buzzer_PWM.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  683:Generated_Source\PSoC5/Buzzer_PWM.c ****     *******************************************************************************/
  684:Generated_Source\PSoC5/Buzzer_PWM.c ****     void Buzzer_PWM_SetInterruptMode(uint8 interruptMode) 
  685:Generated_Source\PSoC5/Buzzer_PWM.c ****     {
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 18
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 18
 
 
  686:Generated_Source\PSoC5/Buzzer_PWM.c ****         CY_SET_REG8(Buzzer_PWM_STATUS_MASK_PTR, interruptMode);
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  274              		.cfi_startproc
  275              		@ args = 0, pretend = 0, frame = 0
  276              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 19
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 19
 
 
  277              		@ link register save eliminated.
@@ -1096,7 +1096,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  284              	.L30:
  285 0006 00BF     		.align	2
  286              	.L29:
- 287 0008 76650040 		.word	1073767798
+ 287 0008 7C640040 		.word	1073767548
  288              		.cfi_endproc
  289              	.LFE8:
  290              		.size	Buzzer_PWM_ReadControlRegister, .-Buzzer_PWM_ReadControlRegister
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  303              		@ link register save eliminated.
  304              	.LVL11:
  767:Generated_Source\PSoC5/Buzzer_PWM.c ****         CY_SET_REG8(Buzzer_PWM_CONTROL_PTR, control);
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 20
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 20
 
 
  305              		.loc 1 767 0
@@ -1148,7 +1148,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  309              	.L33:
  310 0006 00BF     		.align	2
  311              	.L32:
- 312 0008 76650040 		.word	1073767798
+ 312 0008 7C640040 		.word	1073767548
  313              		.cfi_endproc
  314              	.LFE9:
  315              		.size	Buzzer_PWM_WriteControlRegister, .-Buzzer_PWM_WriteControlRegister
@@ -1198,11 +1198,11 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  333 0004 7047     		bx	lr
  334              	.L36:
  335 0006 00BF     		.align	2
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 21
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 21
 
 
  336              	.L35:
- 337 0008 56650040 		.word	1073767766
+ 337 0008 58640040 		.word	1073767512
  338              		.cfi_endproc
  339              	.LFE10:
  340              		.size	Buzzer_PWM_ReadCapture, .-Buzzer_PWM_ReadCapture
@@ -1257,8 +1257,8 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  359              	.L39:
  360 0006 00BF     		.align	2
  361              	.L38:
- 362 0008 26650040 		.word	1073767718
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 22
+ 362 0008 28640040 		.word	1073767464
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 22
 
 
  363              		.cfi_endproc
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  867:Generated_Source\PSoC5/Buzzer_PWM.c **** #endif /* (Buzzer_PWM_UseOneCompareMode) */
  868:Generated_Source\PSoC5/Buzzer_PWM.c **** 
  869:Generated_Source\PSoC5/Buzzer_PWM.c **** 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 23
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 23
 
 
  870:Generated_Source\PSoC5/Buzzer_PWM.c **** /*******************************************************************************
@@ -1356,7 +1356,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  384              	.L42:
  385 0006 00BF     		.align	2
  386              	.L41:
- 387 0008 46650040 		.word	1073767750
+ 387 0008 48640040 		.word	1073767496
  388              		.cfi_endproc
  389              	.LFE12:
  390              		.size	Buzzer_PWM_ReadPeriod, .-Buzzer_PWM_ReadPeriod
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  406 000a 04       		.byte	0x4
  407 000b 01       		.uleb128 0x1
  408 000c B9000000 		.4byte	.LASF34
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 24
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 24
 
 
  409 0010 0C       		.byte	0xc
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  463 007a 9D000000 		.4byte	.LASF9
  464 007e 02       		.uleb128 0x2
  465 007f 08       		.byte	0x8
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 25
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 25
 
 
  466 0080 04       		.byte	0x4
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  520 00f2 09       		.uleb128 0x9
  521 00f3 18000000 		.4byte	.LASF30
  522 00f7 01       		.byte	0x1
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 26
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 26
 
 
  523 00f8 A901     		.2byte	0x1a9
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  577 0172 00000000 		.4byte	.LLST0
  578 0176 0C       		.uleb128 0xc
  579 0177 20000000 		.4byte	.LVL5
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 27
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 27
 
 
  580 017b CD000000 		.4byte	0xcd
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  634 01eb 01       		.uleb128 0x1
  635 01ec 9C       		.byte	0x9c
  636 01ed 00020000 		.4byte	0x200
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 28
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 28
 
 
  637 01f1 11       		.uleb128 0x11
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  691 026c 01       		.byte	0x1
  692 026d 20       		.byte	0x20
  693 026e 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 29
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 29
 
 
  694 0272 05       		.uleb128 0x5
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  748 0030 3B       		.uleb128 0x3b
  749 0031 05       		.uleb128 0x5
  750 0032 49       		.uleb128 0x49
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 30
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 30
 
 
  751 0033 13       		.uleb128 0x13
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  805 006b 01       		.uleb128 0x1
  806 006c 13       		.uleb128 0x13
  807 006d 00       		.byte	0
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 31
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 31
 
 
  808 006e 00       		.byte	0
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  862 00a5 11       		.uleb128 0x11
  863 00a6 01       		.uleb128 0x1
  864 00a7 12       		.uleb128 0x12
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 32
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 32
 
 
  865 00a8 06       		.uleb128 0x6
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  919 00e6 898201   		.uleb128 0x4109
  920 00e9 00       		.byte	0
  921 00ea 11       		.uleb128 0x11
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 33
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 33
 
 
  922 00eb 01       		.uleb128 0x1
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  976 0122 3B       		.uleb128 0x3b
  977 0123 0B       		.uleb128 0xb
  978 0124 49       		.uleb128 0x49
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 34
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 34
 
 
  979 0125 13       		.uleb128 0x13
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  1033              	.Ldebug_ranges0:
  1034 0000 00000000 		.4byte	.LFB2
  1035 0004 10000000 		.4byte	.LFE2
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 35
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 35
 
 
  1036 0008 00000000 		.4byte	.LFB3
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  1073              	.LASF19:
  1074 004d 42757A7A 		.ascii	"Buzzer_PWM_WritePeriod\000"
  1074      65725F50 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 36
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 36
 
 
  1074      574D5F57 
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  1094      746F7000 
  1095              	.LASF5:
  1096 015c 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 37
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 37
 
 
  1096      20756E73 
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  1117              	.LASF36:
  1118 021e 4A3A5C50 		.ascii	"J:\\Project\\Steve Brain\\Zumo01\\ZumoBot.cydsn\000"
  1118      726F6A65 
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 38
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 38
 
 
  1118      63745C53 
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 1
  1142      68617200 
  1143              	.LASF23:
  1144 02ee 636F6D70 		.ascii	"compare\000"
-ARM GAS  C:\Users\asd\AppData\Local\Temp\ccK3Pzmy.s 			page 39
+ARM GAS  C:\Users\asd\AppData\Local\Temp\cc9Ag7rj.s 			page 39
 
 
  1144      61726500 

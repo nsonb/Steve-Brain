@@ -12,7 +12,7 @@
 */
 void wait_going_up()
 {
-    while(!IR_receiver_Read()==1);
+    while(!IR_receiver_Read());
 }    
 
 
@@ -35,7 +35,7 @@ void wait_going_down()
 int count_downtime()
 {
     int cnt =0;
-    while(!IR_receiver_Read()==1)
+    while(!IR_receiver_Read())
         cnt++;
     
     return cnt;

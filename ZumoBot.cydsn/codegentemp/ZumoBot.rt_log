@@ -13,13 +13,11 @@ I1206: Completed Reading of file ZumoBot.sdc
 I1204: Reading architecture from file J:\PSoC\PSoC Creator\4.1\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata
 I1206: Completed Reading of file J:\PSoC\PSoC Creator\4.1\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata
 I1209: Started routing
-I1223: Total Nets : 121 
-I1212: Iteration  1 :    86 unrouted : 1 seconds
-I1212: Iteration  2 :    14 unrouted : 0 seconds
-I1212: Iteration  3 :     4 unrouted : 0 seconds
-I1212: Iteration  4 :     4 unrouted : 0 seconds
-I1212: Iteration  5 :     2 unrouted : 0 seconds
-I1212: Iteration  6 :     0 unrouted : 0 seconds
+I1223: Total Nets : 120 
+I1212: Iteration  1 :    83 unrouted : 1 seconds
+I1212: Iteration  2 :    13 unrouted : 0 seconds
+I1212: Iteration  3 :     7 unrouted : 0 seconds
+I1212: Iteration  4 :     0 unrouted : 0 seconds
 I1215: Routing is successful
 I1207: Completed routing
 I1210: Writing routes

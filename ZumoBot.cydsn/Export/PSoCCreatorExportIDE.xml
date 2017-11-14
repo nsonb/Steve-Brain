@@ -25,7 +25,7 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="ZumoBot" Path="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn" Version="5.50" Type="Normal">
+  <Project Name="ZumoBot" Path="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn" Version="5.60" Type="Normal">
     <CMSIS_SVD_File>ZumoBot.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -127,6 +127,7 @@
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">Generated_Source\PSoC5\CyBootAsmIar.s</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cmsis_armcc.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cmsis_gcc.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cmsis_compiler.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\project.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\MotorPwmLeft_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\MotorPwmLeft.c</File>

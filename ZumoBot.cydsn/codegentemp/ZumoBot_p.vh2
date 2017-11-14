@@ -1,5 +1,5 @@
 -- Project:   ZumoBot
--- Generated: 11/08/2017 14:20:56
+-- Generated: 11/14/2017 11:06:03
 -- PSoC Creator  4.1 Update 1
 
 ENTITY ZumoBot IS
@@ -77,8 +77,6 @@ ARCHITECTURE __DEFAULT__ OF ZumoBot IS
     SIGNAL Net_3205 : bit;
     SIGNAL Net_3223 : bit;
     SIGNAL Net_3270 : bit;
-    SIGNAL Net_3416 : bit;
-    SIGNAL Net_3419 : bit;
     SIGNAL Net_3423 : bit;
     ATTRIBUTE udbclken_assigned OF Net_3423 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_3423 : SIGNAL IS true;
@@ -96,6 +94,8 @@ ARCHITECTURE __DEFAULT__ OF ZumoBot IS
     ATTRIBUTE global_signal OF Net_3786 : SIGNAL IS true;
     SIGNAL Net_3786_local : bit;
     SIGNAL Net_3800 : bit;
+    SIGNAL Net_3833 : bit;
+    SIGNAL Net_3836 : bit;
     SIGNAL Net_59 : bit;
     ATTRIBUTE udbclken_assigned OF Net_59 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_59 : SIGNAL IS true;
@@ -122,9 +122,11 @@ ARCHITECTURE __DEFAULT__ OF ZumoBot IS
     SIGNAL \ADC_Battery:Net_207_8\ : bit;
     SIGNAL \ADC_Battery:Net_207_9\ : bit;
     SIGNAL \ADC_Battery:Net_252\ : bit;
-    SIGNAL \ADC_Battery:Net_376\ : bit;
-    ATTRIBUTE global_signal OF \ADC_Battery:Net_376\ : SIGNAL IS true;
-    SIGNAL \ADC_Battery:Net_376_local\ : bit;
+    SIGNAL \ADC_Battery:Net_381\ : bit;
+    SIGNAL \ADC_Battery:Net_381_local\ : bit;
+    SIGNAL \ADC_Battery:Net_385\ : bit;
+    ATTRIBUTE global_signal OF \ADC_Battery:Net_385\ : SIGNAL IS true;
+    SIGNAL \ADC_Battery:Net_385_local\ : bit;
     SIGNAL \Buzzer_PWM:PWMUDB:cmp1_less\ : bit;
     SIGNAL \Buzzer_PWM:PWMUDB:control_0\ : bit;
     SIGNAL \Buzzer_PWM:PWMUDB:control_1\ : bit;
@@ -243,6 +245,7 @@ ARCHITECTURE __DEFAULT__ OF ZumoBot IS
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.clk_bus_glb_ff__sig\ : bit;
+    SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     SIGNAL \Timer:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \Timer:TimerUDB:sT16:timerdp:u0.cl0__sig\ : bit;
     SIGNAL \Timer:TimerUDB:sT16:timerdp:u0.z0__sig\ : bit;
@@ -759,19 +762,22 @@ BEGIN
             clk_bus => ClockBlock_BUS_CLK_local,
             dsi_clkin_div => open,
             dsi_glb_div => open,
-            dclk_glb_0 => \ADC_Battery:Net_376\,
-            dclk_0 => \ADC_Battery:Net_376_local\,
-            dclk_glb_1 => \UART_1:Net_9\,
-            dclk_1 => \UART_1:Net_9_local\,
-            dclk_glb_2 => Net_3423,
-            dclk_2 => Net_3423_local,
-            dclk_glb_3 => Net_3666,
-            dclk_3 => Net_3666_local,
-            dclk_glb_4 => Net_59,
-            dclk_4 => Net_59_local,
-            dclk_glb_5 => Net_3786,
-            dclk_5 => Net_3786_local,
-            clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\);
+            aclk_glb_0 => \ADC_Battery:Net_385\,
+            aclk_0 => \ADC_Battery:Net_385_local\,
+            clk_a_dig_glb_0 => \ADC_Battery:Net_381\,
+            clk_a_dig_0 => \ADC_Battery:Net_381_local\,
+            dclk_glb_0 => \UART_1:Net_9\,
+            dclk_0 => \UART_1:Net_9_local\,
+            dclk_glb_1 => Net_3423,
+            dclk_1 => Net_3423_local,
+            dclk_glb_2 => Net_3666,
+            dclk_2 => Net_3666_local,
+            dclk_glb_3 => Net_59,
+            dclk_3 => Net_59_local,
+            dclk_glb_4 => Net_3786,
+            dclk_4 => Net_3786_local,
+            clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\,
+            aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
 
     MotorPwmLeft:logicalport
         GENERIC MAP(
@@ -2058,7 +2064,7 @@ BEGIN
             ibuf_enabled => "0",
             id => "bc9bbc67-d7f8-43cb-80c9-9415958ddc6b/16a808f6-2e13-45b9-bce0-b001c8655113",
             init_dr_st => "0",
-            input_buffer_sel => "",
+            input_buffer_sel => "00",
             input_clk_en => 0,
             input_sync => "1",
             input_sync_mode => "0",
@@ -2080,9 +2086,9 @@ BEGIN
             output_mode => "0",
             output_reset => 0,
             output_sync => "0",
-            ovt_hyst_trim => "",
-            ovt_needed => "",
-            ovt_slew_control => "",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
             pa_in_clock => -1,
             pa_in_clock_en => -1,
             pa_in_reset => -1,
@@ -2095,13 +2101,13 @@ BEGIN
             port_alias_group => "",
             port_alias_required => 0,
             sio_group_cnt => 0,
-            sio_hifreq => "",
-            sio_hyst => "0",
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
             sio_ibuf => "00000000",
             sio_info => "00",
             sio_obuf => "00000000",
             sio_refsel => "00000000",
-            sio_vohsel => "",
+            sio_vohsel => "00000000",
             sio_vtrip => "00000000",
             slew_rate => "0",
             spanning => 0,
@@ -3219,14 +3225,15 @@ BEGIN
             int_type => "10",
             is_nmi => 0)
         PORT MAP(
-            interrupt => Net_3416,
+            interrupt => Net_3833,
             clock => ClockBlock_BUS_CLK);
 
     \ADC_Battery:ADC_SAR\:sarcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            clk_udb => \ADC_Battery:Net_376_local\,
+            clock => \ClockBlock.aclk_glb_ff_0__sig\,
+            pump_clock => \ClockBlock.aclk_glb_ff_0__sig\,
             sof_udb => open,
             vp_ctl_udb_3 => open,
             vp_ctl_udb_2 => open,
@@ -3237,7 +3244,7 @@ BEGIN
             vn_ctl_udb_1 => open,
             vn_ctl_udb_0 => open,
             irq => \ADC_Battery:Net_252\,
-            next => Net_3419,
+            next => Net_3836,
             data_out_udb_11 => \ADC_Battery:Net_207_11\,
             data_out_udb_10 => \ADC_Battery:Net_207_10\,
             data_out_udb_9 => \ADC_Battery:Net_207_9\,
@@ -3250,7 +3257,7 @@ BEGIN
             data_out_udb_2 => \ADC_Battery:Net_207_2\,
             data_out_udb_1 => \ADC_Battery:Net_207_1\,
             data_out_udb_0 => \ADC_Battery:Net_207_0\,
-            eof_udb => Net_3416);
+            eof_udb => Net_3833);
 
     \Timer:TimerUDB:rstSts:stsreg\:statusicell
         GENERIC MAP(
