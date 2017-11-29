@@ -62,6 +62,7 @@
 <v>Zumo\ZumoBot\Generated_Source\PSoC5\Buzzer_PWM</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Zumo\ZumoBot\ZumoBot.cydwr\Clocks</v>
 <v>Zumo\ZumoBot\ZumoBot.cydwr\Interrupts</v>
 <v>Zumo\ZumoBot\ZumoBot.cydwr\DMA</v>
 <v>Zumo\ZumoBot\ZumoBot.cydwr\System</v>
@@ -94,10 +95,9 @@
 <v>Zumo\ZumoBot\Source Files\Reflectance.c</v>
 <v>Zumo\ZumoBot\Source Files\Ultra.c</v>
 <v>Zumo\ZumoBot\Generated_Source</v>
-<v>Zumo\ZumoBot\Generated_Source\PSoC5</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Zumo\ZumoBot">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Zumo">
 <ExpandedNodeIds>
 <v>Zumo</v>
 <v>Zumo\ZumoBot</v>
@@ -239,7 +239,6 @@
 <v>Zumo\ZumoBot\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
 <v>Zumo\ZumoBot\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
 <v>Zumo\ZumoBot\CortexM3\ARM_GCC_541\Debug\Listing Files\Echo.lst</v>
-<v>Zumo\ZumoBot\CortexM3\ARM_GCC_541\Debug\Listing Files\Gyro.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -309,7 +308,8 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\ZumoBot.cydsn\main.c" />
-<name v=".\ZumoBot.cydsn\ZumoLibrary\IR.h" />
+<name v=".\ZumoBot.cydsn\ZumoLibrary\Motor.c" />
+<name v=".\ZumoBot.cydsn\ZumoLibrary\Motor.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -317,7 +317,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="915, 480" SelectedTabbedMdiWindow="8c2d6d0c-f3ff-4461-9e34-6cf0bc818ee0"><DocumentWindow Key="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\main.c" Guid="8c2d6d0c-f3ff-4461-9e34-6cf0bc818ee0" /><DocumentWindow Key="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\ZumoLibrary\IR.h" Guid="8a586f6b-e35c-4b08-b558-a51efb1d2278" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="834, 497" SelectedTabbedMdiWindow="8c2d6d0c-f3ff-4461-9e34-6cf0bc818ee0"><DocumentWindow Key="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\main.c" Guid="8c2d6d0c-f3ff-4461-9e34-6cf0bc818ee0" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="15ccdabd-23d1-48ac-b055-ab8bd47e94f6" /><DocumentWindow Key="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\ZumoLibrary\Motor.c" Guid="4265f2df-0613-4b53-8427-fffb64455b9a" /><DocumentWindow Key="J:\Project\Steve Brain\Zumo01\ZumoBot.cydsn\ZumoLibrary\Motor.h" Guid="2f10e796-1ae4-4829-8aa3-066afa011bf9" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

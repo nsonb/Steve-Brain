@@ -229,7 +229,6 @@ int main()
 }   
 //*/
 
-
 //reflectance//
 int main()
 {
@@ -241,19 +240,30 @@ int main()
     sensor_isr_StartEx(sensor_isr_handler);
     
     reflectance_start();
-
+    int left_white = 5450, right_white = 5400, black = 24000;
+    
     IR_led_Write(1);
+    int IR_val;
+    int stopCounter = 0, left_speed = 255, right_speed = 255, max_speed = 255, oldSignalValue = -1, Kp = 500, flag = 0;
+    float error_left = 0, error_right = 0, old_error_right = 500000, old_error_left = 500000, old_speed_left = 0, old_speed_right = 0;
+    
     for(;;)
     {
-        //reflectance_read(&ref);
-        //printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
-        //reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
-        //printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
-        int IR_val;
-        int oldSignalValue = -1;
-        int stopCounter = 0;
-        int lineChecker = 0; //variable to check if the line is still the same
-        float accelerator = 1;
+        /*
+        do
+        {
+        reflectance_read(&ref);
+        printf("%d %d %d %d \r\n", ref.l3, ref.l1, ref.r1, ref.r3);       //print out each period of reflectance sensors
+        reflectance_digital(&dig);      //print out 0 or 1 according to results of reflectance period
+        printf("%d %d %d %d \r\n", dig.l3, dig.l1, dig.r1, dig.r3);        //print out 0 or 1 according to results of reflectance period
+        CyDelay(1000);
+        }
+        while(1);
+        */
+        
+        
+        //int lineChecker = 0; //variable to check if the line is still the same
+        //float accelerator = 1;
         
         //remote control
         do 
@@ -261,8 +271,9 @@ int main()
             IR_val = get_IR();
         }
         while(!IR_val);
-        motor_start();
         
+        motor_start();
+       
         do
         { 
             reflectance_read(&ref);
@@ -284,64 +295,83 @@ int main()
                 }
                 while(!IR_val);
                 motor_start();
-                motor_forward(100,100);
-            }
-            }
-            
-            //acceleration modifier
-            if(lineChecker == dig.l1+dig.r1)
-            {
-                accelerator+=0.2;
-            }
-            else
-            {
-                accelerator-=0.2;
-            }
-            
-            //main moving part
-            if(dig.r1+dig.l1==0)
-            {
-                motor_forward(120*accelerator,50);
-            }
-            else if (dig.r1==1 && dig.l1==0)
-            {
-                motor_forward(1,1);
-                if(dig.l3==0)
-                {
-                    motor_turn(10*accelerator,150*accelerator,35);
+                motor_forward(220,100);
                 }
-                else
-                {
-                    motor_turn(10*accelerator,100*accelerator,35);
-                }
-            }
-            else if (dig.r1==0 && dig.l1==1)
-            {   
-                motor_forward(1,1);
-                if(dig.r3==0)
-                {
-                    motor_turn(150*accelerator,10*accelerator,35);
-                }
-                else
-                {
-                    motor_turn(100*accelerator,10*accelerator,35);
-                }
-            }
-            else
-            {   
-                //motor_backward(80,15);
-                //motor_turn(100,0,30);
-                //CyDelay(50);
             }
             oldSignalValue = dig.l1 + dig.l3 + dig.r1 + dig.r3;
-            lineChecker = dig.l1 + dig.r1;
-            //the loop for running normally - hopefully
+            
+            
+            if(dig.l1 + dig.r1 == 2)
+            {   
+                if(old_speed_left > old_speed_right)
+                {
+                    left_speed  = old_speed_left   + 120;
+                    right_speed = old_speed_right  - 120;
+                }
+                else
+                {
+                    left_speed = old_speed_left   - 120;
+                    right_speed = old_speed_right + 120;
+                }
+                flag = 1;
+            }
+            
+            else
+            
+            if(old_error_left - (black - ref.l1) < 500 && old_error_right - (black - ref.r1) < 500)
+                {
+                    Kp = 325;
+                    max_speed = 255;
+                    flag = 0;
+                }
+            else
+                {
+                    Kp = 500;
+                    max_speed = 125;
+                    flag = 0;
+                }
+            
+             
+                 
+            error_left  = ((float)black - ref.l1)/(black - left_white);
+            error_right = ((float)black - ref.r1)/(black - right_white);
+            
+            if (flag == 0)
+            {
+            left_speed  =  max_speed - error_right * Kp + error_left ;
+            right_speed =  max_speed - error_left  * Kp + error_right; 
+            }
+            
+            if(left_speed >= 255)
+            {
+                left_speed = 255;
+            }
+            else if(left_speed <= - 255)
+            {
+                left_speed = -255;
+            }
+            
+            
+            if(right_speed >= 255)
+            {
+                right_speed = 255;
+            }
+            else if(right_speed < - 255)
+            {
+                right_speed = -255;
+            }
+                        
+            motor_move(left_speed , right_speed , 1);
+            
+            old_error_left  = black - ref.l1;
+            old_error_right = black - ref.r1;
+            
+            old_speed_left  = left_speed;
+            old_speed_right = right_speed;
             
         }
         while(1);
             
-        
-        CyDelay(500);
     }
 }   
 //
